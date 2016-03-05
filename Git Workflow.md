@@ -1,6 +1,6 @@
 # Git Workflow
 
-//Welcome//
+## Welcome
 Hello and welcome to our project's Github work flow page! Github makes it possible for multiple people to work on a single project
 in an organized and safe way so no progress is lost. Any conflicts are handled in a safe manner. I'm sure you can imagine how
 crazy things could get without version control, The key to a healthy Git-flow is communication, and I would like to stress this as
