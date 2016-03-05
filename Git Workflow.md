@@ -86,13 +86,13 @@ feat
 
 It is good practice to put these words inside parenthesis. e.g. "(fix) changed all instances of foo into bar"
 Some things to think about when making a commit:
-#### 1) Why is it necessary? It may fix a bug, it may add a feature, it may improve performance, reliability, stability, or just be a
+1. Why is it necessary? It may fix a bug, it may add a feature, it may improve performance, reliability, stability, or just be a
 change for the sake of correctness.
 
-#### 2) How does it address the issue? For short obvious patches this part can be omitted, but it should be a high level description of
+2. How does it address the issue? For short obvious patches this part can be omitted, but it should be a high level description of
 what the approach was.
 
-#### 3) What effects does the patch have? (In addition to the obvious ones, this may include benchmarks, side effects, etc.)
+3. What effects does the patch have? (In addition to the obvious ones, this may include benchmarks, side effects, etc.)
 
 On your final commit, before submitting a pull request, check on waffle.io and find the issue that this pull request will complete.
 If it you are working on issue #5, make your last commit message:
