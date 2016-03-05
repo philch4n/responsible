@@ -2,9 +2,9 @@
 
 //Welcome//
 Hello and welcome to our project's Github work flow page! Github makes it possible for multiple people to work on a single project
-in an organized and safe way so no progress is lost, and any conflicts are handled in a safe manner. I'm sure you can imagine how
+in an organized and safe way so no progress is lost. Any conflicts are handled in a safe manner. I'm sure you can imagine how
 crazy things could get without version control, The key to a healthy Git-flow is communication, and I would like to stress this as
-much as I can going forward. This includes using Slack to communicate when you are doing anything involving the master branch.
+much as I can going forward. This includes using Slack to communicate when you are doing anything.
 In the next section I will walk you through exactly what you need to do to make this github work flow as fluid as possible!
 
 //Getting Started//
@@ -125,16 +125,77 @@ If there is anything that may be conflicting, it is often important to also tag 
 it is submitted. Sometimes people can be working in the same files, and it is important to keep a communication line open and know
 where everyone else is working, this includes letting others know what files you are working in.
 
+
   //SCRUM Master Workflow//
 As SCRUM Master, it is your duty to review all submitted pull requests and resolve merge conflicts. Sometimes this might require
-another set of eyes, so don't feel bad if you aren't sure which code to keep when trying to resolve merge conflicts.
+another set of eyes, so don't feel bad if you aren't sure which code to keep when trying to resolve merge conflicts. Ask for help!
 
 Consider the following:
 -Even though the pull request can be automatically merged, doesn't mean you automatically should. Read the code. Love the code.
 -Merge conflicts can get a bit tricky, and it is highly likely mistakes will be made somewhere along the line. Don't stress it.
 -If a anyone decides to not follow the style guide, wants to merge unnecessary things, or somehow creates funkiness with their
- contribution, don't be afraid to close the pull request and send it back with a detailed note on what needs to be changed,
- but be constructive and let them know in a comment on the pull request exactly what was wrong with their request.
+ contribution, don't be afraid to close the pull request and send it back with a detailed comment on what needs to be changed,
+ just be constructive and let them know in a comment on the pull request exactly what was wrong with their request.
+
+  //How to resolve Merge Conflicts//
+In this section I will go into detail on how to resolve any merge conflicts that happen
+
+  Step 1: Clone the master repo
+Clone the original Script Invaders repository onto your local machine
+
+-- $ git clone https://github.com/ScriptInvaders/responsible.git
+
+  Step 2: Create a new branch
+
+-- $ git checkout -b merge-conflict
+
+  Step 3: Pull in branch conflicts
+
+-- $ git pull http://github.com/<username>/responsible.git <conflictBranchName>
+
+From here, you should be seeing some errors about merge conflicts in your terminal. This is a good thing! you have to see the
+conflicts before you can fix them!
+
+Open the project in sublime. From here you are going to want to:
+
+-- shift + command + f
+
+search for >>>> or <<<<
+
+The reason for this is because when you try to merge a branch that has conflicts, it presents you with this:
+
+<<<<<<<
+Changes made on the branch that is being merged into. In most cases,
+this is the branch that I have currently checked out (i.e. HEAD).
+The common ancestor version.
+=======
+Changes made on the branch that is being merged in. This is often a
+feature/topic branch.
+>>>>>>>
+
+Once you decide what code to keep, make sure you delete the < and > and = signs and save.
+Keep going down the find results until you resolve all merge conflicts.
+
+  Step 3: Push
+After you take care of merge conflicts, push the merged master back to the origin master. This can be the scary part.
+Before you push back to the origin master of the original repository after fixing all conflicts, you may want to make sure
+that your program is still working and still performing as expected. If there are tests, run the tests. Now is the time to
+exercise caution, because it is often times very tough to go back from here. It isn't impossible, but it definitely creates
+a headache.
+
+Once pushed, this will close the pull request.
+
+
+    //Keys for Success//
+1) Communication is key for establishing a working github flow. Over communicate, through Slack, verbally, and any other means you feel necessary.
+2) Never push origin master. It is tempting, but just don't. Only exception is when you are resolving merge conflicts as a SCRUM
+master, and even then, you want to exercise extreme caution.
+3) Make sure you are always on a branch, not on master branch.
+4) Even if you have permission, do not close your own pull requests. Have someone else look over your code.
+5) As SCRUM Master, comment on others pull requests. This makes your github contributions go up, as well as shows that you are a
+communicating part of a successful team! Also, respond to comments on your pull requests. Comment everywhere, even if it doesn't
+seem necessary, just do it, but stay professional.
+
 
 
 
