@@ -4,16 +4,19 @@
   "description": "A safe driving app for friends",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "lint": "eslint ."
+  },
+  "author": "",
+  "license": "ISC",
+  "homepage": "https://github.com/scriptinvaders/responsible#readme",
+  "devDependencies": {
   },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/scriptinvaders/responsible.git"
   },
-  "author": "",
-  "license": "ISC",
   "bugs": {
     "url": "https://github.com/scriptinvaders/responsible/issues"
-  },
-  "homepage": "https://github.com/scriptinvaders/responsible#readme"
+  }
 }

@@ -1,0 +1,5 @@
+## ignore libraries install via npm
+node_modules/
+
+## ignore npm error logs
+npm-debug.log
