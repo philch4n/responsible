@@ -10,6 +10,8 @@
   "license": "ISC",
   "homepage": "https://github.com/scriptinvaders/responsible#readme",
   "devDependencies": {
+    "grunt": "^0.4.5",
+    "grunt-jscs": "^2.8.0"
   },
   "repository": {
     "type": "git",
