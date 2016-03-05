@@ -213,12 +213,13 @@ Once pushed, this will close the pull request.
 
 
 # Keys for Success
-1) Communication is key for establishing a working github flow. Over communicate, through Slack, verbally, and any other means you feel necessary.
-2) Never push origin master. It is tempting, but just don't. Only exception is when you are resolving merge conflicts as a SCRUM
+1. Communication is key for establishing a working github flow. Over communicate, through Slack, verbally, and any other means you
+feel necessary.
+2. Never push origin master. It is tempting, but just don't. Only exception is when you are resolving merge conflicts as a SCRUM
 master, and even then, you want to exercise extreme caution.
-3) Make sure you are always on a branch, not on master branch.
-4) Even if you have permission, do not close your own pull requests. Have someone else look over your code.
-5) As SCRUM Master, comment on others pull requests. This makes your github contributions go up, as well as shows that you are a
+3. Make sure you are always on a branch, not on master branch.
+4. Even if you have permission, do not close your own pull requests. Have someone else look over your code.
+5. As SCRUM Master, comment on others pull requests. This makes your github contributions go up, as well as shows that you are a
 communicating part of a successful team! Also, respond to comments on your pull requests. Comment everywhere, even if it doesn't
 seem necessary, just do it, but stay professional.
 
