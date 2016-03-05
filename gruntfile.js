@@ -3,7 +3,7 @@ module.exports = function (grunt) {
   // Project configuration.
   grunt.initConfig({
     jscs: {
-      src: '*.js',
+      src: ['*.js', '*.jsx', 'test/*.js', 'test/**/*.js', 'test/*.jsx', 'test/**/*.jsx'],
       options: {
         config: '.jscsrc',
       },
