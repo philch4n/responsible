@@ -74,6 +74,7 @@ $ git checkout <unwantedFile>
 ### Step 7: On your Commits
 ALWAYS BE COMMITING!
 Keyword Starters at the beginning of any commit message:
+
 1. close, closes, closed
 2. fix, fixes, fixed
 3. resolve, resolves, resolved
