@@ -1,12 +1,12 @@
 
 export function UserImage({ userImage, imageType }) {
-	return (
-		<div className="userImage">
-		{
-			imageType === 'profile' ?
-				<img src={ userImage /*  portrait size */ } /> :
-				<img src={ userImage /*  icon size  */ } />
-		}
-		</div>
-	);
+  return (
+    <div className="userImage">
+    {
+      imageType === 'portrait' ?
+        <img className="userPortrait" src={ userImage /*  portrait size */ } /> :
+        <img className="userIcon" src={ userImage /*  icon size  */ } />
+    }
+    </div>
+  );
 };
