@@ -31,7 +31,7 @@ const dummyState = [
   ],
 ]
 
-class ProfileContainer extends React.Component {
+export class ProfileContainer extends React.Component {
 
   constructor ({ user, profileInfoItems, friends }) {
     this.user = user;
