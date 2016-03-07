@@ -1,8 +1,14 @@
-export function ProfileInfoItem({ profileItemTitle, profileItemDesc, onClick = () => {} }) {
+function nullFn() {};
+
+export function ProfileInfoItem({
+  profileItemTitle,
+  profileItemDesc,
+  onProfileItemClick = nullFn
+}) {
   return (
-    <div className="ProfileInfoItem">
+    <div className="ProfileInfoItem" onClick={ onProfileItemClick }>
       <span className="ProfileInfoItemTitle">{ profileItemTitle }</span>
-      <span className="ProfileInfoItemDesc" onClick={ onClick }>{ profileItemDesc }</span>
+      <span className="ProfileInfoItemDesc">{ profileItemDesc }</span>
     </div>
   );
 };

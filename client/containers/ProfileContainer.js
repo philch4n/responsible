@@ -11,10 +11,12 @@ class ProfileContainer extends React.Component {
   }
 
   render() {
-    <div className="ProfileContainer">
-      <UserImage userImage={ this.someUrlFromProps } imageType="profile" />
-      <ProfileInfoItemList profileInfoItems={ this.profileInfoItems } />
-    </div>
+    return (
+      <div className="ProfileContainer">
+        <UserImage userImage={ this.someUrlFromProps } imageType="profile" />
+        <ProfileInfoItemList profileInfoItems={ this.profileInfoItems } />
+      </div>
+    );
   }
 
 }
