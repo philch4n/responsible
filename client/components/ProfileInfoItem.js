@@ -1,8 +1,8 @@
-export function ProfileInfoItem({ profileItemTitle, profileItemDesc, id }) {
+export function ProfileInfoItem({ profileItemTitle, profileItemDesc, onClick = () => {} }) {
   return (
     <div className="ProfileInfoItem">
       <span className="ProfileInfoItemTitle">{ profileItemTitle }</span>
-      <span className="ProfileInfoItemDesc">{ profileItemDesc }</span>
+      <span className="ProfileInfoItemDesc" onClick={ onClick }>{ profileItemDesc }</span>
     </div>
   );
 };
