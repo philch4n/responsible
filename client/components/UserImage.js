@@ -1,11 +1,11 @@
 
-export function UserImage({ userImage, imageType }) {
+export function UserImage({ avatar, imageType }) {
   return (
-    <div className="userImage">
+    <div className="avatar">
     {
       imageType === 'portrait' ?
-        <img className="userPortrait" src={ userImage /*  portrait size */ } /> :
-        <img className="userIcon" src={ userImage /*  icon size  */ } />
+        <img className="userPortrait" src={ avatar /*  portrait size */ } /> :
+        <img className="userIcon" src={ avatar /*  icon size  */ } />
     }
     </div>
   );

@@ -1,10 +1,10 @@
 import { UserImage } from './UserImage';
 
-export function FriendItem({ userImage, userFullName }) {
+export function FriendItem({ avatar, fullName }) {
   return (
     <div className="friendItem">
-      <UserImage imageType="icon" userImage={userImage} />
-      <span className="friendName">{userFullName}</span>
+      <UserImage imageType="icon" avatar={avatar} />
+      <span className="friendName">{fullName}</span>
     </div>
   );
 };
