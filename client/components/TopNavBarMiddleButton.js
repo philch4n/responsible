@@ -2,7 +2,7 @@ import { DriveButton } from './DriveButton';
 import { DriverItemList } from './DriverItemList';
 
 export function TopNavBarMiddleButton({ isDriver, isRider, isMatched,
-  isWaitingForMatch, friends, }) {
+  isWaitingForMatch, drivers, }) {
   return (
     <div className="topNavBarMiddleButton">
       {
@@ -12,7 +12,7 @@ export function TopNavBarMiddleButton({ isDriver, isRider, isMatched,
 
         // Choosing page (user is now a rider but not matched)
         // isRider === true && isMatched === null ?
-          <DriverItemList friends={friends}/>
+          <DriverItemList drivers={drivers}/>
 
         // // User has been matched
         // isMatched !== null && isConfirmed === true && isWaitingForMatch === false ?

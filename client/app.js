@@ -49,6 +49,22 @@ const dummyFlags = {
   },
 };
 
+const dummyDrivers = {
+  drivers: [
+    {
+      id: 10,
+      avatar: 'http://animaliaz-life.com/data_images/dog/dog7.jpg',
+      fullName: 'Barkdog',
+    },
+    {
+      id: 15,
+      avatar: 'http://media4.popsugar-assets.com/files/2014/08/08/878/n/1922507' +
+      '/caef16ec354ca23b_thumb_temp_cover_file32304521407524949.xxxlarge/i/Funny-Cat-GIFs.jpg',
+      fullName: 'Mrowr',
+    },
+  ],
+};
+
 ReactDOM.render(
   <Provider store={store}>
     <WrappedProfile />
@@ -57,6 +73,6 @@ ReactDOM.render(
   /* Rendering two containers throws error; will need to render specific ones based on state */
 
   // <ProfileContainer {...dummyState} />,
-  // <TopNavBarContainer {...dummyState} {...dummyFlags} />,
+  // <TopNavBarContainer {...dummyDrivers} {...dummyFlags} />,
   document.getElementById('app')
 );

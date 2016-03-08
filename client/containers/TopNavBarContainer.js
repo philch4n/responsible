@@ -3,9 +3,9 @@ import { TopNavBarMiddleButton } from '../components/TopNavBarMiddleButton';
 import { SettingIcon } from '../components/SettingIcon';
 
 export class TopNavBarContainer extends React.Component {
-  constructor({ friends, flags }) {
+  constructor({ drivers, flags }) {
     super();
-    this.friends = friends;
+    this.drivers = drivers;
     this.flags = flags;
   }
 
@@ -13,7 +13,7 @@ export class TopNavBarContainer extends React.Component {
     return (
       <div className="TopNavBarContainer">
         <SettingIcon />
-        <TopNavBarMiddleButton {...this.flags} friends={this.friends} />
+        <TopNavBarMiddleButton {...this.flags} drivers={this.drivers} />
       </div>
     );
   }

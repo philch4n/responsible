@@ -2,12 +2,12 @@
 // uses DriverItem (and not FriendItem) for own styling
 import {DriverItem} from './DriverItem';
 
-export function DriverItemList({ friends }) {
+export function DriverItemList({ drivers }) {
   return (
     <div className="driverList">
       {
-        friends.map(function (friend) {
-          return <DriverItem {...friend} />;
+        drivers.map(function (driver) {
+          return <DriverItem {...driver} />;
         })
       }
     </div>
