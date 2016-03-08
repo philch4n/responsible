@@ -79,6 +79,8 @@ Keyword Starters at the beginning of any commit message:
 2. fix, fixes, fixed
 3. resolve, resolves, resolved
 4. feat
+5. docs
+6. cleanup
 
 It is good practice to put these words inside parenthesis. e.g. "(fix) changed all instances of foo into bar"
 Some things to think about when making a commit:
