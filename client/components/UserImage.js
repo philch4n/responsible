@@ -1,4 +1,4 @@
-
+require('../public/styles/profile.css');
 
 export function UserImage({ avatar, imageType }) {
   return (

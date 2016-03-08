@@ -10,6 +10,7 @@ module.exports = {
     loaders: [
       { test: /\.js$/, exclude: /node_modules/, loader: 'babel-loader', },
       { test: require.resolve('react'), loader: 'expose?React', },
+      { test: /\.css$/, loader: 'style-loader!css-loader' },
     ],
   },
 };
