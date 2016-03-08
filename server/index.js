@@ -10,7 +10,7 @@ var morgan       = require('morgan');
 
 var routes       = express.Router();
 
-//no browserify
+//no browserify, utilize webpack
 routes.get('/app-bundle.js',
   browserify('../client/app.js', {
     transform: [Reactify]

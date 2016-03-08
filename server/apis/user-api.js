@@ -16,7 +16,7 @@ UserAPI.get('/user/', function(req, res){
 //Get User by ID
 UserAPI.get('/user/:id', function(req, res){
   User.findUserByID(req.params.id)
-    .then(user => res.send(user))
+    .then(user => res.send(user, 200))
     .catch(err => console.log('no such user', err))
 });
 

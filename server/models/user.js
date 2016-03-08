@@ -5,7 +5,7 @@ var User = {};
 module.exports = User;
 
 User.getUsers = function() {
-
+  return db.select('user').from('users')
 }
 
 User.findUserByID = function(userId){
@@ -21,9 +21,6 @@ User.deleteUserById = function(userId) {
 }
 
 
-User.updateByID = function(){
-
-}
 /*
 User.find
 User.findByID
