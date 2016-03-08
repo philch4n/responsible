@@ -28,8 +28,8 @@ const dummyState = {
     },
   ],
   profileInfoItems: [
-    { city: 'Austin' },
-    { state: 'Virginia' },
+    { itemTitle: 'Austin' },
+    { itemDesc: 'Virginia' },
   ],
 };
 
