@@ -1,8 +1,9 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import { ProfileContainer } from './containers/ProfileContainer';
+import { createStore } from 'redux';
 
-console.log('profileContainer:', ProfileContainer);
+import rootReducer from './reducers/rootReducer';
+import { ProfileContainer } from './containers/ProfileContainer';
 
 const dummyState = {
   user: {
@@ -33,7 +34,11 @@ const dummyState = {
   ],
 };
 
+const store = createStore(rootReducer, dummyState);
+
 ReactDOM.render(
-  <ProfileContainer {...dummyState} />,
+  <Provider store={store}>
+    <ProfileContainer />
+  </Provider>,
   document.getElementById('app')
 );
