@@ -1,13 +1,13 @@
 
-// This function will change state to profile-viewing mode and container
-function nullFn() { console.log('you clicked me'); };
+// This function will dispatch action to change to Profile View
+function nullFn(e) { console.log('you clicked me ' + e.target.className); };
 
 export function SettingIcon({
   onSettingButtonClick = nullFn,
 }) {
   return (
     <div className='SettingIcon' onClick={onSettingButtonClick}>
-      <button className='SettingButton' type='button'>Settings</button>
+      <button className='SettingButton btn' type='button'>Settings</button>
     </div>
   );
 }
