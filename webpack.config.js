@@ -8,10 +8,8 @@ module.exports = {
   },
   module: {
     loaders: [
-      { test: /\.js$|\.jsx$/, exclude: /node_modules/, loader: 'babel-loader' },
+      { test: /\.js$/, exclude: /node_modules/, loader: 'babel-loader', },
+      { test: require.resolve('react'), loader: 'expose?React', },
     ],
-  },
-  resolve: {
-    extensions: ['', '.js', '.jsx'],
   },
 };

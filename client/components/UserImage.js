@@ -1,4 +1,5 @@
 
+
 export function UserImage({ avatar, imageType }) {
   return (
     <div className="avatar">
