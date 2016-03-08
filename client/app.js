@@ -4,6 +4,8 @@ import { Provider } from 'react-redux';
 import { createStore } from 'redux';
 import { fromJS } from 'immutable';
 
+// import { ProfileContainer } from './containers/ProfileContainer';
+import { TopNavBarContainer } from './containers/TopNavBarContainer';
 import rootReducer from './reducers/rootReducer';
 import { WrappedProfile } from './containers/ProfileContainer';
 
@@ -42,5 +44,8 @@ ReactDOM.render(
   <Provider store={store}>
     <WrappedProfile />
   </Provider>,
+
+  // <ProfileContainer {...dummyState} />,
+  // <TopNavBarContainer />,
   document.getElementById('app')
 );
