@@ -34,11 +34,20 @@ const dummyState = {
   ],
 };
 
+const dummyFlags = {
+  flags: {
+    isDriver: false,
+    isRider: true,
+    isMatched: false,
+    isConfirmed: false,
+  },
+};
+
 ReactDOM.render(
 
   /* Rendering two containers throws error; will need to render specific ones based on state */
 
   // <ProfileContainer {...dummyState} />,
-  <TopNavBarContainer />,
+  <TopNavBarContainer {...dummyState} {...dummyFlags} />,
   document.getElementById('app')
 );
