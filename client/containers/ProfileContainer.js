@@ -1,4 +1,6 @@
 import React from 'react';
+import { connect } from 'react-redux';
+
 import { FriendItemList } from '../components/FriendItemList';
 import { UserImage } from '../components/UserImage';
 import { ProfileInfoItemList } from '../components/ProfileInfoItemList';
@@ -15,6 +17,8 @@ export class ProfileContainer extends React.Component {
   };
 
   render() {
+    console.log('rendering state:', this.user);
+
     return (
       <div className="ProfileContainer">
         <UserImage {...this.user} imageType="portrait" />
@@ -26,6 +30,7 @@ export class ProfileContainer extends React.Component {
 };
 
 const mapStateToProps = function (state) {
+  console.log('mapStateToProps state', state);
   return state.toJS();
 };
 
