@@ -1,5 +1,5 @@
 import React from 'react';
-import { ProfileInfoItem } from '../components/ProfileInfoItem';
+import { FriendItemList } from '../components/FriendItemList';
 import { UserImage } from '../components/UserImage';
 import { ProfileInfoItemList } from '../components/ProfileInfoItemList';
 

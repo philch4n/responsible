@@ -1,3 +1,4 @@
+import React from 'react';
 import ReactDOM from 'react-dom';
 import { ProfileContainer } from './containers/ProfileContainer';
 
@@ -34,5 +35,5 @@ const dummyState = {
 
 ReactDOM.render(
   <ProfileContainer {...dummyState} />,
-  document.getElementById('reactContainer')
+  document.getElementById('app')
 );
