@@ -45,6 +45,8 @@ ReactDOM.render(
     <WrappedProfile />
   </Provider>,
 
+  /* Rendering two containers throws error; will need to render specific ones based on state */
+
   // <ProfileContainer {...dummyState} />,
   // <TopNavBarContainer />,
   document.getElementById('app')
