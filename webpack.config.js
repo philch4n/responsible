@@ -1,6 +1,6 @@
 module.exports = {
   entry: [
-    './client/index.js',
+    './client/app.js',
   ],
   output: {
     path: __dirname + '/dist',
@@ -8,8 +8,8 @@ module.exports = {
   },
   module: {
     loaders: [
-      { test: /\.js$/, exclude: /node_modules/, loader: 'babel-loader' },
-      { test: /\.js$/, exclude: /node_modules/, loader: 'babel-loader' },
+      { test: /\.js$/, exclude: /node_modules/, loader: 'babel-loader', },
+      { test: require.resolve('react'), loader: 'expose?React', },
     ],
   },
 };

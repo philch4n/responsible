@@ -1,5 +1,8 @@
-## ignore libraries install via npm
+## ignore libraries installed via npm
 node_modules/
 
 ## ignore npm error logs
 npm-debug.log
+
+## ignore webpack-built files
+dist/
