@@ -1,6 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import { ProfileContainer } from './containers/ProfileContainer';
+import { TopNavBarContainer } from './containers/TopNavBarContainer';
 
 console.log('profileContainer:', ProfileContainer);
 
@@ -34,6 +35,8 @@ const dummyState = {
 };
 
 ReactDOM.render(
-  <ProfileContainer {...dummyState} />,
+
+  // <ProfileContainer {...dummyState} />,
+  <TopNavBarContainer />,
   document.getElementById('app')
 );
