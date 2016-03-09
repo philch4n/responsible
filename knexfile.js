@@ -71,14 +71,14 @@ module.exports = {
     connection: {
       host: 'localhost',
       port: 5432,
-      database: 'development'
+      database: 'development',
     },
     migrations: {
       directory: './migrations',
-      tableName: 'knex_migrations'
+      tableName: 'knex_migrations',
     },
     seeds: {
-      directory: './lib/seeds'
+      directory: './lib/seeds',
     },
     debug: false, // set true for verbose database operations
   },
@@ -88,23 +88,9 @@ module.exports = {
     connection: {
       host: 'localhost',
       port: 5432,
-      database: 'test'
+      database: 'test',
     },
     debug: false, // set true for verbose database operations
   },
 };
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
