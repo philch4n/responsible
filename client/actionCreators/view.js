@@ -20,3 +20,10 @@ export function displaySettings(bool) {
     entry: bool,
   };
 };
+
+export function displayMatchInfo(userId) {
+  return {
+    type: 'DISPLAY_MATCH_INFO',
+    entry: true,
+  };
+};

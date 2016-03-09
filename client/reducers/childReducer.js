@@ -9,7 +9,9 @@ export default function (state = Map(), action) {
     case 'SET_RIDER':
       return state.set('isRider', action.entry);
     case 'DISPLAY_SETTINGS':
-      return state.set('settingsView', action.entry);
+      return state.set('displaySettings', action.entry);
+    case 'DISPLAY_MATCH_INFO':
+      return state.set('displayMatchInfo', action.entry);
 
     // case 'REQUEST_PAIR':
     //   return state.set('waitingForMatch', action.entry);

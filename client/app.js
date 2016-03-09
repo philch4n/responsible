@@ -51,6 +51,9 @@ const dummyState = {
   isRider: false,
   isMatched: false,
   isConfirmed: false,
+  match: null,
+  displaySettings: false, 
+  displayMatchInfo: false,
 };
 
 const store = createStore(rootReducer, fromJS(dummyState));
