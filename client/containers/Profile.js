@@ -6,7 +6,7 @@ import { UserImage } from '../components/UserImage';
 import { ProfileInfoItemList } from '../components/ProfileInfoItemList';
 import * as userAction from '../actionCreators/user';
 
-export class ProfileContainer extends React.Component {
+export class Profile extends React.Component {
   constructor ({ user, profileInfoItems = [], friends = [], onFriendClick }) {
     super();
 
@@ -17,8 +17,6 @@ export class ProfileContainer extends React.Component {
   };
 
   render() {
-    console.log('rendering state:', this.user);
-
     return (
       <div className="ProfileContainer">
         <UserImage {...this.user} imageType="portrait" />
@@ -30,7 +28,6 @@ export class ProfileContainer extends React.Component {
 };
 
 const mapStateToProps = function (state) {
-  console.log('mapStateToProps state', state);
   return state.toJS();
 };
 
@@ -42,7 +39,7 @@ const mapDispatchToProps = function (dispatch) {
   };
 };
 
-export const WrappedProfile = connect(
+export const ProfileContainer = connect(
   mapStateToProps,
   mapDispatchToProps
-)(ProfileContainer);
+)(Profile);

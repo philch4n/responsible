@@ -5,7 +5,7 @@ import { createStore } from 'redux';
 import { fromJS } from 'immutable';
 import { TopNavBarContainer } from './containers/TopNavBarContainer';
 import rootReducer from './reducers/rootReducer';
-import { WrappedProfile } from './containers/ProfileContainer';
+import { ProfileContainer } from './containers/ProfileContainer';
 
 const dummyState = {
   user: {
@@ -59,12 +59,12 @@ const store = createStore(rootReducer, fromJS(dummyState));
 
 // ReactDOM.render(
 //   <Provider store={store}>
-//     <WrappedProfile />
+//     <ProfileContainer />
 //   </Provider>,
 //   document.getElementById('app')
 // );
 
 ReactDOM.render(
-    <TopNavBarContainer {...dummyState} />,
+  <TopNavBarContainer {...dummyState} />,
   document.getElementById('app')
 );
