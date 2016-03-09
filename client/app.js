@@ -1,8 +1,13 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
+<<<<<<< HEAD
 import { Provider } from 'react-redux';
 import { createStore } from 'redux';
 import { fromJS } from 'immutable';
+=======
+import { ProfileContainer } from './containers/ProfileContainer';
+import { TopNavBarContainer } from './containers/TopNavBarContainer';
+>>>>>>> b187d04e6b3f1ed72f4929ae4afcd8bf027a2237
 
 // import { ProfileContainer } from './containers/ProfileContainer';
 import { TopNavBarContainer } from './containers/TopNavBarContainer';
@@ -73,6 +78,6 @@ ReactDOM.render(
   /* Rendering two containers throws error; will need to render specific ones based on state */
 
   // <ProfileContainer {...dummyState} />,
-  // <TopNavBarContainer {...dummyDrivers} {...dummyFlags} />,
+  // <TopNavBarContainer {...dummyState} {...dummyFlags} />,
   document.getElementById('app')
 );
