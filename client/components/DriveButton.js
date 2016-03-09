@@ -1,12 +1,6 @@
-
-// This function will dispatch action to change isDriver to true
-function nullFn(e) { console.log('you clicked me ' + e.target.className); };
-
-export function DriveButton({
-  onDriveButton = nullFn,
-}) {
+export function DriveButton({ onMiddleButtonClick, }) {
   return (
-    <div className='DriveButton' onClick={onDriveButton}>
+    <div className='DriveButton' onClick={onMiddleButtonClick}>
       <button className='DriveButton btn' type='button'>Drive!</button>
     </div>
   );
