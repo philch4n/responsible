@@ -8,16 +8,16 @@ describe("User API", function() {
   app.use('/user', UserAPI)
   app.testReady()
 
-  beforeEach(function() {
-    return db.deleteEverything()
+  // beforeEach(function() {
+  //   return db.deleteEverything()
   })
 
-  it("Should insert user", function() {
+  it("Should insert user", function(app) {
 
     // Mocha will wait for returned promises to complete
     return request(app)
       .post('/user')
-      .send({ name: Grant, address: '700 rock ledge'})
+      .send({ name: 'Grant', address: '700 rock ledge'})
       .expect(201)
       .expect(function(response) {
         var user = response.body
@@ -39,4 +39,3 @@ describe("User API", function() {
           })
       })
   })
-})
