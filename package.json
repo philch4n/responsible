@@ -18,9 +18,11 @@
     "express": "^4.13.4",
     "express-session": "^1.13.0",
     "immutable": "^3.7.6",
+    "knex": "^0.10.0",
     "morgan": "^1.7.0",
     "passport": "^0.3.2",
     "passport-local": "^1.0.0",
+    "pg": "^4.5.1",
     "ramda": "^0.19.1",
     "react-redux": "^4.4.0",
     "reactify": "^1.1.1",
@@ -55,5 +57,8 @@
   },
   "bugs": {
     "url": "https://github.com/scriptinvaders/responsible/issues"
+  },
+  "directories": {
+    "test": "test"
   }
 }
