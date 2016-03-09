@@ -3,9 +3,9 @@ import ReactDOM from 'react-dom';
 import { Provider } from 'react-redux';
 import { createStore } from 'redux';
 import { fromJS } from 'immutable';
-import { TopNavBarContainer } from './containers/TopNavBarContainer';
+import { TopNavBarContainer } from './containers/TopNavBar';
 import rootReducer from './reducers/rootReducer';
-import { ProfileContainer } from './containers/ProfileContainer';
+import { ProfileContainer } from './containers/Profile';
 
 const dummyState = {
   user: {
@@ -65,6 +65,8 @@ const store = createStore(rootReducer, fromJS(dummyState));
 // );
 
 ReactDOM.render(
-  <TopNavBarContainer {...dummyState} />,
+  <Provider store={store}>
+    <TopNavBarContainer {...dummyState} />
+  </Provider>,
   document.getElementById('app')
 );
