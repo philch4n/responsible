@@ -7,13 +7,13 @@ var cookieParser = require('cookie-parser');
 var bodyParser   = require('body-parser');
 var session      = require('express-session');
 var morgan       = require('morgan');
-var db           = require('./db');
+var db           = require(__dirname + '/../lib/db');
 
 var routes       = express.Router();
 
 // no browserify, utilize webpack
 routes.get('/app-bundle.js',
-  browserify('../client/app.js', {
+  browserify(__dirname + '/../client/app.js', {
     transform: [Reactify],
   })
 );

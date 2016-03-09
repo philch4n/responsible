@@ -6,7 +6,9 @@ process.env.NODE_ENV = 'test';
 //  var User = require(__server + '/models/user.js')
 //
 global.__server = __dirname + '/../server';
+console.log(__server);
 global.__client = __dirname + '/../client';
+global.__root = __dirname + '/..';
 
 //
 // Assertions

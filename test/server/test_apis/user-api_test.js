@@ -1,6 +1,6 @@
-require(TEST_HELPER);
+require('../../test-helper');
 
-// var db = require(__server + '/lib/db')
+var db = require(__root + '/lib/db');
 var request = require('supertest-as-promised');
 var routes = require(__server + '/index.js');
 
@@ -10,27 +10,37 @@ describe('User API', function () {
   app.use('/user', routes);
   app.testReady();
 
-  // beforeEach(function() {
-  //   return db.deleteEverything()
+  // beforeEach(function () {
+  //   return db.deleteEverything();
 });
 
 it('Should insert user', function (app) {
+  var attrs = {
+    username: 'Cheenus',
+    password: 'abc123',
+    first_name: 'Don',
+    last_name: 'Cheen',
+    street_address: '700 Priced Dr',
+    city: 'Austin',
+    state: 'Texas',
+    zipcode: 123456,
+    phone_number: 4051234567890,
+    email: 'doncheen@hotmail.com',
+    emergency_contact: 'Nobody.',
+    avatar: 'http://www.vinylrevinyl.com/wp-content/uploads/2008/12/rick-james.jpg',
+  };
 
-<<<<<<< f5e9dfa14d8bce1d8facb4452fda1e0da686cee9
-  // Mocha will wait for returned promises to complete
-=======
-//Mocha will wait for returned promises to complete
->>>>>>> (fix) fixing syntax with new jscs linter
+  //Mocha will wait for returned promises to complete
   return request(app)
       .post('/user')
-      .send({ name: 'Grant', address: '700 rock ledge' })
+      .send(attrs)
       .expect(201)
       .expect(function (response) {
         var user = response.body;
 
         expect(user.id).to.not.be.undefined;
-        expect(user.name).to.equal('Grant');
-        expect(user.addres).to.equal('700 rock ledge');
+        expect(user.first_name).to.equal('Don');
+        expect(user.address).to.equal('700 Priced Dr');
       })
       .then(function () {
 
@@ -41,7 +51,9 @@ it('Should insert user', function (app) {
             var users = response.body;
             expect(users).to.be.an.instanceOf(Array);
             expect(users).to.have.length(1);
-            expect(users[0].name).to.equal('Grant');
+            expect(users[0].name).to.equal('Don');
           });
       });
 });
+
+// });
