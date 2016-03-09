@@ -1,11 +1,11 @@
-require('./server-helpers')
-var browserify   = require('browserify-middleware')
+require('./server-helpers');
+var browserify   = require('browserify-middleware');
 var express      = require('express');
 var Reactify     = require('reactify');
 var Path         = require('path');
 var cookieParser = require('cookie-parser');
 var bodyParser   = require('body-parser');
-var session      = require('express-session')
+var session      = require('express-session');
 var morgan       = require('morgan');
 
 var routes       = express.Router();
@@ -14,16 +14,16 @@ var routes       = express.Router();
 routes.get('/app-bundle.js',
   browserify('../client/app.js', {
     transform: [Reactify]
-  })
+  });
 );
 
 //Example test route for test
 routes.get('/api/tags-example', function(req, res) {
-  res.send(['node', 'express', 'browserify', 'react', 'react-dom'])
+  res.send(['node', 'express', 'browserify', 'react', 'react-dom']);
 });
 
 //Static assets
-var assetFolder = Path.resolve(__dirname, '../client/public')
+var assetFolder = Path.resolve(__dirname, '../client/public');
 routes.use(express.static(assetFolder));
 
 
@@ -41,7 +41,7 @@ if(process.env.NODE_ENV !== 'test') {
 
 
 //Mounting router mount
-  app.use('/', routes)
+  app.use('/', routes);
 
   var chat = require('./apis/chat-api');
   var ride = require('./apis/ride-api');
@@ -62,18 +62,18 @@ if(process.env.NODE_ENV !== 'test') {
 
 //Catch-all Route (needs to go last so it doesn't interfere with other routes)
   routes.get('/*', function(req, res){
-    console.log('this is a catch-all route!')
-    res.sendFile(assetFolder + '/index.html')
-  })
+    console.log('this is a catch-all route!');
+    res.sendFile(assetFolder + '/index.html');
+  });
 
   // Start the server!
   var port = process.env.PORT || 1337;
-  app.listen(port)
-  console.log("Listening on port", port)
+  app.listen(port);
+  console.log("Listening on port", port);
 }
 else {
 //for test, export:
   module.exports = routes;
 
-}
+};
 
