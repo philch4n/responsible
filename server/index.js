@@ -48,7 +48,7 @@ if (process.env.NODE_ENV !== 'test') {
 
   var chat = require('./apis/chat-api');
   var ride = require('./apis/ride-api');
-  var user = require('./apis/ride-api');
+  var user = require('./apis/user-api');
 
   routes.use('/chat', chat);
   routes.use('/ride', ride);
@@ -74,7 +74,10 @@ if (process.env.NODE_ENV !== 'test') {
   console.log('Listening on port', port);
 } else {
   //for test, export:
-  module.exports = routes;
+  var user = require('./apis/user-api');
+  console.log('userAPI', user);
+  routes.use('/user', user);
 
+  module.exports = routes;
 };
 

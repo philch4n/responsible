@@ -3,32 +3,34 @@ require('../../test-helper');
 var request = require('supertest');
 var routes = require(__server + '/index.js');
 
-describe('Test tester', function () {
+// describe('Test tester', function () {
 
-  var app = TestHelper.createApp();
-  app.use('/', routes);
-  app.testReady();
+//   var app = TestHelper.createApp();
+//   app.use('/', routes);
+//   app.testReady();
 
-  it_('serves an example endpoint', function * () {
+//   it_('serves an example endpoint', function * () {
 
-    //
-    // Notice how we're in a generator function (indicated by the the *)
-    // See test/test-helper.js for details of why this works.
-    //
-    yield request(app)
-      .get('/api/tags-example')
-      .expect(200)
-      .expect(function (response) {
-        expect(response.body).to.include('node');
-      });
-  });
-});
+//     //
+//     // Notice how we're in a generator function (indicated by the the *)
+//     // See test/test-helper.js for details of why this works.
+//     //
+//     yield request(app)
+//       .get('/api/tags-example')
+//       .expect(200)
+//       .expect(function (response) {
+//         expect(response.body).to.include('node');
+//       });
+//   });
+// });
 
 describe('User API', function () {
 
   var app = TestHelper.createApp();
   app.use('/', routes);
   app.testReady();
+
+  console.log('routes');
 
   it_('Should insert user', function * () {
     var attrs = {
@@ -47,28 +49,26 @@ describe('User API', function () {
     };
 
     //Mocha will wait for returned promises to complete
-    return request(app)
-        .post('/user')
-        .send(attrs)
-        .expect(201)
-        .expect(function (response) {
-          var user = response.body;
+    yield request(app)
+      .post('/user')
+      .send(JSON.stringify(attrs))
+      .expect(201)
+      .expect(function (response) {
+        var user = response.body;
 
-          expect(user.id).to.not.be.undefined;
-          expect(user.first_name).to.equal('Don');
-          expect(user.address).to.equal('700 Priced Dr');
-        })
-        .then(function () {
+        expect(user.id).to.not.be.undefined;
+        expect(user.first_name).to.equal('Don');
+        expect(user.address).to.equal('700 Priced Dr');
+      });
 
-          return request(app)
-            .get('/user')
-            .expect(200)
-            .expect(function (response) {
-              var users = response.body;
-              expect(users).to.be.an.instanceOf(Array);
-              expect(users).to.have.length(1);
-              expect(users[0].name).to.equal('Don');
-            });
-        });
+    yield request(app)
+      .get('/user')
+      .expect(200)
+      .expect(function (response) {
+        var users = response.body;
+        expect(users).to.be.an.instanceOf(Array);
+        expect(users).to.have.length(1);
+        expect(users[0].name).to.equal('Don');
+      });
   });
 });
