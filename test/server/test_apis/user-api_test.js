@@ -16,7 +16,11 @@ describe('User API', function () {
 
 it('Should insert user', function (app) {
 
+<<<<<<< f5e9dfa14d8bce1d8facb4452fda1e0da686cee9
   // Mocha will wait for returned promises to complete
+=======
+//Mocha will wait for returned promises to complete
+>>>>>>> (fix) fixing syntax with new jscs linter
   return request(app)
       .post('/user')
       .send({ name: 'Grant', address: '700 rock ledge' })

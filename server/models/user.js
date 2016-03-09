@@ -19,6 +19,13 @@ User.deleteUserById = function (userId) {
     .then(user => console.log('deleted user with id' + userId))
     .catch(reportError('error deleting user by id'));
 };
+<<<<<<< f5e9dfa14d8bce1d8facb4452fda1e0da686cee9
+=======
+
+User.createUser = function () {
+  return;
+};
+>>>>>>> (fix) fixing syntax with new jscs linter
 
 User.createUser = function () {
   return;

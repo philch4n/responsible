@@ -43,10 +43,9 @@ if (process.env.NODE_ENV !== 'test') {
   //for cookies
   app.use(cookieParser());
 
-  // Mounting router mount
+  //Mounting router mount
   app.use('/', routes);
 
-  // hello
   var chat = require('./apis/chat-api');
   var ride = require('./apis/ride-api');
   var user = require('./apis/ride-api');
@@ -62,7 +61,7 @@ if (process.env.NODE_ENV !== 'test') {
   //   failureFlash : true // allow flash messages
   // }))
 
-  // Catch-all Route (needs to go last so it doesn't interfere with other routes)
+  //Catch-all Route (needs to go last so it doesn't interfere with other routes)
   routes.get('/*', function (req, res) {
     console.log('this is a catch-all route!');
     res.sendFile(assetFolder + '/index.html');
@@ -71,9 +70,11 @@ if (process.env.NODE_ENV !== 'test') {
   // Start the server!
   var port = process.env.PORT || 1337;
   app.listen(port);
+
   console.log('Listening on port', port);
 } else {
-  // for test, export:
+  //for test, export:
   module.exports = routes;
+
 };
 
