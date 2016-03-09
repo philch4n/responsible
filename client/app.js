@@ -3,9 +3,11 @@ import ReactDOM from 'react-dom';
 import { Provider } from 'react-redux';
 import { createStore } from 'redux';
 import { fromJS } from 'immutable';
+
+import Root from './containers/root';
 import { TopNavBarContainer } from './containers/TopNavBar';
-import rootReducer from './reducers/rootReducer';
 import { ProfileContainer } from './containers/Profile';
+import rootReducer from './reducers/rootReducer';
 
 const dummyState = {
   user: {
@@ -52,7 +54,7 @@ const dummyState = {
   isMatched: false,
   isConfirmed: false,
   match: null,
-  displaySettings: false, 
+  displaySettings: false,
   displayMatchInfo: false,
 };
 
@@ -65,9 +67,14 @@ const store = createStore(rootReducer, fromJS(dummyState));
 //   document.getElementById('app')
 // );
 
+const routes = <Route component={Root}>
+  <Route path="/profile" component={ProfileContainer} />
+  <Route path="/" component={TopNavBarContainer} />
+</Route>;
+
 ReactDOM.render(
   <Provider store={store}>
-    <TopNavBarContainer {...dummyState} />
+    <Router history={}
   </Provider>,
   document.getElementById('app')
 );
