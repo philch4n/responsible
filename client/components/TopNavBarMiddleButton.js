@@ -7,7 +7,7 @@ export function TopNavBarMiddleButton({ isDriver, isRider, isMatched,
     <div className="topNavBarMiddleButton">
       {
         // Main page (not yet driver or rider)
-        isDriver == false && isRider === false ?
+        isDriver === false && isRider === false ?
           <DriveButton /> :
 
         // Choosing page (user is now a rider but not matched)

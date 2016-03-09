@@ -1,8 +1,10 @@
 import React from 'react';
+import { connect } from 'react-redux';
+
 import { TopNavBarMiddleButton } from '../components/TopNavBarMiddleButton';
 import { SettingIcon } from '../components/SettingIcon';
 
-export class TopNavBarContainer extends React.Component {
+export class TopNavBar extends React.Component {
   constructor({ drivers, flags }) {
     super();
     this.drivers = drivers;
@@ -17,4 +19,19 @@ export class TopNavBarContainer extends React.Component {
       </div>
     );
   }
-}
+};
+
+const mapStateToProps = function (state) {
+  return state.toJS();
+};
+
+const mapDispatchToProps = function (dispatch) {
+  return {
+    onSettingsButtonClick: function() {},
+  };
+};
+
+export const TopNavBarContainer = connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(TopNavBar);
