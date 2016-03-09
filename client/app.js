@@ -34,6 +34,7 @@ const dummyState = {
     { itemTitle: 'Austin' },
     { itemDesc: 'Virginia' },
   ],
+<<<<<<< HEAD
   flags: {
     isDriver: false,
     isRider: true,
@@ -41,6 +42,8 @@ const dummyState = {
     isConfirmed: true,
     isWaitingForMatch: false,
   },
+=======
+>>>>>>> (feat) Change es6 react classes to use this.props instead of assigning them in the constructor. This caused a bug where the view would not update because the render function was referencing stale state.
   drivers: [
     {
       id: 10,
@@ -54,6 +57,10 @@ const dummyState = {
       fullName: 'Mrowr',
     },
   ],
+  isDriver: false,
+  isRider: false,
+  isMatched: false,
+  isConfirmed: false,
 };
 
 const store = createStore(rootReducer, fromJS(dummyState));

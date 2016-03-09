@@ -3,7 +3,6 @@ import { DriverItemList } from './DriverItemList';
 import { RiderInfoItem } from './RiderInfoItem';
 
 export function TopNavBarMiddleButton({ isDriver, isRider, isMatched,
-
   isWaitingForMatch, isConfirmed, drivers, friends, }) {
   /* Logic below is to get rider from matchedId, will need to refactor */
   var matched;
@@ -20,7 +19,7 @@ export function TopNavBarMiddleButton({ isDriver, isRider, isMatched,
       {
         // Main page (not yet driver or rider)
         isDriver === false && isRider === false ?
-          <DriveButton onClick={onMiddleButtonClick('isDriver')} /> :
+          <DriveButton onMiddleButtonClick={onMiddleButtonClick.bind(null, 'isDriver')} /> :
 
         // Choosing page (user is now a rider but not matched)
         isRider === true && isMatched === null ?
@@ -32,9 +31,10 @@ export function TopNavBarMiddleButton({ isDriver, isRider, isMatched,
         //   // User is driver
         //   isDriver === true ?
             <RiderInfoItem friends={matched}/>
+        //     <RiderInfo onClick={onMiddleButtonClick.bind(null, 'riderInfoView')} /> :
 
         //   // User is rider
-        //     <DriverInfo onClick={onMiddleButtonClick('driverInfo')} />
+        //     <DriverInfo onClick={onMiddleButtonClick.bind(null, 'driverInfoView')} />
         // : <Error />
       }
     </div>
