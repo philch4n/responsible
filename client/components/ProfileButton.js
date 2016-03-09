@@ -6,6 +6,8 @@ function nullFn(e) { console.log('you clicked me ' + e.target.className); };
 export function ProfileButton({
   onProfileButtonClick = nullFn,
 }) {
+
+  // Link to={`/profile/${user.id}`}
   return (
     <div className='ProfileButton' onClick={onProfileButtonClick}>
       <button className='ProfileButton btn'>
