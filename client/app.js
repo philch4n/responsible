@@ -1,15 +1,8 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-<<<<<<< HEAD
 import { Provider } from 'react-redux';
 import { createStore } from 'redux';
 import { fromJS } from 'immutable';
-=======
-import { ProfileContainer } from './containers/ProfileContainer';
-import { TopNavBarContainer } from './containers/TopNavBarContainer';
->>>>>>> b187d04e6b3f1ed72f4929ae4afcd8bf027a2237
-
-// import { ProfileContainer } from './containers/ProfileContainer';
 import { TopNavBarContainer } from './containers/TopNavBarContainer';
 import rootReducer from './reducers/rootReducer';
 import { WrappedProfile } from './containers/ProfileContainer';
@@ -41,20 +34,12 @@ const dummyState = {
     { itemTitle: 'Austin' },
     { itemDesc: 'Virginia' },
   ],
-};
-
-const store = createStore(rootReducer, fromJS(dummyState));
-
-const dummyFlags = {
   flags: {
     isDriver: false,
     isRider: true,
     isMatched: false,
     isConfirmed: false,
   },
-};
-
-const dummyDrivers = {
   drivers: [
     {
       id: 10,
@@ -70,14 +55,16 @@ const dummyDrivers = {
   ],
 };
 
+const store = createStore(rootReducer, fromJS(dummyState));
+
+// ReactDOM.render(
+//   <Provider store={store}>
+//     <WrappedProfile />
+//   </Provider>,
+//   document.getElementById('app')
+// );
+
 ReactDOM.render(
-  <Provider store={store}>
-    <WrappedProfile />
-  </Provider>,
-
-  /* Rendering two containers throws error; will need to render specific ones based on state */
-
-  // <ProfileContainer {...dummyState} />,
-  // <TopNavBarContainer {...dummyState} {...dummyFlags} />,
+    <TopNavBarContainer {...dummyState} />,
   document.getElementById('app')
 );
