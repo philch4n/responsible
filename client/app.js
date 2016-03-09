@@ -3,7 +3,7 @@ import ReactDOM from 'react-dom';
 import { Provider } from 'react-redux';
 import { createStore } from 'redux';
 import { fromJS } from 'immutable';
-
+import { TopNavBarContainer } from './containers/TopNavBarContainer';
 import rootReducer from './reducers/rootReducer';
 import { WrappedProfile } from './containers/ProfileContainer';
 
@@ -34,13 +34,37 @@ const dummyState = {
     { itemTitle: 'Austin' },
     { itemDesc: 'Virginia' },
   ],
+  flags: {
+    isDriver: false,
+    isRider: true,
+    isMatched: false,
+    isConfirmed: false,
+  },
+  drivers: [
+    {
+      id: 10,
+      avatar: 'http://animaliaz-life.com/data_images/dog/dog7.jpg',
+      fullName: 'Barkdog',
+    },
+    {
+      id: 15,
+      avatar: 'http://media4.popsugar-assets.com/files/2014/08/08/878/n/1922507' +
+      '/caef16ec354ca23b_thumb_temp_cover_file32304521407524949.xxxlarge/i/Funny-Cat-GIFs.jpg',
+      fullName: 'Mrowr',
+    },
+  ],
 };
 
 const store = createStore(rootReducer, fromJS(dummyState));
 
+// ReactDOM.render(
+//   <Provider store={store}>
+//     <WrappedProfile />
+//   </Provider>,
+//   document.getElementById('app')
+// );
+
 ReactDOM.render(
-  <Provider store={store}>
-    <WrappedProfile />
-  </Provider>,
+    <TopNavBarContainer {...dummyState} />,
   document.getElementById('app')
 );
