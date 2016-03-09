@@ -24,7 +24,6 @@ User.createUser = function () {
   return;
 };
 
-
 /*
 User.find
 User.findByID

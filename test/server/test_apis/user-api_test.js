@@ -16,7 +16,7 @@ describe('User API', function () {
 
 it('Should insert user', function (app) {
 
-//Mocha will wait for returned promises to complete
+  // Mocha will wait for returned promises to complete
   return request(app)
       .post('/user')
       .send({ name: 'Grant', address: '700 rock ledge' })
