@@ -39,6 +39,9 @@ const mapDispatchToProps = function (dispatch) {
       console.log('clicking middle button of type:', type);
       dispatch(viewAction[type](true));
     },
+    onProfileButtonClick() {
+      dispatch(viewAction.displayProfile(true));
+    }
   };
 };
 // jscs:enable

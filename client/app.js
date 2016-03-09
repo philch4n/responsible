@@ -1,11 +1,11 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import { Provider } from 'react-redux';
-import { Router, Route, hashHistory } from 'react-router';
+import { Router, Route, browserHistory } from 'react-router';
 import { createStore } from 'redux';
 import { fromJS } from 'immutable';
 
-import Root from './containers/root';
+import Root from './containers/Root';
 import { TopNavBarContainer } from './containers/TopNavBar';
 import { ProfileContainer } from './containers/Profile';
 import rootReducer from './reducers/rootReducer';
@@ -69,7 +69,7 @@ const routes = <Route component={Root}>
 
 ReactDOM.render(
   <Provider store={store}>
-    <Router history={hashHistory}>{routes}</Router>
+    <Router history={browserHistory}>{routes}</Router>
   </Provider>,
   document.getElementById('app')
 );

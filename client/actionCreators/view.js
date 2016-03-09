@@ -21,6 +21,12 @@ export function displaySettings(bool) {
   };
 };
 
+// export function displayProfile() {
+//   return {
+//     type: 'DISPLAY_PROFILE'
+//   }
+// }
+
 export function displayMatchInfo(userId) {
   return {
     type: 'DISPLAY_MATCH_INFO',
