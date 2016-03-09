@@ -1,6 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import { Provider } from 'react-redux';
+import {Router, Route, hashHistory } from 'react-router';
 import { createStore } from 'redux';
 import { fromJS } from 'immutable';
 
@@ -60,21 +61,15 @@ const dummyState = {
 
 const store = createStore(rootReducer, fromJS(dummyState));
 
-// ReactDOM.render(
-//   <Provider store={store}>
-//     <ProfileContainer />
-//   </Provider>,
-//   document.getElementById('app')
-// );
-
+// Update /profile to /profile/:userId when ready. react-router.Link helps with this.
 const routes = <Route component={Root}>
-  <Route path="/profile" component={ProfileContainer} />
   <Route path="/" component={TopNavBarContainer} />
+  <Route path="/profile" component={ProfileContainer} />
 </Route>;
 
 ReactDOM.render(
   <Provider store={store}>
-    <Router history={}
+    <Router history={hashHistory}>{routes}</Router>
   </Provider>,
   document.getElementById('app')
 );
