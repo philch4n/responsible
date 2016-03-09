@@ -1,6 +1,6 @@
-exports.up = function(knex, Promise) {
-	return Promise.all([
-		
+exports.up = function (knex, Promise) {
+  return Promise.all([
+
 knex.schema.createTableIfNotExists('users', function (table) {
   table.increments('id').primary();
   table.string('username').unique().notNullable();
@@ -44,16 +44,16 @@ knex.schema.createTableIfNotExists('chats', function (table) {
   table.string('make').notNullable();
   table.string('capacity').notNullable();
   table.string('color').notNullable();
-})
+}),
 
-])
+]);
 };
 
-exports.down = function(knex, Promise) {
-return Promise.all([
+exports.down = function (knex, Promise) {
+  return Promise.all([
   knex.schema.dropTable('users'),
   knex.schema.dropTable('friend'),
   knex.schema.dropTable('ride'),
-  knex.schema.dropTable('car')
-]) 
+  knex.schema.dropTable('car'),
+]);
 };
