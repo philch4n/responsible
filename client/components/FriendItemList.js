@@ -6,7 +6,7 @@ export function FriendItemList({ friends }) {
     <h1>Your Friends!</h1>
       {
         friends.map(function (friend) {
-          return <FriendItem {...friend} />;
+          return <FriendItem key={friend.id} {...friend} />;
         })
       }
     </div>

@@ -4,6 +4,7 @@
   "description": "A safe driving app for friends",
   "main": "index.js",
   "scripts": {
+    "dev-client": "webpack-dev-server --content-base dist/ --inline",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "",
