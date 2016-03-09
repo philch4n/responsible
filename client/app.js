@@ -34,16 +34,6 @@ const dummyState = {
     { itemTitle: 'Austin' },
     { itemDesc: 'Virginia' },
   ],
-<<<<<<< HEAD
-  flags: {
-    isDriver: false,
-    isRider: true,
-    isMatched: 2,
-    isConfirmed: true,
-    isWaitingForMatch: false,
-  },
-=======
->>>>>>> (feat) Change es6 react classes to use this.props instead of assigning them in the constructor. This caused a bug where the view would not update because the render function was referencing stale state.
   drivers: [
     {
       id: 10,
