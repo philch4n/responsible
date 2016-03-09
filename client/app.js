@@ -1,7 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import { Provider } from 'react-redux';
-import {Router, Route, hashHistory } from 'react-router';
+import { Router, Route, hashHistory } from 'react-router';
 import { createStore } from 'redux';
 import { fromJS } from 'immutable';
 
