@@ -3,28 +3,16 @@ exports.up = function (knex, Promise) {
 
 knex.schema.createTableIfNotExists('users', function (table) {
   table.increments('id').primary();
-<<<<<<< b330a0a8c61e39e01d49600dc81610b03815dc9f
   table.string('username').notNullable().unique();
-=======
-  table.string('username').notNullable();
->>>>>>> worked foreign keys
   table.string('password').notNullable();
   table.string('first_name').notNullable();
   table.string('last_name').notNullable();
   table.string('street_address').notNullable();
-<<<<<<< b330a0a8c61e39e01d49600dc81610b03815dc9f
   table.string('city').notNullable();
   table.string('state').notNullable();
   table.integer('zipcode').notNullable();
   table.string('phone_number').notNullable();
   table.string('email').notNullable().unique();
-=======
-  table.string('city').notNullable;
-  table.string('state').notNullable;
-  table.integer('zipcode').notNullable;
-  table.string('phone_number').notNullable;
-  table.string('email').notNullable();
->>>>>>> worked foreign keys
   table.string('emergency_contact').notNullable();
   table.string('avatar').notNullable();
   table.timestamps();
@@ -32,8 +20,8 @@ knex.schema.createTableIfNotExists('users', function (table) {
 
 knex.schema.createTableIfNotExists('friend', function (table) {
   table.increments('id').primary();
-  table.integer('user').unsigned().references('users.id').inTable('users');
-  table.integer('friend').unsigned().references('users.id').inTable('users');
+  table.integer('user').references('id').inTable('users').notNullable();
+  table.integer('friend').references('id').inTable('users').notNullable();
 
   // table.integer('contract').unsigned().references('contract.id');
   // add constraint friend_user_foreign foreign key ("user") references "users" ("id")
@@ -43,8 +31,8 @@ knex.schema.createTableIfNotExists('friend', function (table) {
 
 knex.schema.createTableIfNotExists('ride', function (table) {
   table.increments('id').primary();
-  table.integer('user').unsigned().references('id').inTable('users');
-  table.integer('friend').unsigned().references('id').inTable('users');
+  table.integer('user').references('id').inTable('users').notNullable();
+  table.integer('friend').references('id').inTable('users').notNullable();
   table.string('location').notNullable();
   table.timestamps();
 }),
@@ -58,13 +46,8 @@ knex.schema.createTableIfNotExists('car', function (table) {
 
 knex.schema.createTableIfNotExists('chats', function (table) {
   table.increments('id').primary();
-<<<<<<< b330a0a8c61e39e01d49600dc81610b03815dc9f
   table.integer('user').references('id').inTable('users').notNullable();
   table.integer('friend').references('id').inTable('users').notNullable();
-=======
-  table.integer('user').unsigned().references('id').inTable('users');
-  table.integer('friend').unsigned().references('id').inTable('users');
->>>>>>> worked foreign keys
   table.timestamps();
 }),
 
