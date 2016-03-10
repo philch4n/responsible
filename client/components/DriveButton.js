@@ -1,9 +1,14 @@
 require('../public/styles/skeleton.css');
 require('../public/styles/normalize.css');
 
-export function DriveButton({ onMiddleButtonClick, }) {
+/* This function will dispatch an action to change to Driver mode */
+function nullFn(e) { console.log('you clicked me ' + e.target.className); };
+
+export function DriveButton({
+  onDriveButtonClick = nullFn,
+}) {
   return (
-    <div className='DriveDiv eight columns' onClick={onMiddleButtonClick}>
+    <div className='DriveDiv' onClick={onDriveButtonClick}>
       <button className='DriveButton btn u-full-width' type='button'>Drive!</button>
     </div>
   );
