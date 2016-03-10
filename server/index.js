@@ -7,13 +7,13 @@ var cookieParser = require('cookie-parser');
 var bodyParser   = require('body-parser');
 var session      = require('express-session');
 var morgan       = require('morgan');
-var db           = require('./db');
+var db           = require(__dirname + '/../lib/db');
 
 var routes       = express.Router();
 
 // no browserify, utilize webpack
 routes.get('/app-bundle.js',
-  browserify('../client/app.js', {
+  browserify(__dirname + '/../client/app.js', {
     transform: [Reactify],
   })
 );
@@ -43,13 +43,12 @@ if (process.env.NODE_ENV !== 'test') {
   //for cookies
   app.use(cookieParser());
 
-  // Mounting router mount
+  //Mounting router mount
   app.use('/', routes);
 
-  // hello
   var chat = require('./apis/chat-api');
   var ride = require('./apis/ride-api');
-  var user = require('./apis/ride-api');
+  var user = require('./apis/user-api');
 
   routes.use('/chat', chat);
   routes.use('/ride', ride);
@@ -62,7 +61,7 @@ if (process.env.NODE_ENV !== 'test') {
   //   failureFlash : true // allow flash messages
   // }))
 
-  // Catch-all Route (needs to go last so it doesn't interfere with other routes)
+  //Catch-all Route (needs to go last so it doesn't interfere with other routes)
   routes.get('/*', function (req, res) {
     console.log('this is a catch-all route!');
     res.sendFile(assetFolder + '/index.html');
@@ -71,9 +70,14 @@ if (process.env.NODE_ENV !== 'test') {
   // Start the server!
   var port = process.env.PORT || 1337;
   app.listen(port);
+
   console.log('Listening on port', port);
 } else {
-  // for test, export:
+  //for test, export:
+  var user = require('./apis/user-api');
+  console.log('userAPI', user);
+  routes.use('/user', user);
+
   module.exports = routes;
 };
 

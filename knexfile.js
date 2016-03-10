@@ -63,6 +63,8 @@
     With a running postgres server process (postgres -D)
       > 'NODE_ENV=test node lib/schema.js'
       Do not seed database for tests
+
+    Before running tests, make sure to enter 'creatdb test'
 */
 
 module.exports = {
@@ -82,13 +84,16 @@ module.exports = {
     },
     debug: false, // set true for verbose database operations
   },
-
   test: {
     client: 'postgresql',
     connection: {
       host: 'localhost',
       port: 5432,
       database: 'test',
+    },
+    migrations: {
+      directory: './migrations',
+      tableName: 'knex_migrations',
     },
     debug: false, // set true for verbose database operations
   },

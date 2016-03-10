@@ -1,3 +1,4 @@
+require('../server-helpers');
 var db      = require('../../lib/db.js');
 const first = require('ramda').head;
 
@@ -5,7 +6,7 @@ var User = {};
 module.exports = User;
 
 User.getUsers = function () {
-  return db.select('user').from('users');
+  return db.select('*').from('users');
 };
 
 User.findUserById = function (userId) {
@@ -15,13 +16,17 @@ User.findUserById = function (userId) {
 };
 
 User.deleteUserById = function (userId) {
-  return db('user').where({ id: userId }).del()
+  return db('users').where({ id: userId }).del()
     .then(user => console.log('deleted user with id' + userId))
     .catch(reportError('error deleting user by id'));
 };
 
-User.createUser = function () {
-  return;
+User.createUser = function (attrs) {
+  return db('users').insert(attrs, ['id', 'username', 'first_name'])
+    .catch(reportError('error creating user into db'))
+    .then(function (user) {
+      return user;
+    });
 };
 
 /*
@@ -29,3 +34,4 @@ User.find
 User.findByID
 User.updateByID
 */
+

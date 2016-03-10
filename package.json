@@ -5,12 +5,13 @@
   "main": "index.js",
   "scripts": {
     "dev-client": "webpack-dev-server --content-base dist/ --inline",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "./node_modules/.bin/mocha --recursive -r test/test-helper.js"
   },
   "author": "",
   "license": "ISC",
   "homepage": "https://github.com/scriptinvaders/responsible#readme",
   "dependencies": {
+    "bluebird": "^3.3.4",
     "body-parser": "^1.15.0",
     "browserify-middleware": "^7.0.0",
     "chai": "^3.5.0",
