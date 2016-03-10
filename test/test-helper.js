@@ -43,7 +43,6 @@ TestHelper.createApp = function (loader) {
   return app;
 };
 
-
 /*
   A curried error logger that logs a description
   (where the error happened) and the error message.
