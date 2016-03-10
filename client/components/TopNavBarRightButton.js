@@ -1,3 +1,5 @@
+import { Link } from 'react-router';
+
 import { ProfileButton } from '../components/ProfileButton';
 import { CancelRideButton } from '../components/CancelRideButton';
 

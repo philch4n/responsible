@@ -1,11 +1,14 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import { Provider } from 'react-redux';
+import { Router, Route, browserHistory } from 'react-router';
 import { createStore } from 'redux';
 import { fromJS } from 'immutable';
+
+import Root from './containers/Root';
 import { TopNavBarContainer } from './containers/TopNavBar';
-import rootReducer from './reducers/rootReducer';
 import { ProfileContainer } from './containers/Profile';
+import rootReducer from './reducers/rootReducer';
 
 const dummyState = {
   user: {
@@ -52,22 +55,21 @@ const dummyState = {
   isMatched: false,
   isConfirmed: false,
   match: null,
-  displaySettings: false, 
+  displaySettings: false,
   displayMatchInfo: false,
 };
 
 const store = createStore(rootReducer, fromJS(dummyState));
 
-// ReactDOM.render(
-//   <Provider store={store}>
-//     <ProfileContainer />
-//   </Provider>,
-//   document.getElementById('app')
-// );
+// Update /profile to /profile/:userId when ready. react-router.Link helps with this.
+const routes = <Route component={Root}>
+  <Route path="/" component={TopNavBarContainer} />
+  <Route path="/profile" component={ProfileContainer} />
+</Route>;
 
 ReactDOM.render(
   <Provider store={store}>
-    <TopNavBarContainer {...dummyState} />
+    <Router history={browserHistory}>{routes}</Router>
   </Provider>,
   document.getElementById('app')
 );
