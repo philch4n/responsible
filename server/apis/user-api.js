@@ -14,9 +14,10 @@ UserAPI.get('/', function (req, res) {
 
 //Get User by ID
 UserAPI.get('/:id', function (req, res) {
-  User.findUserById(req.params.id)
-    .then(user => res.send(user, 200))
-    .catch(err => console.log('no such user', err));
+  var id = req.params.id;
+  User.findUserById(id)
+    .then(sendStatusAndData(res, 200))
+    .catch(sendStatusAndError(res, 500, 'no such user'));
 });
 
 //Create a user
@@ -29,6 +30,8 @@ UserAPI.post('/', function (req, res) {
 
 UserAPI.put('/:id', function (req, res) {
   var id = req.params.id;
+
+  // console.log('LMAOOOOOO', id);
   User.updateById(id, request.body)
     .then(() => User.findByID(id))
     .then(user => res.send(user));

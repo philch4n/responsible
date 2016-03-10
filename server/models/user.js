@@ -10,7 +10,7 @@ User.getUsers = function () {
 };
 
 User.findUserById = function (userId) {
-  return db.select('username').from('users').where({ id: UserId })
+  return db.select('*').from('users').where({ id: userId })
     .catch(reportError('error retrieving username by userId'))
     .then(first);
 };
