@@ -9,7 +9,7 @@ export function TopNavBarRightButton({ isMatched, isConfirmed, isWaitingForMatch
     <div className="topNavBarRightButton">
       {
         // // User has been matched
-        isMatched !== null && isConfirmed === true && isWaitingForMatch === false ?
+        isMatched !== false && isConfirmed === true && isWaitingForMatch === false ?
           <CancelRideButton /> :
           <ProfileButton />
       }

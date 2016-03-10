@@ -1,14 +1,18 @@
 import React from 'react';
 import { connect } from 'react-redux';
 
-import { TopNavBarMiddleButton } from '../components/TopNavBarMiddleButton';
+// import { TopNavBarMiddleButton } from '../components/TopNavBarMiddleButton';
 import { SettingIcon } from '../components/SettingIcon';
+import { Logo } from '../components/Logo';
 import { TopNavBarRightButton } from '../components/TopNavBarRightButton';
 
 import * as userAction from '../actionCreators/user';
 import * as viewAction from '../actionCreators/view';
 
-class TopNavBar extends React.Component {
+require('../public/styles/normalize.css');
+require('../public/styles/skeleton.css');
+
+export class TopNavBar extends React.Component {
   constructor() {
     super();
   }
@@ -16,9 +20,9 @@ class TopNavBar extends React.Component {
   render() {
     console.log('rendering topnavbar with state:', this.props);
     return (
-      <div className="TopNavBarContainer">
+      <div className="TopNavBarContainer row">
         <SettingIcon />
-        <TopNavBarMiddleButton {...this.props} />
+        <Logo />
         <TopNavBarRightButton {...this.props} />
       </div>
     );

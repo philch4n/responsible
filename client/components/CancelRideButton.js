@@ -6,8 +6,8 @@ export function CancelRideButton({
   onCancelRideButtonClick = nullFn,
 }) {
   return (
-    <div className='CancelRideButton' onClick={onCancelRideButtonClick}>
-      <button className='CancelRideButton btn' type='button'>Cancel</button>
+    <div className='CancelRideButton two columns' onClick={onCancelRideButtonClick}>
+      <button className='CancelRideButton btn u-full-width' type='button'>Cancel</button>
     </div>
   );
 }

@@ -54,6 +54,7 @@ const dummyState = {
   isRider: false,
   isMatched: false,
   isConfirmed: false,
+  isWaitingForMatch: false,
   match: null,
   displaySettings: false,
   displayMatchInfo: false,

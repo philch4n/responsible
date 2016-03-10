@@ -1,21 +1,28 @@
 import { DriveButton } from './DriveButton';
 import { DriverItemList } from './DriverItemList';
 import { RiderInfoItem } from './RiderInfoItem';
+import { DriverInfoItem } from './DriverInfoItem';
+
+require('../public/styles/normalize.css');
+require('../public/styles/skeleton.css');
 
 export function TopNavBarMiddleButton({ isDriver, isRider, isMatched,
   isWaitingForMatch, isConfirmed, drivers, friends, onMiddleButtonClick, }) {
 
   /* Logic below is to get rider from matchedId, will need to refactor */
-  var matched;
-  friends.forEach(function (friend) {
-    for (var key in friend) {
-      if (friend[key] === isMatched) {
-        matched = friend;
-      }
-    }
-  });
 
-  matched = matched ||  {
+  // var confirmedDriver = toMatch(drivers);
+  // function toMatch(collection) {
+  //   return collection.forEach(function (item) {
+  //     for (var key in item) {
+  //       if (item[key] === isMatched) {
+  //         return item;
+  //       }
+  //     }
+  //   });
+  // }
+
+  let matched = matched ||  {
     fullName: 'bogus',
     avatar: 'http://compliancebuilding.com/wp-content/uploads' +
     '/2013/10/monster-mash-and-compliance.jpg',
@@ -24,12 +31,13 @@ export function TopNavBarMiddleButton({ isDriver, isRider, isMatched,
   return (
     <div className="topNavBarMiddleButton">
       {
+        /* Below is logic for showing drive button/available drivers/rider or driver info: refactor!
         // Main page (not yet driver or rider)
         isDriver === false && isRider === false ?
           <DriveButton onMiddleButtonClick={onMiddleButtonClick.bind(null, 'isDriver')} /> :
 
         // Choosing page (user is now a rider but not matched)
-        isRider === true && isMatched === null ?
+        isRider === true && isMatched === false ?
           <DriverItemList drivers={drivers}/> :
 
         // // User has been matched
@@ -45,6 +53,7 @@ export function TopNavBarMiddleButton({ isDriver, isRider, isMatched,
         //   // User is rider
         //     <DriverInfo onClick={onMiddleButtonClick.bind(null, 'driverInfoView')} />
         // : <Error />
+        */
       }
     </div>
   );
