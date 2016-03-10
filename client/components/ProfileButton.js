@@ -12,9 +12,9 @@ export function ProfileButton({
   // Link to={`/profile/${user.id}`}
   return (
     <div className='ProfileButtonDiv two columns' onClick={onProfileButtonClick}>
-      <button className='ProfileButton btn u-full-width'>
-        <Link to="/profile">Profile</Link>
-      </button>
+      <Link to="/profile">
+        <button className='ProfileButton btn u-full-width'>Profile</button>
+      </Link>
     </div>
   );
 }
