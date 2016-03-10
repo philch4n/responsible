@@ -8,8 +8,8 @@ import { TopNavBarRightButton } from '../components/TopNavBarRightButton';
 import * as userAction from '../actionCreators/user';
 import * as viewAction from '../actionCreators/view';
 
-require('../public/styles/skeleton.css');
 require('../public/styles/normalize.css');
+require('../public/styles/skeleton.css');
 
 export class TopNavBar extends React.Component {
   constructor() {
@@ -19,7 +19,7 @@ export class TopNavBar extends React.Component {
   render() {
     console.log('rendering topnavbar with state:', this.props);
     return (
-      <div className="TopNavBarContainer">
+      <div className="TopNavBarContainer row">
         <SettingIcon />
         <TopNavBarMiddleButton {...this.props} />
         <TopNavBarRightButton {...this.props} />
