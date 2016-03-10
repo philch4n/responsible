@@ -52,9 +52,10 @@ const dummyState = {
   ],
   isDriver: false,
   isRider: false,
-  isMatched: false,
-  isConfirmed: false,
-  match: null,
+  isMatched: true,
+  isConfirmed: true,
+  isWaitingForMatch: false,
+  match: { driver: 'Hello' },
   displaySettings: false,
   displayMatchInfo: false,
 };
