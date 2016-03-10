@@ -2,16 +2,11 @@ import { Link } from 'react-router';
 require('../public/styles/skeleton.css');
 require('../public/styles/normalize.css');
 
-// This function will dispatch action to change to Profile View
-function nullFn(e) { console.log('you clicked me ' + e.target.className); };
-
-export function ProfileButton({
-  onProfileButtonClick = nullFn,
-}) {
+export function ProfileButton() {
 
   // Link to={`/profile/${user.id}`}
   return (
-    <div className='ProfileButtonDiv two columns' onClick={onProfileButtonClick}>
+    <div className='ProfileButtonDiv two columns'>
       <Link to="/profile">
         <button className='ProfileButton btn u-full-width'>Profile</button>
       </Link>
