@@ -61,6 +61,13 @@ const dummyState = {
 
 const store = createStore(rootReducer, fromJS(dummyState));
 
+/**
+ *  Containers can be placed in routers:
+ *   <Route path="/" component={TopNavBarContainer} >
+ *     <Header />
+ *   </Route>
+**/
+
 // Update /profile to /profile/:userId when ready. react-router.Link helps with this.
 const routes = <Route component={Root}>
   <Route path="/" component={TopNavBarContainer} />
