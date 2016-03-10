@@ -8,12 +8,13 @@ import { TopNavBarRightButton } from '../components/TopNavBarRightButton';
 import * as userAction from '../actionCreators/user';
 import * as viewAction from '../actionCreators/view';
 
-export class TopNavBar extends React.Component {
+class TopNavBar extends React.Component {
   constructor() {
     super();
   }
 
   render() {
+    console.log('rendering topnavbar with state:', this.props);
     return (
       <div className="TopNavBarContainer">
         <SettingIcon />
