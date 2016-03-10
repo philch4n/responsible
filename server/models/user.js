@@ -17,6 +17,8 @@ User.findUserById = function (userId) {
 
 User.deleteUser = function (userId) {
   return db('users').where({ id: userId }).del()
+
+  //need to refactor to send back appropriate data
     .then(user => console.log('deleted user with id ' + userId, user))
     .catch(reportError('error deleting user by id'));
 };
