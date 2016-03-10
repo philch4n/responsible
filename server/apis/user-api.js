@@ -3,7 +3,6 @@ var UserAPI = require('express').Router();
 
 var Ride = require(__models + '/ride');
 var User = require(__models + '/user');
-console.log('WELCOME TO USER-API!');
 module.exports = UserAPI;
 
 //Get all users
@@ -36,7 +35,5 @@ UserAPI.put('/:id', function (req, res) {
 });
 
 UserAPI.post('/*', function (req, res) {
-  console.log('request:', req);
-  console.log(req.url);
   res.send(200);
 });
