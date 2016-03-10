@@ -6,8 +6,8 @@ import { createStore } from 'redux';
 import { fromJS } from 'immutable';
 
 import Root from './containers/Root';
-import { TopNavBarContainer } from './containers/TopNavBar';
 import { ProfileContainer } from './containers/Profile';
+import { MainContainer } from './containers/Main';
 import rootReducer from './reducers/rootReducer';
 
 const dummyState = {
@@ -61,9 +61,16 @@ const dummyState = {
 
 const store = createStore(rootReducer, fromJS(dummyState));
 
+/**
+ *  Containers can be placed in routers:
+ *   <Route path="/" component={TopNavBarContainer} >
+ *     <Header />
+ *   </Route>
+**/
+
 // Update /profile to /profile/:userId when ready. react-router.Link helps with this.
 const routes = <Route component={Root}>
-  <Route path="/" component={TopNavBarContainer} />
+  <Route path="/" component={MainContainer} />
   <Route path="/profile" component={ProfileContainer} />
 </Route>;
 
