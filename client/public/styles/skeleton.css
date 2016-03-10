@@ -383,9 +383,21 @@ form {
 /* Profile
 –––––––––––––––––––––––––––––––––––––––––––––––––– */
 .avatar {
-  padding: 5%;
-  width: 30%;
-  height: 30%;
+  text-align: center;
+  padding: 2%;
+}
+.userPortrait {
+  height: 300px;
+  width: 300px;
+  border-radius: 50%;
+}
+.friendList, .ProfileInfoItem {
+  text-align: center;
+}
+.userIcon {
+  height: 200px;
+  width: 200px;
+  border-radius: 50%;
 }
 
 /* Splash 
