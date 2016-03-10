@@ -1,8 +1,9 @@
 import React from 'react';
 import { connect } from 'react-redux';
 
-import { TopNavBarMiddleButton } from '../components/TopNavBarMiddleButton';
+// import { TopNavBarMiddleButton } from '../components/TopNavBarMiddleButton';
 import { SettingIcon } from '../components/SettingIcon';
+import { Logo } from '../components/Logo';
 import { TopNavBarRightButton } from '../components/TopNavBarRightButton';
 
 import * as userAction from '../actionCreators/user';
@@ -21,7 +22,7 @@ export class TopNavBar extends React.Component {
     return (
       <div className="TopNavBarContainer row">
         <SettingIcon />
-        <TopNavBarMiddleButton {...this.props} />
+        <Logo />
         <TopNavBarRightButton {...this.props} />
       </div>
     );

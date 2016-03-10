@@ -31,6 +31,7 @@ export function TopNavBarMiddleButton({ isDriver, isRider, isMatched,
   return (
     <div className="topNavBarMiddleButton">
       {
+        /* Below is logic for showing drive button/available drivers/rider or driver info: refactor!
         // Main page (not yet driver or rider)
         isDriver === false && isRider === false ?
           <DriveButton onMiddleButtonClick={onMiddleButtonClick.bind(null, 'isDriver')} /> :
@@ -52,6 +53,7 @@ export function TopNavBarMiddleButton({ isDriver, isRider, isMatched,
         //   // User is rider
         //     <DriverInfo onClick={onMiddleButtonClick.bind(null, 'driverInfoView')} />
         // : <Error />
+        */
       }
     </div>
   );

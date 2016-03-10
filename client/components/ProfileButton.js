@@ -11,7 +11,7 @@ export function ProfileButton({
 
   // Link to={`/profile/${user.id}`}
   return (
-    <div className='ProfileButton two columns' onClick={onProfileButtonClick}>
+    <div className='ProfileButtonDiv two columns' onClick={onProfileButtonClick}>
       <button className='ProfileButton btn u-full-width'>
         <Link to="/profile">Profile</Link>
       </button>
