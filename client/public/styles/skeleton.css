@@ -388,6 +388,19 @@ form {
   height: 30%;
 }
 
+/* Splash 
+–––––––––––––––––––––––––––––––––––––––––––––––––– */
+.DriveDiv, .RideDiv {
+  margin: .4%;
+}
+.DriveButton {
+  height: 50vh;
+  background-color: #29D9C2;
+}
+.CatchARideButton {
+  height: 50vh;
+  background-color: #BDF271;
+}
 
 /* Misc
 –––––––––––––––––––––––––––––––––––––––––––––––––– */

@@ -1,6 +1,11 @@
+import { DriveButton } from './DriveButton';
+import { CatchARideButton } from './CatchARideButton';
 
 export function Splash() {
   return (
-    <h1>Splishy splashy flash me</h1>
+    <div className='splash'>
+      <DriveButton />
+      <CatchARideButton />
+    </div>
   );
 };
