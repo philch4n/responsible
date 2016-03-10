@@ -1,16 +1,20 @@
 require('../../test-helper');
-
+var db = require('../../../lib/db');
 var request = require('supertest');
 var routes = require(__server + '/index.js');
+const dbCleaner = require('knex-cleaner');
 
 describe('Test tester', function () {
+
+  beforeEach(function () {
+    return dbCleaner.clean(db, { mode: 'truncate' });
+  });
 
   var app = TestHelper.createApp();
   app.use('/', routes);
   app.testReady();
 
   it_('serves an example endpoint', function * () {
-
     //
     // Notice how we're in a generator function (indicated by the the *)
     // See test/test-helper.js for details of why this works.
@@ -29,8 +33,6 @@ describe('User API', function () {
   var app = TestHelper.createApp();
   app.use('/', routes);
   app.testReady();
-
-  console.log('routes');
 
   it_('Should insert user', function * () {
     var attrs = {
@@ -62,7 +64,7 @@ describe('User API', function () {
   });
 
   it_('Should get users', function * () {
-    yield request(app)
+    return request(app)
       .get('/user')
       .expect(200)
       .expect(function (response) {
