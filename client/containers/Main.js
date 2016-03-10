@@ -1,18 +1,19 @@
+import { connect } from 'react-redux';
+
 import { TopNavBarContainer } from './TopNavBar';
 import { Splash } from '../components/Splash';
 
 // import { Map } from './googleMapComponent';
 // import {BottomBarContainer } from './BottomBar';
 
-function Main(props) {
-  console.log('rendering main container with props:', props);
+function Main({ isDriver, isRider }) {
   return (
     <div className="MainApp">
       <TopNavBarContainer />
       {
-        !props.isDriver && !prop.isRider ?
+        !isDriver && !isRider ?
           <Splash /> :
-          (<h2>Not splash</h2>)
+          (<h2>Hey - No splashing!</h2>)
       }
     </div>
   );

@@ -1,6 +1,6 @@
 
 export function Splash() {
   return (
-    <h1>Splishy splash in the air</h1>
+    <h1>Splishy splashy flash me</h1>
   );
 };
