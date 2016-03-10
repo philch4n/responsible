@@ -37,6 +37,13 @@ UserAPI.put('/:id', function (req, res) {
     .then(user => res.send(user));
 });
 
+UserAPI.delete('/:id', function (req, res) {
+  var id = req.params.id;
+  User.deleteUser(id)
+    .then(sendStatusAndData(res, 200))
+    .catch(sendStatusAndError(res, 500));
+});
+
 UserAPI.post('/*', function (req, res) {
   res.send(200);
 });

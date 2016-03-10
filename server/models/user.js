@@ -15,9 +15,9 @@ User.findUserById = function (userId) {
     .then(first);
 };
 
-User.deleteUserById = function (userId) {
+User.deleteUser = function (userId) {
   return db('users').where({ id: userId }).del()
-    .then(user => console.log('deleted user with id' + userId))
+    .then(user => console.log('deleted user with id' + userId, user))
     .catch(reportError('error deleting user by id'));
 };
 
