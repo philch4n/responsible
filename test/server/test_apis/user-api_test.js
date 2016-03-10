@@ -151,4 +151,37 @@ describe('User API', function () {
       .delete('/user/' + user1IdOnInsert)
       .expect(200);
   });
+
+  //Not MVP, moving on.
+
+  // it_('Should update user information', function * () {
+  //   var user1IdOnInsert = null;
+
+  //   yield request(app)
+  //     .post('/user')
+  //     .send(testUser1)
+  //     .expect(201)
+  //     .expect(function (response) {
+  //       var user = response.body[0];
+  //       user1IdOnInsert = user.id;
+  //       expect(user.id).to.not.be.undefined;
+  //       expect(user.first_name).to.equal('Don');
+  //       expect(user.username).to.equal('Cheenus');
+  //     });
+
+  //   yield request(app)
+  //     .put('/user/' + user1IdOnInsert)
+  //     .expect(function () {
+  //       testUser1.phone_number = 3;
+  //     })
+  //     .send(testUser1)
+  //     .expect(201)
+  //     .expect(function (response) {
+  //       var user = response.body[0];
+  //       user1IdOnInsert = user.id;
+  //       expect(user.id).to.not.be.undefined;
+  //       expect(user.first_name).to.equal('Don');
+  //       expect(user.phone_number).to.equal(3);
+  //     });
+  // });
 });

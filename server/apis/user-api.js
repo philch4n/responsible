@@ -30,9 +30,9 @@ UserAPI.post('/', function (req, res) {
 
 UserAPI.put('/:id', function (req, res) {
   var id = req.params.id;
-
-  // console.log('LMAOOOOOO', id);
-  User.updateById(id, request.body)
+  var attrs = req.params;
+  console.log('attrs', attrs);
+  User.updateUser(id, attrs)
     .then(() => User.findByID(id))
     .then(user => res.send(user));
 });

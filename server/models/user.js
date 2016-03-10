@@ -17,7 +17,7 @@ User.findUserById = function (userId) {
 
 User.deleteUser = function (userId) {
   return db('users').where({ id: userId }).del()
-    .then(user => console.log('deleted user with id' + userId, user))
+    .then(user => console.log('deleted user with id ' + userId, user))
     .catch(reportError('error deleting user by id'));
 };
 
@@ -28,6 +28,15 @@ User.createUser = function (attrs) {
       return user;
     });
 };
+
+// Not MVP, moving on
+// User.updateUser = function (userId, attrs) {
+//   return db('users').insert(attrs, ['id', 'username', 'first_name'])
+//     .catch(reportError('error updating user by id'))
+//     .then(function (user) {
+//       return user;
+//     });
+// };
 
 /*
 User.find
