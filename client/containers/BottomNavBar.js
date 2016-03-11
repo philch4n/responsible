@@ -15,9 +15,10 @@ class BottomNavBar extends React.Component {
   }
 
   render() {
+    let ride = this.props.ride;
     return (
       <div className="BottomNavBarContainer row">
-        <BottomNavBarButton {...this.props} />
+        <BottomNavBarButton {...ride} />
       </div>
     );
   }

@@ -1,15 +1,11 @@
-import { onConfirmLocationButton } from './onConfirmLocationButton';
+import { ConfirmLocationButton } from './ConfirmLocationButton';
 
-export function BottomNavBarButton({ ride }) {
-  // check props for flags (could refactor?)
-  var isWaitingforMatch = ride.isWaitingForMatch;
-  var isMatched = ride.isMatched;
-  var isConfirmed = ride.isConfirmed;
+export function BottomNavBarButton({ isWaitingForMatch, isMatched, isConfirmed, }) {
   return (
     <div className="BottomNavBarRightButton">
     {
       !isWaitingforMatch && !isConfirmed ?
-        <onConfirmLocationButton /> :
+        <ConfirmLocationButton /> :
       isConfirmed && isWaitingforMatch ?
         <h3>Waiting for a match</h3> :
       isConfirmed && isMatched ?
