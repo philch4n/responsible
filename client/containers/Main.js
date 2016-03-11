@@ -21,7 +21,7 @@ function Main({ isDriver, isRider }) {
           <MapView />
       }
       {
-        isRider === true ?
+        isRider ?
         <BottomNavBarContainer /> :
         <div className="empty" />
       }

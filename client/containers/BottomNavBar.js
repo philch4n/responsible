@@ -31,8 +31,8 @@ const mapStateToProps = function (state) {
 // jscs:disable
 const mapDispatchToProps = function (dispatch) {
   return {
-    onConfirmLocationButtonClick() {
-      dispatch(rideActions.confirmLocation(location))
+    onConfirmLocationButtonClick(location) {
+      dispatch(rideActions.requestMatch(location))
     },
   };
 };
