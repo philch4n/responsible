@@ -1,7 +1,7 @@
 require('../server-helpers');
 var UserAPI = require('express').Router();
 
-var Ride = require(__models + '/ride');
+var Ride = require(__models + '/rides');
 var User = require(__models + '/user');
 module.exports = UserAPI;
 
