@@ -2,13 +2,13 @@ require('../server-helpers');
 var db      = require('../../lib/db.js');
 const first = require('ramda').head;
 
-module.exports = Chat;
+module.exports = Message;
 
-Chat.getChat = function () {
-  return db.select('*').from('chat');
+Message.getMessage = function () {
+  return db.select('*').from('Message');
 };
 
-Chat.getChatById = function (chatId) {
+Message.getChatById = function (chatId) {
   return db.select('*').from('chat').where({ id: chatId })
     .catch(reportError('error retrieving chat by chatId'))
     .then(first);
