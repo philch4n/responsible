@@ -1,6 +1,6 @@
 import { ProfileInfoItem } from './ProfileInfoItem';
 
-export function ProfileInfoItemList({ profileInfoItems }) {
+export function ProfileInfoItemList({ profileInfoItems = [] }) {
   return (
     <div className="ProfileInfoItemList">
         {
