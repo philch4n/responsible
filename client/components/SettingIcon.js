@@ -9,7 +9,10 @@ export function SettingIcon({
 }) {
   return (
     <div className='SettingIcon two columns' onClick={onSettingButtonClick}>
-      <button className='SettingButton btn u-full-width' type='button'>Settings!</button>
+      <select className='SettingButton btn u-full-width'>
+        <option>Settings</option>
+        <option>Profile</option>
+      </select>
     </div>
   );
 }
