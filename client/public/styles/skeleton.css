@@ -413,6 +413,11 @@ form {
   height: 50vh;
   background-color: #BDF271;
 }
+.map {
+  text-align: center;
+  padding: .1%;
+  height: 95vh;
+}
 
 /* Bottom Nav Bar Container 
 –––––––––––––––––––––––––––––––––––––––––––––––––– */
