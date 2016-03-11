@@ -3,6 +3,7 @@ import { connect } from 'react-redux';
 import { TopNavBarContainer } from './TopNavBar';
 import { BottomNavBarContainer } from './BottomNavBar';
 import { SplashContainer } from '../components/Splash';
+import { MapView } from '../components/MapView';
 
 // import { Map } from './googleMapComponent';
 // import {BottomBarContainer } from './BottomBar';
@@ -14,7 +15,7 @@ function Main({ isDriver, isRider }) {
       {
         !isDriver && !isRider ?
           <SplashContainer /> :
-          (<h2>Hey - No splashing!</h2>)
+          <MapView />
       }
       {
         isRider === true ?
