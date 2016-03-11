@@ -10,13 +10,13 @@ User.getUsers = function () {
 };
 
 User.findUserById = function (userId) {
-  return db.select('*').from('users').where({ id: userId })
+  return db.select('*').from('users').where({ user_id: userId })
     .catch(reportError('error retrieving username by userId'))
     .then(first);
 };
 
 User.deleteUser = function (userId) {
-  return db('users').where({ id: userId }).del()
+  return db('users').where({ user_id: userId }).del()
 
   //need to refactor to send back appropriate data
     .then(user => console.log('deleted user with id ' + userId, user))
@@ -24,7 +24,7 @@ User.deleteUser = function (userId) {
 };
 
 User.createUser = function (attrs) {
-  return db('users').insert(attrs, ['id', 'username', 'first_name'])
+  return db('users').insert(attrs, ['user_id', 'username', 'first_name'])
     .catch(reportError('error creating user into db'))
     .then(function (user) {
       return user;
