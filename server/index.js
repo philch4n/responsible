@@ -46,11 +46,11 @@ if (process.env.NODE_ENV !== 'test') {
   //Mounting router mount
   app.use('/', routes);
 
-  var chat = require('./apis/chat-api');
+  var message = require('./apis/message-api');
   var ride = require('./apis/ride-api');
   var user = require('./apis/user-api');
 
-  routes.use('/chat', chat);
+  routes.use('/message', message);
   routes.use('/ride', ride);
   routes.use('/user', user);
 
@@ -75,7 +75,6 @@ if (process.env.NODE_ENV !== 'test') {
 } else {
   //for test, export:
   var user = require('./apis/user-api');
-  console.log('userAPI', user);
   routes.use('/user', user);
 
   module.exports = routes;
