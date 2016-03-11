@@ -1,6 +1,7 @@
 import { connect } from 'react-redux';
 
 import { TopNavBarContainer } from './TopNavBar';
+import { BottomNavBarContainer } from './BottomNavBar';
 import { SplashContainer } from '../components/Splash';
 
 // import { Map } from './googleMapComponent';
@@ -14,6 +15,11 @@ function Main({ isDriver, isRider }) {
         !isDriver && !isRider ?
           <SplashContainer /> :
           (<h2>Hey - No splashing!</h2>)
+      }
+      {
+        isRider === true ?
+        <BottomNavBarContainer /> :
+        <div className="empty" />
       }
     </div>
   );

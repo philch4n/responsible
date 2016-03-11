@@ -414,6 +414,15 @@ form {
   background-color: #BDF271;
 }
 
+/* Bottom Nav Bar Container 
+–––––––––––––––––––––––––––––––––––––––––––––––––– */
+.BottomNavBar {
+  margin: .2%;
+}
+.BottomNavBarRightButton {
+  text-align: center
+}
+
 /* Misc
 –––––––––––––––––––––––––––––––––––––––––––––––––– */
 hr {
