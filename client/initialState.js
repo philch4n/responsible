@@ -10,7 +10,7 @@ export default {
       zip: '56352',
     },
     isDriver: false,
-    isRider: false,
+    isRider: true,
     friends: [
       {
         id: 2,
@@ -50,8 +50,8 @@ export default {
   },
   ride: {
     isWaitingForMatch: false,
-    isMatched: false,
-    isConfirmed: false,
+    isMatched: true,
+    isConfirmed: true,
     match: null,
   },
   routing: {

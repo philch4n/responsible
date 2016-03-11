@@ -379,9 +379,6 @@ form {
 .Logo {
   margin: 0 .2%;
 }
-.SettingButton {
-  text-indent: 35%
-}
 
 /* Profile
 –––––––––––––––––––––––––––––––––––––––––––––––––– */
@@ -415,6 +412,15 @@ form {
 .CatchARideButton {
   height: 50vh;
   background-color: #BDF271;
+}
+
+/* Bottom Nav Bar Container 
+–––––––––––––––––––––––––––––––––––––––––––––––––– */
+.BottomNavBar {
+  margin: .2%;
+}
+.BottomNavBarRightButton {
+  text-align: center
 }
 
 /* Misc
