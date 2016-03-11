@@ -4,6 +4,9 @@ import { DriveButton } from './DriveButton';
 import { CatchARideButton } from './CatchARideButton';
 import * as userAction from '../actionCreators/user';
 
+require('../public/styles/skeleton.css');
+require('../public/styles/normalize.css');
+
 class Splash extends React.Component {
   constructor() {
     super();
@@ -25,7 +28,7 @@ const mapDispatchToProps = function(dispatch) {
     onDriveButtonClick() {
       dispatch(userAction.setDriver(true));
     },
-    onRideButtonClick() {
+    onCatchARideButtonClick() {
       dispatch(userAction.setRider(true));
     }
   };
