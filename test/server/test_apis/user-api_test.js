@@ -77,7 +77,7 @@ describe('User API', function () {
       .expect(201)
       .expect(function (response) {
         var user = response.body[0];
-        expect(user.id).to.not.be.undefined;
+        expect(user.user_id).to.not.be.undefined;
         expect(user.first_name).to.equal('Don');
         expect(user.username).to.equal('Cheenus');
       });
@@ -90,7 +90,7 @@ describe('User API', function () {
       .expect(201)
       .expect(function (response) {
         var user = response.body[0];
-        expect(user.id).to.not.be.undefined;
+        expect(user.user_id).to.not.be.undefined;
         expect(user.first_name).to.equal('Don');
         expect(user.username).to.equal('Cheenus');
       });
@@ -116,8 +116,8 @@ describe('User API', function () {
       .expect(201)
       .expect(function (response) {
         var user = response.body[0];
-        user2IdOnInsert = user.id;
-        expect(user.id).to.not.be.undefined;
+        user2IdOnInsert = user.user_id;
+        expect(user.user_id).to.not.be.undefined;
         expect(user.first_name).to.equal('Greg');
         expect(user.username).to.equal('GregB');
       });
@@ -127,7 +127,7 @@ describe('User API', function () {
       .expect(200)
       .expect(function (response) {
         var user = response.body;
-        expect(user.id).to.equal(user2IdOnInsert);
+        expect(user.user_id).to.equal(user2IdOnInsert);
         expect(user.username).to.equal('GregB');
       });
   });
@@ -141,8 +141,8 @@ describe('User API', function () {
       .expect(201)
       .expect(function (response) {
         var user = response.body[0];
-        user1IdOnInsert = user.id;
-        expect(user.id).to.not.be.undefined;
+        user1IdOnInsert = user.user_id;
+        expect(user.user_id).to.not.be.undefined;
         expect(user.first_name).to.equal('Don');
         expect(user.username).to.equal('Cheenus');
       });
