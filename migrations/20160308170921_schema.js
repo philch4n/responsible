@@ -2,8 +2,6 @@
 
 exports.up = function (knex, Promise) {
   return Promise.all([
-// var user1ID
-// var user2ID
 
 knex.schema.createTableIfNotExists('users', function (table) {
   table.increments('users_id').primary();
@@ -16,11 +14,10 @@ knex.schema.createTableIfNotExists('users', function (table) {
   table.string('state').notNullable();
   table.integer('zipcode').notNullable();
   table.string('phone_number').notNullable();
-  table.string('email').nullable();
-  table.string('emergency_contact').nullable();
-  table.string('avatar').nullable();
+  table.string('email').notNullable().unique();
+  table.string('emergency_contact').notNullable();
+  table.string('avatar').notNullable();
 }),
-
 
 // knex('users')
 //   .insert({
@@ -44,7 +41,6 @@ knex.schema.createTableIfNotExists('users', function (table) {
 //     return userID;
 //   }),
 
-
 // knex('users')
 //   .insert({
 //       username: "Carly2222",
@@ -67,47 +63,34 @@ knex.schema.createTableIfNotExists('users', function (table) {
 //     return userID
 //   }),
 
-
-knex.schema.createTableIfNotExists('friend', function (table) {
+knex.schema.createTableIfNotExists('friends', function (table) {
   table.increments('friendship_id').primary();
   table.integer('foreign_friend1').references('users_id').inTable('users').notNullable();
   table.integer('foreign_friend2').references('users_id').inTable('users').notNullable();
 }),
 
-// knex('friend')
-//   .insert({
-//     foreign_friend1: user1ID,
-//     foreign_friend2: user2ID
-//   })
-//   .returning('friendship_id')
-//   .catch(function(err){
-//     console.log("somethings wrong adding this friendship", err)
-//   })
-//   .then(function(friendship){
-//     console.log("Added a friendship: ", friendship)
-//     return friendship
-//   }),
+knex.schema.createTableIfNotExists('ride', function (table) {
+  table.increments('ride_id').primary();
+  table.integer('foreign_driver').references('id', 'username').inTable('users').notNullable();
+  table.integer('foreign_rider').references('id', 'username').inTable('users').notNullable();
+  table.timestamp();
+}),
 
+knex.schema.createTableIfNotExists('cars', function (table) {
+  table.increments('car_id').primary();
+  table.string('make').notNullable();
+  table.string('model').notNullable();
+  table.string('capacity').notNullable();
+  table.string('color').notNullable();
+}),
 
-// knex.schema.createTableIfNotExists('ride', function (table) {
-//   table.increments('ride_id').primary();
-//   table.integer('foreign_ride1').references('id').inTable('users').notNullable();
-//   table.integer('foreign_ride2').references('id').inTable('users').notNullable();
-//   table.string('location').notNullable();
-// }),
-
-// knex.schema.createTableIfNotExists('car', function (table) {
-//   table.increments('car_id').primary();
-//   table.string('make').notNullable();
-//   table.string('capacity').notNullable();
-//   table.string('color').notNullable();
-// }),
-
-// knex.schema.createTableIfNotExists('chats', function (table) {
-//   table.increments('chats_id').primary();
-//   table.integer('foreign_chats1').references('id').inTable('users').notNullable();
-//   table.integer('foreign_chats2').references('id').inTable('users').notNullable();
-// }),
+knex.schema.createTableIfNotExists('messages', function (table) {
+  table.increments('messages_id').primary();
+  table.string('foreign_message1').references('foreign_rider').inTable('ride').notNullable();
+  table.string('foreign_message2').references('foreign_driver').inTable('ride').notNullable();
+  table.integer('foreign_ride').references('id').inTable('ride').notNullable();
+  table.timestamp();
+}),
 
 ]);
 };
@@ -116,8 +99,8 @@ exports.down = function (knex, Promise) {
   return Promise.all([
   knex.schema.dropTable('users'),
   knex.schema.dropTable('friend'),
-  // knex.schema.dropTable('ride'),
-  // knex.schema.dropTable('car'),
+  knex.schema.dropTable('ride'),
+  knex.schema.dropTable('car'),
 ]);
 };
 
