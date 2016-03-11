@@ -1,40 +1,26 @@
 /*
   DATABASE CONFIGURATION
 
-    Postico is a fantastic postgresql database visualizer!
-    'psql db/' is a great tool for command-line db access!
+A. Creating a New Database
+  1. Install/Verify PostGreSql
+      Navigate to your root directory.
+      in terminal run 'postgres' -> if nothing happens then postgres is not installed.
+      run 'brew install postgres' to install postgres
 
-    Hi! To get a brand-new development database up and running:
-      > navigate to project directory
+  2. Initialize Database System
+      Navigate to your root directory.
+      in terminal run 'initdb db/' -> a folder of 'db/' should be in the directory.
+      find your .gitignore file and add description (ie ## ignore db files) and add 'db/'
 
-      > ensure PostGreSql is installed
-        > run 'postgres' in your terminal and see if you have anything
-          > if not, 'brew install postgres'
+B. Starting The Database
+    1. Connecting Postgres and the Database
+        in terminal run 'postgres -D db/'
 
-      > 'initdb db/' to initialize a database system
-        > This creates a file structure with a root folder of 'db/' in your
-          project directory. This is where postgres stores a whole load of
-          information that represents a database. We have not created a
-          database yet - only a place to put one.
+    2. Creating a Table
+        in a NEW terminal window run 'createdb development' -> creates a database named development.
 
-      > To use a postgres database, there are two entities involved: a Server
-        and a Client. Just like HTTP, a server responds to requests from some
-        client. A server processes requests to determine what information to
-        send back. We need to start a database-server for our app-server to
-        interact with.
-        > open a new terminal, make sure you're in the project root directory
-        > 'postgres -D db/' to start the database server
-
-      > Now we have a running database-server, we need to tell it to create
-        the actual database.
-        > In a new terminal window, 'createdb development' to create a
-          database named development.
-        > This is processed and stored in the db/ folder we made just a couple
-          steps ago.
-
-      The database should be up, empty, and grump-ily accepting connections.
-      If you want to run tests, this should be sufficient. If you want to
-      use it with sample data for development, read the next section.
+C. Creating Migrations
+        in terminal run 'knex migrate:make <optional filename>' -> 'migrations/' in the directory
 
   ************************************
 
