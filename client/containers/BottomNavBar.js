@@ -39,7 +39,6 @@ const mapDispatchToProps = function (dispatch) {
 // jscs:enable
 
 export const BottomNavBarContainer = connect(
-  mapStateToProps
-
-  // mapDispatchToProps
+  mapStateToProps,
+  mapDispatchToProps
 )(BottomNavBar);
