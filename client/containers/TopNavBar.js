@@ -17,11 +17,13 @@ class TopNavBar extends React.Component {
   }
 
   render() {
+    let user = this.props.user;
+    let ride = this.props.ride;
     return (
       <div className="TopNavBarContainer row">
         <SettingIcon />
         <Logo />
-        <TopNavBarRightButton {...this.props} />
+        <TopNavBarRightButton {...user} {...ride} />
       </div>
     );
   }
@@ -35,13 +37,14 @@ const mapStateToProps = function (state) {
 const mapDispatchToProps = function (dispatch) {
   return {
     onSettingsButtonClick() {
-
-      // import push from react-redux-router
-      // dispatch(viewAction.displaySettings(true));
+      // kim!
     },
     onProfileButtonClick() {
       dispatch(push('/profile'))
-    }
+    },
+    onCancelRideButtonClick() {
+      dispatch(rideActions.cancelRide())
+    },
   };
 };
 // jscs:enable

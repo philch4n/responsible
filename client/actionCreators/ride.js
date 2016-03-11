@@ -13,3 +13,10 @@ export function receivePair(userObj) {
     entry: userObj,
   };
 };
+
+export function cancelRide() {
+  // tell the server!
+  return {
+    type: 'CANCEL_RIDE',
+  };
+};
