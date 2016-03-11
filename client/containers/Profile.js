@@ -7,28 +7,28 @@ import { ProfileInfoItemList } from '../components/ProfileInfoItemList';
 import * as userAction from '../actionCreators/user';
 
 export class Profile extends React.Component {
-  constructor ({ user, profileInfoItems = [], friends = [], onFriendClick }) {
+  constructor () {
     super();
-
-    this.user = user;
-    this.profileInfoItems = profileInfoItems;
-    this.friends = friends;
-    this.onFriendClick = onFriendClick;
   };
 
   render() {
+    let user = this.props;
     return (
       <div className="ProfileContainer">
-        <UserImage {...this.user} imageType="portrait" />
-        <ProfileInfoItemList profileInfoItems={this.profileInfoItems} />
-        <FriendItemList friends={this.friends} onFriendClick={this.onFriendClick} />
+        <UserImage {...user.profile} imageType="portrait" />
+        <ProfileInfoItemList />
+        <FriendItemList
+          friends={user.friends}
+          onFriendClick={this.props.onFriendClick}
+        />
       </div>
     );
   };
 };
 
 const mapStateToProps = function (state) {
-  return state.toJS();
+  console.log('profile state to props:', state.toJS());
+  return state.get('user').toJS();
 };
 
 const mapDispatchToProps = function (dispatch) {
