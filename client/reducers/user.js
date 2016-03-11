@@ -24,8 +24,8 @@ function setDriver(state, action) {
 
 function setRider(state, action) {
   let updates = {
-    isDriver: false,
     isRider: action.entry,
+    isDriver: false,
   };
 
   return state.merge(updates);

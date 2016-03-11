@@ -25,7 +25,7 @@ const mapDispatchToProps = function(dispatch) {
     onDriveButtonClick() {
       dispatch(userAction.setDriver(true));
     },
-    onRideButtonClick() {
+    onCatchARideButtonClick() {
       dispatch(userAction.setRider(true));
     }
   };
