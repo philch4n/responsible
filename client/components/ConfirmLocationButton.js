@@ -5,10 +5,10 @@ require('../public/styles/normalize.css');
 function nullFn(e) { console.log('you clicked me ' + e.target.className); };
 
 export function ConfirmRideButton({
-  onConfirmRideButtonClick = nullFn,
+  onConfirmLocationButtonClick = nullFn,
 }) {
   return (
-    <div className='ConfirmRide' onClick={onConfirmRideButtonClick}>
+    <div className='ConfirmRide' onClick={onConfirmLocationButtonClick}>
       <button className='ConfirmRideButton btn u-full-width' type='button'>Confirm Ride!</button>
     </div>
   );

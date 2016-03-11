@@ -28,18 +28,13 @@ const mapStateToProps = function (state) {
 };
 
 // jscs:disable
-// const mapDispatchToProps = function (dispatch) {
-//   return {
-//     onSettingsButtonClick() {
-
-//       // import push from react-redux-router
-//       // dispatch(viewAction.displaySettings(true));
-//     },
-//     onProfileButtonClick() {
-//       dispatch(push('/profile'))
-//     }
-//   };
-// };
+const mapDispatchToProps = function (dispatch) {
+  return {
+    onConfirmLocationButtonClick() {
+      dispatch(rideActions.confirmLocation(location))
+    },
+  };
+};
 // jscs:enable
 
 export const BottomNavBarContainer = connect(
