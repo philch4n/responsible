@@ -4,10 +4,11 @@ export default function(state = Map(), action) {
   // console.log('reducing ride state:', state.toJS());
 
   switch (action.type) {
+    case 'REQUEST_MATCH':
+      console.log('requesting match');
+      return requestMatch(state, action);
     case 'RECEIVE_MATCH':
       return receiveMatch(state, action);
-    case 'REQUEST_MATCH':
-      return requestMatch(state, action);
     case 'CANCEL_RIDE':
       return cancelRide(state, action);
   };
@@ -38,6 +39,7 @@ function cancelRide(state, action) {
   let updates = {
     isConfirmed: false,
     isMatched: false,
+    isWaitingForMatch: false,
     match: null,
   };
 

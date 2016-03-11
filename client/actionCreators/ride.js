@@ -1,13 +1,13 @@
-
-export function requestPair() {
+export function requestMatch(location) {
   // initiate a server request for pair.
   // using thunk middleware
   return {
     type: 'REQUEST_MATCH',
+    entry: location,
   };
 };
 
-export function receivePair(userObj) {
+export function receiveMatch(userObj) {
   return {
     type: 'RECEIVE_MATCH',
     entry: userObj,

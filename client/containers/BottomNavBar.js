@@ -15,9 +15,11 @@ class BottomNavBar extends React.Component {
   }
 
   render() {
+    let ride = this.props.ride;
     return (
       <div className="BottomNavBarContainer row">
-        <BottomNavBarButton {...this.props} />
+        <BottomNavBarButton {...ride}
+          onConfirmLocationButtonClick={this.props.onConfirmLocationButtonClick} />
       </div>
     );
   }
@@ -28,22 +30,16 @@ const mapStateToProps = function (state) {
 };
 
 // jscs:disable
-// const mapDispatchToProps = function (dispatch) {
-//   return {
-//     onSettingsButtonClick() {
-
-//       // import push from react-redux-router
-//       // dispatch(viewAction.displaySettings(true));
-//     },
-//     onProfileButtonClick() {
-//       dispatch(push('/profile'))
-//     }
-//   };
-// };
+const mapDispatchToProps = function (dispatch) {
+  return {
+    onConfirmLocationButtonClick(location) {
+      dispatch(rideAction.requestMatch(location))
+    },
+  };
+};
 // jscs:enable
 
 export const BottomNavBarContainer = connect(
-  mapStateToProps
-
-  // mapDispatchToProps
+  mapStateToProps,
+  mapDispatchToProps
 )(BottomNavBar);

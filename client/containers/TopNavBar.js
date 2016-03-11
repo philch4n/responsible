@@ -23,7 +23,11 @@ class TopNavBar extends React.Component {
       <div className="TopNavBarContainer row">
         <SettingIcon />
         <Logo />
-        <TopNavBarRightButton {...user} {...ride} />
+        <TopNavBarRightButton
+          {...user}
+          {...ride}
+          onCancelRideButtonClick={this.props.onCancelRideButtonClick}
+        />
       </div>
     );
   }
@@ -43,7 +47,7 @@ const mapDispatchToProps = function (dispatch) {
       dispatch(push('/profile'))
     },
     onCancelRideButtonClick() {
-      dispatch(rideActions.cancelRide())
+      dispatch(rideAction.cancelRide())
     },
   };
 };
