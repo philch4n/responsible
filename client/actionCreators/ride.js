@@ -13,3 +13,9 @@ export function receivePair(userObj) {
     entry: userObj,
   };
 };
+
+export function cancelRide() {
+  return {
+    type: 'CANCEL_RIDE',
+  }
+}
