@@ -18,7 +18,8 @@ class BottomNavBar extends React.Component {
     let ride = this.props.ride;
     return (
       <div className="BottomNavBarContainer row">
-        <BottomNavBarButton {...ride} />
+        <BottomNavBarButton {...ride}
+          onConfirmLocationButtonClick={this.props.onConfirmLocationButtonClick} />
       </div>
     );
   }
@@ -32,7 +33,7 @@ const mapStateToProps = function (state) {
 const mapDispatchToProps = function (dispatch) {
   return {
     onConfirmLocationButtonClick(location) {
-      dispatch(rideActions.requestMatch(location))
+      dispatch(rideAction.requestMatch(location))
     },
   };
 };

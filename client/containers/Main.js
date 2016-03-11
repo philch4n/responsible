@@ -12,6 +12,7 @@ require('../public/styles/normalize.css');
 // import {BottomBarContainer } from './BottomBar';
 
 function Main({ isDriver, isRider }) {
+  console.log('isDriver, isRider:', isDriver, isRider);
   return (
     <div className="MainApp">
       <TopNavBarContainer />
