@@ -8,6 +8,8 @@ export default function(state = Map(), action) {
       return receiveMatch(state, action);
     case 'REQUEST_MATCH':
       return requestMatch(state, action);
+    case 'CANCEL_RIDE':
+      return cancelRide(state, action);
   };
 
   return state;
@@ -27,6 +29,16 @@ function receiveMatch(state, action) {
     isWaitingForMatch: false,
     isMatched: true,
     Match: action.entry,
+  };
+
+  return state.merge(updates);
+}
+
+function cancelRide(state, action) {
+  let updates = {
+    isConfirmed: false,
+    isMatched: false,
+    match: null,
   };
 
   return state.merge(updates);
