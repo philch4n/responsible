@@ -3,15 +3,16 @@ import { Link } from 'react-router';
 import { ProfileButton } from '../components/ProfileButton';
 import { CancelRideButton } from '../components/CancelRideButton';
 
-export function TopNavBarRightButton({ isMatched, isConfirmed,
+export function TopNavBarRightButton({ isRider, isDriver, isMatched,
   isWaitingForMatch, onProfileButtonClick, onCancelRideButtonClick, }) {
   return (
     <div className="topNavBarRightButton">
       {
-        // // User has been matched
-        isMatched !== false && isConfirmed === true && isWaitingForMatch === false ?
+        isMatched || isWaitingForMatch ?
           <CancelRideButton onCancelRideButtonClick={onCancelRideButtonClick} /> :
-          <ProfileButton onProfileButtonClick={onProfileButtonClick} />
+          !isDriver || !isRider ?
+            <div className="emptyDiv">emptyDiv</div> :
+            <ProfileButton onProfileButtonClick={onProfileButtonClick} />
       }
     </div>
   );
