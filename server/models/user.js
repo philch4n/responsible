@@ -19,7 +19,7 @@ User.deleteUser = function (userId) {
   return db('users').where({ user_id: userId }).del()
 
   //need to refactor to send back appropriate data
-    .then(user => console.log('deleted user with id ' + userId, user))
+    .then(user => console.log())
     .catch(reportError('error deleting user by id'));
 };
 

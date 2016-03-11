@@ -47,11 +47,11 @@ if (process.env.NODE_ENV !== 'test') {
   app.use('/', routes);
 
   var message = require('./apis/message-api');
-  var ride = require('./apis/ride-api');
+  var rides = require('./apis/rides-api');
   var user = require('./apis/user-api');
 
   routes.use('/message', message);
-  routes.use('/ride', ride);
+  routes.use('/rides', rides);
   routes.use('/user', user);
 
   // sign-up, sign-in, sign-out routes. check Oauth for specifics:
@@ -75,7 +75,9 @@ if (process.env.NODE_ENV !== 'test') {
 } else {
   //for test, export:
   var user = require('./apis/user-api');
+  var rides = require('./apis/rides-api');
   routes.use('/user', user);
+  routes.use('/rides', rides);
 
   module.exports = routes;
 };
