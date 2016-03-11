@@ -35,13 +35,14 @@ const mapStateToProps = function (state) {
 const mapDispatchToProps = function (dispatch) {
   return {
     onSettingsButtonClick() {
-
-      // import push from react-redux-router
-      // dispatch(viewAction.displaySettings(true));
+      // kim!
     },
     onProfileButtonClick() {
       dispatch(push('/profile'))
-    }
+    },
+    onCancelRideButtonClick() {
+      dispatch(rideActions.cancelRide())
+    },
   };
 };
 // jscs:enable
