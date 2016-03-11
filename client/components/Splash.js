@@ -4,6 +4,9 @@ import { DriveButton } from './DriveButton';
 import { CatchARideButton } from './CatchARideButton';
 import * as userAction from '../actionCreators/user';
 
+require('../public/styles/skeleton.css');
+require('../public/styles/normalize.css');
+
 class Splash extends React.Component {
   constructor() {
     super();

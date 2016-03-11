@@ -5,6 +5,9 @@ import { BottomNavBarContainer } from './BottomNavBar';
 import { SplashContainer } from '../components/Splash';
 import { MapView } from '../components/MapView';
 
+require('../public/styles/skeleton.css');
+require('../public/styles/normalize.css');
+
 // import { Map } from './googleMapComponent';
 // import {BottomBarContainer } from './BottomBar';
 
