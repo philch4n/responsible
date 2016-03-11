@@ -39,6 +39,7 @@ function cancelRide(state, action) {
   let updates = {
     isConfirmed: false,
     isMatched: false,
+    isWaitingForMatch: false,
     match: null,
   };
 

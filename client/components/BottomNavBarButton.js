@@ -8,7 +8,9 @@ export function BottomNavBarButton({ isWaitingForMatch, isMatched,
     <div className="BottomNavBarRightButton">
     {
       !isWaitingForMatch && !isConfirmed ?
-        <ConfirmLocationButton onConfirmLocationButtonClick={onConfirmLocationButtonClick}/> :
+        <ConfirmLocationButton
+          onConfirmLocationButtonClick={onConfirmLocationButtonClick}
+        /> :
       isConfirmed && isWaitingForMatch ?
         <h3>Waiting for a match</h3> :
       isConfirmed && isMatched ?
