@@ -20,8 +20,8 @@ Message.getMessageById = function (msgId) {
 Message.createMessage = function (attrs) {
   return db('messages').insert(attrs, ['messages_id', 'message', 'author'])
     .catch(reportError('error creating message in db'))
-    .then(function (user) {
-      return user;
+    .then(function (message) {
+      return message;
     });
 };
 
