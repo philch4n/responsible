@@ -12,8 +12,6 @@ export function TopNavBarRightButton({
   onCancelRideButtonClick,
 }) {
   return (
-    /* Jonathan: we can't start with a ternary operation to render the div: Everything has to be
-    inside of a wrapper div to start, so it pretty much amounts to what we have anyway */
     <div className="topNavBarRightButton">
       {
         isMatched || isWaitingForMatch ?
