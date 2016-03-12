@@ -2,7 +2,7 @@
 State Positions and What They Mean
 -----------------------------------
 
-|         STATES         | Default |   Driver   |   Loading   |   Match  |     User    |
+|         STATES         | Default |   Driver   |   Loading   |   Match  |    Rider    |
 |------------------------|---------|------------|-------------|----------|-------------|
 |      user.isDriver     |  false  |    true    |    either   |   either |     false   |
 |      user.isRider      |  false  |    false   |    either   |   either |     true    |
@@ -20,4 +20,4 @@ State Positions and What They Mean
 |   Driver   |   yes    |  yes |   yes   |   no   |  yes  |  yes |  no |    no   |    no   |  no  |
 |   Loading  |   yes    |  yes |   no    |   yes  |   no  |  no  | yes |    no   |    yes  |  no  |
 |   Match    |   yes    |  yes |   no    |   yes  |   no  |  no  | yes |    no   |    no   |  yes |
-|   User     |   yes    |  yes |   yes   |   yes  |   no  |  no  | yes |    yes  |    no   |  no  |
+|   Rider    |   yes    |  yes |   yes   |   yes  |   no  |  no  | yes |    yes  |    no   |  no  |
