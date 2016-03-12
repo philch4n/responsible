@@ -19,7 +19,7 @@ MessageAPI.get('/:id', function (req, res) {
   var id = req.params.id;
   Message.getMessageById(id)
     .then(sendStatusAndData(res, 200))
-    .catch(sendStatusAndData(res, 500, 'Server error getting message'));
+    .catch(sendStatusAndError(res, 500, 'Server error getting message'));
 });
 
 // Create chatroom between driver and rider
