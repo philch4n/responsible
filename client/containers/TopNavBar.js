@@ -17,16 +17,12 @@ class TopNavBar extends React.Component {
   }
 
   render() {
-    let user = this.props.user;
-    let ride = this.props.ride;
     return (
       <div className="TopNavBarContainer row">
         <SettingIcon />
         <Logo />
         <TopNavBarRightButton
-          {...user}
-          {...ride}
-          onCancelRideButtonClick={this.props.onCancelRideButtonClick}
+          {...this.props}
         />
       </div>
     );

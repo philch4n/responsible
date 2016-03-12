@@ -5,7 +5,6 @@ export default function(state = Map(), action) {
 
   switch (action.type) {
     case 'REQUEST_MATCH':
-      console.log('requesting match');
       return requestMatch(state, action);
     case 'RECEIVE_MATCH':
       return receiveMatch(state, action);
