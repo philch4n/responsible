@@ -16,7 +16,7 @@ POST new ride pair
 RideAPI.get('/', function (req, res) {
   Ride.getRides()
     .then(sendStatusAndData(res, 200))
-    .catch(sendStatusAndData(res, 500, 'Server error getting rides list'));
+    .catch(sendStatusAndError(res, 500, ('error getting rides')));
 });
 
 //Posting
