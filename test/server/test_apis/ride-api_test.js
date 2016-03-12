@@ -144,4 +144,55 @@ describe('Ride API', function () {
       });
   });
 
+  it_('Should delete ride by Id', function * () {
+    var user1IdOnInsert = null;
+    var user2IdOnInsert = null;
+    var ride1IdOnInsert = null;
+
+    yield request(app)
+      .post('/user')
+      .send(testUser1)
+      .expect(201)
+      .expect(function (response) {
+        var user = response.body[0];
+        user1IdOnInsert = user.user_id;
+        expect(user.user_id).to.not.be.undefined;
+        expect(user.first_name).to.equal('Don');
+        expect(user.username).to.equal('Cheenus');
+      });
+
+    yield request(app)
+      .post('/user')
+      .send(testUser2)
+      .expect(201)
+      .expect(function (response) {
+        var user = response.body[0];
+        user2IdOnInsert = user.user_id;
+        expect(user.user_id).to.not.be.undefined;
+        expect(user.first_name).to.equal('Greg');
+        expect(user.username).to.equal('GregB');
+      });
+
+    var ride1 = {
+      foreign_driver: user1IdOnInsert,
+      foreign_rider: user2IdOnInsert,
+    };
+
+    yield request(app)
+      .post('/rides')
+      .send(ride1)
+      .expect(201)
+      .expect(function (response) {
+        var ride = response.body[0];
+        ride1IdOnInsert = ride.ride_id;
+        expect(ride.ride_id).to.not.be.undefined;
+        expect(ride.foreign_driver).to.equal(user1IdOnInsert);
+        expect(ride.foreign_rider).to.equal(user2IdOnInsert);
+      });
+
+    yield request(app)
+      .delete('/rides/' + ride1IdOnInsert)
+      .expect(200);
+  });
+
 });

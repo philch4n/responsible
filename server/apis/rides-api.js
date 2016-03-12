@@ -26,3 +26,11 @@ RideAPI.post('/', function (req, res) {
     .then(sendStatusAndData(res, 201))
     .catch(sendStatusAndError(res, 500, ('error creating user')));
 });
+
+RideAPI.delete('/:id', function (req, res) {
+  var id = req.params.id;
+  Ride.deleteRide(id)
+    .then(sendStatusAndData(res, 200))
+    .catch(sendStatusAndError(res, 500));
+});
+
