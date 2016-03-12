@@ -1,6 +1,6 @@
 require('../../test-helper');
 
-import { List, Map } from 'immutable';
+import { Map } from 'immutable';
 
 let userReducer = require(__client + '/reducers/user').default;
 let userActions = require(__client + '/actionCreators/user');
