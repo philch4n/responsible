@@ -8,16 +8,15 @@ import { CancelRideButton } from '../components/CancelRideButton';
 export function TopNavBarRightButton({
   user: { isRider, isDriver },
   ride: { isMatched, isWaitingForMatch },
-  onProfileButtonClick,
-  onCancelRideButtonClick,
+  ...onClicks,
 }) {
   return (
     <div className="topNavBarRightButton">
       {
         isMatched || isWaitingForMatch ?
-          <CancelRideButton onCancelRideButtonClick={onCancelRideButtonClick} /> :
+          <CancelRideButton {...onClicks} /> :
           isDriver || isRider ?
-            <ProfileButton onProfileButtonClick={onProfileButtonClick} /> :
+            <ProfileButton {...onClicks} /> :
             <div className="emptyDiv"></div>
       }
     </div>
