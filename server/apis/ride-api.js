@@ -14,16 +14,22 @@ POST new ride pair
 */
 
 //Get all rides
-RideAPI.get('/rides', function (req, res) {
+RideAPI.get('/', function (req, res) {
   Ride.getRides()
     .then(sendStatusAndData(res, 200))
-    .catch(sendStatusAndData(res, 500, 'Server error getting rides list'));
+    .catch(sendStatusAndError(res, 500, 'Server error getting rides list'));
 });
 
-//Posting
-RideAPI.post('/ride/:id', function (req, res) {
-  var user      = req.params.username;
-  var location  = req.params.location;
-  var timestamp = req.params.created_at;
-  Ride.createRide();
+//create a new ride
+RideAPI.post('/', function (req, res) {
+  var attrs = req.params;
+  Ride.createRide(attrs);
+});
+
+RideAPI.delete('/:id', function (req, res) {
+  var id = req.params.id;
+  console.log('req params', req.params);
+  Ride.deleteRide(id)
+    .then(sendStatusAndData(res, 204))
+    .catch(sendStatusAndError(res, 500, 'Error deleting ride by id'));
 });
