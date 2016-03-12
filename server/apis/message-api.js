@@ -1,33 +1,41 @@
 require('../server-helpers');
-var ChatAPI = require('express').Router();
+var MessageAPI = require('express').Router();
 var io      = require('socket.io');
 
-var Chat = require(__models + '/chat');
+var Message = require(__models + '/message');
 
-module.exports = ChatAPI;
+module.exports = MessageAPI;
 
-/*
-Incorporate Socket.io
-Need POST
-Need GET
-*/
-
-//get all from chat. Not sure why, but maybe neccessary sometime down the road
-ChatAPI.get('/chat', function (req, res) {
-  Chat.getChat()
+//get all from Message table. Not sure why, but maybe neccessary sometime down the road
+MessageAPI.get('/', function (req, res) {
+  Message.getMessage()
     .then(sendStatusAndData(res, 200))
     .catch(sendStatusAndData(res, 500, 'Server error getting rides list'));
 });
 
-//Get chat between two users
-ChatAPI.get('/chat/:id', function (req, res) {
+//Get Message between two users
+MessageAPI.get('/:id', function (req, res) {
   var id = req.params.id;
-  Chat.getChatById(id)
+  Message.getChatById(id)
     .then(message => res.send(message, 200));
 });
 
-io.sockets.on('connection', function (socket) {
-  socket.on('send message', function (data) {
-    io.sockets.emit('new message', data);
-  });
+// Create chatroom between driver and rider
+MessageAPI.post('/', function (req, res) {
+  var id = req.params.id;
+  Message.createRoom()
+    .then(sendStatusAndData(res, 201))
+    .catch(sendStatusAndError(res, 500, ('error creating chatroom')));
 });
+
+//Create a message in a chatroom
+// MessageAPI.post('/:id/:id', function (req, res) {
+//   var
+// })
+
+// for sockets later
+// io.sockets.on('connection', function (socket) {
+//   socket.on('send message', function (data) {
+//     io.sockets.emit('new message', data);
+//   });
+// });

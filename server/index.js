@@ -76,8 +76,11 @@ if (process.env.NODE_ENV !== 'test') {
   //for test, export:
   var user = require('./apis/user-api');
   var rides = require('./apis/rides-api');
+  var message = require('./apis/message-api');
+
   routes.use('/user', user);
   routes.use('/rides', rides);
+  routes.use('/message', message);
 
   module.exports = routes;
 };
