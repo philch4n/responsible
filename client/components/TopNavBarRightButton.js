@@ -24,7 +24,7 @@ export function TopNavBarRightButton({
     );
   } else {
     return (
-      <div>Hello</div>
+      <div />
     );
   }
 }
