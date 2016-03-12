@@ -5,13 +5,6 @@ var io = require('socket.io');
 var Ride = require(__models + '/rides');
 module.exports = RideAPI;
 
-/*
-GET all rides
-POST new ride
-POST new ride pair
-
-*/
-
 //Get all rides
 RideAPI.get('/', function (req, res) {
   Ride.getRides()
