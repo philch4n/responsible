@@ -19,7 +19,6 @@ describe('Route Reducer', function () {
     const nextState = routeReducer(initialState.get('routing'), action);
 
     // The router history middleware needs to be hooked up for this reducer to function
-
     // let routingPath = nextState.toJS().locationBeforeTransitions.path;
     // expect(routingPath).to.deep.equal('/profile');
   });
