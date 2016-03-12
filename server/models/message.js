@@ -27,7 +27,7 @@ Message.createMessage = function (attrs) {
 
 //Delete Message by ID
 Message.deleteMessage = function (msgId) {
-  return db('messages').where({ message_id: msgId }).del()
-    .then(msg => console.log('deleted msg with id ' + id))
+  return db('messages').where({ messages_id: msgId }).del()
+    .then(msg => console.log('deleted msg with id ' + msgId))
     .catch(reportError('error deleting ride by id'));
 };

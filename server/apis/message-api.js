@@ -30,6 +30,13 @@ MessageAPI.post('/', function (req, res) {
     .catch(sendStatusAndError(res, 500, ('error creating chatroom')));
 });
 
+MessageAPI.delete('/:id', function (req, res) {
+  var id = req.params.id;
+  Message.deleteMessage(id)
+    .then(sendStatusAndData(res, 200))
+    .catch(sendStatusAndError(res, 500));
+});
+
 // for sockets later
 // io.sockets.on('connection', function (socket) {
 //   socket.on('send message', function (data) {
