@@ -16,6 +16,7 @@ export default function(state = Map(), action) {
 }
 
 function requestMatch(state, action) {
+  // aciton.entry: location
   let updates = {
     isWaitingForMatch: true,
     isConfirmed: true,
@@ -28,7 +29,7 @@ function receiveMatch(state, action) {
   let updates = {
     isWaitingForMatch: false,
     isMatched: true,
-    Match: action.entry,
+    match: action.entry,
   };
 
   return state.merge(updates);
