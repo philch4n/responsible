@@ -29,6 +29,10 @@ MessageAPI.post('/', function (req, res) {
     .catch(sendStatusAndError(res, 500, ('error creating chatroom')));
 });
 
+MessageAPI.post(/:id/, function (req, res) {
+
+})
+
 //Create a message in a chatroom
 // MessageAPI.post('/:id/:id', function (req, res) {
 //   var
