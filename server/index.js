@@ -80,7 +80,7 @@ if (process.env.NODE_ENV !== 'test') {
 
   routes.use('/user', user);
   routes.use('/rides', rides);
-  routes.use('/message', message);
+  routes.use('/messages', message);
 
   module.exports = routes;
 };
