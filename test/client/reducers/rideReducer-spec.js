@@ -1,19 +1,30 @@
-require(TEST_HELPER) 
+require('../../test-helper');
 
-import {List, Map, fromJS} from 'immutable';
+import { List, Map } from 'immutable';
 
-import user from __client + '/reducers/user';
-import * as userActions from __client + '/actionCreators/user';
+let userReducer = require(__client + '/reducers/user').default;
+let userActions = require(__client + '/actionCreators/user');
 
-describe('User Reducer', function() {
-  it('handles SET_DRIVER action', function() {
+describe('User Reducer', function () {
+  it('handles SET_DRIVER action', function () {
     const initialState = Map();
     const action = userActions.setDriver(true);
-    const nextState = reducer(initialState, action);
+    const nextState = userReducer(initialState, action);
 
-    expect(nextState).to.equal(fromJS({
+    expect(nextState.toJS()).to.deep.equal({
       isDriver: true,
       isRider: false,
-    }));
-  })
-})
+    });
+  });
+
+  it('handles SET_RIDER action', function () {
+    const initialState = Map();
+    const action = userActions.setRider(true);
+    const nextState = userReducer(initialState, action);
+
+    expect(nextState.toJS()).to.deep.equal({
+      isDriver: false,
+      isRider: true,
+    });
+  });
+});

@@ -4,8 +4,9 @@
   "description": "A safe driving app for friends",
   "main": "index.js",
   "scripts": {
-    "dev-client": "webpack-dev-server --content-base dist/ --inline",
-    "test": "./node_modules/.bin/mocha --recursive -r test/test-helper.js"
+    "test": "./node_modules/.bin/mocha --recursive --require test/test-helper.js",
+    "test-client": "./node_modules/.bin/mocha test/client --compilers js:babel-core/register --colors --recursive --require test/test-helper.js",
+    "dev-client": "webpack-dev-server --content-base dist/ --inline"
   },
   "author": "",
   "license": "ISC",
