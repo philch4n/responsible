@@ -9,7 +9,6 @@ require('../public/styles/skeleton.css');
 require('../public/styles/normalize.css');
 
 // import { Map } from './googleMapComponent';
-// import {BottomBarContainer } from './BottomBar';
 
 function Main({ isDriver, isRider }) {
   console.log('isDriver, isRider:', isDriver, isRider);
