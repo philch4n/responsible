@@ -9,7 +9,7 @@ export default {
       state: 'Virginia',
       zip: '56352',
     },
-    isDriver: true,
+    isDriver: false,
     isRider: false,
     friends: [
       {
