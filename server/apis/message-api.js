@@ -10,33 +10,25 @@ module.exports = MessageAPI;
 //get all from Message table. Not sure why, but maybe neccessary sometime down the road
 MessageAPI.get('/', function (req, res) {
   Message.getMessage()
-    .then(sendStatusAndData(res, 200))
-    .catch(sendStatusAndData(res, 500, 'Server error getting rides list'));
+    .then(users => res.send(users))
+    .catch(err => console.log(err));
 });
 
 //Get Message between two users
 MessageAPI.get('/:id', function (req, res) {
   var id = req.params.id;
-  Message.getChatById(id)
-    .then(message => res.send(message, 200));
+  Message.getMessageById(id)
+    .then(sendStatusAndData(res, 200))
+    .catch(sendStatusAndData(res, 500, 'Server error getting message'));
 });
 
 // Create chatroom between driver and rider
 MessageAPI.post('/', function (req, res) {
-  var id = req.params.id;
-  Message.createRoom()
+  var attrs = req.body;
+  Message.createMessage(attrs)
     .then(sendStatusAndData(res, 201))
     .catch(sendStatusAndError(res, 500, ('error creating chatroom')));
 });
-
-MessageAPI.post(/:id/, function (req, res) {
-
-})
-
-//Create a message in a chatroom
-// MessageAPI.post('/:id/:id', function (req, res) {
-//   var
-// })
 
 // for sockets later
 // io.sockets.on('connection', function (socket) {
