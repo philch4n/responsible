@@ -3,6 +3,7 @@ var MessageAPI = require('express').Router();
 var io      = require('socket.io');
 
 var Message = require(__models + '/message');
+var User = require(__models + '/user');
 
 module.exports = MessageAPI;
 
