@@ -2,6 +2,15 @@ console.log('LOADING TEST-HELPER');
 
 process.env.NODE_ENV = 'test';
 
+/*
+  HOW TO RUN TESTS:
+To run client side tests, type:
+  npm run test-client
+
+To run server side tests, type:
+  npm run test-server
+*/
+
 // The following allows you to require files independent of
 // the location of your test file.
 // Example:
