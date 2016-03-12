@@ -1,10 +1,11 @@
+console.log('LOADING TEST-HELPER');
+
 process.env.NODE_ENV = 'test';
 
 // The following allows you to require files independent of
 // the location of your test file.
 // Example:
 //  var User = require(__server + '/models/user.js')
-//
 global.__server = __dirname + '/../server';
 global.__client = __dirname + '/../client';
 
