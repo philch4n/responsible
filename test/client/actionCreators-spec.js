@@ -3,7 +3,7 @@ require('../test-helper');
 const {
   fetchMatch,
   requestMatch,
-  receiveMatch
+  receiveMatch,
 } = require(__client + '/actionCreators/ride');
 import { fromJS } from 'immutable';
 import sinon from 'sinon';
