@@ -27,12 +27,13 @@ exports.up = function (knex) {
     table.integer('foreign_rider').references('user_id').inTable('users').notNullable();
     table.timestamps();
   })
-  .createTableIfNotExists('car', function (table) {
+  .createTableIfNotExists('cars', function (table) {
     table.increments('car_id').primary();
     table.string('make').notNullable();
     table.string('model').notNullable();
     table.string('capacity').notNullable();
     table.string('color').notNullable();
+    table.integer('foreign_owner').references('user_id').inTable('users').notNullable();
     table.timestamps();
   })
   .createTableIfNotExists('messages', function (table) {

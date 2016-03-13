@@ -66,7 +66,7 @@ module.exports = {
       tableName: 'knex_migrations',
     },
     seeds: {
-      directory: './lib/seeds',
+      directory: './lib/seeders',
     },
     debug: false, // set true for verbose database operations
   },
