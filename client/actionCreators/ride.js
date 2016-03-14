@@ -1,22 +1,72 @@
-export function requestMatch(location) {
-  // initiate a server request for pair.
-  // using thunk middleware
-  return {
-    type: 'REQUEST_MATCH',
-    entry: location,
+
+export function fetchRide(userId, location) {
+  return (dispatch) => {
+    dispatch(requestRide(location));
+
+    fetch('/rides', { method: 'POST' })
+      .then(function (body) {
+        let rideId = body.json().id;
+        dispatch(receiveRideId(rideId));
+      })
+      .catch(function (error) {
+        dispatch(requestRideError(error));
+      });
   };
 };
 
-export function receiveMatch(userObj) {
+function requestRide(location) {
+  return { type: 'REQUEST_RIDE', };
+};
+
+function receiveRideId(rideId) {
+  return {
+    type: 'RECEIVE_RIDE_ID',
+    entry: rideId,
+  };
+};
+
+function requestRideError(error) {
+  return {
+    type: 'REQUEST_RIDE_ERROR',
+    entry: error,
+  };
+};
+
+function receiveRide(userObj) {
   return {
     type: 'RECEIVE_MATCH',
     entry: userObj,
   };
 };
 
-export function cancelRide() {
-  // tell the server!
+export function cancelRide(rideId) {
+  return function (dispatch) {
+    dispatch(cancelRideSent())
+
+    fetch(`/ride/${rideId}`,
+      {
+        method: 'DELETE',
+      })
+      .then(function () {
+        dispatch(cancelRideSuccess());
+      })
+      .catch(function (error) {
+        dispatch(rideCancelError(error));
+      });
+  };
+};
+
+function cancelRideSent() {
+  return { type: 'CANCEL_RIDE_SENT'}
+}
+
+export function cancelRideSuccess() {
+  return { type: 'CANCEL_RIDE', };
+};
+
+export function rideCancelError(error) {
   return {
-    type: 'CANCEL_RIDE',
+    type: 'CANCEL_RIDE_ERROR',
+    entry: error,
   };
 };

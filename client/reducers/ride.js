@@ -1,5 +1,7 @@
 import { Map } from 'immutable';
 
+import { handleCancel } from './cancelRide';
+
 export default function(state = Map(), action) {
   // console.log('reducing ride state:', state.toJS());
 
@@ -9,7 +11,9 @@ export default function(state = Map(), action) {
     case 'RECEIVE_MATCH':
       return receiveMatch(state, action);
     case 'CANCEL_RIDE':
-      return cancelRide(state, action);
+    case 'CANCEL_RIDE_SENT':
+    case 'CANCEL_RIDE_ERROR':
+      return handleCancel(state, action);
   };
 
   return state;
@@ -30,17 +34,6 @@ function receiveMatch(state, action) {
     isWaitingForMatch: false,
     isMatched: true,
     match: action.entry,
-  };
-
-  return state.merge(updates);
-}
-
-function cancelRide(state, action) {
-  let updates = {
-    isConfirmed: false,
-    isMatched: false,
-    isWaitingForMatch: false,
-    match: null,
   };
 
   return state.merge(updates);
