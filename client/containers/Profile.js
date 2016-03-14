@@ -1,9 +1,9 @@
 import React from 'react';
 import { connect } from 'react-redux';
 
-import { FriendItemList } from '../components/FriendItemList';
+import { FriendItemList } from '../components/TopNavBar/Friends/FriendItemList';
 import { UserImage } from '../components/UserImage';
-import { ProfileInfoItemList } from '../components/ProfileInfoItemList';
+import { ProfileInfoItemList } from '../components/TopNavBar/Profile/ProfileInfoItemList';
 import * as userAction from '../actionCreators/user';
 
 function Profile({ friends, profile, onFriendClick }) {

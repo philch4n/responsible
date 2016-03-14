@@ -1,7 +1,7 @@
 import { connect } from 'react-redux';
 import { push } from 'react-router-redux';
 
-import { BottomNavBarButton } from '../components/BottomNavBarButton';
+import { BottomButton } from '../components/BottomNavBar/BottomButton';
 
 import * as userAction from '../actionCreators/user';
 import * as rideAction from '../actionCreators/ride';
@@ -11,7 +11,7 @@ pulling out the objects we need in each container (like: props.ride). Not sure..
 function BottomNavBar({ ride, onConfirmLocationButtonClick }) {
   return (
     <div className="BottomNavBarContainer row">
-      <BottomNavBarButton {...ride}
+      <BottomButton {...ride}
         onConfirmLocationButtonClick={onConfirmLocationButtonClick} />
     </div>
   );

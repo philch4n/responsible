@@ -1,32 +1,17 @@
 import { connect } from 'react-redux';
 
-import { DriveButton } from './DriveButton';
-import { CatchARideButton } from './CatchARideButton';
+import { DriveButton } from '../components/Splash/DriveButton';
+import { RideButton } from '../components/Splash/RideButton';
 import * as userAction from '../actionCreators/user';
 
 function Splash(props) {
   return (
     <div className='splash'>
       <DriveButton {...props} />
-      <CatchARideButton {...props} />
+      <RideButton {...props} />
     </div>
   );
 }
-
-// class Splash extends React.Component {
-//   constructor() {
-//     super();
-//   }
-
-//   render() {
-//     return (
-//       <div className='splash'>
-//         <DriveButton {...this.props} />
-//         <CatchARideButton {...this.props} />
-//       </div>
-//     );
-//   };
-// };
 
 // jscs:disable
 const mapDispatchToProps = function(dispatch) {
@@ -34,7 +19,7 @@ const mapDispatchToProps = function(dispatch) {
     onDriveButtonClick() {
       dispatch(userAction.setDriver(true));
     },
-    onCatchARideButtonClick() {
+    onRideButtonClick() {
       dispatch(userAction.setRider(true));
     }
   };
