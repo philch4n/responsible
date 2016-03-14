@@ -1,7 +1,7 @@
 import { connect } from 'react-redux';
 
-import { DriveButton } from '../components/DriveButton';
-import { CatchARideButton } from '../components/CatchARideButton';
+import { DriveButton } from '../components/Splash/DriveButton';
+import { CatchARideButton } from '../components/Splash/CatchARideButton';
 import * as userAction from '../actionCreators/user';
 
 function Splash(props) {
