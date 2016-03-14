@@ -21,7 +21,7 @@ Ride.createRide = function (attrs) {
 
 Ride.deleteRide = function (id) {
   return db('rides').where({ ride_id: id }).del()
-    .catch(reportError('error deleting ride by id'));
-    .then(ride => console.log('deleted ride with id ' + id))
+    .catch(reportError('error deleting ride by id'))
+    .then(ride => console.log('deleted ride with id ' + id));
 };
 
