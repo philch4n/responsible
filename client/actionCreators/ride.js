@@ -1,4 +1,3 @@
-
 export function fetchRide(userId, location) {
   return (dispatch) => {
     dispatch(requestRide(location));
@@ -34,19 +33,16 @@ function requestRideError(error) {
 
 function receiveRide(userObj) {
   return {
-    type: 'RECEIVE_MATCH',
+    type: 'RECEIVE_RIDE',
     entry: userObj,
   };
 };
 
 export function cancelRide(rideId) {
   return function (dispatch) {
-    dispatch(cancelRideSent())
+    dispatch(cancelRideSent());
 
-    fetch(`/ride/${rideId}`,
-      {
-        method: 'DELETE',
-      })
+    fetch(`/ride/${rideId}`, { method: 'DELETE' })
       .then(function () {
         dispatch(cancelRideSuccess());
       })
@@ -56,13 +52,13 @@ export function cancelRide(rideId) {
   };
 };
 
-function cancelRideSent() {
-  return { type: 'CANCEL_RIDE_SENT'}
-}
-
-export function cancelRideSuccess() {
-  return { type: 'CANCEL_RIDE', };
+function cancelRideSuccess() {
+  return { type: 'CANCEL_RIDE' };
 };
+
+function cancelRideSent() {
+  return { type: 'CANCEL_RIDE_SENT' }
+}
 
 export function rideCancelError(error) {
   return {

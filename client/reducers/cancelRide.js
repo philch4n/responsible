@@ -1,3 +1,4 @@
+
 export function handleCancel(state, action) {
   switch (action.type) {
     case 'CANCEL_RIDE':
