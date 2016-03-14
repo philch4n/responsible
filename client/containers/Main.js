@@ -2,7 +2,7 @@ import { connect } from 'react-redux';
 
 import { TopNavBarContainer } from './TopNavBar';
 import { BottomNavBarContainer } from './BottomNavBar';
-import { SplashContainer } from '../components/Splash';
+import { SplashContainer } from './Splash';
 import { MapView } from '../components/MapView';
 
 function Main({ isDriver, isRider }) {
