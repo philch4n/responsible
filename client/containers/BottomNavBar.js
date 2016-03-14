@@ -1,7 +1,7 @@
 import { connect } from 'react-redux';
 import { push } from 'react-router-redux';
 
-import { BottomNavBarButton } from '../components/BottomNavBarButton';
+import { BottomNavBarButton } from '../components/BottomNavBar/BottomButton';
 
 import * as userAction from '../actionCreators/user';
 import * as rideAction from '../actionCreators/ride';
