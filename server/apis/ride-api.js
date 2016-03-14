@@ -23,7 +23,9 @@ RideAPI.get('/', function (req, res) {
 //create a new ride
 RideAPI.post('/', function (req, res) {
   var attrs = req.params;
-  Ride.createRide(attrs);
+  Ride.createRide(attrs)
+    .then(sendStatusAndData(res, 200))
+    .catch(sendStatusAndError(res, 500, 'Server error getting message'));
 });
 
 RideAPI.delete('/:id', function (req, res) {

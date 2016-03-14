@@ -6,7 +6,11 @@ var User = {};
 module.exports = User;
 
 User.getUsers = function () {
-  return db.select('*').from('users');
+  return db.select('*').from('users')
+    .catch(reportError('error retrieving username by userId'))
+    .then(function (users) {
+      return users;
+    });
 };
 
 User.findUserById = function (userId) {
@@ -17,10 +21,8 @@ User.findUserById = function (userId) {
 
 User.deleteUser = function (userId) {
   return db('users').where({ user_id: userId }).del()
-
-  //need to refactor to send back appropriate data
-    .then(user => console.log())
-    .catch(reportError('error deleting user by id'));
+    .catch(reportError('error deleting user by id'))
+    .then(user => console.log('user', user));
 };
 
 User.createUser = function (attrs) {
