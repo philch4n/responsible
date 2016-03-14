@@ -8,8 +8,8 @@ module.exports = UserAPI;
 //Get all users
 UserAPI.get('/', function (req, res) {
   User.getUsers()
-    .then(users => res.send(users))
-    .catch(err => console.log(err));
+    .then(sendStatusAndData(res, 200))
+    .catch(sendStatusAndError(res, 500, 'Server error getting users'));
 });
 
 //Get User by ID
@@ -33,8 +33,8 @@ UserAPI.put('/:id', function (req, res) {
   var attrs = req.params;
   console.log('attrs', attrs);
   User.updateUser(id, attrs)
-    .then(() => User.findByID(id))
-    .then(user => res.send(user));
+    .then(sendStatusAndData(res, 200))
+    .catch(sendStatusAndError(res, 500, 'Server error updating user'));
 });
 
 UserAPI.delete('/:id', function (req, res) {
@@ -44,6 +44,3 @@ UserAPI.delete('/:id', function (req, res) {
     .catch(sendStatusAndError(res, 500));
 });
 
-UserAPI.post('/*', function (req, res) {
-  res.send(200);
-});

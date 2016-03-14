@@ -10,8 +10,8 @@ module.exports = MessageAPI;
 //get all from Message table. Not sure why, but maybe neccessary sometime down the road
 MessageAPI.get('/', function (req, res) {
   Message.getMessage()
-    .then(users => res.send(users))
-    .catch(err => console.log(err));
+    .then(sendStatusAndData(res, 200))
+    .catch(sendStatusAndError(res, 500, 'Server error getting all messages'));
 });
 
 //Get Message between two users
