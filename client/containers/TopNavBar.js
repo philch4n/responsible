@@ -1,9 +1,9 @@
 import { connect } from 'react-redux';
 import { push } from 'react-router-redux';
 
-import { SettingIcon } from '../components/TopNavBar/SettingIcon';
+import { SettingIcon } from '../components/TopNavBar/Settings/SettingIcon';
 import { Logo } from '../components/TopNavBar/Logo';
-import { TopNavBarRightButton } from '../components//TopNavBar/TopNavBarRightButton';
+import { TopNavBarRightButton } from '../components/TopNavBar/TopNavBarRightButton';
 
 import * as userAction from '../actionCreators/user';
 import * as rideAction from '../actionCreators/ride';

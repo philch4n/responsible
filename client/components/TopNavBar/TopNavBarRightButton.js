@@ -1,6 +1,6 @@
 import { Link } from 'react-router';
 
-import { ProfileButton } from './ProfileButton';
+import { ProfileButton } from '../TopNavBar/Profile/ProfileButton';
 import { CancelRideButton } from './CancelRideButton';
 
 // export function TopNavBarRightButton({ isRider, isDriver, isMatched,
