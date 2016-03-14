@@ -1,6 +1,9 @@
 language: node_js
 node_js:
   - "5.6"
+services:
+  -postgresql
 before_script:
   - npm install -g grunt-cli
+  - psql -c 'create database travis_ci_test;' -U postgres
 script: grunt
