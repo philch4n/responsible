@@ -3,7 +3,7 @@ import { push } from 'react-router-redux';
 
 import { SettingIcon } from '../components/TopNavBar/Settings/SettingIcon';
 import { Logo } from '../components/TopNavBar/Logo';
-import { TopNavBarRightButton } from '../components/TopNavBar/TopNavBarRightButton';
+import { TopNavBarRightButton } from '../components/TopNavBar/RightButton';
 
 import * as userAction from '../actionCreators/user';
 import * as rideAction from '../actionCreators/ride';

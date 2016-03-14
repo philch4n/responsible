@@ -1,6 +1,6 @@
 import { ConfirmLocationButton } from './ConfirmLocationButton';
 
-export function BottomNavBarButton({ isWaitingForMatch, isMatched,
+export function BottomButton({ isWaitingForMatch, isMatched,
   isConfirmed, onConfirmLocationButtonClick, }) {
   console.log('isWaitingForMatch:', isWaitingForMatch);
   console.log('isConfirmed:', isConfirmed);
