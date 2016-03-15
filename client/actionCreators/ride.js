@@ -8,7 +8,7 @@ export function fetchRide(userId, location) {
   return (dispatch) => {
     dispatch(requestRide());
 
-    fetch('/rides', {
+    fetch('/riders', {
       method: 'POST',
       body: location,
     })
@@ -29,6 +29,28 @@ export function cancelRide(rideId) {
       .then(() => dispatch(cancelRideSuccess()))
       .catch((error) => dispatch(cancelRideError(error)));
   };
+};
+
+/**
+ *  As a driver, accepts a ride by the rider's Id and passes our current
+ *  location to the server.
+**/
+export function confirmRide(riderId, location) {
+  return (dispatch) => {
+    dispatch(confirmRideSent());
+
+    fetch('/rides', { method: 'POST', body: { riderId, location } })
+      .then((body) => dispatch(confirmRideSuccess(body.json())))
+      .catch((error) => dispatch(confirmRideError(error)));
+  };
+};
+
+function confirmRideSuccess(body) {
+  return { type: 'CONFIRM_RIDE', entry: body, };
+};
+
+function confirmRideSent() {
+  return { type: 'CONFIRM_RIDE_SENT', };
 };
 
 function requestRide() {
