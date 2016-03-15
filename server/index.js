@@ -14,18 +14,16 @@ var routes       = express.Router();
 // no browserify, utilize webpack
 var appBundle = Path.resolve(__dirname, '../dist');
 var assetFolder = Path.resolve(__dirname, '../client/public');
+
 routes.use(express.static(assetFolder));
 
 routes.get('/app-bundle.js', function (req, res) {
   res.sendFile(appBundle + '/app-bundle.js');
 });
+
 routes.get('/', function (req, res) {
   res.sendFile(appBundle + '/index.html');
 });
-
-  // routes.use('/', express.static(appBundle + 'index.html'));
-  // routes.use('/app-bundle.js', express.static(appBundle + 'app-bundle.js'));
-
 
 //Example test route for test
 routes.get('/api/tags-example', function (req, res) {
@@ -61,8 +59,7 @@ if (process.env.NODE_ENV !== 'test') {
 
   //Catch-all Route (needs to go last so it doesn't interfere with other routes)
   routes.get('/*', function (req, res) {
-    console.log('this is a catch-all route!');
-    console.log('req.url:', req.url);
+    console.log('***this is a catch-all route!***');
 
     res.sendFile(appBundle + '/index.html');
   });
