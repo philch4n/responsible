@@ -27,7 +27,8 @@ const mapStateToProps = function (state) {
 const mapDispatchToProps = function (dispatch) {
   return {
     onFriendClick: function (userId) {
-      dispatch(userAction.displayProfile(userId));
+      console.log('undefined onFriendClick function');
+      // dispatch(userAction.displayProfile(userId));
     },
   };
 };

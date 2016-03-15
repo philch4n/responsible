@@ -1,7 +1,7 @@
 export default {
   user: {
+    id: 1,
     profile: {
-      id: 1,
       avatar: 'https://i.ytimg.com/vi/1v6M41Divso/maxresdefault.jpg',
       fullName: 'Kim Panda',
       street: 'back handle lane',
