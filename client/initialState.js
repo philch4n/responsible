@@ -53,7 +53,10 @@ export default {
     isMatched: false,
     isConfirmed: false,
     isCancelling: false,
+    isFetchingMessages: false,
     rideRequestError: null,
+    messagesFetchError: null,
+    messages: [],
     match: null,
   },
   routing: {

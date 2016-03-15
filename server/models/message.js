@@ -22,10 +22,10 @@ Message.getMessageById = function (msgId) {
 };
 
 // Get messages by rideId
-Message.getMessagesByRideId = function(rideId) {
+Message.getMessagesByRideId = function (rideId) {
   return db.select('*').from('messages').where({ foreign_ride: rideId })
-    .catch(reportError('error retrieving messages by roomId'))
-}
+    .catch(reportError('error retrieving messages by roomId'));
+};
 
 Message.createMessage = function (attrs) {
   return db('messages').insert(attrs, ['messages_id', 'message', 'author'])
