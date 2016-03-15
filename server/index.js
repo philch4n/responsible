@@ -29,16 +29,19 @@ routes.get('/api/tags-example', function (req, res) {
 });
 
 if (process.env.NODE_ENV !== 'test') {
-  // Dev or production mode
-
   var app = express();
+  var server = require('http').createServer(app);
+  var io = require('socket.io')(server);
+  io.on('connection', function (socket) {
+    console.log('client connected!!!');
+  });
 
   //HTTP request logger middleware
 
   app.use(require('morgan')('dev'));
 
   //parse request body as JSON
-  app.use(require('body-parser').json());
+  app.use(bodyParser.json());
   app.use(bodyParser.urlencoded({ extended: true }));
 
   //for cookies
@@ -64,7 +67,9 @@ if (process.env.NODE_ENV !== 'test') {
 
   // Start the server!
   var port = process.env.PORT || 1337;
-  app.listen(port);
+  server.listen(port);
+
+  console.log('server io:', io);
   console.log('Listening on port', port);
 
 } else {
