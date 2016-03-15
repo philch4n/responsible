@@ -1,8 +1,7 @@
 var OAuth = require('../lib/oauth.min.js').OAuth;
 var OAuthUser = require('../lib/oauth.min.js').User;
 var PostHelper = require('../requests/post.js');
-var fetch = require('isomorphic-fetch');
-// require('./request-helpers');
+
 
 console.log('oAuth dev options', OAuth);
 console.log('oAuth user options', OAuthUser);
@@ -13,10 +12,28 @@ const User = module.exports;
 
 var currentUser = null;
 
+
 User.signIn = function () {
-  return OAuth.popup('github')
-  .then(OAuthUser.signin)
-  .then(function (res) {
-    console.log('the res1', res);
-  })
+OAuth.popup('github').done(function(data) {
+    	console.log('data', data)
+	data.me().done(function(me) {
+		console.log('result', me)
+	OAuthUser.signin(data)
+	.then(function(info){
+		console.log('what is this data?', info)
+	})
+	.fail(function(fail){
+		console.log('did you fail?', fail)
+	})
+})
+})
 }
+
+//result.me complete data list
+//alias
+//avatar
+//bio
+//company
+//email
+//id
+//location

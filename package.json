@@ -29,12 +29,9 @@
     "passport-local": "^1.0.0",
     "pg": "^4.5.1",
     "ramda": "^0.19.1",
-<<<<<<< 4dcc7b0e55272109ba1e0d212cd07c940debac1c
     "react": "^0.14.7",
     "react-dom": "^0.14.7",
-=======
     "react-google-maps": "^4.9.1",
->>>>>>> working oauth, need to build out models
     "react-redux": "^4.4.0",
     "react-router": "^2.0.1",
     "react-router-redux": "^4.0.0",
