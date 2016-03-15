@@ -8,13 +8,14 @@ import { TopNavBarRightButton } from '../components/TopNavBar/RightButton';
 import * as userAction from '../actionCreators/user';
 import * as rideAction from '../actionCreators/ride';
 
-function TopNavBar(props) {
+function TopNavBar({ onCancelRideButtonClick, ...props }) {
   return (
     <div className="TopNavBarContainer row">
       <SettingIcon />
       <Logo />
       <TopNavBarRightButton
         {...props}
+        onCancelRideButtonClick={onCancelRideButtonClick.bind(props.user.id)}
       />
     </div>
   );
@@ -33,8 +34,8 @@ const mapDispatchToProps = function (dispatch) {
     onProfileButtonClick() {
       dispatch(push('/profile'))
     },
-    onCancelRideButtonClick() {
-      dispatch(rideAction.cancelRide())
+    onCancelRideButtonClick: (rideId) => {
+      dispatch(rideAction.cancelRide(rideId))
     },
   };
 };
