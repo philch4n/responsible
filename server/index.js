@@ -12,19 +12,25 @@ var db           = require(__dirname + '/../lib/db');
 var routes       = express.Router();
 
 // no browserify, utilize webpack
-var appBundle = Path.resolve(__dirname, '../dist/app-bundle');
-routes.use(express.static(appBundle));
-routes.get('/app-bundle.js', function()
-);
+var appBundle = Path.resolve(__dirname, '../dist');
+var assetFolder = Path.resolve(__dirname, '../client/public');
+routes.use(express.static(assetFolder));
+
+routes.get('/app-bundle.js', function (req, res) {
+  res.sendFile(appBundle + '/app-bundle.js');
+});
+routes.get('/', function (req, res) {
+  res.sendFile(appBundle + '/index.html');
+});
+
+  // routes.use('/', express.static(appBundle + 'index.html'));
+  // routes.use('/app-bundle.js', express.static(appBundle + 'app-bundle.js'));
+
 
 //Example test route for test
 routes.get('/api/tags-example', function (req, res) {
   res.send(['node', 'express', 'browserify', 'react', 'react-dom']);
 });
-
-//Static assets
-var assetFolder = Path.resolve(__dirname, '../client/public');
-routes.use(express.static(assetFolder));
 
 if (process.env.NODE_ENV !== 'test') {
   // Dev or production mode
@@ -53,24 +59,19 @@ if (process.env.NODE_ENV !== 'test') {
   routes.use('/rides', rides);
   routes.use('/user', user);
 
-  // sign-up, sign-in, sign-out routes. check Oauth for specifics:
-  // app.post('/login', Oauth.authenticate('local-login', {
-  //   successRedirect : '/trip', // redirect to the secure profile section
-  //   failureRedirect : '/signup', // redirect back to the signup page if there is an error
-  //   failureFlash : true // allow flash messages
-  // }))
-
   //Catch-all Route (needs to go last so it doesn't interfere with other routes)
   routes.get('/*', function (req, res) {
     console.log('this is a catch-all route!');
-    res.sendFile(assetFolder + '/index.html');
+    console.log('req.url:', req.url);
+
+    res.sendFile(appBundle + '/index.html');
   });
 
   // Start the server!
   var port = process.env.PORT || 1337;
   app.listen(port);
-
   console.log('Listening on port', port);
+
 } else {
   //for test, export:
   var user = require('./apis/user-api');
