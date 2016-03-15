@@ -1,9 +1,12 @@
+import fetch from 'isomorphic-fetch';
+
 export function fetchMessages(rideId) {
   return (dispatch) => {
     dispatch(requestMessages());
 
-    fetch(`/message/${rideId}`)
+    fetch(`/messages/${rideId}`)
       .then(function (messages) {
+        let messages = messages.json();
         dispatch(receiveMessages(messages));
       })
       .catch(function (error) {

@@ -1,3 +1,5 @@
+import fetch from 'isomorphic-fetch';
+
 /**
  *  Initializes a ride request. Alerts the server and waits
  *  to receive its upcoming ride Id.
@@ -28,17 +30,18 @@ export function cancelRide(rideId) {
   return function (dispatch) {
     dispatch(cancelRideSent());
 
-    fetch(`/ride/${rideId}`, { method: 'DELETE' })
+    fetch(`/rides/${rideId}`, { method: 'DELETE' })
       .then(function () {
         dispatch(cancelRideSuccess());
       })
       .catch(function (error) {
-        dispatch(rideCancelError(error));
+        dispatch(cancelRideError(error));
       });
   };
 };
 
 function requestRide() {
+  console.log('requesting ride');
   return { type: 'REQUEST_RIDE', };
 };
 
@@ -50,6 +53,7 @@ function receiveRideId(rideId) {
 };
 
 function requestRideError(error) {
+  console.error('error requesting ride');
   return {
     type: 'REQUEST_RIDE_ERROR',
     entry: error,
@@ -68,10 +72,11 @@ function cancelRideSuccess() {
 };
 
 function cancelRideSent() {
-  return { type: 'CANCEL_RIDE_SENT' }
+  return { type: 'CANCEL_RIDE_SENT' };
 }
 
-function rideCancelError(error) {
+function cancelRideError(error) {
+  console.error('error canceling ride');
   return {
     type: 'CANCEL_RIDE_ERROR',
     entry: error,

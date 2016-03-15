@@ -12,10 +12,9 @@ var db           = require(__dirname + '/../lib/db');
 var routes       = express.Router();
 
 // no browserify, utilize webpack
-routes.get('/app-bundle.js',
-  browserify(__dirname + '/../client/app.js', {
-    transform: [Reactify],
-  })
+var appBundle = Path.resolve(__dirname, '../dist/app-bundle');
+routes.use(express.static(appBundle));
+routes.get('/app-bundle.js', function()
 );
 
 //Example test route for test
