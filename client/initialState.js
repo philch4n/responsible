@@ -10,7 +10,7 @@ export default {
       zip: '56352',
     },
     isDriver: false,
-    isRider: false,
+    isRider: true,
     friends: [
       {
         id: 2,
