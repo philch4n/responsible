@@ -11,7 +11,7 @@ import { syncHistoryWithStore, routerMiddleware } from 'react-router-redux';
 import { fromJS } from 'immutable';
 import { combineReducers } from 'redux-immutable';
 
-import { socket, remoteActionMiddleware } from './lib/sockets';
+import { socket, socketActionMiddleware } from './lib/sockets';
 
 import Root from './containers/Root';
 import { ProfileContainer } from './containers/Profile';
