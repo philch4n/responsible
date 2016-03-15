@@ -1,10 +1,12 @@
 import { connect } from 'react-redux';
 import { push } from 'react-router-redux';
 
-export function Chat() {
+import { DriverItem } from '../components/DriverItem';
+
+export function Chat(props) {
   return (
     <div className='chatbox'>
-      <h3>Hello</h3>
+      <DriverItem {...props} />
     </div>
   );
 }

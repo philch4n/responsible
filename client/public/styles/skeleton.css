@@ -394,9 +394,9 @@ form {
 .friendList, .ProfileInfoItem {
   text-align: center;
 }
-.userIcon {
-  height: 200px;
-  width: 200px;
+.userIcon, .icon {
+  height: 100px;
+  width: 100px;
   border-radius: 50%;
 }
 
@@ -418,6 +418,18 @@ form {
   padding: .1%;
   height: 95vh;
 }
+
+/* Chat 
+–––––––––––––––––––––––––––––––––––––––––––––––––– */
+.driverItem {
+  position: relative;
+}
+.friendName {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+}
+
 
 /* Bottom Nav Bar Container 
 –––––––––––––––––––––––––––––––––––––––––––––––––– */

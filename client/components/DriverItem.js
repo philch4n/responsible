@@ -1,8 +1,11 @@
 import { UserImage } from './UserImage';
+import { Chat } from '../containers/Chat';
 
-export function DriverItem({ avatar, fullName }) {
+function nullFn(e) { console.log('you clicked me ' + e.target.className); };
+
+export function DriverItem({ fullName, avatar, onRideInfoButtonClick = nullFn, }) {
   return (
-    <div className="driverItem">
+    <div className="driverItem" onClick={onRideInfoButtonClick}>
       <UserImage imageType="icon" avatar={avatar} />
       <span className="friendName">{fullName}</span>
     </div>
