@@ -11,18 +11,16 @@ var db           = require(__dirname + '/../lib/db');
 
 var routes       = express.Router();
 
-// no browserify, utilize webpack
-var appBundle = Path.resolve(__dirname, '../dist');
 var assetFolder = Path.resolve(__dirname, '../client/public');
-
 routes.use(express.static(assetFolder));
+
+var appBundle = Path.resolve(__dirname, '../dist');
+routes.get('/', function (req, res) {
+  res.sendFile(appBundle + '/index.html');
+});
 
 routes.get('/app-bundle.js', function (req, res) {
   res.sendFile(appBundle + '/app-bundle.js');
-});
-
-routes.get('/', function (req, res) {
-  res.sendFile(appBundle + '/index.html');
 });
 
 //Example test route for test
