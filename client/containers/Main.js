@@ -5,13 +5,10 @@ import { BottomNavBarContainer } from './BottomNavBar';
 import { SplashContainer } from './Splash';
 import { MapView } from '../components/MapView';
 
-import User from '../models/users';
-
 function Main({ isDriver, isRider }) {
   console.log('isDriver, isRider:', isDriver, isRider);
   return (
     <div className="MainApp">
-      <button onClick={User.signIn}>Sign-Up!</button>
       <TopNavBarContainer />
       {
         !isDriver && !isRider ?
