@@ -3,6 +3,7 @@ import ReactDOM from 'react-dom';
 
 import { Provider } from 'react-redux';
 import { createStore, applyMiddleware } from 'redux';
+import thunkMiddleware from 'redux-thunk';
 
 import { Router, Route, browserHistory } from 'react-router';
 import { syncHistoryWithStore, routerMiddleware } from 'react-router-redux';
@@ -35,7 +36,7 @@ const historyMiddleware = routerMiddleware(browserHistory);
 const store = createStore(
   reducersWithRouter,
   fromJS(InitialState),
-  applyMiddleware(historyMiddleware)
+  applyMiddleware(historyMiddleware, thunkMiddleware)
 );
 
 const history = syncHistoryWithStore(browserHistory, store, {

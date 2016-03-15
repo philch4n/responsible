@@ -1,7 +1,7 @@
 export default {
   user: {
+    id: 1,
     profile: {
-      id: 1,
       avatar: 'https://i.ytimg.com/vi/1v6M41Divso/maxresdefault.jpg',
       fullName: 'Kim Panda',
       street: 'back handle lane',
@@ -52,6 +52,11 @@ export default {
     isWaitingForMatch: false,
     isMatched: false,
     isConfirmed: false,
+    isCancelling: false,
+    isFetchingMessages: false,
+    rideRequestError: null,
+    messagesFetchError: null,
+    messages: [],
     match: null,
   },
   routing: {
