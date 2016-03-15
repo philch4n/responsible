@@ -46,7 +46,7 @@ export function acceptRide(riderId, location) {
 };
 
 // confirm ride receives a rideId, the partner's object, and the partner's location
-function confirmRide(body) {
+export function confirmRide(body) {
   return { type: 'CONFIRM_RIDE', entry: body, };
 };
 
