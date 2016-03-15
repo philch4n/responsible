@@ -15,8 +15,8 @@ export function Chat({ match, id, messages, onSubmit=nullFn, }) {
       <DriverItem {...match} />
       <MessageItemList userID={id} messages={messages}/>
       <form onSubmit={onSubmit}>
-        <textarea className="u-full-width" placeholder="I am at..." id="message"></textarea>
-        <input className="button-primary" type="submit" value="Submit" />
+        <textarea className="messageText u-full-width" id="message"></textarea>
+        <input className="messageSubmit button" type="submit" value="Submit" />
       </form>
     </div>
   );
