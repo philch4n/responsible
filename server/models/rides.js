@@ -23,8 +23,7 @@ Ride.createRide = function (attrs) {
   return db('rides').insert(attrs, ['ride_id', 'ride_driver', 'ride_rider'])
     .catch(reportError('error creating ride in db'))
     .then(function (ride) {
-      Ride.deleteRiderAndDriver(attrs.rider_id, attrs.driver_id)
-        .catch(reportError('error deleting rider and driver'));
+      Ride.deleteRiderAndDriver(attrs.ride_rider, attrs.ride_driver);
       return ride;
     });
 };
@@ -100,7 +99,6 @@ Ride.getDriverById = function (userId) {
 Ride.createDriver = function (attrs) {
   return db('drivers').insert(attrs, ['driver_id', 'foreign_driver', 'location'])
     .catch(reportError('error creating driver in db'))
-    .then(driver => driver);
 };
 
 // Deletes driver
