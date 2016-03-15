@@ -1,12 +1,11 @@
 export function MessageItem({ profile, id, text, time, }) {
-  console.log('hello', profile.id, id, text, time);
   return (
     <div className="MessageInfoItem clear">
     {
       id === profile.id ?
-        <div className="outgoing message">{ time } { text }</div>
+        <div className="outgoing">{ time } { text }</div>
       :
-        <div className="incoming message">{ time } { text }</div>
+        <div className="incoming">{ time } { text }</div>
     }
     </div>
   );

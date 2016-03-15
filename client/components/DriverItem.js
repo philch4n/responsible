@@ -7,7 +7,7 @@ export function DriverItem({ fullName, avatar, onRideInfoButtonClick = nullFn, }
   return (
     <div className="driverItem" onClick={onRideInfoButtonClick}>
       <UserImage imageType="icon" avatar={avatar} />
-      <span className="friendName">Your match is: {fullName}</span>
+      <span className="userName">Your match is: {fullName}</span>
     </div>
   );
 };

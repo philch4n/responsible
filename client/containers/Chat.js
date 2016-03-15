@@ -5,7 +5,6 @@ import { DriverItem } from '../components/DriverItem';
 import { MessageItemList } from '../components/Chat/MessageItemList';
 
 export function Chat({ match, profile, messages, }) {
-  console.log('chat props:', match, profile, messages);
   return (
     <div className='chatbox'>
       <DriverItem {...match} />

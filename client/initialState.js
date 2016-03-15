@@ -10,7 +10,7 @@ export default {
       zip: '56352',
     },
     isDriver: false,
-    isRider: true,
+    isRider: false,
     friends: [
       {
         id: 2,
@@ -52,12 +52,27 @@ export default {
     isWaitingForMatch: false,
     isMatched: false,
     isConfirmed: false,
+<<<<<<< c4c66039f4b8780f4fc05fffe8e8d264005bb802
     isCancelling: false,
     isFetchingMessages: false,
     rideRequestError: null,
     messagesFetchError: null,
     messages: [],
     match: null,
+=======
+    match: {
+        id: 12,
+        avatar: 'http://www.funcage.com/blog/wp-content/uploads/2013/'
+         + '11/Cute-Animals-Saying-Hi-To-You-001.jpg',
+        fullName: 'Lazy Harp Seal',
+      },
+    messages: [
+      { id: 4, time: '12:04', text: 'Hello there!' },
+      { id: 1, time: '12:32', text: 'Where are you?' },
+      { id: 4, time: '12:35', text: 'I am on my way.' },
+      { id: 1, time: '12:47', text: 'See you soon.' },
+    ],
+>>>>>>> (feat) Profile CSS
   },
   routing: {
     locationBeforeTransitions: null,

@@ -390,6 +390,7 @@ form {
   height: 300px;
   width: 300px;
   border-radius: 50%;
+  text-align: center;
 }
 .friendList, .ProfileInfoItem {
   text-align: center;
@@ -424,13 +425,13 @@ form {
 .driverItem {
   position: relative;
 }
-.friendName {
+.userName {
   position: absolute;
   top: 50%;
   transform: translateY(-50%);
 }
 
-body {
+/*body {
   font-family: "Helvetica Neue";
   font-size: 20px;
   font-weight: normal;
@@ -446,7 +447,7 @@ section {
     margin-bottom: 20px;
     line-height: 24px;
   }
-}
+}*/
 
 .clear {clear: both}
 .incoming {
