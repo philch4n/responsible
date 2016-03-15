@@ -12,13 +12,8 @@ export function fetchRide(userId, location) {
       method: 'POST',
       body: location,
     })
-      .then(function (body) {
-        let rideId = body.json().id;
-        dispatch(receiveRideId(rideId));
-      })
-      .catch(function (error) {
-        dispatch(requestRideError(error));
-      });
+      .then((body) => dispatch(receiveRideId(body.json().rideId)))
+      .catch((error) => dispatch(requestRideError(error)));
   };
 };
 
@@ -31,12 +26,8 @@ export function cancelRide(rideId) {
     dispatch(cancelRideSent());
 
     fetch(`/rides/${rideId}`, { method: 'DELETE' })
-      .then(function () {
-        dispatch(cancelRideSuccess());
-      })
-      .catch(function (error) {
-        dispatch(cancelRideError(error));
-      });
+      .then(() => dispatch(cancelRideSuccess()))
+      .catch((error) => dispatch(cancelRideError(error)));
   };
 };
 
