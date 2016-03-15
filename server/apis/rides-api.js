@@ -78,11 +78,7 @@ RideAPI.get('/drivers', function (req, res) {
 });
 
 // Get driver by id
-<<<<<<< HEAD
-RideAPI.get('/driver/:id', function (req, res) {
-=======
 RideAPI.get('/drivers/:id', function (req, res) {
->>>>>>> 4f2d2dd939621ea9e4a477b348d0e303a30839e5
   var id = req.params.id;
   Ride.getDriverById(id)
     .then(sendStatusAndData(res, 200))
