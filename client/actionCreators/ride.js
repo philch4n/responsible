@@ -1,8 +1,11 @@
 export function fetchRide(userId, location) {
   return (dispatch) => {
-    dispatch(requestRide(location));
+    dispatch(requestRide());
 
-    fetch('/rides', { method: 'POST' })
+    fetch('/rides', {
+      method: 'POST',
+      body: location
+    })
       .then(function (body) {
         let rideId = body.json().id;
         dispatch(receiveRideId(rideId));
@@ -13,7 +16,7 @@ export function fetchRide(userId, location) {
   };
 };
 
-function requestRide(location) {
+function requestRide() {
   return { type: 'REQUEST_RIDE', };
 };
 

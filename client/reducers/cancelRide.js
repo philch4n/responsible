@@ -1,4 +1,3 @@
-
 export function handleCancel(state, action) {
   switch (action.type) {
     case 'CANCEL_RIDE':
@@ -25,7 +24,7 @@ function cancelRide(state, action) {
 
 function cancelRideSent(state, action) {
   let updates = {
-    canceling: true,
+    isCancelling: true,
   };
 
   return state.merge(updates);

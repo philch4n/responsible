@@ -52,6 +52,8 @@ export default {
     isWaitingForMatch: false,
     isMatched: false,
     isConfirmed: false,
+    isCancelling: false,
+    rideRequestError: null,
     match: null,
   },
   routing: {
