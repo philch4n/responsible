@@ -5,7 +5,7 @@ export function MapView() {
   return (
   <div className='map'>
     <GoogleMapLoader
-      containerElement={ <div style={{ height: '80%' }} /> }
+      containerElement={ <div style={{ height: '90%' }} /> }
       googleMapElement={ <GoogleMap defaultZoom={14} defaultCenter={{ lat: 30.2672, lng: -97.7431 }}></GoogleMap> }/>
   </div>
   );
