@@ -6,7 +6,8 @@ const {
   receiveMatch,
 } = require(__client + '/actionCreators/ride');
 import { fromJS } from 'immutable';
-import sinon from 'sinon';
+
+// import sinon from 'sinon';
 
 describe('Ride action creators', function () {
 
