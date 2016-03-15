@@ -1,8 +1,14 @@
+import React from 'react';
+import { GoogleMapLoader, GoogleMap } from 'react-google-maps';
+
 export function MapView() {
   return (
-    <div className='map'>
-      <img src={'http://limelightsports.com/addons/default/themes/'
-        + 'limelightsports/img/map-placeholder-2.jpg'} />
-    </div>
-  );
-}
+      <GoogleMapLoader
+        containerElement={ <div style={{ height: '70%' }} /> }
+         googleMapElement={
+          <GoogleMap
+          defaultZoom={12} defaultCenter={{ lat: 30.2672, lng: -97.7431 }}></GoogleMap>
+        }
+      />
+	);
+};
