@@ -24,6 +24,13 @@ RideAPI.post('/', function (req, res) {
     .catch(sendStatusAndError(res, 500, ('error creating user')));
 });
 
+RideAPI.get('/:id', function (req, res) {
+  var id = req.params.id;
+  Ride.getRideById(id)
+    .then(sendStatusAndData(res, 200))
+    .catch(sendStatusAndError(res, 500));
+});
+
 // Delete ride by id
 RideAPI.delete('/:id', function (req, res) {
   var id = req.params.id;
