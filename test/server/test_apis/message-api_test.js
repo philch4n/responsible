@@ -131,7 +131,7 @@ describe('Messages API', function () {
     };
 
     yield request(app)
-      .post('/messages')
+      .post('/messages/' + ride1IdOnInsert)
       .send(message1)
       .expect(201)
       .expect(function (message) {

@@ -15,15 +15,15 @@ MessageAPI.get('/', function (req, res) {
 });
 
 //Get Message between two users
-MessageAPI.get('/:ride_id', function (req, res) {
-  var id = req.params.ride_id;
+MessageAPI.get('/:id', function (req, res) {
+  var id = req.params.id;
   Message.getMessagesByRideId(id)
     .then(sendStatusAndData(res, 200))
     .catch(sendStatusAndError(res, 500, 'Server error getting message'));
 });
 
 // Create chatroom between driver and rider
-MessageAPI.post('/', function (req, res) {
+MessageAPI.post('/:ride_id', function (req, res) {
   var attrs = req.body;
   Message.createMessage(attrs)
     .then(sendStatusAndData(res, 201))
