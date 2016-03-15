@@ -12,13 +12,8 @@ export function fetchRide(userId, location) {
       method: 'POST',
       body: location,
     })
-      .then(function (body) {
-        let rideId = body.json().id;
-        dispatch(receiveRideId(rideId));
-      })
-      .catch(function (error) {
-        dispatch(requestRideError(error));
-      });
+      .then((body) => dispatch(receiveRideId(body.json().rideId)))
+      .catch((error) => dispatch(requestRideError(error)));
   };
 };
 
@@ -31,12 +26,8 @@ export function cancelRide(rideId) {
     dispatch(cancelRideSent());
 
     fetch(`/rides/${rideId}`, { method: 'DELETE' })
-      .then(function () {
-        dispatch(cancelRideSuccess());
-      })
-      .catch(function (error) {
-        dispatch(cancelRideError(error));
-      });
+      .then(() => dispatch(cancelRideSuccess()))
+      .catch((error) => dispatch(cancelRideError(error)));
   };
 };
 
@@ -46,25 +37,16 @@ function requestRide() {
 };
 
 function receiveRideId(rideId) {
-  return {
-    type: 'RECEIVE_RIDE_ID',
-    entry: rideId,
-  };
+  return { type: 'RECEIVE_RIDE_ID', entry: rideId, };
 };
 
 function requestRideError(error) {
   console.error('error requesting ride');
-  return {
-    type: 'REQUEST_RIDE_ERROR',
-    entry: error,
-  };
+  return { type: 'REQUEST_RIDE_ERROR', entry: error, };
 };
 
 export function receiveRide(userObj) {
-  return {
-    type: 'RECEIVE_RIDE',
-    entry: userObj,
-  };
+  return { type: 'RECEIVE_RIDE', entry: userObj, };
 };
 
 function cancelRideSuccess() {
@@ -77,8 +59,5 @@ function cancelRideSent() {
 
 function cancelRideError(error) {
   console.error('error canceling ride');
-  return {
-    type: 'CANCEL_RIDE_ERROR',
-    entry: error,
-  };
+  return { type: 'CANCEL_RIDE_ERROR', entry: error, };
 };

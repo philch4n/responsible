@@ -2,7 +2,7 @@ import fetch from 'isomorphic-fetch';
 
 export function fetchUserInfo(uniqueParam) {
   return (dispatch) => {
-    dispatch(requestUserInfo())
+    dispatch(requestUserInfo());
 
     fetch(`/users/${uniqueparam}`)
       .then((info) => dispatch(receiveUserInfo(info)))
@@ -27,8 +27,5 @@ export function setDriver(isDriver) {
 }
 
 export function setRider(isRider) {
-  return {
-    type: 'SET_RIDER',
-    entry: isRider,
-  };
+  return { type: 'SET_RIDER', entry: isRider, };
 }

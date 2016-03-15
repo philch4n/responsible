@@ -20,16 +20,10 @@ function requestMessages() {
 };
 
 function receiveMessages(messages) {
-  return {
-    type: 'RECEIVE_MESSAGES',
-    entry: messages,
-  };
+  return { type: 'RECEIVE_MESSAGES', entry: messages, };
 };
 
 function requestMessagesError(error) {
-  return {
-    type: 'REQUEST_MESSAGES_ERROR',
-    entry: error,
-  };
+  return { type: 'REQUEST_MESSAGES_ERROR', entry: error, };
 };
 
