@@ -30,26 +30,43 @@ export function handleUserInfo(state, action) {
   return state;
 }
 
-function requestUserInfo(state, action) {
+function requestUserInfo(state) {
   let updates = {
     isFetchingUserInfo: true,
   };
 
-  returns state.merge(updates);
+  return state.merge(updates);
 }
 
-function setDriver(state, action) {
+function receiveUserInfo(state, { entry }) {
   let updates = {
-    isDriver: action.entry,
+    ...entry,
+    isFetchingUserInfo: false,
+  };
+
+  return state.merge(updates);
+}
+
+function requestUserInfoError(state, { entry }) {
+  let updates = {
+    requestUserError: entry,
+  };
+
+  return state.merge(updates);
+}
+
+function setDriver(state, { entry }) {
+  let updates = {
+    isDriver: entry,
     isRider: false,
   };
 
   return state.merge(updates);
 }
 
-function setRider(state, action) {
+function setRider(state, { entry }) {
   let updates = {
-    isRider: action.entry,
+    isRider: entry,
     isDriver: false,
   };
 
