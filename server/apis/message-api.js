@@ -16,7 +16,7 @@ MessageAPI.get('/', function (req, res) {
 
 //Get Message between two users
 MessageAPI.get('/:ride_id', function (req, res) {
-  var id = req.params.id;
+  var id = req.params.ride_id;
   Message.getMessagesByRideId(id)
     .then(sendStatusAndData(res, 200))
     .catch(sendStatusAndError(res, 500, 'Server error getting message'));
