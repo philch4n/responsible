@@ -46,25 +46,16 @@ function requestRide() {
 };
 
 function receiveRideId(rideId) {
-  return {
-    type: 'RECEIVE_RIDE_ID',
-    entry: rideId,
-  };
+  return { type: 'RECEIVE_RIDE_ID', entry: rideId, };
 };
 
 function requestRideError(error) {
   console.error('error requesting ride');
-  return {
-    type: 'REQUEST_RIDE_ERROR',
-    entry: error,
-  };
+  return { type: 'REQUEST_RIDE_ERROR', entry: error, };
 };
 
 export function receiveRide(userObj) {
-  return {
-    type: 'RECEIVE_RIDE',
-    entry: userObj,
-  };
+  return { type: 'RECEIVE_RIDE', entry: userObj, };
 };
 
 function cancelRideSuccess() {
@@ -77,8 +68,5 @@ function cancelRideSent() {
 
 function cancelRideError(error) {
   console.error('error canceling ride');
-  return {
-    type: 'CANCEL_RIDE_ERROR',
-    entry: error,
-  };
+  return { type: 'CANCEL_RIDE_ERROR', entry: error, };
 };
