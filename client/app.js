@@ -11,6 +11,8 @@ import { syncHistoryWithStore, routerMiddleware } from 'react-router-redux';
 import { fromJS } from 'immutable';
 import { combineReducers } from 'redux-immutable';
 
+import { socket, remoteActionMiddleware } from './lib/sockets';
+
 import Root from './containers/Root';
 import { ProfileContainer } from './containers/Profile';
 import { MainContainer } from './containers/Main';
@@ -36,7 +38,11 @@ const historyMiddleware = routerMiddleware(browserHistory);
 const store = createStore(
   reducersWithRouter,
   fromJS(InitialState),
-  applyMiddleware(historyMiddleware, thunkMiddleware)
+  applyMiddleware(
+    historyMiddleware,
+    remoteActionMiddleware(socket),
+    thunkMiddleware
+  )
 );
 
 const history = syncHistoryWithStore(browserHistory, store, {

@@ -1,9 +1,15 @@
 import { Map } from 'immutable';
 
+import { handleUserInfo } from './userInfo';
+
 export default function (state = Map(), action) {
   // console.log('reducing user state:', state.toJS());
 
   switch (action.type) {
+    case 'REQUEST_USER_INFO':
+    case 'RECEIVE_USER_INFO':
+    case 'REQUEST_USER_INFO_ERROR':
+      return handleUserInfo(state, action);
     case 'SET_DRIVER':
       return setDriver(state, action);
     case 'SET_RIDER':
@@ -13,18 +19,18 @@ export default function (state = Map(), action) {
   return state;
 };
 
-function setDriver(state, action) {
+function setDriver(state, { entry }) {
   let updates = {
-    isDriver: action.entry,
+    isDriver: entry,
     isRider: false,
   };
 
   return state.merge(updates);
 }
 
-function setRider(state, action) {
+function setRider(state, { entry }) {
   let updates = {
-    isRider: action.entry,
+    isRider: entry,
     isDriver: false,
   };
 
