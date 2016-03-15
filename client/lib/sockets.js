@@ -1,4 +1,4 @@
-import { dispatch } from '../storeConfig'; 
+import { dispatch } from '../storeConfig';
 
 /**
  *  Handle socket configuration and messaging.
@@ -31,7 +31,7 @@ export const socketActionMiddleware =
   (socket) => (store) => (next) => (action) => {
     if (action.meta && action.meta.remote)
       socket.emit(action.meta.event, action.meta.entry);
-    
+
     return next(action);
   };
 // jscs: enable
