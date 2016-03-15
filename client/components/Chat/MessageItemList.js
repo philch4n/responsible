@@ -1,11 +1,11 @@
 import { MessageItem } from './MessageItem';
 
-export function MessageItemList({ messages = [], profile, }) {
+export function MessageItemList({ messages = [], userID, }) {
   return (
     <div className="MessageItemList">
         {
           messages.map(function (message) {
-            return <MessageItem {...message} profile={profile} />;
+            return <MessageItem {...message} userID={userID} />;
           })
         }
     </div>

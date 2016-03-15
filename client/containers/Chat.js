@@ -4,11 +4,11 @@ import { push } from 'react-router-redux';
 import { DriverItem } from '../components/DriverItem';
 import { MessageItemList } from '../components/Chat/MessageItemList';
 
-export function Chat({ match, profile, messages, }) {
+export function Chat({ match, id, messages, }) {
   return (
     <div className='chatbox'>
       <DriverItem {...match} />
-      <MessageItemList profile={profile} messages={messages}/>
+      <MessageItemList userID={id} messages={messages}/>
     </div>
   );
 }

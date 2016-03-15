@@ -6,7 +6,7 @@ import { Chat } from '../../containers/Chat';
 import * as rideAction from '../../actionCreators/ride';
 
 export function Button({ isWaitingForMatch, isConfirmed, isMatched,
-  match, profile, messages, onConfirmLocationButtonClick, onWaitingClick, }) {
+match, user, messages, onConfirmLocationButtonClick, onWaitingClick, }) {
   console.log('isWaitingForMatch:', isWaitingForMatch);
   console.log('isConfirmed:', isConfirmed);
   return (
@@ -19,7 +19,7 @@ export function Button({ isWaitingForMatch, isConfirmed, isMatched,
       isConfirmed && isWaitingForMatch ?
         <h3 onClick={onWaitingClick}>Waiting for a match</h3> :
       isConfirmed && isMatched ?
-          <Chat match={match}  profile={profile} messages={messages}/> :
+          <Chat match={match}  id={user.id} messages={messages}/> :
         <h3>Uh oh. How did this happen?</h3>
     }
     </div>
@@ -40,7 +40,7 @@ const mapDispatchToProps = function (dispatch) {
   }
   return {
     onWaitingClick() {
-      dispatch(rideAction.receiveMatch(pair))
+      dispatch(rideAction.receiveRide(pair))
     },
   };
 };

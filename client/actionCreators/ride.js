@@ -60,7 +60,7 @@ function requestRideError(error) {
   };
 };
 
-function receiveRide(userObj) {
+export function receiveRide(userObj) {
   return {
     type: 'RECEIVE_RIDE',
     entry: userObj,
