@@ -454,7 +454,7 @@ img {
 
 /* .bubble */
 
-.incoming, .message {
+.message {
   background-image: linear-gradient(bottom, rgb(210,244,254) 25%, rgb(149,194,253) 100%);
 background-image: -o-linear-gradient(bottom, rgb(210,244,254) 25%, rgb(149,194,253) 100%);
 background-image: -moz-linear-gradient(bottom, rgb(210,244,254) 25%, rgb(149,194,253) 100%);
@@ -492,7 +492,7 @@ background-image: -webkit-gradient(
   position: absolute;
 }
 
-.message:before {
+.outgoing:before {
   border: 10px solid transparent;
   border-bottom-color: rgba(0, 0, 0, 0.5);
   bottom: 0;
@@ -500,7 +500,7 @@ background-image: -webkit-gradient(
   z-index: -2;
 }
 
-.incoming:after {
+.outgoing:after {
   border: 8px solid transparent;
   border-bottom-color: #d2f4fe;
   bottom: 1px;
@@ -523,12 +523,12 @@ background-image: -webkit-gradient(
   float: right;
 }
 
-/* .bubble--alt:before {
+ .incoming:before {
   border-bottom-color: rgba(0, 0, 0, 0.5);
   border-radius: 20px / 10px;
   left: auto;
   right: -7px;
-} */
+} 
 
 .incoming:after {
   border-bottom-color: #ace44b;
