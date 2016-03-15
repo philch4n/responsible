@@ -11,91 +11,61 @@ const User = module.exports;
 
 var currentUser = null;
 
+//Facebook complete data list
+//ID    avatar    name    first name    last name    gender
 
 User.facebook = function () {
-OAuth.popup('facebook').done(function(data) {
-    	console.log('data', data)
-	data.me().done(function(me) {
-		console.log('result', me)
-	OAuthUser.signin(data)
-	.then(function(info){
-		console.log('what is this data?', info)
-	})
-	.fail(function(fail){
-		console.log('did you fail?', fail)
-	})
-})
-})
-}
-
-User.github = function () {
-OAuth.popup('github').done(function(data) {
-    	console.log('data', data)
-	data.me().done(function(me) {
-		console.log('result', me)
-	OAuthUser.signin(data)
-	.then(function(info){
-		console.log('what is this data?', info)
-	})
-	.fail(function(fail){
-		console.log('did you fail?', fail)
-	})
-})
-})
-}
-
-User.google = function () {
-OAuth.popup('google').done(function(data) {
-	var youraccess_token = data.access_token
-	data.get('https://www.googleapis.com/oauth2/v1/userinfo?alt=json&access_token='+youraccess_token)
-	.then(function(profileMe){
-	console.log('profileMe', profileMe)
-	OAuthUser.signin(data)
-	.then(function(info){
-		console.log('what is this data?', info)
-	})
-	.fail(function(fail){
-		console.log('did you fail?', fail)
-	})
-})
-})
-}
+  OAuth.popup('facebook').done(function (data) {
+  console.log('data', data);
+  data.me().done(function (me) {
+  console.log('result', me);
+  OAuthUser.signin(data)
+  .then(function (info) {
+    console.log('what is this data?', info);
+  })
+  .fail(function (fail) {
+    console.log('did you fail?', fail);
+  });
+});
+});
+};
 
 //Github complete data list
-//alias
-//avatar
-//bio
-//company
-//email
-//id
-//location
+//ID    alias    avatar    bio    company    email   location
 
-
-//Facebook complete data list
-//ID
-//avatar
-//name
-//first name
-//last name
-//gender
-//facebook
+User.github = function () {
+  OAuth.popup('github').done(function (data) {
+  console.log('data', data);
+  data.me().done(function (me) {
+  console.log('result', me);
+  OAuthUser.signin(data)
+  .then(function (info) {
+  console.log('what is this data?', info);
+	})
+	.fail(function (fail) {
+  console.log('did you fail?', fail);
+	});
+});
+});
+};
 
 //Google complete data list
-//ID
-//name
-//given_name
-//family_name
-//picture
+//ID    name    given_name    family_name    picture
 
-
-
-
-
-
-
-
-
-
-
-
+User.google = function () {
+  OAuth.popup('google').done(function (data) {
+  var userToken = data.access_token;
+  data.get('https://www.googleapis.com/oauth2/v1/userinfo?alt=json&access_token='+userToken)
+  .then(function (profileMe) {
+  console.log('profileMe', profileMe);
+  OAuthUser.signin(data)
+  .then(function (info) {
+    console.log('what is this data?', info);
+  })
+  .fail(function (fail) {
+    console.log('did you fail?', fail);
+  });
+});
+});
+};
 
