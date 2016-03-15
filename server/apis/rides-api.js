@@ -85,3 +85,15 @@ RideAPI.post('/driver', function (req, res) {
     .then(sendStatusAndData(res, 201))
     .catch(sendStatusAndError(res, 500, 'error creating driver'));
 });
+
+/*
+* Sockets
+*/
+
+io.sockets.on('connection', function (socket) {
+  socket.on('send message', function (data) {
+    io.sockets.emit('new message', data);
+  });
+  socket.on('something else')
+});
+
