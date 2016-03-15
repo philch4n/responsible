@@ -59,8 +59,17 @@ RideAPI.get('/driver', function (req, res) {
 });
 
 // Get driver by id
-RideAPI.get('/driver/' + id)
-
+RideAPI.get('/driver/' + id, function (req, res) {
+  var id = req.params.id;
+  Ride.getDriverById(id)
+    .then(sendStatusAndData(res, 200))
+    .catch(sendStatusAndError(res, 500));
+});
 
 // Post Driver
-RideAPI.post('/driver')
+RideAPI.post('/driver', function (req, res) {
+  var attrs = req.params;
+  Ride.createDriver(attrs)
+    .then(sendStatusAndData(res, 201))
+    .catch(sendStatusAndError(res, 500, 'error creating driver'));
+});

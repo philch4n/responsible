@@ -5,6 +5,10 @@ const first = require('ramda').head;
 var Ride = {};
 module.exports = Ride;
 
+/*
+* THESE ARE RIDES MODELS
+*/
+
 // Get all rides
 Ride.getRides = function () {
   return db.select('*').from('rides')
@@ -16,6 +20,7 @@ Ride.getRides = function () {
 
 // Create A ride
 Ride.createRide = function (attrs) {
+  Ride.deleteRiderAndDriver(attrs.rider_id, attrs.driver_id);
   return db('rides').insert(attrs, ['ride_id', 'ride_driver', 'ride_rider'])
     .catch(reportError('error creating ride in db'))
     .then(ride => ride);
@@ -27,6 +32,16 @@ Ride.deleteRide = function (id) {
     .catch(reportError('error deleting ride by id'))
     .then(ride => console.log('deleted ride with id ' + id));
 };
+
+Ride.getRideById = function (id) {
+  return db('rides').where({ ride_id: id })
+    .catch(reportError('error getting ride by id'))
+    .then(ride => ride);
+};
+
+/*
+* THESE ARE RIDER MODELS
+*/
 
 // Get all riders ids. returns array
 Ride.getRidersIds = function () {
@@ -51,6 +66,17 @@ Ride.createRider = function (attrs) {
     .then(rider => rider);
 };
 
+// Deletes rider by id
+Ride.deleteRider = function (id) {
+  return db('rider').where({ rider_id: id }).del()
+    .catch(reportError('error deleting rider by id'))
+    .then(rider => console.log('deleted rider with id ' + id));
+};
+
+/*
+* THESE ARE DRIVER MODELS
+*/
+
 // Get all drivers, returns array of their ids
 Ride.getDrivers = function () {
   return db.select('*').from('driver')
@@ -63,7 +89,7 @@ Ride.getDrivers = function () {
 // Get driver by ID
 Ride.getDriverById = function (userId) {
   return db.select('*').from('driver').where({ foreign_driver: userId })
-    .catch(reportError('error retrieving rider by userId'))
+    .catch(reportError('error retrieving driver by userId'))
     .then(first);
 };
 
@@ -74,3 +100,18 @@ Ride.createDriver = function (attrs) {
     .then(driver => driver);
 };
 
+// Deletes driver
+Ride.deleteDriver = function (id) {
+  return db('driver').where({ driver_id: id }).del()
+    .catch(reportError('error deleting driver by id'))
+    .then(driver => console.log('deleted driver with id ' + id));
+};
+
+/*
+* THESE ARE OTHER MODELS
+*/
+
+Ride.deleteRiderAndDriver = function (riderId, driverId) {
+  Ride.deleteRider(riderId);
+  Ride.deleteDriver(driverId);
+};
