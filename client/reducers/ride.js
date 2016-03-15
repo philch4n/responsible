@@ -2,12 +2,12 @@ import { Map } from 'immutable';
 
 import { handleCancel } from './cancelRide';
 import { handleRideFetch } from './fetchRide';
-import { handleMessages }
+import { handleMessages } from './rideMessages';
 
 // The state passed to this reducer is state.ride
 export default function(state = Map(), action) {
-  // console.log('reducing ride state:', state.toJS());
 
+  // console.log('reducing ride state:', state.toJS());
   switch (action.type) {
     case 'REQUEST_RIDE':
     case 'RECEIVE_RIDE_ID':

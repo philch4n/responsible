@@ -16,6 +16,13 @@ function requestMessages() {
   return { type: 'REQUEST_MESSAGES' };
 };
 
+function receiveMessages(messages) {
+  return {
+    type: 'RECEIVE_MESSAGES',
+    entry: messages,
+  };
+};
+
 function requestMessagesError(error) {
   return {
     type: 'REQUEST_MESSAGES_ERROR',
@@ -23,9 +30,3 @@ function requestMessagesError(error) {
   };
 };
 
-function receiveMessages(messages) {
-  return {
-    type: 'RECEIVE_MESSAGES',
-    entry: messages,
-  };
-};

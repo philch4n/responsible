@@ -34,5 +34,9 @@ function cancelRideError(state, action) {
   console.error("ERROR CANCELING RIDE! WHY OH WHY?");
   console.error(action.entry);
 
-  return state;
+  let updates = {
+    isCancelling: false,
+  }
+
+  return state.merge(updates);
 }

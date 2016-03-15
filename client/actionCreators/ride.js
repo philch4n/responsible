@@ -1,3 +1,7 @@
+/**
+ *  Initializes a ride request. Alerts the server and waits
+ *  to receive its upcoming ride Id.
+**/
 export function fetchRide(userId, location) {
   return (dispatch) => {
     dispatch(requestRide());
@@ -12,6 +16,24 @@ export function fetchRide(userId, location) {
       })
       .catch(function (error) {
         dispatch(requestRideError(error));
+      });
+  };
+};
+
+/**
+ *  Sends a request to the server to cancel an in-progress
+ *  or pending ride request.
+**/
+export function cancelRide(rideId) {
+  return function (dispatch) {
+    dispatch(cancelRideSent());
+
+    fetch(`/ride/${rideId}`, { method: 'DELETE' })
+      .then(function () {
+        dispatch(cancelRideSuccess());
+      })
+      .catch(function (error) {
+        dispatch(rideCancelError(error));
       });
   };
 };
@@ -41,20 +63,6 @@ function receiveRide(userObj) {
   };
 };
 
-export function cancelRide(rideId) {
-  return function (dispatch) {
-    dispatch(cancelRideSent());
-
-    fetch(`/ride/${rideId}`, { method: 'DELETE' })
-      .then(function () {
-        dispatch(cancelRideSuccess());
-      })
-      .catch(function (error) {
-        dispatch(rideCancelError(error));
-      });
-  };
-};
-
 function cancelRideSuccess() {
   return { type: 'CANCEL_RIDE' };
 };
@@ -63,7 +71,7 @@ function cancelRideSent() {
   return { type: 'CANCEL_RIDE_SENT' }
 }
 
-export function rideCancelError(error) {
+function rideCancelError(error) {
   return {
     type: 'CANCEL_RIDE_ERROR',
     entry: error,
