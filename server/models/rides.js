@@ -20,10 +20,13 @@ Ride.getRides = function () {
 
 // Create A ride
 Ride.createRide = function (attrs) {
-  Ride.deleteRiderAndDriver(attrs.rider_id, attrs.driver_id);
   return db('rides').insert(attrs, ['ride_id', 'ride_driver', 'ride_rider'])
     .catch(reportError('error creating ride in db'))
-    .then(ride => ride);
+    .then(function (ride) {
+      Ride.deleteRiderAndDriver(attrs.rider_id, attrs.driver_id)
+        .catch(reportError('error deleting rider and driver'));
+      return ride;
+    });
 };
 
 // Delete A Ride
