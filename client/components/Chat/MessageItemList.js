@@ -1,11 +1,12 @@
 import { MessageItem } from './MessageItem';
 
-export function MessageItemList({ messages = [], userID, }) {
+export function MessageItemList(props) {
+  console.log('in MessageItemList', props);
   return (
     <div className="MessageItemList">
         {
-          messages.map(function (message) {
-            return <MessageItem {...message} userID={userID} />;
+          props.messages.map(function (message) {
+            return <MessageItem {...message} userID={props.userID} />;
           })
         }
     </div>

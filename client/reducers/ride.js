@@ -21,6 +21,7 @@ export default function(state = Map(), action) {
     case 'REQUEST_MESSAGES':
     case 'RECEIVE_MESSAGES':
     case 'REQUEST_MESSAGES_ERROR':
+    case 'ADD_MESSAGE':
       return handleMessages(state, action);
   };
 

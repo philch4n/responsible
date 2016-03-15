@@ -6,6 +6,8 @@ export function handleMessages(state, action) {
       return receiveMessages(state, action);
     case 'REQUEST_MESSAGES_ERROR':
       return requestMessagesError(state, action);
+    case 'ADD_MESSAGE':
+      return addMessage(state, action);
   }
 
   return state;
@@ -36,3 +38,18 @@ function requestMessagesError(state, action) {
 
   return state.merge(updates);
 }
+
+function addMessage(state, action) {
+  console.log('in addMessage', state.toJS(), action);
+  let old = state.toJS().messages;
+  old.push(action.entry);
+  let updates = {
+    isFetchingMessages: false,
+    messages: old,
+  };
+
+  // console.log("new state:", state.merge(updates));
+
+  return state.merge(updates);
+}
+
