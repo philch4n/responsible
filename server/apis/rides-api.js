@@ -90,10 +90,10 @@ RideAPI.post('/driver', function (req, res) {
 * Sockets
 */
 
-io.sockets.on('connection', function (socket) {
-  socket.on('send message', function (data) {
-    io.sockets.emit('new message', data);
-  });
-  socket.on('something else')
-});
+// io.sockets.on('connection', function (socket) {
+//   socket.on('send message', function (data) {
+//     io.sockets.emit('new message', data);
+//   });
+//   socket.on('something else')
+// });
 
