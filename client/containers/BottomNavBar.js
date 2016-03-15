@@ -12,7 +12,7 @@ pulling out the objects we need in each container (like: props.ride). Not sure..
 function BottomNavBar({ user, ride, onConfirmLocationButtonClick }) {
   return (
     <div className="BottomNavBarContainer row">
-      <BottomButton {...ride}
+      <BottomButton {...ride} {...user}
         onConfirmLocationButtonClick={onConfirmLocationButtonClick(user.id)} />
     </div>
   );
