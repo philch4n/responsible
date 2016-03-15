@@ -50,7 +50,6 @@ export default {
   },
   ride: {
     isWaitingForMatch: false,
-<<<<<<< 84450e888513377008e638e45d1131bcd4cb1078
     isMatched: false,
     isConfirmed: false,
     isCancelling: false,
@@ -64,11 +63,6 @@ export default {
     { id: 7, time: '12:50', text: 'Be there in ten.', },
     ],
     match: null,
-=======
-    isMatched: true,
-    isConfirmed: true,
-    match: 4,
->>>>>>> (feat) Add chatbox container
   },
   routing: {
     locationBeforeTransitions: null,
