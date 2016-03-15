@@ -26,3 +26,35 @@ export default function(state = Map(), action) {
 
   return state;
 }
+
+function requestMatch(state, action) {
+  // aciton.entry: location
+  let updates = {
+    isWaitingForMatch: true,
+    isConfirmed: true,
+  };
+
+  return state.merge(updates);
+}
+
+function receiveMatch(state, action) {
+  console.log('inRecieveMatch', action.entry);
+  let updates = {
+    isWaitingForMatch: false,
+    isMatched: true,
+    match: action.entry,
+  };
+
+  return state.merge(updates);
+}
+
+function cancelRide(state, action) {
+  let updates = {
+    isConfirmed: false,
+    isMatched: false,
+    isWaitingForMatch: false,
+    match: null,
+  };
+
+  return state.merge(updates);
+}

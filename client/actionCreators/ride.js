@@ -10,7 +10,7 @@ export function fetchRide(userId, location) {
 
     fetch('/rides', {
       method: 'POST',
-      body: location
+      body: location,
     })
       .then(function (body) {
         let rideId = body.json().id;
