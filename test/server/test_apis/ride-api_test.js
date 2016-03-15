@@ -44,6 +44,100 @@ describe('Ride API', function () {
   app.use('/', routes);
   app.testReady();
 
+  it_('Should create rider in database', function * () {
+    var user1IdOnInsert  = null;
+    var user2IdOnInsert  = null;
+    var riderIdOnInsert  = null;
+    var driverIdOnInsert = null;
+
+    yield request(app)
+      .post('/user')
+      .send(testUser1)
+      .expect(201)
+      .expect(function (response) {
+        var user = response.body[0];
+        user1IdOnInsert = user.user_id;
+        expect(user.user_id).to.not.be.undefined;
+        expect(user.first_name).to.equal('Don');
+        expect(user.username).to.equal('Cheenus');
+      });
+
+    yield request(app)
+      .post('/user')
+      .send(testUser2)
+      .expect(201)
+      .expect(function (response) {
+        var user = response.body[0];
+        user2IdOnInsert = user.user_id;
+        expect(user.user_id).to.not.be.undefined;
+        expect(user.first_name).to.equal('Greg');
+        expect(user.username).to.equal('GregB');
+      });
+
+    var rider1 = {
+      foreign_rider: user1IdOnInsert,
+      location: '700 E. 8th street Austin, Tx',
+    };
+
+    yield request(app)
+      .post('/rides/riders')
+      .send(rider1)
+      .expect(201)
+      .expect(function (response) {
+        var rider = response.body[0];
+        riderIdOnInsert = rider.rider_id;
+        expect(rider.foreign_rider).to.not.be.undefined;
+        expect(rider.location).to.equal('700 E. 8th street Austin, Tx');
+      });
+  });
+
+  it_('Should create driver in database', function * () {
+    var user1IdOnInsert  = null;
+    var user2IdOnInsert  = null;
+    var riderIdOnInsert  = null;
+    var driverIdOnInsert = null;
+
+    yield request(app)
+      .post('/user')
+      .send(testUser1)
+      .expect(201)
+      .expect(function (response) {
+        var user = response.body[0];
+        user1IdOnInsert = user.user_id;
+        expect(user.user_id).to.not.be.undefined;
+        expect(user.first_name).to.equal('Don');
+        expect(user.username).to.equal('Cheenus');
+      });
+
+    yield request(app)
+      .post('/user')
+      .send(testUser2)
+      .expect(201)
+      .expect(function (response) {
+        var user = response.body[0];
+        user2IdOnInsert = user.user_id;
+        expect(user.user_id).to.not.be.undefined;
+        expect(user.first_name).to.equal('Greg');
+        expect(user.username).to.equal('GregB');
+      });
+
+    var driver1 = {
+      foreign_driver: user2IdOnInsert,
+      location: '700 Rock Ledge Arcadia, Oklahoma',
+    };
+
+    yield request(app)
+      .post('/rides/drivers')
+      .send(driver1)
+      .expect(201)
+      .expect(function (response) {
+        var driver = response.body[0];
+        driverIdOnInsert = driver.driver_id;
+        expect(driver.foreign_driver).to.not.be.undefined;
+        expect(driver.location).to.equal('700 Rock Ledge Arcadia, Oklahoma');
+      });
+  });
+
   it_('Should create ride in database', function * () {
     var user1IdOnInsert  = null;
     var user2IdOnInsert  = null;
