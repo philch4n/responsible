@@ -10,6 +10,6 @@ before_script:
 script:
   - grunt
   - npm run test-client
-  - NODE_ENV=test node lib/schema.js
+  # - NODE_ENV=test node lib/schema.js
   - npm run test-server
   
