@@ -12,6 +12,7 @@ import Root from './containers/Root';
 import { ProfileContainer } from './containers/Profile';
 import { SettingsContainer } from './containers/Settings';
 import { MainContainer } from './containers/Main';
+import { FriendItemList } from './components/TopNavBar/Friends/FriendItemList';
 
 import { socket } from './lib/socketSetup';
 import { configureListeners } from './lib/socketListeners';
@@ -22,6 +23,7 @@ const routes = <Route component={Root}>
   <Route path="/" component={MainContainer} />
   <Route path="/profile" component={ProfileContainer} />
   <Route path="/settings" component={SettingsContainer} />
+  <Route path="/friends" component={FriendItemList} />
 </Route>;
 
 const history = syncHistoryWithStore(browserHistory, store, {

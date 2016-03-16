@@ -3,31 +3,33 @@ import { connect } from 'react-redux';
 import { push } from 'react-router-redux';
 
 import { ProfileButton } from '../components/TopNavBar/Profile/ProfileButton';
-
-import { FriendItemList } from '../components/TopNavBar/Friends/FriendItemList';
-import { UserImage } from '../components/UserImage';
-import { ProfileInfoItemList } from '../components/TopNavBar/Profile/ProfileInfoItemList';
+import { FriendButton } from '../components/TopNavBar/Friends/FriendButton';
 
 import * as userAction from '../actionCreators/user';
 
 function nullFn(e) { console.log('you clicked me ' + e.target.className); };
 
-export function Settings({ onProfileButtonClick, }) {
+export function Settings({ onProfileButtonClick, friends, onFriendButtonClick, }) {
   return (
     <div>
       <ProfileButton onProfileButtonClick={onProfileButtonClick}/>
+      <FriendButton onFriendButtonClick={onFriendButtonClick}/>
     </div>
   );
 }
 
 const mapStateToProps = function (state) {
-  return state.toJS();
+  return state.get('user').toJS();
 };
 
 const mapDispatchToProps = function (dispatch) {
   return {
     onProfileButtonClick() {
       dispatch(push('/profile'));
+    },
+
+    onFriendButtonClick() {
+      dispatch(push('/friends'));
     },
   };
 };
