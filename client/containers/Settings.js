@@ -1,5 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
+import { push } from 'react-router-redux';
 
 import { ProfileButton } from '../components/TopNavBar/Profile/ProfileButton';
 
@@ -11,11 +12,10 @@ import * as userAction from '../actionCreators/user';
 
 function nullFn(e) { console.log('you clicked me ' + e.target.className); };
 
-export function Settings(props) {
-  console.log('what is your props', props.onClicks);
+export function Settings({ onProfileButtonClick, }) {
   return (
     <div>
-      <ProfileButton {...onClicks}/>
+      <ProfileButton onProfileButtonClick={onProfileButtonClick}/>
     </div>
   );
 }
@@ -33,7 +33,6 @@ const mapDispatchToProps = function (dispatch) {
 };
 
 export const SettingsContainer = connect(
-  mapStateToProps
-
-  // mapDispatchToProps
+  mapStateToProps,
+  mapDispatchToProps
 )(Settings);
