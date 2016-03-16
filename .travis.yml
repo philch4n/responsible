@@ -2,7 +2,7 @@ language: node_js
 node_js:
   - "5.6"
 env:
-  - test node lib/schema.js
+  - NODE_ENV=test node lib/schema.js
 services:
   - postgresql
 before_script:
