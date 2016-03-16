@@ -7,13 +7,13 @@ import { routerMiddleware } from 'react-router-redux';
 import { fromJS } from 'immutable';
 import { combineReducers } from 'redux-immutable';
 
-import { socket, socketActionMiddleware } from './lib/sockets';
+import { socket, socketActionMiddleware } from './sockets';
 
-import routeReducer from './reducers/route';
-import userReducer from './reducers/user';
-import rideReducer from './reducers/ride';
+import routeReducer from '../reducers/route';
+import userReducer from '../reducers/user';
+import rideReducer from '../reducers/ride';
 
-import InitialState from './initialState';
+import InitialState from '../initialState';
 
 const reducersWithRouter = combineReducers({
   user: userReducer,

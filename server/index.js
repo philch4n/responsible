@@ -32,18 +32,16 @@ if (process.env.NODE_ENV !== 'test') {
   var app = express();
   var server = require('http').createServer(app);
 
-
   var io = require('socket.io')(server);
 
-  require('./lib/socketPlugs')(io)
   io.on('connection', function (socket) {
-    console.log('client connected!!!');
+    console.log('server socket connection!!!');
+
+    socket.emit('message', { text: 'datadatasecondTestMesaage' });
   });
 
-
-  // Data: { riderId, driverId, message: {content, time, author}}
-  io.on('send_message', function(data) {
-    io.sockets(data.userId).emit('receive_message', data);
+  io.on('send_message', function (data) {
+    console.log('RECEIVED MESSAGE!!!', data);
   });
 
   //HTTP request logger middleware

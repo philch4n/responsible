@@ -1,4 +1,4 @@
-import { dispatch } from '../storeConfig';
+import { dispatch } from './storeConfig';
 
 import * as chatActions from '../actionCreators/chat';
 import * as rideACtions from '../actionCreators/ride';
@@ -10,8 +10,20 @@ import * as rideACtions from '../actionCreators/ride';
 **/
 
 export const socket = io.connect('http://localhost:1337');
-socket.on('connection', function (socket) {
-  console.log('client connected!');
+socket.on('connect_error', function (error) {
+  console.log('error connecting client socket');
+});
+
+socket.on('message', function (data) {
+  console.log('received client socket message', data);
+});
+
+socket.on('connect_timeout', function (data) {
+  console.log('server socket connection attempt timed out!');
+});
+
+socket.on('connect', function () {
+  console.log('client socket connected!');
 
   socket.on('need_ride', function (data) {
     console.log('need_ride socket action not implemented');
@@ -47,6 +59,8 @@ socket.on('connection', function (socket) {
     console.log('received message from server!:', data);
     dispatch(chatActions.addMessage(data));
   });
+
+  socket.emit('send_message', 'first test message!');
 });
 
 export const socketActionMiddleware =
