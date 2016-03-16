@@ -40,7 +40,6 @@ function requestMessagesError(state, action) {
 }
 
 function addMessage(state, action) {
-  console.log('in addMessage', state.toJS(), action);
   let old = state.toJS().messages;
   old.push(action.entry);
   let updates = {
@@ -48,8 +47,7 @@ function addMessage(state, action) {
     messages: old,
   };
 
-  // console.log("new state:", state.merge(updates));
+  console.log('new message list:', old);
 
   return state.merge(updates);
 }
-
