@@ -40,6 +40,7 @@ if (process.env.NODE_ENV !== 'test') {
     socket.on('send_message', function (data) {
       console.log('send message listener in on connection triggered', data);
 
+      // emit 'receive_message' to _all_ server sockets 
       io.sockets.emit('receive_message', data);
     });
   });
