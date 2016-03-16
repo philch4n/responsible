@@ -1,4 +1,3 @@
-import { ProfileButton } from '../TopNavBar/Profile/ProfileButton';
 import { CancelRideButton } from './CancelRideButton';
 
 // export function TopNavBarRightButton({ isRider, isDriver, isMatched,
@@ -14,9 +13,7 @@ export function TopNavBarRightButton({
       {
         isMatched || isWaitingForMatch ?
           <CancelRideButton {...onClicks} /> :
-          isDriver || isRider ?
-            <ProfileButton {...onClicks} /> :
-            <div className="emptyDiv"></div>
+          <div className="emptyDiv"></div>
       }
     </div>
     );
