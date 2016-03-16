@@ -1,6 +1,7 @@
 require('../server-helpers');
 var db      = require('../../lib/db.js');
-
+var Ride = require(__models + '/rides');
+var R = require('ramda');
 var Friends = {};
 module.exports = Friends;
 
@@ -24,3 +25,12 @@ Friends.filterFriends = function (userId, friend) {
   }
 };
 
+/*
+  get friends who are drivers
+  get friends who are riders
+*/
+
+// Takes in user_id, returns intersection of available drivers and friends
+Friends.getFriendDrivers = function (userId) {
+  return R.inetersection(Ride.getDrivers(), Friends.getFriendIds(userId));
+};
