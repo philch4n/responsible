@@ -31,13 +31,22 @@ routes.get('/api/tags-example', function (req, res) {
 if (process.env.NODE_ENV !== 'test') {
   var app = express();
   var server = require('http').createServer(app);
+
+
   var io = require('socket.io')(server);
+
+  require('./lib/socketPlugs')(io)
   io.on('connection', function (socket) {
     console.log('client connected!!!');
   });
 
-  //HTTP request logger middleware
 
+  // Data: { riderId, driverId, message: {content, time, author}}
+  io.on('send_message', function(data) {
+    io.sockets(data.userId).emit('receive_message', data);
+  });
+
+  //HTTP request logger middleware
   app.use(require('morgan')('dev'));
 
   //parse request body as JSON
