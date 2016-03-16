@@ -31,17 +31,17 @@ routes.get('/api/tags-example', function (req, res) {
 if (process.env.NODE_ENV !== 'test') {
   var app = express();
   var server = require('http').createServer(app);
-
   var io = require('socket.io')(server);
 
   io.on('connection', function (socket) {
-    console.log('server socket connection!!!');
+    // socket has a UNIQUE property id:
+    console.log('connected; socket.id:', socket.id);
 
-    socket.emit('message', { text: 'datadatasecondTestMesaage' });
-  });
+    socket.on('send_message', function (data) {
+      console.log('send message listener in on connection triggered', data);
 
-  io.on('send_message', function (data) {
-    console.log('RECEIVED MESSAGE!!!', data);
+      io.sockets.emit('receive_message', data);
+    });
   });
 
   //HTTP request logger middleware
@@ -76,7 +76,6 @@ if (process.env.NODE_ENV !== 'test') {
   var port = process.env.PORT || 1337;
   server.listen(port);
 
-  console.log('server io:', io);
   console.log('Listening on port', port);
 
 } else {

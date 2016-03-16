@@ -12,6 +12,11 @@ import Root from './containers/Root';
 import { ProfileContainer } from './containers/Profile';
 import { MainContainer } from './containers/Main';
 
+import { socket } from './lib/socketSetup';
+import { configureListeners } from './lib/socketListeners';
+
+configureListeners(socket);
+
 const routes = <Route component={Root}>
   <Route path="/" component={MainContainer} />
   <Route path="/profile" component={ProfileContainer} />

@@ -39,7 +39,7 @@ const mapDispatchToProps = function (dispatch) {
         text: e.target.firstChild.value,
       };
       e.target.firstChild.value = '';
-      dispatch(chatAction.addMessage(messageObject));
+      dispatch(chatAction.submitMessage(messageObject));
     }),
   };
 };
