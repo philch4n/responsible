@@ -1,4 +1,4 @@
- import {DriverItem} from './DriverItem';
+import {DriverItem} from './DriverItem';
 
 export function DriverItemList({ drivers }) {
   return (
