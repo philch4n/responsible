@@ -28,6 +28,7 @@ const mapDispatchToProps = function (dispatch) {
   return {
     onFriendClick: function (userId) {
       console.log('undefined onFriendClick function');
+
       // dispatch(userAction.displayProfile(userId));
     },
   };

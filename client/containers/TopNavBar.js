@@ -11,7 +11,7 @@ import * as rideAction from '../actionCreators/ride';
 function TopNavBar({ onCancelRideButtonClick, ...props }) {
   return (
     <div className="TopNavBarContainer row">
-      <SettingIcon />
+      <SettingIcon {...props}/>
       <Logo />
       <TopNavBarRightButton
         {...props}
@@ -29,7 +29,7 @@ const mapStateToProps = function (state) {
 const mapDispatchToProps = function (dispatch) {
   return {
     onSettingsButtonClick() {
-      // kim!
+      dispatch(push('/settings'))
     },
     onProfileButtonClick() {
       dispatch(push('/profile'))
