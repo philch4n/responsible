@@ -4,16 +4,18 @@ import { push } from 'react-router-redux';
 
 import { ProfileButton } from '../components/TopNavBar/Profile/ProfileButton';
 import { FriendButton } from '../components/TopNavBar/Friends/FriendButton';
+import { SignoutButton } from '../components/SignoutButton';
 
 import * as userAction from '../actionCreators/user';
 
 function nullFn(e) { console.log('you clicked me ' + e.target.className); };
 
-function Settings({ onProfileButtonClick, onFriendButtonClick, }) {
+function Settings({ onProfileButtonClick, onFriendButtonClick, onSignoutButtonClick, }) {
   return (
     <div>
       <ProfileButton onProfileButtonClick={onProfileButtonClick}/>
       <FriendButton onFriendButtonClick={onFriendButtonClick}/>
+      <SignoutButton onSignoutButtonClick={onSignoutButtonClick}/>
     </div>
   );
 }
