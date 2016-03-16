@@ -1,6 +1,8 @@
 language: node_js
 node_js:
   - "5.6"
+env:
+  - test node lib/schema.js
 services:
   - postgresql
 before_script:
@@ -10,6 +12,5 @@ before_script:
 script:
   - grunt
   - npm run test-client
-  # - NODE_ENV=test node lib/schema.js
   - npm run test-server
   
