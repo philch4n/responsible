@@ -13,7 +13,7 @@ import { combineReducers } from 'redux-immutable';
 
 import { socket, remoteActionMiddleware } from './lib/sockets';
 
- import Root from './containers/Root';
+import Root from './containers/Root';
 import { ProfileContainer } from './containers/Profile';
 import { MainContainer } from './containers/Main';
 
