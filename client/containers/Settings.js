@@ -9,7 +9,7 @@ import * as userAction from '../actionCreators/user';
 
 function nullFn(e) { console.log('you clicked me ' + e.target.className); };
 
-export function Settings({ onProfileButtonClick, friends, onFriendButtonClick, }) {
+function Settings({ onProfileButtonClick, onFriendButtonClick, }) {
   return (
     <div>
       <ProfileButton onProfileButtonClick={onProfileButtonClick}/>

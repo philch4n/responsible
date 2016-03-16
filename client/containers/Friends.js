@@ -4,10 +4,11 @@ import { FriendItemList } from '../components/TopNavBar/Friends/FriendItemList';
 
 function nullFn(e) { console.log('you clicked me ' + e.target.className); };
 
-function List({ friends, onFriendClick=nullFn }) {
+function List({ friends }) {
+  console.log('friends', friends, FriendItemList);
   return (
     <div className="friendList">
-      <FriendItemList friends={friends} />
+      <FriendItemList friends={friends}/>
     </div>
   );
 };

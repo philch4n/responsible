@@ -2,7 +2,7 @@ import {FriendItem} from './FriendItem';
 
 function nullFn(e) { console.log('you clicked me ' + e.target.className); };
 
-export function FriendList({ friends, onFriendClick=nullFn }) {
+export function FriendItemList({ friends, onFriendClick=nullFn }) {
   return (
     <div className="friendList">
     <h1>Your Friends!</h1>
