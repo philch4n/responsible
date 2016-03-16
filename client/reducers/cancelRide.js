@@ -31,12 +31,12 @@ function cancelRideSent(state, action) {
 }
 
 function cancelRideError(state, action) {
-  console.error("ERROR CANCELING RIDE! WHY OH WHY?");
+  console.error('ERROR CANCELING RIDE! WHY OH WHY?');
   console.error(action.entry);
 
   let updates = {
     isCancelling: false,
-  }
+  };
 
   return state.merge(updates);
 }

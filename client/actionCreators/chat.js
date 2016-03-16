@@ -5,8 +5,8 @@ export function fetchMessages(rideId) {
     dispatch(requestMessages());
 
     fetch(`/messages/${rideId}`)
-      .then(function (messages) {
-        let messages = messages.json();
+      .then(function (inputs) {
+        let messages = inputs.json();
         dispatch(receiveMessages(messages));
       })
       .catch(function (error) {
@@ -27,3 +27,9 @@ function requestMessagesError(error) {
   return { type: 'REQUEST_MESSAGES_ERROR', entry: error, };
 };
 
+export function addMessage(message) {
+  return {
+    type: 'ADD_MESSAGE',
+    entry: message,
+  };
+};
