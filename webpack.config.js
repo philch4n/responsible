@@ -2,7 +2,7 @@ var webpack = require('webpack');
 
 var entry = ['./client/app.js'];
 var plugins = [];
-if (process.env.WEBPACK === 'dev-server') {
+if (process.env.WEBPACK !== 'dev-server') {
   entry = [
     'webpack-dev-server/client?http://localhost:8080',
     'webpack/hot/only-dev-server',
