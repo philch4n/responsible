@@ -9,6 +9,7 @@ before_script:
   - npm install -g grunt-cli
   - npm install -g knex
   - psql -c 'create database test;' -U postgres
+  - npm run test
 script:
   - grunt
   - npm run test-client
