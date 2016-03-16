@@ -29,3 +29,7 @@ export function setDriver(isDriver) {
 export function setRider(isRider) {
   return { type: 'SET_RIDER', entry: isRider, };
 }
+
+export function signout(info) {
+  return { type: 'SIGNOUT', entry: info };
+}

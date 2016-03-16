@@ -11,10 +11,6 @@ function Profile({ friends, profile, onFriendClick }) {
     <div className="ProfileContainer">
       <UserImage {...profile} imageType="portrait" />
       <ProfileInfoItemList />
-      <FriendItemList
-        friends={friends}
-        onFriendClick={onFriendClick}
-      />
     </div>
   );
 }
@@ -24,16 +20,18 @@ const mapStateToProps = function (state) {
   return state.get('user').toJS();
 };
 
-const mapDispatchToProps = function (dispatch) {
-  return {
-    onFriendClick: function (userId) {
-      console.log('undefined onFriendClick function');
-      // dispatch(userAction.displayProfile(userId));
-    },
-  };
-};
+// const mapDispatchToProps = function (dispatch) {
+//   return {
+//     onFriendClick: function (userId) {
+//       console.log('undefined onFriendClick function');
+
+//       // dispatch(userAction.displayProfile(userId));
+//     },
+//   };
+// };
 
 export const ProfileContainer = connect(
-  mapStateToProps,
-  mapDispatchToProps
+  mapStateToProps
+
+  // mapDispatchToProps
 )(Profile);

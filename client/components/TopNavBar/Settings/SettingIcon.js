@@ -5,13 +5,6 @@ export function SettingIcon({
   onSettingsButtonClick = nullFn,
 }) {
   return (
-
-    // Ah! Sorry, Kim! Let's talk about what to do with these conflicts tomorrow morning.
-    // <div className='SettingIcon two columns' onClick={onSettingButtonClick}>
-    //   <select className='SettingButton btn u-full-width'>
-    //     <option>Settings</option>
-    //     <option>Profile</option>
-    //   </select>
     <div className='SettingIcon two columns' onClick={onSettingsButtonClick}>
       <button className='SettingButton btn u-full-width' type='button'>Settings!</button>
     </div>

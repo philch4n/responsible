@@ -14,6 +14,8 @@ export default function (state = Map(), action) {
       return setDriver(state, action);
     case 'SET_RIDER':
       return setRider(state, action);
+    case 'SIGNOUT':
+      return signout(state, action);
   };
 
   return state;
@@ -32,6 +34,18 @@ function setRider(state, { entry }) {
   let updates = {
     isRider: entry,
     isDriver: false,
+  };
+
+  return state.merge(updates);
+}
+
+function signout(state, { entry }) {
+  let updates = {
+    isDriver: false,
+    isRider: false,
+    id: null,
+    profile: null,
+    friends: null,
   };
 
   return state.merge(updates);
