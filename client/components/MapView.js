@@ -33,10 +33,6 @@ const DirectionsService = new google.maps.DirectionsService();
 // };
 
 
-
-
-
-
 function Map ({ match, location, onMapView, directions }) {
   return match ? 
   (
