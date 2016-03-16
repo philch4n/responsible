@@ -38,10 +38,16 @@ export function addMessage(message) {
 // What does this message look like?
 export function submitMessage(message) {
   console.log('submitting message!');
-  socket.emit('send_message', message);
 
   // return addMessage creator if we want to automatically add the message
   // instead of waiting for the message to be retransmitted by the server.
   // return addMessage(message);
-  return { type: 'Not an action', entry: message };
+  return {
+    type: 'NotAnAction',
+    entry: message,
+    meta: {
+      event: 'send_message',
+      entry: message,
+    },
+  };
 }

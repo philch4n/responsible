@@ -7,7 +7,7 @@
     "test-server": "./node_modules/.bin/mocha test/server --recursive --require test/test-helper.js",
     "test-client": "./node_modules/.bin/mocha test/client --compilers js:babel-core/register --colors --recursive --require test/test-helper.js",
     "dev-client": "webpack-dev-server --content-base dist/ --hot --inline",
-    "dev-server": "webpack && WEBPACK='dev-server' node server/index.js"
+    "dev-server": "WEBPACK=dev-server webpack && node server/index.js"
   },
   "author": "",
   "license": "ISC",

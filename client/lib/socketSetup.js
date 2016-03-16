@@ -6,7 +6,7 @@ export const socket = io.connect('http://localhost:1337');
 
 export const socketActionMiddleware =
   (socket) => (store) => (next) => (action) => {
-    if (action.meta && action.meta.remote)
+    if (action.meta)
       socket.emit(action.meta.event, action.meta.entry);
 
     return next(action);
