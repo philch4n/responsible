@@ -11,7 +11,7 @@ if (process.env.WEBPACK !== 'dev-server') {
   plugins = [
     new webpack.HotModuleReplacementPlugin(),
   ];
-}
+};
 
 module.exports = {
   plugins: plugins,
