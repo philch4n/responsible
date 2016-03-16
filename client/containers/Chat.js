@@ -12,10 +12,12 @@ export function box({ match, id, messages, addMessage, }) {
     <div className='chatbox'>
       <DriverItem {...match} />
       <MessageItemList userID={id} messages={messages}/>
-      <form onSubmit={addMessage(id)}>
-        <input className="messageText u-full-width" id="message"></input>
-        <input className="messageSubmit button" type="submit" />
-      </form>
+      <div className='textSubmit'>
+        <form onSubmit={addMessage(id)}>
+          <input className="messageText ten columns" defaultValue='' id="message"></input>
+          <input className="messageSubmit button" type="submit" />
+        </form>
+      </div>
     </div>
   );
 }
@@ -28,15 +30,15 @@ const mapStateToProps = function (state) {
 const mapDispatchToProps = function (dispatch) {
   return {
     addMessage: curry(function (id, e) {
-      console.log('userid?', id);
       e.preventDefault();
       let timeStamp = new Date();
       let currentTime = timeStamp.getHours() + ':' + timeStamp.getMinutes();
-      var messageObject = {
+      let messageObject = {
         userID: id,
         time: currentTime,
         text: e.target.firstChild.value,
       };
+      e.target.firstChild.value = '';
       dispatch(chatAction.addMessage(messageObject));
     }),
   };

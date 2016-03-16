@@ -431,6 +431,12 @@ form {
   transform: translateY(-50%);
   margin: 0 4%;
 }
+.textSubmit {
+  margin: 4%;
+}
+.incoming, .outgoing {
+  margin: 1px;
+}
 
 /*body {
   font-family: "Helvetica Neue";
