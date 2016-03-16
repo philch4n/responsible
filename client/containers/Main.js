@@ -1,4 +1,4 @@
- import { connect } from 'react-redux';
+import { connect } from 'react-redux';
 
 import { TopNavBarContainer } from './TopNavBar';
 import { BottomNavBarContainer } from './BottomNavBar';
