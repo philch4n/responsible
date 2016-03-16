@@ -13,7 +13,7 @@ export function TopNavBarRightButton({
       {
         isMatched || isWaitingForMatch ?
           <CancelRideButton {...onClicks} /> :
-          <div className="emptyDiv"></div>
+          <div />
       }
     </div>
     );
