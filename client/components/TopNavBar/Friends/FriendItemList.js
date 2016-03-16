@@ -1,8 +1,8 @@
-import { connect } from 'react-redux';
-
 import {FriendItem} from './FriendItem';
 
-export function FriendList({ friends, onFriendClick }) {
+function nullFn(e) { console.log('you clicked me ' + e.target.className); };
+
+export function FriendList({ friends, onFriendClick=nullFn }) {
   return (
     <div className="friendList">
     <h1>Your Friends!</h1>
@@ -20,25 +20,3 @@ export function FriendList({ friends, onFriendClick }) {
     </div>
   );
 };
-
-const mapStateToProps = function (state) {
-  return state.get('user').toJS();
-};
-
-// const mapDispatchToProps = function (dispatch) {
-//   return {
-//     onProfileButtonClick() {
-//       dispatch(push('/profile'));
-//     },
-
-//     onFriendButtonClick() {
-//       dispatch(push('/friends'));
-//     },
-//   };
-// };
-
-export const FriendItemList = connect(
-  mapStateToProps
-
-  // mapDispatchToProps
-)(FriendList);
