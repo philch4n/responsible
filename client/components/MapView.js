@@ -1,7 +1,7 @@
 import React from 'react';
 import { GoogleMapLoader, GoogleMap } from 'react-google-maps';
 
-export function MapView({ match, location }) {
+export function MapView(props) {
 
   function errorError() {
     alert("Location can't be found");
@@ -21,15 +21,11 @@ export function MapView({ match, location }) {
 };
   return (
     <div className='map'>
-
-      match ? 
-        <GoogleMap getDirectionsBetween={riderLocation, driverLocation}
-        :
-        <GoogleMapLoader
-          ref={(map) => console.log(map)}
-          containerElement={ <div style={{ height: '70%' }} /> }
-          googleMapElement={ <GoogleMap defaultZoom={14} defaultCenter={location}></GoogleMap> }
-        />
+      <GoogleMapLoader
+      ref={(map) => console.log(map)}
+      containerElement={ <div style={{ height: '70%' }} /> }
+      googleMapElement={ <GoogleMap defaultZoom={14} defaultCenter={{ lat: austin.lat, lng: austin.lng }}></GoogleMap> }
+      />
     </div>
 	);
 };
