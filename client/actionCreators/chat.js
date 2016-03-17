@@ -26,12 +26,12 @@ function receiveMessages(messages) {
 };
 
 function requestMessagesError(error) {
+  console.error('uh oh, error requesting ride messages:', error);
   return { type: 'REQUEST_MESSAGES_ERROR', entry: error, };
 };
 
 // message: { userId, time, text }
 export function addMessage(message) {
-  console.log('adding a message!');
   return { type: 'ADD_MESSAGE', entry: message, };
 };
 

@@ -59,6 +59,7 @@ function acceptRideSent() {
 };
 
 function acceptRideError(error) {
+  console.error('uh oh, error accepting ride:', error);
   return { type: 'ACCEPT_RIDE_ERROR', entry: error };
 };
 
@@ -72,7 +73,7 @@ function receiveRideId(rideId) {
 };
 
 function requestRideError(error) {
-  console.error('error requesting ride');
+  console.error('uh oh, error requesting ride');
   return { type: 'REQUEST_RIDE_ERROR', entry: error, };
 };
 
@@ -89,6 +90,6 @@ function cancelRideSent() {
 }
 
 function cancelRideError(error) {
-  console.error('error canceling ride');
+  console.error('uh oh, error canceling ride');
   return { type: 'CANCEL_RIDE_ERROR', entry: error, };
 };
