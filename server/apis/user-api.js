@@ -20,7 +20,13 @@ UserAPI.get('/:id', function (req, res) {
     .catch(sendStatusAndError(res, 500, 'no such user'));
 });
 
-//Create a user
+// Create or update a user on initial login.
+//
+// expects: {
+//  OAuthUser: { user object },
+//  verifyBy: OAuthUser property name and users table column name to
+//             use to check if this user exists
+// }
 UserAPI.post('/', function (req, res) {
   var user = req.body.OAuthUser;
 
