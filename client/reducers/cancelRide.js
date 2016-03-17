@@ -34,10 +34,20 @@ function cancelRideSent(state, action) {
 
 function cancelRideError(state, action) {
   console.error('ERROR CANCELING RIDE! WHY OH WHY?');
-  console.error(action.entry);
+  console.error(action);
 
   let updates = {
     isCancelling: false,
+  };
+
+  return state.merge(updates);
+}
+
+function removeRider(state, action) {
+  let oldRiders = state.get('riders').toJS();
+  newRiders = oldRiders.filter((rider) => rider.userId !== action.entry);
+  let updates = {
+    riders: newRiders,
   };
 
   return state.merge(updates);
