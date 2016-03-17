@@ -75,6 +75,14 @@ if (process.env.NODE_ENV !== 'test') {
   var rides = require('./apis/rides-api');
   var message = require('./apis/message-api');
 
+  // var app = express();
+  // var server = require('http').createServer(app);
+  // var io = require('./lib/ioConfig');
+
+  // io.init(server);
+  // server.listen(1337);
+  // app.use('/', routes);
+
   routes.use('/user', user);
   routes.use('/rides', rides);
   routes.use('/messages', message);

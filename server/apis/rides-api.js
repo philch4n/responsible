@@ -85,9 +85,10 @@ RideAPI.post('/riders', function (req, res) {
     })
     .catch(sendStatusAndError(res, 500, 'error getting friend drivers'))
     .then(function (arrayOfFriendDrivers) {
+      console.log('this is the io object', io)
       io.sockets.emit('new_rider', rider);
     })
-    // .catch(sendStatusAndError(res, 500, 'error creating rider'))
+    .catch(sendStatusAndError(res, 500, 'error emiting new rider'))
     .then(sendStatusAndData(res, 201));
 });
 
