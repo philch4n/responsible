@@ -6,6 +6,8 @@ export function handleCancel(state, action) {
       return cancelRideSent(state, action);
     case 'CANCEL_RIDE_ERROR':
       return cancelRideError(state, action);
+    case 'REMOVE_RIDER':
+      return removeRider(state, action);
   };
 
   return state;

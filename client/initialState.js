@@ -62,6 +62,7 @@ export default {
     { id: 1, time: '12:45', text: 'Four Horseman', },
     { id: 7, time: '12:50', text: 'Be there in ten.', },
     ],
+    riders: [],
     match: null,
   },
   routing: {

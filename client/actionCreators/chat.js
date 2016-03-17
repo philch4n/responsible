@@ -41,7 +41,7 @@ export function submitMessage(message) {
 
   // return addMessage creator if we want to automatically add the message
   // instead of waiting for the message to be retransmitted by the server.
-  // return addMessage(message);
+  //     return addMessage(message);
   return {
     type: 'NotAnAction',
     entry: message,
