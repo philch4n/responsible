@@ -92,6 +92,11 @@ function cancelRideError(error) {
   return { type: 'CANCEL_RIDE_ERROR', entry: error, };
 };
 
+// rider is: { userId, location, name }
+export function addRider(rider) {
+  return { type: 'ADD_RIDER', entry: rider, };
+};
+
 // Removes a rider from a driver's list of riders.
 export function removeRider(riderId) {
   return { type: 'REMOVE_RIDER', entry: riderId };
