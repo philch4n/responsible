@@ -12,18 +12,14 @@ User.getUsers = function () {
     .catch(reportError('error retrieving username by userId'));
 };
 
-User.findUserById = function (userId) {
-  return User.findUserBy('user_id', userId);
-
-  // return db.select('*').from('users').where({ user_id: userId })
-  //   .catch(reportError('error retrieving user by userId'))
-  //   .then(first);
-};
-
 User.findUserBy = function (byWhat, isWhat) {
   return db('users').select('*').where({ [byWhat]: isWhat })
     .catch(reportError('error finding a user by ' + byWhat))
     .then(first);
+};
+
+User.findUserById = function (userId) {
+  return User.findUserBy('user_id', userId);
 };
 
 // delete at user by their user_id
@@ -76,27 +72,31 @@ User.updateUser = function (userId, attrs) {
       .catch(reportError('error updating user by id:' + userId));
 };
 
-let verifyBy = 'zipcode';
-let OAuthUserObj1 = {
-  zipcode: 53240,
-  username: 'Ronnie Tu-tu',
-  email: 'rick@roll.groove',
-  avatar: 'imaginaryMindscape',
-};
-let OAuthUserObj2 = {
-  zipcode: 22222,
-  username: 'Jalapeno on a Stick',
-  email: 'just send it up my butt',
-  avatar: 'master hand',
-  first_name: 'Jap',
-};
+//
+// uncomment to see how/if createOrUpdateUser is working.
+//
 
-User.createOrUpdateUser(verifyBy, OAuthUserObj1)
-  .then(function (data) {
-    console.log('updated user data:', data);
-  });
+// let verifyBy = 'zipcode';
+// let OAuthUserObj1 = {
+//   zipcode: 53240,
+//   username: 'Ronnie Tu-tu',
+//   email: 'rick@roll.groove',
+//   avatar: 'imaginaryMindscape',
+// };
+// let OAuthUserObj2 = {
+//   zipcode: 22222,
+//   username: 'Jalapeno on a Stick',
+//   email: 'just send it up my butt',
+//   avatar: 'master hand',
+//   first_name: 'Jap',
+// };
 
-User.createOrUpdateUser(verifyBy, OAuthUserObj2)
-  .then(function (data) {
-    console.log('new user data:', data);
-  });
+// User.createOrUpdateUser(verifyBy, OAuthUserObj1)
+//   .then(function (data) {
+//     console.log('updated user data:', data);
+//   });
+
+// User.createOrUpdateUser(verifyBy, OAuthUserObj2)
+//   .then(function (data) {
+//     console.log('new user data:', data);
+//   });
