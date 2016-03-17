@@ -22,8 +22,16 @@ UserAPI.get('/:id', function (req, res) {
 
 //Create a user
 UserAPI.post('/', function (req, res) {
-  var user = req.body;
-  User.createUser(user)
+  var user = req.body.OAuthUser;
+
+  // verify the users exists by which property of the OAuth object?
+  // has to also be a column in the users table.
+  // If names for similar things (ie: picture and avatar) are different,
+  // rename them before sending the fetch.
+  var verifyBy = req.body.verifyBy;
+
+  // create user if needed, update attributes if not, and return merged user info
+  User.createOrUpdateUser(verifyBy, user)
     .then(sendStatusAndData(res, 201))
     .catch(sendStatusAndError(res, 500, ('error creating user')));
 });
@@ -31,7 +39,7 @@ UserAPI.post('/', function (req, res) {
 UserAPI.put('/:id', function (req, res) {
   var id = req.params.id;
   var attrs = req.params;
-  console.log('attrs', attrs);
+  console.log('updating user', id, ' with:', attrs);
   User.updateUser(id, attrs)
     .then(sendStatusAndData(res, 200))
     .catch(sendStatusAndError(res, 500, 'Server error updating user'));
