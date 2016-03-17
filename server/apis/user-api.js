@@ -20,8 +20,15 @@ UserAPI.get('/:id', function (req, res) {
     .catch(sendStatusAndError(res, 500, 'no such user'));
 });
 
-//Create a user
+
 UserAPI.post('/', function (req, res) {
+  var user = req.body;
+  User.createUser(user)
+    .then(sendStatusAndData(res, 201))
+    .catch(sendStatusAndError(res, 500, ('error creating user')));
+});
+
+UserAPI.post('/tmp', function (req, res) {
   var user = req.body.OAuthUser;
 
   // verify the users exists by which property of the OAuth object?

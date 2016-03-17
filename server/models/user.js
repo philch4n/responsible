@@ -59,7 +59,7 @@ User.createOrUpdateUser = function (verifyBy, attrs) {
 
 // username should probably just be name
 User.createUser = function (attrs) {
-  return db('users').insert(attrs, ['user_id', 'username', 'email', 'avatar'])
+  return db('users').insert(attrs, ['user_id', 'first_name', 'username', 'email', 'avatar'])
     .catch(reportError('error creating user into db'));
 };
 
