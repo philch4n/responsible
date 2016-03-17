@@ -1,7 +1,7 @@
 import { List } from 'immutable';
 
 export function handleRiders(state = List(), action) {
-  
+
   console.log('reducing riders:', state.toJS());
   switch (action.type) {
     case 'ADD_RIDER':
@@ -13,12 +13,12 @@ export function handleRiders(state = List(), action) {
   return state;
 }
 
+// adds a rider or array of riders to the state riders list.
 function addRider(state, action) {
-  let updates = {
-    riders: state.push(action.entry),
-  };
-
-  return state.merge(updates);
+  if (Array.isArray(action.entry))
+    return state.push(...action.entry);
+  else
+    return state.push(action.entry);
 };
 
 function removeRider(state, action) {
