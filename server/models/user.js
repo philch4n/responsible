@@ -67,7 +67,7 @@ User.createUser = function (attrs) {
 User.updateUser = function (userId, attrs) {
   return db('users')
     .where({ user_id: userId })
-    .update(attrs, ['user_id', 'username', 'email', 'avatar'])
+    .update(att2rs, ['user_id', 'username', 'email', 'avatar'])
       .then(first)
       .catch(reportError('error updating user by id:' + userId));
 };

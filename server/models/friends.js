@@ -1,9 +1,10 @@
 'use strict';
 require('../server-helpers');
-var db      = require('../../lib/db.js');
-var Ride = require(__models + '/rides');
-var R = require('ramda');
-var Friends = {};
+const db      = require('../../lib/db.js');
+const Ride = require(__models + '/rides');
+const R = require('ramda');
+
+const Friends = {};
 module.exports = Friends;
 
 //Returns an array of friend ids
