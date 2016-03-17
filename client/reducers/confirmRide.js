@@ -1,4 +1,3 @@
-
 export function handleConfirm(state, action) {
   switch (action.type) {
     case 'CONFIRM_RIDE':
