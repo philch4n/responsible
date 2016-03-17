@@ -1,10 +1,17 @@
 import fetch from 'isomorphic-fetch';
 
-export function fetchUserInfo(uniqueParam) {
+export function fetchUserInfo(props) {
+  console.log('in userActionCreator', props);
   return (dispatch) => {
     dispatch(requestUserInfo());
 
-    fetch(`/users/${uniqueparam}`, { method: 'POST', body: anydada })
+    fetch('/user/tmp', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify(props)
+    })
       .then((info) => dispatch(receiveUserInfo(info)))
       .catch((error) => dispatch(requestUserInfoError(error)));
   };
