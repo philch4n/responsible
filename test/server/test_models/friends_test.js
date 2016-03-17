@@ -13,7 +13,12 @@ describe('Friends Models', function () {
   beforeEach_(function * () {
     yield Seed.cleaner();
     SeedObj = yield* Seed.runner();
+  });
 
+  it_('Should get friend IDs', function * () {
+    var friends = yield Friends.getFriendIds(SeedObj.user1Id[0].user_id);
+    expect(friends).to.have.length(1);
+    expect(friends).to.be.an.instanceOf(Array);
   });
 
   it_('Should get drivers who are friends', function * () {
