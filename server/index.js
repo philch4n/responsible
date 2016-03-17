@@ -31,19 +31,9 @@ routes.get('/api/tags-example', function (req, res) {
 if (process.env.NODE_ENV !== 'test') {
   var app = express();
   var server = require('http').createServer(app);
-  var io = require('socket.io')(server);
 
-  io.on('connection', function (socket) {
-    // socket has a UNIQUE property id:
-    console.log('connected; socket.id:', socket.id);
-
-    socket.on('send_message', function (data) {
-      console.log('send message listener in on connection triggered', data);
-
-      // emit 'receive_message' to _all_ server sockets
-      io.sockets.emit('receive_message', data);
-    });
-  });
+  var io = require('./lib/ioConfig');
+  io.init(server);
 
   //HTTP request logger middleware
   app.use(require('morgan')('dev'));

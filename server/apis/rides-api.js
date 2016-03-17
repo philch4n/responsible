@@ -1,6 +1,6 @@
 require('../server-helpers');
 var RideAPI = require('express').Router();
-var io = require('socket.io');
+var io = require('../lib/ioConfig').io;
 
 var Ride = require(__models + '/rides');
 module.exports = RideAPI;
@@ -11,6 +11,8 @@ module.exports = RideAPI;
 
 //Get all rides
 RideAPI.get('/', function (req, res) {
+  io.sockets.emit('receive_message', { id: 9, text: 'gassy', time: '22:50' });
+
   Ride.getRides()
     .then(sendStatusAndData(res, 200))
     .catch(sendStatusAndError(res, 500, ('error getting rides')));
