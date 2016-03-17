@@ -1,3 +1,4 @@
+'use strict';
 require('../server-helpers');
 var db      = require('../../lib/db.js');
 const first = require('ramda').head;
@@ -7,7 +8,7 @@ module.exports = User;
 
 // get all users
 User.getUsers = function () {
-  return db.select('*').from('users')
+  return db('users').select('*')
     .catch(reportError('error retrieving username by userId'));
 };
 
@@ -20,7 +21,7 @@ User.findUserById = function (userId) {
 };
 
 User.findUserBy = function (byWhat, isWhat) {
-  return db.select('*').from('users').where({ [byWhat]: isWhat })
+  return db('users').select('*').where({ [byWhat]: isWhat })
     .catch(reportError('error finding a user by ' + byWhat))
     .then(first);
 };
@@ -43,10 +44,9 @@ User.deleteUser = function (userId) {
 User.createOrUpdateUser = function (verifyBy, attrs) {
   return User.findUserBy(verifyBy, attrs[verifyBy])
     .then(function (foundEntry) {
-      console.log('oh, whatd we find?', foundEntry);
       if (foundEntry) {
         let userPropsToUpdateWithOAuth = {
-          first_name: attrs.name.split(' ')[0],
+          first_name: attrs.name,
           email: attrs.email,
           avatar: attrs.avatar,
         };
@@ -69,22 +69,34 @@ User.createUser = function (attrs) {
 
 // username should probably just be name
 User.updateUser = function (userId, attrs) {
-  return db('users').update(attrs, ['user_id', 'username', 'email', 'avatar'])
-    .catch(reportError('error updating user by id:', userId))
-    .then(function (updatedPropCount) {
-      if (updatedPropCount)
-        return true;
-      else
-        return false;
-    });
+  return db('users')
+    .where({ user_id: userId })
+    .update(attrs, ['user_id', 'username', 'email', 'avatar'])
+      .then(first)
+      .catch(reportError('error updating user by id:' + userId));
 };
 
-User.createUser({
-  username: 'Xendipity',
-  first_name: 'JJ',
-  email: 'jkrone@vt.edu',
-  avatar: 'wahoo.com',
-})
+let verifyBy = 'zipcode';
+let OAuthUserObj1 = {
+  zipcode: 53240,
+  username: 'Ronnie Tu-tu',
+  email: 'rick@roll.groove',
+  avatar: 'imaginaryMindscape',
+};
+let OAuthUserObj2 = {
+  zipcode: 22222,
+  username: 'Jalapeno on a Stick',
+  email: 'just send it up my butt',
+  avatar: 'master hand',
+  first_name: 'Jap',
+};
+
+User.createOrUpdateUser(verifyBy, OAuthUserObj1)
   .then(function (data) {
-    console.log('created', data);
+    console.log('updated user data:', data);
+  });
+
+User.createOrUpdateUser(verifyBy, OAuthUserObj2)
+  .then(function (data) {
+    console.log('new user data:', data);
   });
