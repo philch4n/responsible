@@ -6,15 +6,13 @@ import { Chat } from '../../containers/Chat';
 import * as rideAction from '../../actionCreators/ride';
 
 export function Button({ isWaitingForMatch, isConfirmed, isMatched,
-match, user, messages, onConfirmLocationButtonClick, onWaitingClick, }) {
-  console.log('isWaitingForMatch:', isWaitingForMatch);
-  console.log('isConfirmed:', isConfirmed);
+match, user, messages, confirmLocation, onWaitingClick, }) {
   return (
     <div className="BottomNavBarRightButton">
     {
       !isWaitingForMatch && !isConfirmed ?
         <ConfirmLocationButton
-          onConfirmLocationButtonClick={onConfirmLocationButtonClick}
+          confirmLocation={confirmLocation}
         /> :
       isConfirmed && isWaitingForMatch ?
         <h3 onClick={onWaitingClick}>Waiting for a match</h3> :

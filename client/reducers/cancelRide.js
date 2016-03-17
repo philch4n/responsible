@@ -6,8 +6,6 @@ export function handleCancel(state, action) {
       return cancelRideSent(state, action);
     case 'CANCEL_RIDE_ERROR':
       return cancelRideError(state, action);
-    case 'REMOVE_RIDER':
-      return removeRider(state, action);
   };
 
   return state;
@@ -38,16 +36,6 @@ function cancelRideError(state, action) {
 
   let updates = {
     isCancelling: false,
-  };
-
-  return state.merge(updates);
-}
-
-function removeRider(state, action) {
-  let oldRiders = state.get('riders').toJS();
-  newRiders = oldRiders.filter((rider) => rider.userId !== action.entry);
-  let updates = {
-    riders: newRiders,
   };
 
   return state.merge(updates);
