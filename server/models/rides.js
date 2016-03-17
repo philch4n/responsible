@@ -46,11 +46,11 @@ Ride.getRideById = function (id) {
 */
 
 // Get all riders ids. returns array
-Ride.getRidersIds = function () {
+Ride.getRiders = function () {
   return db.select('*').from('riders')
     .catch(reportError('error getting all riders'))
     .then(function (riders) {
-      return riders.map(rider => rider.rider_id);
+      return riders.map(rider => rider.foreign_rider);
     });
 };
 
@@ -84,7 +84,7 @@ Ride.getDrivers = function () {
   return db.select('*').from('drivers')
     .catch(reportError('error getting all drivers'))
     .then(function (drivers) {
-      return drivers.map(driver => driver.driver_id);
+      return drivers.map(driver => driver.foreign_driver);
     });
 };
 
