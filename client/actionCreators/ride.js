@@ -10,9 +10,9 @@ export function fetchRide(userId, location) {
 
     fetch('/riders', {
       method: 'POST',
-      body: location,
+      body: { userId, location },
     })
-      .then((body) => dispatch(receiveRideId(body.json().rideId)))
+      .then((body) => dispatch(/*receiveRideId(body.json().rideId)*/ { type: 'NotAnAction' }))
       .catch((error) => dispatch(requestRideError(error)));
   };
 };
@@ -45,10 +45,6 @@ export function acceptRide(riderId, location) {
   };
 };
 
-export function removeRider(riderId) {
-  return { type: 'REMOVE_RIDER', entry: riderId };
-};
-
 // confirm ride receives a rideId, the partner's object, and the partner's location
 export function confirmRide(body) {
   return { type: 'CONFIRM_RIDE', entry: body, };
@@ -68,6 +64,8 @@ function requestRide() {
   return { type: 'REQUEST_RIDE', };
 };
 
+// I don't think this will happen anymore because we do not initialize a ride
+// table entry on requesting a ride.
 function receiveRideId(rideId) {
   return { type: 'RECEIVE_RIDE_ID', entry: rideId, };
 };
@@ -92,4 +90,9 @@ function cancelRideSent() {
 function cancelRideError(error) {
   console.error('uh oh, error canceling ride');
   return { type: 'CANCEL_RIDE_ERROR', entry: error, };
+};
+
+// Removes a rider from a driver's list of riders.
+export function removeRider(riderId) {
+  return { type: 'REMOVE_RIDER', entry: riderId };
 };

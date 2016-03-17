@@ -22,6 +22,7 @@ export default function(state = Map(), action) {
     case 'CANCEL_RIDE':
     case 'CANCEL_RIDE_SENT':
     case 'CANCEL_RIDE_ERROR':
+    case 'REMOVE_RIDER':
       return handleCancel(state, action);
     case 'REQUEST_MESSAGES':
     case 'RECEIVE_MESSAGES':

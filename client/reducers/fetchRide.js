@@ -14,7 +14,6 @@ export function handleRideFetch(state, action) {
 }
 
 function requestRide(state, action) {
-  // isFetchingRide=true!
   let updates = {
     isWaitingForMatch: true,
     isConfirmed: true,
