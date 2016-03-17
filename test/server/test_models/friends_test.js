@@ -17,13 +17,13 @@ describe('Friends Models', function () {
 
   it_('Should get friend IDs', function * () {
     var friends = yield Friend.getFriendIds(SeedObj.user1Id[0].user_id);
-    expect(friends).to.have.length(1);
+    expect(friends[0]).to.equal(SeedObj.user3Id[0].user_id);
     expect(friends).to.be.an.instanceOf(Array);
   });
 
   it_('Should get drivers who are friends', function * () {
     var drivers = yield Friend.getFriendDrivers(SeedObj.user1Id[0].user_id);
-    expect(drivers).to.have.length(1);
+    expect(drivers[0]).to.equal(SeedObj.user3Id[0].user_id);
     expect(drivers).to.be.an.instanceOf(Array);
   });
 
