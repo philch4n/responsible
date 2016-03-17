@@ -46,12 +46,10 @@ Friends.getFriendRiders = function (userId) {
 
   return Friends.getFriendIds(userId)
     .then(function (_friends) {
-      console.log('THESE ARE FRIENDS', _friends)
       friends = _friends;
     })
     .then(Ride.getRiders)
     .then(function (rideArray) {
-      console.log('THESE ARE RIDERS BY ID', rideArray)
       riders = rideArray;
     })
     .then(() => R.intersection(friends, riders))
