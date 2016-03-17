@@ -45,7 +45,7 @@ function signout(state, { entry }) {
     isRider: false,
     id: null,
     profile: null,
-    friends: null,
+    friends: [],
   };
 
   return state.merge(updates);

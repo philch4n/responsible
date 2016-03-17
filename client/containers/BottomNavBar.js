@@ -1,6 +1,5 @@
 import { connect } from 'react-redux';
 import { push } from 'react-router-redux';
-import { curry } from 'ramda';
 
 import { BottomButton } from '../components/BottomNavBar/BottomButton';
 
@@ -9,11 +8,11 @@ import * as rideAction from '../actionCreators/ride';
 
 /* Jonathan: does this feel too clunky to you? I was debating passing down props and
 pulling out the objects we need in each container (like: props.ride). Not sure... */
-function BottomNavBar({ user, ride, onConfirmLocationButtonClick }) {
+function BottomNavBar({ user, ride, confirmLocation }) {
   return (
     <div className="BottomNavBarContainer row">
       <BottomButton {...ride} {...user}
-        onConfirmLocationButtonClick={onConfirmLocationButtonClick(user.id)} />
+        confirmLocation={confirmLocation.bind(null, user.id, user.location)} />
     </div>
   );
 }
@@ -25,9 +24,9 @@ const mapStateToProps = function (state) {
 // jscs:disable
 const mapDispatchToProps = function (dispatch) {
   return {
-    onConfirmLocationButtonClick: curry((userId, location) => {
+    confirmLocation(userId, location) {
       dispatch(rideAction.fetchRide(userId, location))
-    }),
+    },
   };
 };
 // jscs:enable

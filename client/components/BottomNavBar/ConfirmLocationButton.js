@@ -1,14 +1,11 @@
 require('../../public/styles/skeleton.css');
 require('../../public/styles/normalize.css');
 
-/* This function will dispatch an action to change to Rider mode */
-function nullFn(e) { console.log('you clickededed me ' + e.target.className); };
-
 export function ConfirmLocationButton({
-  onConfirmLocationButtonClick = nullFn,
+  confirmLocation = nullFn,
 }) {
   return (
-    <div className='ConfirmLocation' onClick={onConfirmLocationButtonClick}>
+    <div className='ConfirmLocation' onClick={confirmLocation}>
       <button
         className='ConfirmLocationButton btn u-full-width'
         type='button'>

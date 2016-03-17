@@ -92,7 +92,7 @@ function cancelRideError(error) {
   return { type: 'CANCEL_RIDE_ERROR', entry: error, };
 };
 
-// rider is: { userId, location, name }
+// rider: { userId, location, name }
 export function addRider(rider) {
   return { type: 'ADD_RIDER', entry: rider, };
 };
