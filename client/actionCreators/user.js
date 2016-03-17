@@ -1,6 +1,6 @@
 import fetch from 'isomorphic-fetch';
 
-export function fetchUserInfo(uniqueParam) {
+export function fetchUserInfo(uniqueParam, OAuthObj) {
   return (dispatch) => {
     dispatch(requestUserInfo());
 

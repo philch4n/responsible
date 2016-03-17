@@ -31,6 +31,8 @@ export default function(state = Map(), action) {
     case 'REQUEST_MESSAGES_ERROR':
     case 'ADD_MESSAGE':
       return handleMessages(state, action);
+
+    // HANDLE USER LOGGING OUT!
   };
 
   return state;

@@ -15,6 +15,7 @@ export function handleRiders(state = List(), action) {
 
 // adds a rider or array of riders to the state riders list.
 function addRider(state, action) {
+  console.log('adding ride. Check state - have not verified this works');
   if (Array.isArray(action.entry))
     return state.push(...action.entry);
   else

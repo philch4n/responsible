@@ -2,7 +2,7 @@ require('../../public/styles/skeleton.css');
 require('../../public/styles/normalize.css');
 
 export function ConfirmLocationButton({
-  confirmLocation = nullFn,
+  confirmLocation,
 }) {
   return (
     <div className='ConfirmLocation' onClick={confirmLocation}>
