@@ -1,6 +1,7 @@
 import { Map } from 'immutable';
 
 import { handleCancel } from './cancelRide';
+import { handleConfirm } from './confirmRide';
 import { handleRideFetch } from './fetchRide';
 import { handleMessages } from './rideMessages';
 
@@ -14,9 +15,14 @@ export default function(state = Map(), action) {
     case 'RECEIVE_RIDE':
     case 'REQUEST_RIDE_ERROR':
       return handleRideFetch(state, action);
+    case 'CONFIRM_RIDE':
+    case 'ACCEPT_RIDE_SENT':
+    case 'ACCEPT_RIDE_ERROR':
+      return handleConfirm(state, action);
     case 'CANCEL_RIDE':
     case 'CANCEL_RIDE_SENT':
     case 'CANCEL_RIDE_ERROR':
+    case 'REMOVE_RIDER':
       return handleCancel(state, action);
     case 'REQUEST_MESSAGES':
     case 'RECEIVE_MESSAGES':

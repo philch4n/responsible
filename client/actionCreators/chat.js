@@ -26,12 +26,12 @@ function receiveMessages(messages) {
 };
 
 function requestMessagesError(error) {
+  console.error('uh oh, error requesting ride messages:', error);
   return { type: 'REQUEST_MESSAGES_ERROR', entry: error, };
 };
 
 // message: { userId, time, text }
 export function addMessage(message) {
-  console.log('adding a message!');
   return { type: 'ADD_MESSAGE', entry: message, };
 };
 
@@ -41,7 +41,7 @@ export function submitMessage(message) {
 
   // return addMessage creator if we want to automatically add the message
   // instead of waiting for the message to be retransmitted by the server.
-  // return addMessage(message);
+  //     return addMessage(message);
   return {
     type: 'NotAnAction',
     entry: message,

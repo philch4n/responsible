@@ -47,7 +47,5 @@ function addMessage(state, action) {
     messages: old,
   };
 
-  console.log('new message list:', old);
-
   return state.merge(updates);
 }

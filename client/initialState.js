@@ -49,20 +49,23 @@ export default {
     ],
   },
   ride: {
+    match: null,
+    riders: [], // Array of this driver's friends who are looking for a ride.
+    messages: [
+      { id: 1, time: '12:30', text: 'Where are you?', },
+      { id: 7, time: '12:42', text: 'On my way. Where you at?', },
+      { id: 1, time: '12:45', text: 'Four Horseman', },
+      { id: 7, time: '12:50', text: 'Be there in ten.', },
+    ],
     isWaitingForMatch: false,
     isMatched: false,
     isConfirmed: false,
     isCancelling: false,
+    isAccepting: false,
     isFetchingMessages: false,
+    acceptRideError: null,
     rideRequestError: null,
     messagesFetchError: null,
-    messages: [
-    { id: 1, time: '12:30', text: 'Where are you?', },
-    { id: 7, time: '12:42', text: 'On my way. Where you at?', },
-    { id: 1, time: '12:45', text: 'Four Horseman', },
-    { id: 7, time: '12:50', text: 'Be there in ten.', },
-    ],
-    match: null,
   },
   routing: {
     locationBeforeTransitions: null,

@@ -4,7 +4,7 @@ export function fetchUserInfo(uniqueParam) {
   return (dispatch) => {
     dispatch(requestUserInfo());
 
-    fetch(`/users/${uniqueparam}`)
+    fetch(`/users/${uniqueparam}`, { method: 'POST', body: anydada })
       .then((info) => dispatch(receiveUserInfo(info)))
       .catch((error) => dispatch(requestUserInfoError(error)));
   };
@@ -19,6 +19,7 @@ function receiveUserInfo(info) {
 }
 
 function requestUserInfoError(error) {
+  console.error('uh oh, error requesting user info:', error);
   return { type: 'REQUEST_USER_INFO_ERROR', entry: error };
 }
 
