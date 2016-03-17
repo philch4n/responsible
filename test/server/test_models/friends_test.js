@@ -16,7 +16,7 @@ describe('Friends Models', function () {
   });
 
   it_('Should get friend IDs', function * () {
-    var friends = yield Friends.getFriendIds(SeedObj.user1Id[0].user_id);
+    var friends = yield Friend.getFriendIds(SeedObj.user1Id[0].user_id);
     expect(friends).to.have.length(1);
     expect(friends).to.be.an.instanceOf(Array);
   });
