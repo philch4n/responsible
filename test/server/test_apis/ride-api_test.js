@@ -41,6 +41,7 @@ describe('Ride API', function () {
   });
 
   var app = TestHelper.createApp();
+
   app.use('/', routes);
   app.testReady();
 
@@ -84,9 +85,9 @@ describe('Ride API', function () {
       .send(rider1)
       .expect(201)
       .expect(function (response) {
-        var rider = response.body[0];
-        riderIdOnInsert = rider.rider_id;
-        expect(rider.foreign_rider).to.not.be.undefined;
+        var rider = response.body;
+        riderIdOnInsert = rider.user_id;
+        expect(rider.avatar).to.not.be.undefined;
         expect(rider.location).to.equal('700 E. 8th street Austin, Tx');
       });
   });
@@ -178,9 +179,9 @@ describe('Ride API', function () {
       .send(rider1)
       .expect(201)
       .expect(function (response) {
-        var rider = response.body[0];
+        var rider = response.body;
         riderIdOnInsert = rider.rider_id;
-        expect(rider.foreign_rider).to.not.be.undefined;
+        expect(rider.avatar).to.not.be.undefined;
         expect(rider.location).to.equal('700 E. 8th street Austin, Tx');
       });
 
@@ -258,9 +259,9 @@ describe('Ride API', function () {
       .send(rider1)
       .expect(201)
       .expect(function (response) {
-        var rider = response.body[0];
+        var rider = response.body;
         riderIdOnInsert = rider.rider_id;
-        expect(rider.foreign_rider).to.not.be.undefined;
+        expect(rider.avatar).to.not.be.undefined;
         expect(rider.location).to.equal('700 E. 8th street Austin, Tx');
       });
 
@@ -347,9 +348,9 @@ describe('Ride API', function () {
       .send(rider1)
       .expect(201)
       .expect(function (response) {
-        var rider = response.body[0];
+        var rider = response.body;
         riderIdOnInsert = rider.rider_id;
-        expect(rider.foreign_rider).to.not.be.undefined;
+        expect(rider.avatar).to.not.be.undefined;
         expect(rider.location).to.equal('700 E. 8th street Austin, Tx');
       });
 

@@ -1,8 +1,23 @@
 require('../server-helpers');
 var RideAPI = require('express').Router();
+
 var io = require('../lib/ioConfig').io;
+if (process.env.NODE_ENV === 'test') {
+  var MockedSocketIO = {};
+  MockedSocketIO.sockets = [];
+  MockedSocketIO.sockets.emit = function () {};
+  io = MockedSocketIO;
+}
 
 var Ride = require(__models + '/rides');
+var Friends = require(__models + '/friends');
+var User = require(__models + '/user');
+
+// var express = require('express');
+// var app = express();
+// var server = require('http').createServer(app);
+// var io = require('socket.io')(server);
+
 module.exports = RideAPI;
 
 /*
@@ -63,9 +78,26 @@ RideAPI.get('/riders/:id', function (req, res) {
 // Post Rider
 RideAPI.post('/riders', function (req, res) {
   var attrs = req.body;
+  var rider = null;
+  var location = null;
+
   Ride.createRider(attrs)
-    .then(sendStatusAndData(res, 201))
-    .catch(sendStatusAndError(res, 500, 'error creating rider'));
+    .then(function (newRider) {
+      location = newRider[0].location;
+      return User.findUserById(newRider[0].foreign_rider);
+    })
+    .then(function (user) {
+      rider = user;
+      rider.location = location;
+      return Friends.getFriendDrivers(rider.foreign_rider);
+    })
+    .then(function (arrayOfFriendDrivers) {
+      // console.log('this is the io object', io)
+      io.sockets.emit('new_rider', rider);
+      return rider;
+    })
+    .catch(sendStatusAndError(res, 500, 'error emiting new rider'))
+    .then(sendStatusAndData(res, 201));
 });
 
 /*

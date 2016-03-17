@@ -64,8 +64,7 @@ Ride.getRiderById = function (userId) {
 // Create a rider
 Ride.createRider = function (attrs) {
   return db('riders').insert(attrs, ['rider_id', 'foreign_rider', 'location'])
-    .catch(reportError('error creating ride in db'))
-    .then(rider => rider);
+    .catch(reportError('error creating ride in db'));
 };
 
 // Deletes rider by id
