@@ -11,7 +11,7 @@ module.exports = RideAPI;
 
 //Get all rides
 RideAPI.get('/', function (req, res) {
-  io.sockets.emit('receive_message', { id: 9, text: 'gassy', time: '22:50' });
+  // io.sockets.emit('receive_message', { id: 9, text: 'gassy', time: '22:50' });
 
   Ride.getRides()
     .then(sendStatusAndData(res, 200))
