@@ -41,10 +41,6 @@ TestHelper.createApp = function (loader) {
   var app = express();
   app.use(require('body-parser').json());
 
-  var server = require('http').createServer(app);
-  var io = require('../server/lib/ioConfig');
-  io.init(server);
-
   app.testReady = function () {
     // Log all errors
     app.use(function (err, req, res, next) {
