@@ -55,7 +55,7 @@ User.github = function () {
 User.google = function () {
   OAuth.popup('google').done(function (data) {
   var userToken = data.access_token;
-  data.get('https://www.googleapis.com/oauth2/v1/userinfo?alt=json&access_token='+userToken)
+  data.get('https://www.googleapis.com/oauth2/v1/userinfo?alt=json&access_token=' + userToken)
   .then(function (profileMe) {
   console.log('profileMe', profileMe);
   OAuthUser.signin(data)
