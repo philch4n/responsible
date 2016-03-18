@@ -11,10 +11,17 @@ import * as userAction from '../actionCreators/user';
 function Main({ isDriver, isRider }) {
   return (
     <div className="MainApp">
-    <button onClick={User.facebook}>Facebook</button>
-    <GithubButton />
-    <button onClick={User.google}>Google</button>
       <TopNavBarContainer />
+      <button onClick={User.facebook}>
+        <i className='fa fa-facebook-official'>
+        </i>&nbsp;Facebook
+      </button>
+      <button onClick={User.github}>
+        <i className='fa fa-github'>
+        </i>&nbsp;GitHub</button>
+      <button onClick={User.google}>
+        <i className='fa fa-google'>
+        </i>&nbsp;Google</button>
       {
         !isDriver && !isRider ?
           <SplashContainer /> :
