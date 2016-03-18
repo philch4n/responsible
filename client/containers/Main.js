@@ -11,16 +11,16 @@ function Main({ isDriver, isRider }) {
   return (
     <div className="MainApp">
       <TopNavBarContainer />
-      <button onClick={User.facebook}>
+      <a className='button' onClick={User.facebook}>
         <i className='fa fa-facebook-official'>
         </i>&nbsp;Facebook
-      </button>
-      <button onClick={User.github}>
+      </a>
+      <a className='button' onClick={User.github}>
         <i className='fa fa-github'>
-        </i>&nbsp;GitHub</button>
-      <button onClick={User.google}>
+        </i>&nbsp;GitHub</a>
+      <a className='button' onClick={User.google}>
         <i className='fa fa-google'>
-        </i>&nbsp;Google</button>
+        </i>&nbsp;Google</a>
       {
         !isDriver && !isRider ?
           <SplashContainer /> :
