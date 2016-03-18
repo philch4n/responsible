@@ -1,6 +1,6 @@
 import fetch from 'isomorphic-fetch';
 
-import { headers, checkStatus } from '../lib/fetchHelpers';
+import { headers, json, checkStatus } from '../lib/fetchHelpers';
 
 /**
  *  Initializes a ride request. Alerts the server and waits
@@ -56,10 +56,15 @@ export function acceptRide(riderId, location) {
   return (dispatch) => {
     dispatch(acceptRideSent());
 
-    fetch('/rides', { method: 'POST', body: { riderId, location } })
+    fetch('/rides', {
+      method: 'POST',
+      headers: headers,
+      body: JSON.stringify({ riderId, location }), 
+    })
       .then(checkStatus)
-      .then((body) => dispatch(confirmRide(body.json())))
-      .catch((error) => dispatch(acceptRideError(error)));
+      .then(json)
+      .then((body) => dispatch(confirmRide(body))
+      .catch((error) => dispatch(acceptRideError(error)))
   };
 };
 

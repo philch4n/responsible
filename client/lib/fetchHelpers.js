@@ -1,6 +1,10 @@
 
 export const headers = {
-  'Content-Type': 'application/json'
+  'Content-Type': 'application/json',
+};
+
+export function json(response) {
+  return response.json()
 }
 
 export function checkStatus(response) {
