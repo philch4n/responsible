@@ -3,6 +3,7 @@ const db = require('../../lib/db');
 
 const User = require('../../server/models/user');
 const Friend = require('../../server/models/friends');
+const Ride = require('../../server/models/rides');
 
 var Seed = {};
 module.exports = Seed;
@@ -21,9 +22,6 @@ Seed.user1 = {
   emergency_contact: 'Nobody.',
   avatar: 'yahoo.com',
 };
-Seed.user1.make = function () {
-  return User.createUser(Seed.user1);
-};
 
 Seed.user2 = {
   username: 'GregB',
@@ -38,9 +36,6 @@ Seed.user2 = {
   email: 'gregb@hotmail.com',
   emergency_contact: 'Marsha Marsha Marsha',
   avatar: 'google.com',
-};
-Seed.user2.make = function () {
-  return User.createUser(Seed.user2);
 };
 
 Seed.user3 = {
@@ -57,9 +52,6 @@ Seed.user3 = {
   emergency_contact: 'Snoopy',
   avatar: 'hotmail.com',
 };
-Seed.user3.make = function () {
-  return User.createUser(Seed.user3);
-};
 
 Seed.user4 = {
   username: 'GumpDump(69)[420]weed',
@@ -75,8 +67,9 @@ Seed.user4 = {
   emergency_contact: 'Jenny, oh wait...',
   avatar: 'gumpshrimp.com',
 };
-Seed.user4.make = function () {
-  return User.createUser(Seed.user4);
+
+Seed.makeUser = function (user) {
+  return User.createUser(user);
 };
 
 Seed.makeFriend = function (id1, id2) {
@@ -87,41 +80,19 @@ Seed.makeRider = function (rider) {
   return Ride.createRider(rider);
 };
 
-// Seed.makeRiders = function () {
-//   var rider1 = {
-//     location: '700 E. 8th street Austin, Tx',
-//   };
-//   var rider2 = {
-//     location: '1000 Freckle Face Weigh',
-//   };
-
-//   return Seed.user1.make()
-//     .then(function (user1) {
-//       rider1.foreign_rider = user1.user_id;
-//       return Seed.user2.make();
-//     })
-//     .then(function (user2) {
-//       rider2.foreign_rider = user2.user_id;
-//       return Seed.makeRider(rider1);
-//     })
-//     .then(function () {
-//       return Seed.makeRider(rider2);
-//     });
-// };
-
 Seed.cleaner = function () {
   return dbCleaner.clean(db, { mode: 'truncate' });
 };
 
 Seed.runner = function * () {
 
-  const user1Id = yield Seed.user1.make();
-  const user2Id = yield Seed.user2.make();
-  const user3Id = yield Seed.user3.make();
-  const user4Id = yield Seed.user4.make();
+  const user1Id = yield Seed.makeUser(Seed.user1);
+  const user2Id = yield Seed.makeUser(Seed.user2);
+  const user3Id = yield Seed.makeUser(Seed.user3);
+  const user4Id = yield Seed.makeUser(Seed.user4);
 
-  const friendId1 = yield Seed.makeFriends(user1Id[0].user_id, user3Id[0].user_id);
-  const friendId2 = yield Seed.makeFriends(user2Id[0].user_id, user4Id[0].user_id);
+  const friend1 = yield Seed.makeFriend(user1Id[0].user_id, user3Id[0].user_id);
+  const friend2 = yield Seed.makeFriend(user2Id[0].user_id, user4Id[0].user_id);
 
   const rider1  = {
     foreign_rider: user1Id[0].user_id,

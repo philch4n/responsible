@@ -7,10 +7,12 @@ const R = require('ramda');
 const Friends = {};
 module.exports = Friends;
 
-Friends.createFriendship = function (userId1, userId2) {
-  return db('friends').insert({ userId1, userId2 }, ['friendship_id'])
+// jscs: disable
+Friends.createFriendship = function (foreign_friend1, foreign_friend2) {
+  return db('friends').insert({ foreign_friend1, foreign_friend2 }, ['friendship_id'])
     .then(R.first);
 };
+// jscs: enable
 
 //Returns an array of friend ids
 Friends.getFriendIds = function (userId) {
