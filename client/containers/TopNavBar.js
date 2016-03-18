@@ -10,13 +10,17 @@ import * as rideAction from '../actionCreators/ride';
 
 function TopNavBar({ onCancelRideButtonClick, ...props }) {
   return (
-    <div className="TopNavBarContainer row">
-      <SettingIcon {...props}/>
+    <div className='TopNavBarContainer'>
+      <header className='header'>
+        <div className='header-left'>
+            <SettingIcon {...props}/>
+        </div>
       <Logo />
       <TopNavBarRightButton
         {...props}
         onCancelRideButtonClick={onCancelRideButtonClick.bind(props.user.id)}
       />
+      </header>
     </div>
   );
 }
