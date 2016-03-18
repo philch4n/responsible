@@ -11,9 +11,7 @@ match, user, messages, confirmLocation, onWaitingClick, }) {
     <div className="BottomNavBarRightButton">
     {
       !isWaitingForMatch && !isConfirmed ?
-        <ConfirmLocationButton
-          confirmLocation={confirmLocation}
-        /> :
+        <ConfirmLocationButton confirmLocation={confirmLocation} /> :
       isConfirmed && isWaitingForMatch ?
         <h3 onClick={onWaitingClick}>Waiting for a match</h3> :
       isConfirmed && isMatched ?

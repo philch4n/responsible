@@ -8,10 +8,7 @@ import { GithubButton } from '../models/Github';
 
 import * as userAction from '../actionCreators/user';
 
-function nullFn(e) { console.log('you clicked me ' + e.target.className); };
-
-function Main({ isDriver, isRider, }) {
-  console.log('isDriver, isRider:', isDriver, isRider);
+function Main({ isDriver, isRider }) {
   return (
     <div className="MainApp">
     <button onClick={User.facebook}>Facebook</button>

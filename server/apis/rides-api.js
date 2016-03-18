@@ -49,7 +49,7 @@ RideAPI.get('/:id', function (req, res) {
 });
 
 // Delete ride by id
-RideAPI.delete('/:id', function (req, res) {
+RideAPI.delete('/', function (req, res) {
   var id = req.params.id;
   Ride.deleteRide(id)
     .then(sendStatusAndData(res, 200))
@@ -75,13 +75,19 @@ RideAPI.get('/riders/:id', function (req, res) {
     .catch(sendStatusAndError(res, 500));
 });
 
-// Post Rider
+// expects req.body: { }
+// response: { }
 RideAPI.post('/riders', function (req, res) {
   var attrs = req.body;
   var rider = null;
   var location = null;
 
-  Ride.createRider(attrs)
+  var riderToInsert = {
+    foreign_rider: req.body.userId,
+    location: req.body.location,
+  };
+
+  Ride.createRider(riderToInsert)
     .then(function (newRider) {
       location = newRider[0].location;
       return User.findUserById(newRider[0].foreign_rider);
