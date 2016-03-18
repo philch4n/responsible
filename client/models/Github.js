@@ -34,14 +34,11 @@ const mapDispatchToProps = function (dispatch) {
                 first_name: me.name.split(' ')[0],
                 last_name: me.name.split(' ')[1],
                 avatar: me.avatar,
-                OAuthVerify: me.id,
-              };
-              var toSend = {
-                user: user,
-                verifyBy: 'OAuthVerify',
+                verifyBy: me.id,
+                token: githubToken.access_token,
               };
 
-              dispatch(userAction.fetchUserInfo(toSend));
+              dispatch(userAction.fetchUserInfo(user));
             });
         })
         .fail(function (err) {

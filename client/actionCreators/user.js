@@ -13,11 +13,8 @@ export function fetchUserInfo(props) {
       },
       body: JSON.stringify(props),
     })
-    .then(function (response) {
-      return response.json();
-    })
-    .then((info) => dispatch(receiveUserInfo(info)))
-    .catch((error) => dispatch(requestUserInfoError(error)));
+      .then((info) => dispatch(receiveUserInfo(info)))
+      .catch((error) => dispatch(requestUserInfoError(error)));
   };
 };
 
