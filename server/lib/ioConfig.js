@@ -19,13 +19,14 @@ IO.init = function (server) {
       if (!data.user_id) console.error('joining invalid room:', data);
 
       console.log('server adding socket to room:', data.user_id);
-      socket.join(data.user_id, (error) => console.error('error joining room', error));
+      socket.join(data.user_id);
     });
 
     // first listener!
-    socket.on('send_message', function (data) {
-      console.log('what type of socket information do we have here:', socket);
-      console.log('send message listener in on connection triggered', data);
+    socket.on('new_message', function (data) {
+      console.log('server new_message listener triggered', data);
+
+      socket.broadcast.to(data.to).emit('new_message', data.entry);
     });
   });
 

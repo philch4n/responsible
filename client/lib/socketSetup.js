@@ -8,17 +8,7 @@ export const socketActionMiddleware =
   (socket) => (store) => (next) => (action) => {
     let meta = action.meta;
     if (meta) {
-      if (meta.broadcast) {
-        if (!meta.to) {
-          console.error("error broadcasting socket message, no 'to' field specified.");
-        } else {
-          socket.broadcast
-            .to(meta.to)
-            .emit(meta.event, meta.entry);
-        }
-      } else {
-        socket.emit(meta.event, meta.entry);
-      }
+      socket.emit(meta.event, { to: meta.to, entry: meta.entry });
     }
 
     return next(action);

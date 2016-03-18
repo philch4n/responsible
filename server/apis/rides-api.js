@@ -93,7 +93,6 @@ RideAPI.get('/riders', function (req, res) {
 // expects req.body: { userId, location }
 // response: { }
 RideAPI.post('/riders', function (req, res) {
-  console.log('posting rider:', req.body);
   var attrs = req.body;
   var rider = null;
   var _location = req.body.location;
@@ -106,15 +105,11 @@ RideAPI.post('/riders', function (req, res) {
   Ride.createRider(riderToInsert)
     .then(function (newRider) {
       // location = newRider[0].location;
-      console.log('created a new rider:', newRider);
       return User.findUserById(newRider[0].foreign_rider);
     })
     .then(function (user) {
-      console.log('did we find a user?', user);
       rider = user;
       rider.location = _location;
-
-      // rider.location = location;
       return Friends.getFriendDrivers(rider.foreign_rider);
     })
     .then(function (arrayOfFriendDrivers) {

@@ -23,7 +23,7 @@ export function box({ match, id, messages, addMessage, }) {
 }
 
 const mapStateToProps = function (state) {
-  return state.toJS();
+  return state.get('ride').toJS();
 };
 
 // // jscs:disable
@@ -39,7 +39,7 @@ const mapDispatchToProps = function (dispatch) {
         text: e.target.firstChild.value,
       };
       e.target.firstChild.value = '';
-      dispatch(chatAction.submitMessage(messageObject));
+      dispatch(chatAction.submitMessage(55, messageObject));
     }),
   };
 };
