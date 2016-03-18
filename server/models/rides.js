@@ -12,7 +12,7 @@ module.exports = Ride;
 // Get all rides
 Ride.getRides = function () {
   return db('rides').select('*')
-    .catch(reportError('error getting all rides'))
+    .catch(reportError('error getting all rides'));
 };
 
 // Create A ride
@@ -20,18 +20,15 @@ Ride.createRide = function (attrs) {
   return db('rides').insert(attrs, ['ride_id', 'ride_driver', 'ride_rider'])
     .catch(reportError('error creating ride in db'))
     .then(function (ride) {
-      Ride.deleteRiderAndDriver(attrs.ride_rider, attrs.ride_driver);
-      return ride;
+      return Ride.deleteRiderAndDriver(attrs.ride_rider, attrs.ride_driver)
+        .then( () => ride );
     });
 };
 
 // Delete A Ride
 Ride.deleteRide = function (rideId) {
-  return db.raw('DELETE FROM rides WHERE ride_id = ? CASCADE', rideId)
-    .catch(reportError('error deleting ride by id'))
-    .then(ride => console.log('deleted ride with id ' + id));
-
-  // return db('rides').where({ ride_id: rideId }).del()
+  return db('rides').where({ ride_id: rideId }).del()
+    .catch(reportError('error deleting ride by id'));
 };
 
 Ride.getRideById = function (id) {

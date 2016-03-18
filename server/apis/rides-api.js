@@ -55,13 +55,24 @@ RideAPI.delete('/', function (req, res) {
   var rideExists = false;
   if (req.body.rideId) rideExists = true;
 
-  var remover = rideExists ?
-    Ride.deleteRide(req.body.rideId) :
-    Ride.deleteRider(req.body.userId);
+  // var remover = rideExists ?
+  //   Ride.deleteRide(req.body.rideId) :
+  //   Ride.deleteRider(req.body.userId);
 
-  remover
-    .then(sendStatusAndData(res, 200))
-    .catch(sendStatusAndError(res, 500));
+  // remover
+  //   .then(sendStatusAndData(res, 200))
+  //   .catch(sendStatusAndError(res, 500));
+
+  if (rideExists) {
+    Ride.deleteRide(req.body.rideId)
+      .then(senStatus(res, 200))
+      .catch(sendStatusAndError(res, 500));
+  } else {
+    Ride.deleteRider(req.body.userId)
+      .then(sendStatus(res, 200))
+      .catch(sendStatusAndError(res, 500));
+  }
+
 });
 
 /*
@@ -103,7 +114,7 @@ RideAPI.post('/riders', function (req, res) {
       return rider;
     })
     .catch(sendStatusAndError(res, 500, 'error emiting new rider'))
-    .then(sendStatusAndData(res, 201));
+    .then(sendStatus(res, 202));
 });
 
 /*

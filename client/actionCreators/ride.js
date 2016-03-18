@@ -16,7 +16,6 @@ export function fetchRide(userId, location) {
       body: JSON.stringify({ userId, location }),
     })
       .then(checkStatus)
-      // .then((body) => dispatch(/*receiveRideId(body.json().rideId)*/ { type: 'NotAnAction' }))
       .catch((error) => dispatch(requestRideError(error)));
   };
 };
@@ -37,7 +36,7 @@ export function cancelRide({ userId, rideId }) {
   return (dispatch) => {
     dispatch(cancelRideSent());
 
-    fetch('/rides/', {
+    fetch('/rides', {
       method: 'DELETE',
       headers: headers,
       body: JSON.stringify({ userId, rideId }),
