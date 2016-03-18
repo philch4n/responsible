@@ -20,12 +20,26 @@ function requestUserInfo(state) {
 }
 
 function receiveUserInfo(state, { entry }) {
-  let updates = {
-    ...entry,
-    isFetchingUserInfo: false,
+  console.log('parse out that entry!', entry);
+  let newState;
+  let userUpdates = {
+    user_id: entry.user_id,
+    isFetchinguserInfo: false,
   };
 
-  return state.merge(updates);
+  let profileUpdates = {
+    avatar: entry.avatar,
+    fullName: entry.first_name + ' ' + entry.last_name,
+  };
+
+  newState = state.mergeIn(['profile'], profileUpdates);
+  newState = newState.merge(userUpdates);
+
+  return newState;
+
+  // This might be merging with the correct objects! look at how nested original state is
+  // Might need to pull info out differently/access state differently
+  // return state.merge(updates);
 }
 
 function requestUserInfoError(state, { entry }) {
