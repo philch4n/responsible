@@ -25,6 +25,8 @@ function receiveUserInfo(state, { entry }) {
     isFetchingUserInfo: false,
   };
 
+  // This might be merging with the correct objects! look at how nested original state is
+  // Might need to pull info out differently/access state differently
   return state.merge(updates);
 }
 
