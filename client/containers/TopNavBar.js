@@ -16,17 +16,13 @@ function TopNavBar({ onCancel, ...props }) {
   }
 
   return (
-    <div className='TopNavBarContainer'>
-      <header className='header'>
-        <div className='header-left'>
-            <SettingIcon {...props}/>
-        </div>
+    <div className="TopNavBarContainer row">
+      <SettingIcon {...props}/>
       <Logo />
       <TopNavBarRightButton
         {...props}
         onCancel={cancelClick}
       />
-      </header>
     </div>
   );
 }
