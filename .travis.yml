@@ -13,5 +13,5 @@ before_script:
 script:
   - grunt
   - npm run test-client
-  - npm run test-server
+  # - npm run test-server
   

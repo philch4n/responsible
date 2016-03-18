@@ -84,5 +84,4 @@ describe('Ride API', function () {
         expect(ride.ride_rider).to.equal(seedData.user2Id[0].user_id);
       });
   });
-  
 });
