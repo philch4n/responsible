@@ -5,7 +5,7 @@ OAuth.initialize(process.env.OAUTH_PUBLIC_KEY, process.env.OAUTH_SECRET_KEY);
 OAuth.confirmLogin = function (request, response, next) {
   var credentials = request.getCredentials();
   console.log('here are the creds', credentials);
-  
+
   OAuth.auth('github', request.session)
     .then(function () {
       next();

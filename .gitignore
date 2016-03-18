@@ -9,6 +9,7 @@ dist/app-bundle.js
 
 ## ignore db files
 db/
+development/
 
 ## ignore .DS_STORE files
 .DS_Store

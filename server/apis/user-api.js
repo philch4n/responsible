@@ -35,7 +35,8 @@ UserAPI.post('/', function (req, res) {
 });
 
 UserAPI.post('/tmp', function (req, res) {
-  var user = req.body.OAuthUser;
+  console.log('in user-api', req.body);
+  var user = req.body.user;
 
   // verify the users exists by which property of the OAuth object?
   // has to also be a column in the users table.
@@ -44,9 +45,9 @@ UserAPI.post('/tmp', function (req, res) {
   var verifyBy = req.body.verifyBy;
 
   // create user if needed, update attributes if not, and return merged user info
-  User.createOrUpdateUser(verifyBy, user)
-    .then(sendStatusAndData(res, 201))
-    .catch(sendStatusAndError(res, 500, ('error creating user')));
+  // User.createOrUpdateUser(verifyBy, user)
+  //   .then(sendStatusAndData(res, 201))
+  //   .catch(sendStatusAndError(res, 500, ('error creating user')));
 });
 
 UserAPI.put('/:id', function (req, res) {
