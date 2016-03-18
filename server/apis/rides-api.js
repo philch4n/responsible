@@ -90,12 +90,13 @@ RideAPI.get('/riders', function (req, res) {
     .catch(sendStatusAndError(res, 500, ('error creating rider')));
 });
 
-// expects req.body: { }
+// expects req.body: { userId, location }
 // response: { }
 RideAPI.post('/riders', function (req, res) {
+  console.log('posting rider:', req.body);
   var attrs = req.body;
   var rider = null;
-  var location = null;
+  var _location = req.body.location;
 
   var riderToInsert = {
     foreign_rider: req.body.userId,
@@ -104,12 +105,15 @@ RideAPI.post('/riders', function (req, res) {
 
   Ride.createRider(riderToInsert)
     .then(function (newRider) {
-      location = newRider[0].location;
+      // location = newRider[0].location;
+      console.log('created a new rider:', newRider);
       return User.findUserById(newRider[0].foreign_rider);
     })
     .then(function (user) {
+      console.log('did we find a user?', user);
       rider = user;
-      rider.location = location;
+      rider.location = _location;
+      // rider.location = location;
       return Friends.getFriendDrivers(rider.foreign_rider);
     })
     .then(function (arrayOfFriendDrivers) {

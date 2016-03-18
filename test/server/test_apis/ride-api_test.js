@@ -54,6 +54,8 @@ describe('Ride API', function () {
       location: '700 E. 8th street Austin, Tx',
     };
 
+    console.log('attempting to insert user with id:', user1IdOnInsert);
+
     yield request(app)
       .post('/rides/riders')
       .send(rider1)
@@ -82,5 +84,4 @@ describe('Ride API', function () {
         expect(ride.ride_rider).to.equal(seedData.user2Id[0].user_id);
       });
   });
-
 });
