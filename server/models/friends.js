@@ -7,9 +7,16 @@ const R = require('ramda');
 const Friends = {};
 module.exports = Friends;
 
+// jscs: disable
+Friends.createFriendship = function (foreign_friend1, foreign_friend2) {
+  return db('friends').insert({ foreign_friend1, foreign_friend2 }, ['friendship_id'])
+    .then(R.first);
+};
+// jscs: enable
+
 //Returns an array of friend ids
 Friends.getFriendIds = function (userId) {
-  return db.select('*').from('friends')
+  return db('friends').select('*')
     .where({ foreign_friend1: userId }).orWhere({ foreign_friend2: userId })
     .catch(reportError('error retrieving friends by userId'))
     .then(function (friendRows) {

@@ -1,6 +1,10 @@
 const dbCleaner = require('knex-cleaner');
 const db = require('../../lib/db');
 
+const User = require('../../server/models/user');
+const Friend = require('../../server/models/friends');
+const Ride = require('../../server/models/rides');
+
 var Seed = {};
 module.exports = Seed;
 
@@ -64,26 +68,32 @@ Seed.user4 = {
   avatar: 'gumpshrimp.com',
 };
 
+Seed.makeUser = function (user) {
+  return User.createUser(user);
+};
+
+Seed.makeFriend = function (id1, id2) {
+  return Friend.createFriendship(id1, id2);
+};
+
+Seed.makeRider = function (rider) {
+  return Ride.createRider(rider);
+};
+
 Seed.cleaner = function () {
   return dbCleaner.clean(db, { mode: 'truncate' });
 };
 
 Seed.runner = function * () {
 
-  const user1Id = yield db('users').insert(Seed.user1, ['user_id']);
-  const user2Id = yield db('users').insert(Seed.user2, ['user_id']);
-  const user3Id = yield db('users').insert(Seed.user3, ['user_id']);
-  const user4Id = yield db('users').insert(Seed.user4, ['user_id']);
-  const friend1 = {
-    foreign_friend1: user1Id[0].user_id,
-    foreign_friend2: user3Id[0].user_id,
-  };
-  const friend2 = {
-    foreign_friend1: user2Id[0].user_id,
-    foreign_friend2: user4Id[0].user_id,
-  };
-  const friendId1 = yield db('friends').insert(friend1, ['friendship_id']);
-  const friendId2 = yield db('friends').insert(friend2, ['friendship_id']);
+  const user1Id = yield Seed.makeUser(Seed.user1);
+  const user2Id = yield Seed.makeUser(Seed.user2);
+  const user3Id = yield Seed.makeUser(Seed.user3);
+  const user4Id = yield Seed.makeUser(Seed.user4);
+
+  const friend1 = yield Seed.makeFriend(user1Id[0].user_id, user3Id[0].user_id);
+  const friend2 = yield Seed.makeFriend(user2Id[0].user_id, user4Id[0].user_id);
+
   const rider1  = {
     foreign_rider: user1Id[0].user_id,
     location: '700 E. 8th street Austin, Tx',
@@ -92,8 +102,9 @@ Seed.runner = function * () {
     foreign_rider: user2Id[0].user_id,
     location: '1000 Freckle Face Weigh',
   };
-  const riderId1 = yield db('riders').insert(rider1, ['rider_id']);
-  const riderId2 = yield db('riders').insert(rider2, ['rider_id']);
+  const riderId1 = yield Seed.makeRider(rider1);
+  const riderId2 = yield Seed.makeRider(rider2);
+
   const driver1 = {
     foreign_driver: user3Id[0].user_id,
     location: '1826 Niblick Way',
