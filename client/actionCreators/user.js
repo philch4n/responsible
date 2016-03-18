@@ -23,9 +23,21 @@ function requestUserInfo() {
   return { type: 'REQUEST_USER_INFO' };
 }
 
+/*
+  The meta property here is picked up by a piece of middleware to emit
+  socket events. It emits to the server an event with the name: meta.event
+  and a data load of meta.entry
+*/
 function receiveUserInfo(info) {
-  return { type: 'RECEIVE_USER_INFO', entry: info };
-}
+  return {
+    type: 'RECEIVE_USER_INFO',
+    entry: info,
+    meta: {
+      event: 'join',
+      entry: info.user_id,
+    },
+  };
+};
 
 function requestUserInfoError(error) {
   console.error('uh oh, error requesting user info:', error);

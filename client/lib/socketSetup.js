@@ -6,8 +6,20 @@ export const socket = io.connect('http://localhost:1337');
 
 export const socketActionMiddleware =
   (socket) => (store) => (next) => (action) => {
-    if (action.meta)
-      socket.emit(action.meta.event, action.meta.entry);
+    let meta = action.meta;
+    if (meta) {
+      if (meta.broadcast) {
+        if (!meta.to) {
+          console.error("error broadcasting socket message, no 'to' field specified.");
+        } else {
+          socket.broadcast
+            .to(meta.to)
+            .emit(meta.event, meta.entry);
+        }
+      } else {
+        socket.emit(meta.event, meta.entry);
+      }
+    }
 
     return next(action);
   };
