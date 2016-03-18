@@ -77,7 +77,6 @@ RideAPI.delete('/', function (req, res) {
     // no rides in progress -- emit to friends of rider.
     io.sockets.emit('remove_rider', req.body);
   }
-
 });
 
 /*

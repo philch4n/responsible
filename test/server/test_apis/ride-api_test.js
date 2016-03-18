@@ -56,8 +56,8 @@ describe('Ride API', function () {
 
     yield request(app)
       .post('/rides/riders')
-      .send(newestRider)
-      .expect(201)
+      .send(rider1)
+      .expect(202)
       .expect(function (response) {
         var rider = response.body;
         expect(rider.avatar).to.not.be.undefined;
