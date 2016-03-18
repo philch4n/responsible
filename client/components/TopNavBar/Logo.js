@@ -5,8 +5,8 @@ export function Logo({
   onLogoButtonClick = nullFn,
 }) {
   return (
-    <div className='Logo' onClick={onLogoButtonClick}>
-      <h1 className='LogoButton title is-1'>Responsiblé</h1>
+    <div className='Logo eight columns' onClick={onLogoButtonClick}>
+      <button className='LogoButton btn u-full-width' type='button'>Responsiblé!</button>
     </div>
   );
 }

@@ -1,4 +1,5 @@
-require('../../public/styles/styles.css');
+require('../../public/styles/skeleton.css');
+require('../../public/styles/normalize.css');
 
 export function ConfirmLocationButton({
   confirmLocation,
