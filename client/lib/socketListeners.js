@@ -2,9 +2,7 @@ import { store } from './storeConfig';
 const dispatch = store.dispatch;
 
 import * as chatActions from '../actionCreators/chat';
-import * as rideACtions from '../actionCreators/ride';
-
-console.log('log from socket listeners');
+import * as rideActions from '../actionCreators/ride';
 
 /**
  *  Handle socket configuration and messaging.

@@ -1,5 +1,7 @@
 import fetch from 'isomorphic-fetch';
 
+import { headers, checkStatus } from '../lib/fetchHelpers';
+
 /**
  *  Initializes a ride request. Alerts the server and waits
  *  to receive its upcoming ride Id.
@@ -8,24 +10,39 @@ export function fetchRide(userId, location) {
   return (dispatch) => {
     dispatch(requestRide());
 
-    fetch('/riders', {
+    fetch('/rides/riders', {
       method: 'POST',
-      body: { userId, location },
+      headers: headers,
+      body: JSON.stringify({ userId, location }),
     })
-      .then((body) => dispatch(/*receiveRideId(body.json().rideId)*/ { type: 'NotAnAction' }))
+      .then(checkStatus)
+      // .then((body) => dispatch(/*receiveRideId(body.json().rideId)*/ { type: 'NotAnAction' }))
       .catch((error) => dispatch(requestRideError(error)));
   };
 };
 
-/**
- *  Sends a request to the server to cancel an in-progress
- *  or pending ride request.
-**/
-export function cancelRide(rideId) {
-  return function (dispatch) {
+/*
+  Sends a request to the server to cancel an in-progress
+  or pending ride request.
+
+  expects: an object with _EITHER_
+    userId or rideId
+
+  When a ride has been requested but not matched, submit
+  their userId to have it removed from the riders table.
+  When a rider has been matched, submit their rideId to
+  remove it from the rides table.
+*/
+export function cancelRide({ userId, rideId }) {
+  return (dispatch) => {
     dispatch(cancelRideSent());
 
-    fetch(`/rides/${rideId}`, { method: 'DELETE' })
+    fetch('/rides/', {
+      method: 'DELETE',
+      headers: headers,
+      body: JSON.stringify({ userId, rideId }),
+    })
+      .then(checkStatus)
       .then(() => dispatch(cancelRideSuccess()))
       .catch((error) => dispatch(cancelRideError(error)));
   };
@@ -40,6 +57,7 @@ export function acceptRide(riderId, location) {
     dispatch(acceptRideSent());
 
     fetch('/rides', { method: 'POST', body: { riderId, location } })
+      .then(checkStatus)
       .then((body) => dispatch(confirmRide(body.json())))
       .catch((error) => dispatch(acceptRideError(error)));
   };
