@@ -5,6 +5,7 @@ import { BottomNavBarContainer } from './BottomNavBar';
 import { SplashContainer } from './Splash';
 import { MapView } from '../components/MapView';
 import { GithubButton } from '../models/Github';
+import { RiderListContainer } from './RiderItemList';
 
 import * as userAction from '../actionCreators/user';
 
@@ -23,6 +24,11 @@ function Main({ isDriver, isRider }) {
       {
         isRider ?
         <BottomNavBarContainer /> :
+        <div className="empty" />
+      }
+      {
+        isDriver ?
+        <RiderListContainer /> :
         <div className="empty" />
       }
     </div>
