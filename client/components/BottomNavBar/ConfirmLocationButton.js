@@ -1,3 +1,5 @@
+require('../../public/styles/styles.css');
+
 export function ConfirmLocationButton({
   confirmLocation,
 }) {
