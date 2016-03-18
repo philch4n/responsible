@@ -29,10 +29,7 @@ function addRider(state, action) {
 
 function removeRider(state, action) {
   let oldRiders = state.toJS();
-  newRiders = oldRiders.filter((rider) => rider.userId !== action.entry);
-  let updates = {
-    riders: newRiders,
-  };
+  let newRiders = oldRiders.filter((rider) => rider.userId !== action.entry);
 
-  return state.merge(updates);
+  return newRiders;
 }

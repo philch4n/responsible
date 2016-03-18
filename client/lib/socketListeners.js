@@ -21,7 +21,7 @@ export function configureListeners(socket) {
     dispatch(rideActions.addRider(data));
   });
 
-  // Must check implementation
+  // Note: does not actually remove rider BUT SHOULD
   // Event listened to by drivers - alerts them if their current ride is cancelled.
   socket.on('cancel_ride', function (data) {
     console.log('received socket event to remove rider:', data);
