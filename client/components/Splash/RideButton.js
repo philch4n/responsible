@@ -6,9 +6,13 @@ export function RideButton({
 }) {
   return (
     <div className='RideDiv' onClick={onRideButtonClick}>
-      <button className='RideButton column is-half is-offset-quarter button is-primary is-large'>
-      Ride
-      </button>
+      <section className="hero is-medium is-info is-bold">
+				<div className ='hero-content'>
+					<h1 className='title'>
+					Ride
+					</h1>
+				</div>
+      </section>
     </div>
   );
 }
