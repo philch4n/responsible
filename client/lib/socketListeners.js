@@ -22,12 +22,14 @@ export function configureListeners(socket) {
   });
 
   // Must check implementation
+  // Event listened to by drivers - alerts them if their current ride is cancelled.
   socket.on('cancel_ride', function (data) {
     console.log('received socket event to remove rider:', data);
     dispatch(rideActions.cancelRideSuccess());
   });
 
   // Must check implementation
+  // Event listened to by drivers - alerts them when a user no longer needs a ride.
   socket.on('remove_rider', function (data) {
     console.log('received socket event to remove rider:', data);
     dispatch(rideActions.removeRider(data.riderId));
