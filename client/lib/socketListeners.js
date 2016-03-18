@@ -20,4 +20,10 @@ export function configureListeners(socket) {
     console.log('received a new rider!', data);
     dispatch(rideActions.addRider(data));
   });
+
+  // Must check implementation
+  socket.on('remove_rider', function (data) {
+    console.log('received socket event to remove rider:', data);
+    dispatch(rideActions.removeRider(data.riderId));
+  });
 };

@@ -6,17 +6,13 @@ if (process.env.NODE_ENV === 'test') {
   var MockedSocketIO = {};
   MockedSocketIO.sockets = [];
   MockedSocketIO.sockets.emit = function () {};
+
   io = MockedSocketIO;
 }
 
 var Ride = require(__models + '/rides');
 var Friends = require(__models + '/friends');
 var User = require(__models + '/user');
-
-// var express = require('express');
-// var app = express();
-// var server = require('http').createServer(app);
-// var io = require('socket.io')(server);
 
 module.exports = RideAPI;
 
@@ -48,20 +44,22 @@ RideAPI.get('/:id', function (req, res) {
     .catch(sendStatusAndError(res, 500));
 });
 
-// Delete ride by id
+/*
+  Removes a ride or rider from the database.
+
+  Effectively ends an ongoing ride or cancel a request for a ride.
+
+  expects req.body:
+    { rideId }
+        OR
+    { userId }
+  depending on whether it is a ride in progress of just a request for one.
+*/
 RideAPI.delete('/', function (req, res) {
   console.log('removing ride(r) by id:', req.body);
 
   var rideExists = false;
   if (req.body.rideId) rideExists = true;
-
-  // var remover = rideExists ?
-  //   Ride.deleteRide(req.body.rideId) :
-  //   Ride.deleteRider(req.body.userId);
-
-  // remover
-  //   .then(sendStatusAndData(res, 200))
-  //   .catch(sendStatusAndError(res, 500));
 
   if (rideExists) {
     Ride.deleteRide(req.body.rideId)
@@ -72,7 +70,6 @@ RideAPI.delete('/', function (req, res) {
       .then(sendStatus(res, 200))
       .catch(sendStatusAndError(res, 500));
   }
-
 });
 
 /*
