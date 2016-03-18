@@ -7,7 +7,7 @@ export function RideButton({
   return (
     <div className='RideDiv' onClick={onRideButtonClick}>
       <section className="hero is-medium is-info is-bold">
-				<div className ='hero-content'>
+				<div className ='hero-content 2'>
 					<h1 className='title'>
 					Ride
 					</h1>
