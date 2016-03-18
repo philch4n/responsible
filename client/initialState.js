@@ -1,6 +1,6 @@
 export default {
   user: {
-    user_id: 1,
+    id: 4,
     location: { lat: 30.2705365, lng: -97.7362387 },
     profile: {
       avatar: 'https://i.ytimg.com/vi/1v6M41Divso/maxresdefault.jpg',
@@ -12,7 +12,6 @@ export default {
     },
     isDriver: false,
     isRider: false,
-    isFetchingUserInfo: false,
     friends: [
       {
         id: 2,
@@ -55,9 +54,9 @@ export default {
     match: null,
     riders: [], // Array of this driver's friends who are looking for a ride.
     messages: [
-      { id: 5, time: '12:30', text: 'Where are you?', },
+      { id: 1, time: '12:30', text: 'Where are you?', },
       { id: 7, time: '12:42', text: 'On my way. Where you at?', },
-      { id: 5, time: '12:45', text: 'Four Horseman', },
+      { id: 1, time: '12:45', text: 'Four Horseman', },
       { id: 7, time: '12:50', text: 'Be there in ten.', },
     ],
     isWaitingForMatch: false,
