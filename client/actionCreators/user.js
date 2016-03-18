@@ -1,5 +1,6 @@
 import fetch from 'isomorphic-fetch';
 
+// expects props to be: { first_name, last_name, avatar, username, verifyBy }
 export function fetchUserInfo(props) {
   console.log('in userActionCreator', props);
   return (dispatch) => {
@@ -10,7 +11,7 @@ export function fetchUserInfo(props) {
       headers: {
         'Content-Type': 'application/json',
       },
-      body: JSON.stringify(props)
+      body: JSON.stringify(props),
     })
       .then((info) => dispatch(receiveUserInfo(info)))
       .catch((error) => dispatch(requestUserInfoError(error)));

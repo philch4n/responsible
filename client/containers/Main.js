@@ -10,12 +10,12 @@ import * as userAction from '../actionCreators/user';
 
 function nullFn(e) { console.log('you clicked me ' + e.target.className); };
 
-function Main({ isDriver, isRider, onGithubClick=nullFn, }) {
-  console.log('isDriver, isRider:', isDriver, isRider, onGithubClick);
+function Main({ isDriver, isRider, }) {
+  console.log('isDriver, isRider:', isDriver, isRider);
   return (
     <div className="MainApp">
     <button onClick={User.facebook}>Facebook</button>
-    <GithubButton onGithubClick={onGithubClick} />
+    <GithubButton />
     <button onClick={User.google}>Google</button>
       <TopNavBarContainer />
       {
@@ -51,6 +51,5 @@ const mapDispatchToProps = function (dispatch) {
 };
 
 export const MainContainer = connect(
-  mapStateToProps,
-  mapDispatchToProps
+  mapStateToProps
 )(Main);
