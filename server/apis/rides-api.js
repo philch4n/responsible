@@ -50,9 +50,9 @@ RideAPI.get('/:id', function (req, res) {
   Effectively ends an ongoing ride or cancel a request for a ride.
 
   expects req.body:
-    { rideId }
-        OR
     { userId }
+        OR
+    { userId (which partner is canceling), rideId }
   depending on whether it is a ride in progress of just a request for one.
 */
 RideAPI.delete('/', function (req, res) {
@@ -65,11 +65,16 @@ RideAPI.delete('/', function (req, res) {
     Ride.deleteRide(req.body.rideId)
       .then(senStatus(res, 200))
       .catch(sendStatusAndError(res, 500));
-    io.sockets.emit('remove_ride', req.body)
+
+    // emit to only the appropriate other party
+    //   hint: emit to ride partner of rideId (knowing who canceled)
+    io.sockets.emit('cancel_ride', req.body);
   } else {
     Ride.deleteRider(req.body.userId)
       .then(sendStatus(res, 200))
       .catch(sendStatusAndError(res, 500));
+
+    // no rides in progress -- emit to friends of rider.
     io.sockets.emit('remove_rider', req.body);
   }
 
