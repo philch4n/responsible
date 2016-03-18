@@ -1,5 +1,5 @@
-require('../../public/styles/skeleton.css');
-require('../../public/styles/normalize.css');
+// require('../../public/styles/skeleton.css');
+// require('../../public/styles/normalize.css');
 
 /* This function will dispatch an action to change to Rider mode */
 function nullFn(e) { console.log('you clickededed me ' + e.target.className); };

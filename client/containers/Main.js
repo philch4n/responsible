@@ -10,10 +10,17 @@ function Main({ isDriver, isRider }) {
   console.log('isDriver, isRider:', isDriver, isRider);
   return (
     <div className="MainApp">
-    <button onClick={User.facebook}>Facebook</button>
-    <button onClick={User.github}>Github</button>
-    <button onClick={User.google}>Google</button>
       <TopNavBarContainer />
+      <button onClick={User.facebook}>
+        <i className='fa fa-facebook-official'>
+        </i>&nbsp;Facebook
+      </button>
+      <button onClick={User.github}>
+        <i className='fa fa-github'>
+        </i>&nbsp;GitHub</button>
+      <button onClick={User.google}>
+        <i className='fa fa-google'>
+        </i>&nbsp;Google</button>
       {
         !isDriver && !isRider ?
           <SplashContainer /> :

@@ -6,7 +6,9 @@ export function RideButton({
 }) {
   return (
     <div className='RideDiv' onClick={onRideButtonClick}>
-      <button className='RideButton btn u-full-width' type='button'>Ride!</button>
+      <button className='RideButton column is-half is-offset-quarter button is-primary is-large'>
+      Ride
+      </button>
     </div>
   );
 }

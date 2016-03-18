@@ -5,8 +5,8 @@ export function SettingIcon({
   onSettingsButtonClick = nullFn,
 }) {
   return (
-    <div className='SettingIcon two columns' onClick={onSettingsButtonClick}>
-      <button className='SettingButton btn u-full-width' type='button'>Settings!</button>
+    <div className='SettingIcon' onClick={onSettingsButtonClick}>
+      <a className='SettingButton button is-large'>Settings</a>
     </div>
   );
 }
