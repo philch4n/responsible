@@ -50,7 +50,7 @@ RideAPI.get('/:id', function (req, res) {
 
 // Delete ride by id
 RideAPI.delete('/', function (req, res) {
-  console.log('deleting ride by id:', req.body);
+  console.log('removing ride(r) by id:', req.body);
 
   var rideExists = false;
   if (req.body.rideId) rideExists = true;
@@ -59,7 +59,7 @@ RideAPI.delete('/', function (req, res) {
     Ride.deleteRide(req.body.rideId) :
     Ride.deleteRider(req.body.userId);
 
-  Ride.deleteRide(id)
+  remover
     .then(sendStatusAndData(res, 200))
     .catch(sendStatusAndError(res, 500));
 });
@@ -74,14 +74,6 @@ RideAPI.get('/riders', function (req, res) {
     .then(sendStatusAndData(res, 201))
     .catch(sendStatusAndError(res, 500, ('error creating rider')));
 });
-
-// // Get Rider By Id
-// RideAPI.get('/riders/:id', function (req, res) {
-//   var id = req.params.id;
-//   Ride.getRiderById(id)
-//     .then(sendStatusAndData(res, 200))
-//     .catch(sendStatusAndError(res, 500));
-// });
 
 // expects req.body: { }
 // response: { }

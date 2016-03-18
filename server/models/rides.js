@@ -11,11 +11,8 @@ module.exports = Ride;
 
 // Get all rides
 Ride.getRides = function () {
-  return db.select('*').from('rides')
+  return db('rides').select('*')
     .catch(reportError('error getting all rides'))
-    .then(function (rides) {
-      return rides;
-    });
 };
 
 // Create A ride
@@ -29,16 +26,17 @@ Ride.createRide = function (attrs) {
 };
 
 // Delete A Ride
-Ride.deleteRide = function (id) {
-  return db('rides').where({ ride_id: id }).del()
+Ride.deleteRide = function (rideId) {
+  return db.raw('DELETE FROM rides WHERE ride_id = ? CASCADE', rideId)
     .catch(reportError('error deleting ride by id'))
     .then(ride => console.log('deleted ride with id ' + id));
+
+  // return db('rides').where({ ride_id: rideId }).del()
 };
 
 Ride.getRideById = function (id) {
   return db('rides').where({ ride_id: id })
-    .catch(reportError('error getting ride by id'))
-    .then(ride => ride);
+    .catch(reportError('error getting ride by id'));
 };
 
 /*
@@ -67,11 +65,13 @@ Ride.createRider = function (attrs) {
     .catch(reportError('error creating rider in db'));
 };
 
-// Deletes rider by id
-Ride.deleteRider = function (id) {
-  return db('riders').where({ rider_id: id }).del()
+/*
+  Delete a rider row by the foreign_rider userId that it represents
+*/
+Ride.deleteRider = function (userId) {
+  return db('riders').where({ foreign_rider: userId }).del()
     .catch(reportError('error deleting rider by id'))
-    .then(rider => console.log('deleted rider with id ' + id));
+    .then(rider => console.log('deleted rider with id ' + userId));
 };
 
 /*
@@ -97,7 +97,7 @@ Ride.getDriverById = function (userId) {
 // Create a new driver
 Ride.createDriver = function (attrs) {
   return db('drivers').insert(attrs, ['driver_id', 'foreign_driver', 'location'])
-    .catch(reportError('error creating driver in db'))
+    .catch(reportError('error creating driver in db'));
 };
 
 // Deletes driver
@@ -112,6 +112,8 @@ Ride.deleteDriver = function (id) {
 */
 
 Ride.deleteRiderAndDriver = function (riderId, driverId) {
-  Ride.deleteRider(riderId);
-  Ride.deleteDriver(driverId);
+  return Promise.all([
+    Ride.deleteRider(riderId),
+    Ride.deleteDriver(driverId),
+  ]);
 };

@@ -53,18 +53,18 @@ export function cancelRide({ userId, rideId }) {
  *  location to the server.
 **/
 export function acceptRide(riderId, location) {
-  return (dispatch) => {
+  return function (dispatch) {
     dispatch(acceptRideSent());
 
     fetch('/rides', {
       method: 'POST',
       headers: headers,
-      body: JSON.stringify({ riderId, location }), 
+      body: JSON.stringify({ riderId, location }),
     })
       .then(checkStatus)
       .then(json)
-      .then((body) => dispatch(confirmRide(body))
-      .catch((error) => dispatch(acceptRideError(error)))
+      .then((body) => dispatch(confirmRide(body)))
+      .catch((error) => dispatch(acceptRideError(error)));
   };
 };
 
