@@ -22,6 +22,12 @@ export function configureListeners(socket) {
   });
 
   // Must check implementation
+  socket.on('cancel_ride', function (data) {
+    console.log('received socket event to remove rider:', data);
+    dispatch(rideActions.cancelRideSuccess());
+  });
+
+  // Must check implementation
   socket.on('remove_rider', function (data) {
     console.log('received socket event to remove rider:', data);
     dispatch(rideActions.removeRider(data.riderId));

@@ -65,11 +65,14 @@ RideAPI.delete('/', function (req, res) {
     Ride.deleteRide(req.body.rideId)
       .then(senStatus(res, 200))
       .catch(sendStatusAndError(res, 500));
+    io.sockets.emit('remove_ride', req.body)
   } else {
     Ride.deleteRider(req.body.userId)
       .then(sendStatus(res, 200))
       .catch(sendStatusAndError(res, 500));
+    io.sockets.emit('remove_rider', req.body);
   }
+
 });
 
 /*
