@@ -113,6 +113,7 @@ RideAPI.post('/riders', function (req, res) {
       console.log('did we find a user?', user);
       rider = user;
       rider.location = _location;
+
       // rider.location = location;
       return Friends.getFriendDrivers(rider.foreign_rider);
     })

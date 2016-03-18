@@ -85,11 +85,13 @@ Seed.cleaner = function () {
 };
 
 Seed.runner = function * () {
-
+  // console.log('Seed:', Seed);
   const user1Id = yield Seed.makeUser(Seed.user1);
   const user2Id = yield Seed.makeUser(Seed.user2);
   const user3Id = yield Seed.makeUser(Seed.user3);
   const user4Id = yield Seed.makeUser(Seed.user4);
+
+  console.log('user1Id:', user1Id);
 
   const friend1 = yield Seed.makeFriend(user1Id[0].user_id, user3Id[0].user_id);
   const friend2 = yield Seed.makeFriend(user2Id[0].user_id, user4Id[0].user_id);

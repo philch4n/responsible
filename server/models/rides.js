@@ -21,7 +21,7 @@ Ride.createRide = function (attrs) {
     .catch(reportError('error creating ride in db'))
     .then(function (ride) {
       return Ride.deleteRiderAndDriver(attrs.ride_rider, attrs.ride_driver)
-        .then( () => ride );
+        .then(() => ride);
     });
 };
 
@@ -58,6 +58,8 @@ Ride.getRiderById = function (userId) {
 
 // Create a rider
 Ride.createRider = function (attrs) {
+  console.log('inserting rider:', attrs);
+
   return db('riders').insert(attrs, ['rider_id', 'foreign_rider', 'location'])
     .catch(reportError('error creating rider in db'));
 };

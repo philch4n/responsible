@@ -50,6 +50,7 @@ export default {
     ],
   },
   ride: {
+    id: null,
     match: null,
     riders: [], // Array of this driver's friends who are looking for a ride.
     messages: [

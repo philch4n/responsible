@@ -33,6 +33,8 @@ export function fetchRide(userId, location) {
   remove it from the rides table.
 */
 export function cancelRide({ userId, rideId }) {
+
+  console.log('canceling ride with object:', userId, rideId);
   return (dispatch) => {
     dispatch(cancelRideSent());
 
