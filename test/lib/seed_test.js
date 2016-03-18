@@ -1,6 +1,9 @@
 const dbCleaner = require('knex-cleaner');
 const db = require('../../lib/db');
 
+const User = require('../../server/models/user');
+const Friend = require('../../server/models/friends');
+
 var Seed = {};
 module.exports = Seed;
 
@@ -18,6 +21,9 @@ Seed.user1 = {
   emergency_contact: 'Nobody.',
   avatar: 'yahoo.com',
 };
+Seed.user1.make = function () {
+  return User.createUser(Seed.user1);
+};
 
 Seed.user2 = {
   username: 'GregB',
@@ -32,6 +38,9 @@ Seed.user2 = {
   email: 'gregb@hotmail.com',
   emergency_contact: 'Marsha Marsha Marsha',
   avatar: 'google.com',
+};
+Seed.user2.make = function () {
+  return User.createUser(Seed.user2);
 };
 
 Seed.user3 = {
@@ -48,6 +57,9 @@ Seed.user3 = {
   emergency_contact: 'Snoopy',
   avatar: 'hotmail.com',
 };
+Seed.user3.make = function () {
+  return User.createUser(Seed.user3);
+};
 
 Seed.user4 = {
   username: 'GumpDump(69)[420]weed',
@@ -63,6 +75,39 @@ Seed.user4 = {
   emergency_contact: 'Jenny, oh wait...',
   avatar: 'gumpshrimp.com',
 };
+Seed.user4.make = function () {
+  return User.createUser(Seed.user4);
+};
+
+Seed.makeFriend = function (id1, id2) {
+  return Friend.createFriendship(id1, id2);
+};
+
+Seed.makeRider = function (rider) {
+  return Ride.createRider(rider);
+};
+
+// Seed.makeRiders = function () {
+//   var rider1 = {
+//     location: '700 E. 8th street Austin, Tx',
+//   };
+//   var rider2 = {
+//     location: '1000 Freckle Face Weigh',
+//   };
+
+//   return Seed.user1.make()
+//     .then(function (user1) {
+//       rider1.foreign_rider = user1.user_id;
+//       return Seed.user2.make();
+//     })
+//     .then(function (user2) {
+//       rider2.foreign_rider = user2.user_id;
+//       return Seed.makeRider(rider1);
+//     })
+//     .then(function () {
+//       return Seed.makeRider(rider2);
+//     });
+// };
 
 Seed.cleaner = function () {
   return dbCleaner.clean(db, { mode: 'truncate' });
@@ -70,20 +115,14 @@ Seed.cleaner = function () {
 
 Seed.runner = function * () {
 
-  const user1Id = yield db('users').insert(Seed.user1, ['user_id']);
-  const user2Id = yield db('users').insert(Seed.user2, ['user_id']);
-  const user3Id = yield db('users').insert(Seed.user3, ['user_id']);
-  const user4Id = yield db('users').insert(Seed.user4, ['user_id']);
-  const friend1 = {
-    foreign_friend1: user1Id[0].user_id,
-    foreign_friend2: user3Id[0].user_id,
-  };
-  const friend2 = {
-    foreign_friend1: user2Id[0].user_id,
-    foreign_friend2: user4Id[0].user_id,
-  };
-  const friendId1 = yield db('friends').insert(friend1, ['friendship_id']);
-  const friendId2 = yield db('friends').insert(friend2, ['friendship_id']);
+  const user1Id = yield Seed.user1.make();
+  const user2Id = yield Seed.user2.make();
+  const user3Id = yield Seed.user3.make();
+  const user4Id = yield Seed.user4.make();
+
+  const friendId1 = yield Seed.makeFriends(user1Id[0].user_id, user3Id[0].user_id);
+  const friendId2 = yield Seed.makeFriends(user2Id[0].user_id, user4Id[0].user_id);
+
   const rider1  = {
     foreign_rider: user1Id[0].user_id,
     location: '700 E. 8th street Austin, Tx',
@@ -92,8 +131,9 @@ Seed.runner = function * () {
     foreign_rider: user2Id[0].user_id,
     location: '1000 Freckle Face Weigh',
   };
-  const riderId1 = yield db('riders').insert(rider1, ['rider_id']);
-  const riderId2 = yield db('riders').insert(rider2, ['rider_id']);
+  const riderId1 = yield Seed.makeRider(rider1);
+  const riderId2 = yield Seed.makeRider(rider2);
+
   const driver1 = {
     foreign_driver: user3Id[0].user_id,
     location: '1826 Niblick Way',
