@@ -16,18 +16,20 @@ export function handleRiders(state = List(), action) {
 // adds a rider or array of riders to the state riders list.
 function addRider(state, action) {
   console.log('adding ride. Check state - have not verified this works');
+  let nextState = null;
+
   if (Array.isArray(action.entry))
-    return state.push(...action.entry);
+    nextState = state.push(...action.entry);
   else
-    return state.push(action.entry);
+    nextState = state.push(action.entry);
+
+  console.log('next riders state:', nextState.toJS());
+  return nextState;
 };
 
 function removeRider(state, action) {
   let oldRiders = state.toJS();
-  newRiders = oldRiders.filter((rider) => rider.userId !== action.entry);
-  let updates = {
-    riders: newRiders,
-  };
+  let newRiders = oldRiders.filter((rider) => rider.userId !== action.entry);
 
-  return state.merge(updates);
+  return newRiders;
 }

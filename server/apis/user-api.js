@@ -42,7 +42,7 @@ UserAPI.post('/tmp', function (req, res) {
   // has to also be a column in the users table.
   // If names for similar things (ie: picture and avatar) are different,
   // rename them before sending the fetch.
-  var verifyBy = req.body.verifyBy;
+  var verifyBy = 'OAuthId';
 
   // create user if needed, update attributes if not, and return merged user info
   // User.createOrUpdateUser(verifyBy, user)

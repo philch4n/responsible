@@ -4,6 +4,7 @@ import { handleCancel } from './cancelRide';
 import { handleConfirm } from './confirmRide';
 import { handleRideFetch } from './fetchRide';
 import { handleMessages } from './rideMessages';
+import { handleRiders } from './riders';
 
 // The state passed to this reducer is state.ride
 export default function(state = Map(), action) {
@@ -25,7 +26,7 @@ export default function(state = Map(), action) {
       return handleCancel(state, action);
     case 'REMOVE_RIDER':
     case 'ADD_RIDER':
-      return handleRiders(state.get('riders'), action);
+      return state.mergeIn(['riders'], handleRiders(state.get('riders'), action));
     case 'REQUEST_MESSAGES':
     case 'RECEIVE_MESSAGES':
     case 'REQUEST_MESSAGES_ERROR':

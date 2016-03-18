@@ -2,10 +2,10 @@
 function nullFn(e) { console.log('you clicked me ' + e.target.className); };
 
 export function CancelRideButton({
-  onCancelRideButtonClick = nullFn,
+  onCancel = nullFn,
 }) {
   return (
-    <div className='CancelRideButton two columns' onClick={onCancelRideButtonClick}>
+    <div className='CancelRideButton two columns' onClick={onCancel}>
       <button className='CancelRideButton btn u-full-width' type='button'>Cancel</button>
     </div>
   );

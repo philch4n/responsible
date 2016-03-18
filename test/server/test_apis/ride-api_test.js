@@ -50,14 +50,16 @@ describe('Ride API', function () {
 
   it_('Should create rider in database', function * () {
     var newestRider = {
-      foreign_rider: seedData.user3Id[0].user_id,
+      userId: seedData.user1Id[0].user_id,
       location: '700 E. 8th street Austin, Tx',
     };
+
+    console.log('attempting to insert user with id:', newestRider);
 
     yield request(app)
       .post('/rides/riders')
       .send(newestRider)
-      .expect(201)
+      .expect(202)
       .expect(function (response) {
         var rider = response.body;
         expect(rider.avatar).to.not.be.undefined;
@@ -82,5 +84,4 @@ describe('Ride API', function () {
         expect(ride.ride_rider).to.equal(seedData.user2Id[0].user_id);
       });
   });
-
 });

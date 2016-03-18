@@ -6,17 +6,13 @@ if (process.env.NODE_ENV === 'test') {
   var MockedSocketIO = {};
   MockedSocketIO.sockets = [];
   MockedSocketIO.sockets.emit = function () {};
+
   io = MockedSocketIO;
 }
 
 var Ride = require(__models + '/rides');
 var Friends = require(__models + '/friends');
 var User = require(__models + '/user');
-
-// var express = require('express');
-// var app = express();
-// var server = require('http').createServer(app);
-// var io = require('socket.io')(server);
 
 module.exports = RideAPI;
 
@@ -48,12 +44,39 @@ RideAPI.get('/:id', function (req, res) {
     .catch(sendStatusAndError(res, 500));
 });
 
-// Delete ride by id
-RideAPI.delete('/:id', function (req, res) {
-  var id = req.params.id;
-  Ride.deleteRide(id)
-    .then(sendStatusAndData(res, 200))
-    .catch(sendStatusAndError(res, 500));
+/*
+  Removes a ride or rider from the database.
+
+  Effectively ends an ongoing ride or cancel a request for a ride.
+
+  expects req.body:
+    { userId }
+        OR
+    { userId (which partner is canceling), rideId }
+  depending on whether it is a ride in progress of just a request for one.
+*/
+RideAPI.delete('/', function (req, res) {
+  console.log('removing ride(r) by id:', req.body);
+
+  var rideExists = false;
+  if (req.body.rideId) rideExists = true;
+
+  if (rideExists) {
+    Ride.deleteRide(req.body.rideId)
+      .then(senStatus(res, 200))
+      .catch(sendStatusAndError(res, 500));
+
+    // emit to only the appropriate other party
+    //   hint: emit to ride partner of rideId (knowing who canceled)
+    io.sockets.emit('cancel_ride', req.body);
+  } else {
+    Ride.deleteRider(req.body.userId)
+      .then(sendStatus(res, 200))
+      .catch(sendStatusAndError(res, 500));
+
+    // no rides in progress -- emit to friends of rider.
+    io.sockets.emit('remove_rider', req.body);
+  }
 });
 
 /*
@@ -67,28 +90,31 @@ RideAPI.get('/riders', function (req, res) {
     .catch(sendStatusAndError(res, 500, ('error creating rider')));
 });
 
-// Get Rider By Id
-RideAPI.get('/riders/:id', function (req, res) {
-  var id = req.params.id;
-  Ride.getRiderById(id)
-    .then(sendStatusAndData(res, 200))
-    .catch(sendStatusAndError(res, 500));
-});
-
-// Post Rider
+// expects req.body: { userId, location }
+// response: { }
 RideAPI.post('/riders', function (req, res) {
+  console.log('posting rider:', req.body);
   var attrs = req.body;
   var rider = null;
-  var location = null;
+  var _location = req.body.location;
 
-  Ride.createRider(attrs)
+  var riderToInsert = {
+    foreign_rider: req.body.userId,
+    location: req.body.location,
+  };
+
+  Ride.createRider(riderToInsert)
     .then(function (newRider) {
-      location = newRider[0].location;
+      // location = newRider[0].location;
+      console.log('created a new rider:', newRider);
       return User.findUserById(newRider[0].foreign_rider);
     })
     .then(function (user) {
+      console.log('did we find a user?', user);
       rider = user;
-      rider.location = location;
+      rider.location = _location;
+
+      // rider.location = location;
       return Friends.getFriendDrivers(rider.foreign_rider);
     })
     .then(function (arrayOfFriendDrivers) {
@@ -97,7 +123,7 @@ RideAPI.post('/riders', function (req, res) {
       return rider;
     })
     .catch(sendStatusAndError(res, 500, 'error emiting new rider'))
-    .then(sendStatusAndData(res, 201));
+    .then(sendStatus(res, 202));
 });
 
 /*

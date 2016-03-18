@@ -8,14 +8,20 @@ import { TopNavBarRightButton } from '../components/TopNavBar/RightButton';
 import * as userAction from '../actionCreators/user';
 import * as rideAction from '../actionCreators/ride';
 
-function TopNavBar({ onCancelRideButtonClick, ...props }) {
+function TopNavBar({ onCancel, ...props }) {
+
+  let cancelClick = onCancel.bind(null, null, props.user.id, props.ride.id);
+  if (props.ride.match === null) {
+    cancelClick = onCancel.bind(null, props.user.id, null);
+  }
+
   return (
     <div className="TopNavBarContainer row">
       <SettingIcon {...props}/>
       <Logo />
       <TopNavBarRightButton
         {...props}
-        onCancelRideButtonClick={onCancelRideButtonClick.bind(props.user.id)}
+        onCancel={cancelClick}
       />
     </div>
   );
@@ -34,8 +40,9 @@ const mapDispatchToProps = function (dispatch) {
     onProfileButtonClick() {
       dispatch(push('/profile'))
     },
-    onCancelRideButtonClick: (rideId) => {
-      dispatch(rideAction.cancelRide(rideId))
+    onCancel: (userId, rideId) => {
+      console.log('dispatching cancel:', userId, rideId);
+      dispatch(rideAction.cancelRide({ userId, rideId }))
     },
   };
 };
