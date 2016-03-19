@@ -11,13 +11,13 @@ export function configureListeners(socket) {
 
   // Example socket listener. When we see the 'receive_message' event,
   // dispatch an addMessage action with the new message data.
-  socket.on('receive_message', function (data) {
+  socket.on('new_message', function (data) {
     console.log('received message from server!:', data);
     dispatch(chatActions.addMessage(data));
   });
 
-  socket.on('new_rider', function (data) {
-    console.log('received a new rider!', data);
+  socket.on('add_rider', function (data) {
+    console.log('received a new friend rider!', data);
     dispatch(rideActions.addRider(data));
   });
 
@@ -34,4 +34,6 @@ export function configureListeners(socket) {
     console.log('received socket event to remove rider:', data);
     dispatch(rideActions.removeRider(data.riderId));
   });
+
+  socket.emit('join', { user_id: 55 });
 };

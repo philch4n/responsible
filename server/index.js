@@ -32,8 +32,8 @@ if (process.env.NODE_ENV !== 'test') {
   var app = express();
   var server = require('http').createServer(app);
 
-  var io = require('./lib/ioConfig');
-  io.init(server);
+  // Initialize our IO Server to handle socket connections.
+  require('./lib/ioConfig').init(server);
 
   //HTTP request logger middleware
   app.use(require('morgan')('dev'));

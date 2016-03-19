@@ -22,7 +22,9 @@ export default function (state = Map(), action) {
 };
 
 function setDriver(state, { entry }) {
+  // console.warn("Jonathan - WARNING: setting user id to 5 for socket testing purposes.");
   let updates = {
+    // id: 5,
     isDriver: entry,
     isRider: false,
   };

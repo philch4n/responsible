@@ -23,10 +23,10 @@ export function box({ match, id, messages, addMessage, }) {
 }
 
 const mapStateToProps = function (state) {
-  return state.toJS();
+  return state.get('ride').toJS();
 };
 
-// // jscs:disable
+// jscs:disable
 const mapDispatchToProps = function (dispatch) {
   return {
     addMessage: curry(function (id, e) {
@@ -39,12 +39,11 @@ const mapDispatchToProps = function (dispatch) {
         text: e.target.firstChild.value,
       };
       e.target.firstChild.value = '';
-      dispatch(chatAction.submitMessage(messageObject));
+      dispatch(chatAction.submitMessage(55, messageObject));
     }),
   };
 };
-
-// // jscs:enable
+// jscs:enable
 
 export const Chat = connect(
   mapStateToProps,
