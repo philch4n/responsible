@@ -41,8 +41,6 @@ User.deleteUser = function (userId) {
 };
 
 User.findFriends = function (userId) {
-  console.log('in user server model', userId);
-
   // db.distinct('username').from('users').joinRaw('INNER JOIN trip_users
   // ON id_user = users.id AND id_trip = ?', [tripId]).select();
 
@@ -79,22 +77,19 @@ User.createOrUpdateUser = function (verifyBy, attrs) {
         return User.createUser(attrs);
       }
     })
-
-    // Once we have user, get their (possibly updated) information
     .then(function (_attrs) {
-      return User.findUserById(_attrs.user_id)
-
-      // Then go find their friends (if they have any)
-      .then(function (user) {
-        return User.findFriends(user.user_id)
-          .then(function (friends) {
-            var data = {
-              friends: friends,
-              user: user,
-            };
-            return data;
-          });
-      });
+      // Once we have user, get all of their information
+      return User.findUserById(_attrs.user_id);
+    })
+    .then(function (user) {
+      return User.findFriends(user.user_id)
+        .then(function (friends) {
+          let dataForClient = {
+            friends: friends,
+            user: user,
+          };
+          return dataForClient;
+        });
     })
     .catch(reportError('ERROR doing something creating/updating user. investigate'));
 };
@@ -103,6 +98,7 @@ User.createOrUpdateUser = function (verifyBy, attrs) {
 User.createUser = function (attrs) {
   return db('users')
     .insert(attrs, ['user_id', 'first_name', 'username', 'email', 'avatar', 'address'])
+    .then(first)
     .catch(reportError('error creating user into db'));
 };
 

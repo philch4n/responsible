@@ -17,6 +17,7 @@ function Main({
   ride: { riders, match, location, directions, },
   redirectToProfile,
 }) {
+
   if (isLoggedIn && !profile.address) {
     redirectToProfile();
   }

@@ -22,19 +22,22 @@ function requestUserInfo(state) {
 }
 
 function receiveUserInfo(state, { entry }) {
+  console.log('received user information from server:', entry);
+
   let newState;
   let userUpdates = {
     user_id: entry.user.user_id,
-    isFetchingUserInfo: false,
+    isLoggedIn: true,
+    isFetchinguserInfo: false,
     friends: entry.friends,
   };
 
   let profileUpdates = {
     avatar: entry.user.avatar,
     fullName: entry.user.first_name + ' ' + entry.user.last_name,
+    address: entry.user.address,
   };
 
-  // newState = state.mergeIn(['friends'], entry.friends);
   newState = state.mergeIn(['profile'], profileUpdates);
   newState = newState.merge(userUpdates);
 
