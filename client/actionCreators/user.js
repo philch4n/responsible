@@ -1,4 +1,5 @@
 import fetch from 'isomorphic-fetch';
+import { headers, json, checkStatus } from '../lib/fetchHelpers';
 
 // expects props to be: { first_name, last_name, avatar, username, verifyBy }
 export function fetchUserInfo(props) {
@@ -8,12 +9,11 @@ export function fetchUserInfo(props) {
 
     fetch('/user/tmp', {
       method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-      },
+      headers: headers,
       body: JSON.stringify(props),
     })
-    .then((response) => response.json())
+      .then(checkStatus)
+      .then(json)
       .then((info) => dispatch(receiveUserInfo(info)))
       .catch((error) => dispatch(requestUserInfoError(error)));
   };
