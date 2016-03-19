@@ -2,7 +2,6 @@ import React from 'react';
 import { GoogleMapLoader, GoogleMap , Marker, DirectionsRenderer } from 'react-google-maps';
 import { connect } from 'react-redux'
 
-<<<<<<< a47a807a5e4dc1fe4dbd2209bfec07a9542fb0fb
 
     //clearWatch()    watchPosition()    getCurrentPosition()
     // navigator.geolocation.getCurrentPosition(GoogleMap, errorError);
@@ -41,33 +40,12 @@ const DirectionsService = new google.maps.DirectionsService();
 function Map ({ match, location, onMapView, directions }) {
   return match ? 
   (
-=======
-var location = {}
-var options = {timeout:6000};
-
-  if (navigator.geolocation) {
-    navigator.geolocation.watchPosition(function (data, err, options) {
-    location.lat = data.coords.latitude;
-    location.lng = data.coords.longitude;
-	console.log('Rider Time Summoned:', new Date(data.timestamp))
-})}
-
-    //clearWatch()    watchPosition()    getCurrentPosition()
-    // navigator.geolocation.getCurrentPosition(GoogleMap, errorError);
-
-export function MapView(props) {
-  return (
->>>>>>> added geolocation and timestamps for riders summoning drivers
     <div className='map'>
       <GoogleMapLoader
       ref={(map) => console.log('map data1', map)}
       containerElement={ <div style={{ height: '70%' }} /> }
-<<<<<<< a47a807a5e4dc1fe4dbd2209bfec07a9542fb0fb
       googleMapElement={ <GoogleMap defaultZoom={14} defaultCenter={ location } >
       {directions ? <DirectionsRenderer directions={directions} /> : null}
-=======
-      googleMapElement={ <GoogleMap defaultZoom={14} defaultCenter={{ lat: location.lat, lng: location.lng }}>
->>>>>>> added geolocation and timestamps for riders summoning drivers
       </GoogleMap> }
       />
     </div>
