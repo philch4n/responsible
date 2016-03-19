@@ -101,7 +101,8 @@ User.createOrUpdateUser = function (verifyBy, attrs) {
 
 // username should probably just be name
 User.createUser = function (attrs) {
-  return db('users').insert(attrs, ['user_id', 'first_name', 'username', 'email', 'avatar'])
+  return db('users')
+    .insert(attrs, ['user_id', 'first_name', 'username', 'email', 'avatar', 'address'])
     .catch(reportError('error creating user into db'));
 };
 
@@ -109,7 +110,7 @@ User.createUser = function (attrs) {
 User.updateUser = function (userId, attrs) {
   return db('users')
     .where({ user_id: userId })
-    .update(attrs, ['user_id', 'username', 'email', 'avatar'])
+    .update(attrs, ['user_id', 'username', 'email', 'avatar', 'address'])
     .then(first)
     .catch(reportError('error updating user by id:' + userId));
 };
