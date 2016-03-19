@@ -30,6 +30,20 @@ User.deleteUser = function (userId) {
     .then(user => console.log('DELETING user:', user));
 };
 
+User.findFriends = function (userId) {
+  console.log('in user server model', userId);
+
+  // db.distinct('username').from('users').joinRaw('INNER JOIN trip_users
+  // ON id_user = users.id AND id_trip = ?', [tripId]).select();
+
+  return db.from('users').innerJoin('friends', 'friends.foreign_friend2',
+  'users.user_id').whereRaw('friends.foreign_friend1 = ?', [userId]);
+
+  // return db('*').from('users').joinRaw('INNER JOIN friends ON ' +
+  //   'friends.foreign_friend2 = users.user_id AND
+  // friends.foreign_friend1 = ?', [userId]).select();
+};
+
 /**
  *  attrs is (all of the time?) an OAuth user object.
  *  We look in the DB for some unique property of this object
@@ -39,8 +53,10 @@ User.deleteUser = function (userId) {
  *  returns: the whole user object
 **/
 User.createOrUpdateUser = function (verifyBy, attrs) {
+  // Check if user is found by unique info (such as github token)
   return User.findUserBy(verifyBy, attrs[verifyBy])
     .then(function (foundEntry) {
+      // If they are found, update their information in database
       if (foundEntry) {
         let userPropsToUpdateWithOAuth = {
           first_name: attrs.name,
@@ -49,11 +65,26 @@ User.createOrUpdateUser = function (verifyBy, attrs) {
         };
         return User.updateUser(foundEntry.user_id, userPropsToUpdateWithOAuth);
       } else {
+        // Otherwise, create a new user
         return User.createUser(attrs);
       }
     })
+
+    // Once we have user, get their (possibly updated) information
     .then(function (_attrs) {
-      return User.findUserById(_attrs.user_id);
+      return User.findUserById(_attrs.user_id)
+
+      // Then go find their friends (if they have any)
+      .then(function (user) {
+        return User.findFriends(user.user_id)
+          .then(function (friends) {
+            var data = {
+              friends: friends,
+              user: user,
+            };
+            return data;
+          });
+      });
     })
     .catch(reportError('ERROR doing something creating/updating user. investigate'));
 };
@@ -69,8 +100,8 @@ User.updateUser = function (userId, attrs) {
   return db('users')
     .where({ user_id: userId })
     .update(attrs, ['user_id', 'username', 'email', 'avatar'])
-      .then(first)
-      .catch(reportError('error updating user by id:' + userId));
+    .then(first)
+    .catch(reportError('error updating user by id:' + userId));
 };
 
 //
