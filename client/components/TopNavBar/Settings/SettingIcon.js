@@ -5,8 +5,8 @@ export function SettingIcon({
   onSettingsButtonClick = nullFn,
 }) {
   return (
-    <div className='SettingIcon two columns' onClick={onSettingsButtonClick}>
-      <button className='SettingButton btn u-full-width' type='button'>Settings!</button>
+    <div className='SettingIcon' onClick={onSettingsButtonClick}>
+      <i className='fa fa-bars button is-large is-outlined'></i>
     </div>
   );
 }
