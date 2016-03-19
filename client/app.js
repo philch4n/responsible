@@ -68,12 +68,8 @@ DirectionsService.route({
   },
   function (result, status) {
     /*
-        Redux needs
-
-
-
-
-
+      Redux uses dispatch to pass actions that look like { type, entry }
+      to a reducer to change our application state.
     */
 
     // rideActions.setDirections(result) //=> { type, entry }
