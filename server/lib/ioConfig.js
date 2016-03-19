@@ -27,6 +27,8 @@ IO.init = function (server) {
   });
 
   IO.io.emitTo = function (roomArray, event, payload) {
+    if (!Array.isArray(roomArray)) roomArray = [roomArray];
+    
     roomArray.map(function (roomId) {
       IO.io.to(roomId).emit(event, payload);
     });
