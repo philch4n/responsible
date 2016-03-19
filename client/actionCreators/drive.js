@@ -4,7 +4,7 @@ import { headers, json, checkStatus } from '../lib/fetchHelpers';
 // adds driver to database
 export function createDriver(userId, location) {
   return (dispatch) => {
-    dispatch(addDriver());
+    dispatch(addDriverSent());
 
     fetch('/rides/drivers', {
           method: 'POST',
@@ -18,7 +18,7 @@ export function createDriver(userId, location) {
 
 export function deleteDriver({ driverId }) {
   return (dispatch) => {
-    dispatch(removeDriver());
+    dispatch(removeDriverSent());
 
     fetch('/rides/drivers/' + driverId, {
       method: 'DELETE',
@@ -26,23 +26,34 @@ export function deleteDriver({ driverId }) {
       body: JSON.stringify({ driverId }),
     })
       .then(checkStatus)
-      .then(() => dispatch(deleteDriverSuccess()))
+      .then(() => dispatch(removeDriverSuccess()))
       .catch((error) => dispatch(deleteDriverError(error)));
   };
 };
 
-export function addDriver(driver) {
-  return { type: 'ADD_DRIVER', entry: driver, };
+export function addDriverSent(driver) {
+  return { type: 'ADD_DRIVER_SENT', entry: driver, };
 };
 
-export function removeDriver(driverId) {
-  return { type: 'REMOVE_DRIVER', entry: driverId };
+export function addDriverSuccess() {
+  return { type: 'ADD_DRIVER' };
 };
 
-export function addDriverSuccess() {}
+export function addDriveError(error) {
+  console.log('Error adding driver!');
+  return { type: 'ADD_DRIVER_ERROR', entry: error, };
+};
 
-export function addDriveError() {}
+export function removeDriverSent(driverId) {
+  return { type: 'REMOVE_DRIVER_SENT', entry: driverId };
+};
 
-export function deleteDriverSuccess() {}
+export function removeDriverSuccess() {
+  return { type: 'REMOVE_DRIVER' };
+};
 
-export function deleteDriverError() {}
+export function deleteDriverError(error) {
+  console.log('Error deleting driver!');
+  return { type: 'REMOVE_DRIVER_ERROR', entry: error };
+};
+
