@@ -26,7 +26,7 @@ const mapStateToProps = function (state) {
   return state.get('ride').toJS();
 };
 
-// // jscs:disable
+// jscs:disable
 const mapDispatchToProps = function (dispatch) {
   return {
     addMessage: curry(function (id, e) {
@@ -43,8 +43,7 @@ const mapDispatchToProps = function (dispatch) {
     }),
   };
 };
-
-// // jscs:enable
+// jscs:enable
 
 export const Chat = connect(
   mapStateToProps,

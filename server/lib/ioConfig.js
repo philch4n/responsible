@@ -5,14 +5,10 @@ module.exports = IO;
 
 IO.io = io;
 
-console.log('********* requiring ioConfig **********');
-
 IO.init = function (server) {
   IO.io = io(server);
 
   IO.io.on('connection', function (socket) {
-    console.log('server connection established');
-
     // Put each client in a room specified by their user_id.
     // emitted when a user receives their information after logging in with OAuth.
     socket.on('join', function (data) {
