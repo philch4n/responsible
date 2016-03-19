@@ -1,6 +1,7 @@
 'use strict';
-require('../server-helpers');
+require('./model-helpers');
 const db      = require('../../lib/db.js');
+const User = require(__models + '/user');
 const Ride = require(__models + '/rides');
 const R = require('ramda');
 
@@ -8,23 +9,35 @@ const Friends = {};
 module.exports = Friends;
 
 // jscs: disable
-Friends.createFriendship = function (foreign_friend1, foreign_friend2) {
-  return db('friends').insert({ foreign_friend1, foreign_friend2 }, ['friendship_id'])
+Friends.createFriendship = function (user_id1, user_id2) {
+  return db('friends').insert({
+    foreign_friend1: user_id1,
+    foreign_friend2: user_id2
+  }, ['friendship_id'])
     .then(R.first);
 };
 // jscs: enable
 
 //Returns an array of friend ids
-Friends.getFriendIds = function (userId) {
+Friends.getFriendIds = function (user_id) {
   return db('friends').select('*')
-    .where({ foreign_friend1: userId }).orWhere({ foreign_friend2: userId })
-    .catch(reportError('error retrieving friends by userId'))
+    .where({ foreign_friend1: user_id }).orWhere({ foreign_friend2: user_id })
+    .catch(reportError('error retrieving friends by userId' + user_id))
     .then(function (friendRows) {
       return friendRows.map(function (friendRow) {
-        return friendRow.foreign_friend1 === userId ?
+        return friendRow.foreign_friend1 === user_id ?
           friendRow.foreign_friend2 :
           friendRow.foreign_friend1;
       });
+    });
+};
+
+Friends.findAndAddFriend = function (user_id, searchString) {
+  return User.findUserIdByName(searchString)
+    .then(function (user) {
+      console.log('found user', user.user_id, 'by name', searchString);
+      console.log('befriending:', user_id, user.user_id);
+      return Friends.createFriendship(user_id, user.user_id);
     });
 };
 

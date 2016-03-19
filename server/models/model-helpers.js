@@ -1,6 +1,6 @@
 const R = require('ramda');
 
-global.reportError = ramda.curry(function (description, error) {
+global.reportError = R.curry(function (description, error) {
   console.error('~~~ ', description, '~~~');
   console.error(error);
 
