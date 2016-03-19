@@ -39,7 +39,7 @@ Seed.user3 = {
   password: 'cheesePlease',
   first_name: 'Charlie',
   last_name: 'Brizz',
-  address: '700 Brizz Rd Norman Okalhoma'
+  address: '700 Brizz Rd Norman Okalhoma',
   zipcode: 73036,
   phone_number: '405-441-9910',
   email: 'charbrizz@hotmail.com',
