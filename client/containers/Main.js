@@ -1,5 +1,7 @@
 import { connect } from 'react-redux';
 
+import { push } from 'react-router-redux';
+
 import { TopNavBarContainer } from './TopNavBar';
 import { BottomNavBarContainer } from './BottomNavBar';
 import { SplashContainer } from './Splash';
@@ -13,6 +15,7 @@ import * as rideActions from '../actionCreators/ride';
 function Main({
   user: { isDriver, isRider, homeAddress, },
   ride: { riders, match, location, directions, },
+  redirectToProfile,
 }) {
 
   if (!homeAddress) {
@@ -57,6 +60,9 @@ const mapDispatchToProps = function (dispatch) {
     onDirectionsResult(result) {
       // dispatch(rideActions.setDirections(result));
     },
+    redirectToProfile() {
+      dispatch(push('/profile'));
+    }
   };
 };
 
