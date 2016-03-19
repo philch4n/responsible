@@ -6,7 +6,6 @@ import { connect } from 'react-redux'
     //clearWatch()    watchPosition()    getCurrentPosition()
     // navigator.geolocation.getCurrentPosition(GoogleMap, errorError);
 
-
 const DirectionsService = new google.maps.DirectionsService();
     DirectionsService.route({
     origin: {lat:41.8507300, lng:-87.6512600},
@@ -31,6 +30,11 @@ const DirectionsService = new google.maps.DirectionsService();
 //     </div>
 //  );
 // };
+
+
+
+
+
 
 
 function Map ({ match, location, onMapView, directions }) {
