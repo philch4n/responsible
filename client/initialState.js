@@ -12,6 +12,7 @@ export default {
     },
     isDriver: false,
     isRider: false,
+    isFetchingUserState: false,
     friends: [
       {
         id: 2,
