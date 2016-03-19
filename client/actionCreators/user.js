@@ -34,7 +34,9 @@ function receiveUserInfo(info) {
     entry: info,
     meta: {
       event: 'join',
-      entry: info.user_id,
+      entry: {
+        user_id: info.user_id,
+      }
     },
   };
 };
