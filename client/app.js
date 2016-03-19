@@ -39,17 +39,17 @@ ReactDOM.render(
   document.getElementById('app')
 );
 
-geoWatch();
-
-setInterval(geoWatch, 6000);
 import * as userActions from './actionCreators/user';
-var location = {};
+
+geoWatch();
+setInterval(geoWatch, 6000);
+
+const location = {};
 function geoWatch() {
   if (navigator.geolocation) {
     navigator.geolocation.getCurrentPosition(function (data) {
       location.lat = data.coords.latitude;
       location.lng = data.coords.longitude;
-
       // console.log('Rider Time Summoned:', new Date(data.timestamp));
       // console.log('locationLat', location.lat);
       // console.log('locationLng', location.lng);

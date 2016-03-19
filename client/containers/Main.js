@@ -1,5 +1,7 @@
 import { connect } from 'react-redux';
 
+import { push } from 'react-router-redux';
+
 import { TopNavBarContainer } from './TopNavBar';
 import { BottomNavBarContainer } from './BottomNavBar';
 import { SplashContainer } from './Splash';
@@ -10,7 +12,18 @@ import { RiderItemList } from './RiderItemList';
 import * as userAction from '../actionCreators/user';
 import * as rideActions from '../actionCreators/ride';
 
-function Main({ isDriver, isRider, riders, match, location, directions }) {
+function Main({
+  user: { isLoggedIn, profile, isDriver, isRider, },
+  ride: { riders, match, location, directions, },
+  redirectToProfile,
+}) {
+
+  if (isLoggedIn && !profile.address) {
+    redirectToProfile();
+  }
+
+  //if !loggedIn redirectToLogin
+
   return (
     <div className="MainApp">
     <button onClick={User.facebook}>Facebook</button>
@@ -38,16 +51,7 @@ function Main({ isDriver, isRider, riders, match, location, directions }) {
 
 const mapStateToProps = function (state) {
   // console.log('main container mapStateToProps state:', state.toJS());
-
-  let stateJS = state.toJS();
-  return {
-    isRider: stateJS.user.isRider,
-    isDriver: stateJS.user.isDriver,
-    location: stateJS.user.location,
-    match: stateJS.ride.match,
-    directions: stateJS.ride.directions,
-    riders: stateJS.ride.riders,
-  };
+  return state.toJS();
 };
 
 const mapDispatchToProps = function (dispatch) {
@@ -55,6 +59,9 @@ const mapDispatchToProps = function (dispatch) {
     onDirectionsResult(result) {
       // dispatch(rideActions.setDirections(result));
     },
+    redirectToProfile() {
+      dispatch(push('/profile'));
+    }
   };
 };
 

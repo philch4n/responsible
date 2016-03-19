@@ -16,6 +16,7 @@ function Profile({ friends, profile, onFriendClick }) {
 }
 
 const mapStateToProps = function (state) {
+  // console.log('profile state to props:', state.toJS());
   return state.get('user').toJS();
 };
 

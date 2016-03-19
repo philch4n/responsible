@@ -3,16 +3,6 @@ import { GoogleMapLoader, GoogleMap, Marker, DirectionsRenderer } from 'react-go
 import { connect } from 'react-redux';
 
 const DirectionsService = new google.maps.DirectionsService();
-DirectionsService.route({
-  origin: { lat:41.8507300, lng:-87.6512600 },
-  destination: { lat:41.8525800, lng:-87.6514100 },
-  travelMode: google.maps.TravelMode.DRIVING,
-}, (result, status) => {
-  console.log('these are results', result);
-  console.log('these are status', status);
-}
-);
-
 
 function Map({ match, location, onMapView, directions }) {
   return match ?
