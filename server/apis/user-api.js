@@ -1,10 +1,8 @@
 require('../server-helpers');
 var UserAPI = require('express').Router();
 
-const Ride = require(__models + '/rides');
-const User = require(__models + '/user');
-const Friends = require(__models + '/friends');
-
+var Ride = require(__models + '/rides');
+var User = require(__models + '/user');
 module.exports = UserAPI;
 
 //Get all users
@@ -48,24 +46,6 @@ UserAPI.post('/tmp', function (req, res) {
   User.createOrUpdateUser(verifyBy, user)
     .then(sendStatusAndData(res, 201))
     .catch(sendStatusAndError(res, 500, ('error creating user')));
-});
-
-/*
-  Creates a 'friendship' between two user_ids
-
-  expects request body:
-    { user_id1, user_id2 }
-
-  responds with status code 200 on success
-*/
-UserAPI.post('/friends', function (request, response) {
-  console.log('posting to user/friends', request.body);
-
-  var friends = request.body;
-
-  Friends.createFriendship(friends.user_id1, friends.user_id2)
-    .then(sendStatus(response, 200))
-    .catch(sendStatusAndError(response, 500, 'Server error creating friendship'));
 });
 
 UserAPI.put('/:id', function (req, res) {
