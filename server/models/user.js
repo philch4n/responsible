@@ -53,27 +53,38 @@ User.findFriends = function (userId) {
  *  returns: the whole user object
 **/
 User.createOrUpdateUser = function (verifyBy, attrs) {
+  // Check if user is found by unique info (such as github token)
   return User.findUserBy(verifyBy, attrs[verifyBy])
     .then(function (foundEntry) {
+      // If they are found, update their information in database
       if (foundEntry) {
         let userPropsToUpdateWithOAuth = {
           first_name: attrs.name,
           email: attrs.email,
           avatar: attrs.avatar,
         };
-        return User.updateUser(foundEntry.user_id, userPropsToUpdateWithOAuth)
-          .then(function (user) {
-            return User.findFriends(user.id)
-            .then(function (data) {
-              console.log('is there data?', data);
-            });
-          });
+        return User.updateUser(foundEntry.user_id, userPropsToUpdateWithOAuth);
       } else {
+        // Otherwise, create a new user
         return User.createUser(attrs);
       }
     })
+
+    // Once we have user, get their (possibly updated) information
     .then(function (_attrs) {
-      return User.findUserById(_attrs.user_id);
+      return User.findUserById(_attrs.user_id)
+
+      // Then go find their friends (if they have any)
+      .then(function (user) {
+        return User.findFriends(user.user_id)
+          .then(function (friends) {
+            var data = {
+              friends: friends,
+              user: user,
+            };
+            return data;
+          });
+      });
     })
     .catch(reportError('ERROR doing something creating/updating user. investigate'));
 };
