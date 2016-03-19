@@ -31,8 +31,17 @@ User.deleteUser = function (userId) {
 };
 
 User.findFriends = function (userId) {
-  return db.from('users').innerJoin('friends', 'friends.foreign_friends2',
-    'users.user_id').whereRaw('AND users.user_id =', userId);
+  console.log('in user server model', userId);
+
+  // db.distinct('username').from('users').joinRaw('INNER JOIN trip_users
+  // ON id_user = users.id AND id_trip = ?', [tripId]).select();
+
+  return db.from('users').innerJoin('friends', 'friends.foreign_friend2',
+  'users.user_id').whereRaw('friends.foreign_friend1 = ?', [userId]);
+
+  // return db('*').from('users').joinRaw('INNER JOIN friends ON ' +
+  //   'friends.foreign_friend2 = users.user_id AND
+  // friends.foreign_friend1 = ?', [userId]).select();
 };
 
 /**
