@@ -13,12 +13,11 @@ import * as userAction from '../actionCreators/user';
 import * as rideActions from '../actionCreators/ride';
 
 function Main({
-  user: { isDriver, isRider, homeAddress, },
+  user: { isLoggedIn, profile, isDriver, isRider, },
   ride: { riders, match, location, directions, },
   redirectToProfile,
 }) {
-
-  if (!homeAddress) {
+  if (isLoggedIn && !profile.address) {
     redirectToProfile();
   }
 
@@ -51,7 +50,6 @@ function Main({
 
 const mapStateToProps = function (state) {
   // console.log('main container mapStateToProps state:', state.toJS());
-
   return state.toJS();
 };
 

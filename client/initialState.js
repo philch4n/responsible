@@ -1,11 +1,12 @@
 export default {
   user: {
     user_id: 1,
+    isLoggedIn: false,
     location: { lat: 30.2705365, lng: -97.7362387 },
     profile: {
       avatar: 'https://i.ytimg.com/vi/1v6M41Divso/maxresdefault.jpg',
       fullName: 'Kim Panda',
-      street: 'back handle lane',
+      address: 'back handle lane',
       city: 'Austin',
       state: 'Virginia',
       zip: '56352',
