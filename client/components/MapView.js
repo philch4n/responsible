@@ -1,10 +1,6 @@
 import React from 'react';
-import { GoogleMapLoader, GoogleMap , Marker, DirectionsRenderer } from 'react-google-maps';
-import { connect } from 'react-redux'
-
-
-    //clearWatch()    watchPosition()    getCurrentPosition()
-    // navigator.geolocation.getCurrentPosition(GoogleMap, errorError);
+import { GoogleMapLoader, GoogleMap, Marker, DirectionsRenderer } from 'react-google-maps';
+import { connect } from 'react-redux';
 
 const DirectionsService = new google.maps.DirectionsService();
     DirectionsService.route({
@@ -71,10 +67,10 @@ const mapDispatchToProps = function (dispatch) {
       DirectionsService.route(
         {
           origin: { location },
-          destination: {lat:41.8525800, lng:-30.6514100},
-          travelMode: google.maps.TravelMode.DRIVING
+          destination: { lat:41.8525800, lng:-30.6514100 },
+          travelMode: google.maps.TravelMode.DRIVING,
         },
-        function(result, status) {
+        function (result, status) {
           // dispatch(result);
           console.log('these are results', result);
           console.log('these are status', status);
@@ -84,74 +80,8 @@ const mapDispatchToProps = function (dispatch) {
   };
 };
 
-// const DirectionsService = new google.maps.DirectionsService();
-//     DirectionsService.route(
-//     {
-//     origin: { location },
-//     destination: {lat:41.8525800, lng:-87.6514100},
-//       travelMode: google.maps.TravelMode.DRIVING,
-//     }, 
-//     function (result, status) {
-//       console.log('these are results', result)
-//       console.log('these are status', status)
-//     }
-//     )
-
-
 export const MapView = connect(
   null,
   mapDispatchToProps
 )(Map);
-
-
-
-
-// function Github({ onGithubClick = nullFn, }) {
-//   return (
-//     <div className='GitHubButton' onClick={onGithubClick}>
-//       <button className='GithubButton btn'>Github</button>
-//     </div>
-//   );
-// }
-
-// const mapDispatchToProps = function (dispatch) {
-//   return {
-//     onGithubClick() {
-//       var user;
-//       OAuth.popup('github', { cache: true })
-//         .done(function (githubToken) {
-//           githubToken.me()
-//             .done(function (me) {
-//               console.log('found myself, finally:', me);
-
-//               user = {
-//                 username: me.alias,
-//                 first_name: me.name.split(' ')[0],
-//                 last_name: me.name.split(' ')[1],
-//                 avatar: me.avatar,
-//                 verifyBy: me.id,
-//                 token: githubToken.access_token,
-//               };
-
-//               dispatch(userAction.fetchUserInfo(user));
-//             });
-//         })
-//         .fail(function (err) {
-//           console.log('error', err);
-//         });
-//     },
-//   };
-// };
-
-// export const GithubButton = connect(
-//   null,
-//   mapDispatchToProps
-// )(Github);
-
-
-
-
-
-
-
 
