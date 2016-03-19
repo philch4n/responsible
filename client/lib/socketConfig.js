@@ -2,7 +2,9 @@
  *  This is the socket object the client uses to listen to and
  *  emit socket events! Import it whenever you need it
 **/
-export const socket = io.connect('http://localhost:1337');
+export const socket = io.connect('http://localhost:1337', {
+  reconnectionAttempts: 3,
+});
 
 export const socketActionMiddleware =
   (socket) => (store) => (next) => (action) => {

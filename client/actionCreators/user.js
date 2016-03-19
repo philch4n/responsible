@@ -1,6 +1,12 @@
 import fetch from 'isomorphic-fetch';
+import { headers, json, checkStatus } from '../lib/fetchHelpers';
 
-// expects props to be: { first_name, last_name, avatar, username, verifyBy }
+/*
+  expects props to be: {
+    user: { first_name, last_name, avatar, username },
+    // verifyBy: column name of db to validate
+  }
+*/
 export function fetchUserInfo(props) {
   console.log('in userActionCreator', props);
   return (dispatch) => {
@@ -8,12 +14,11 @@ export function fetchUserInfo(props) {
 
     fetch('/user/tmp', {
       method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-      },
+      headers: headers,
       body: JSON.stringify(props),
     })
-    .then((response) => response.json())
+      .then(checkStatus)
+      .then(json)
       .then((info) => dispatch(receiveUserInfo(info)))
       .catch((error) => dispatch(requestUserInfoError(error)));
   };
@@ -34,7 +39,9 @@ function receiveUserInfo(info) {
     entry: info,
     meta: {
       event: 'join',
-      entry: info.user_id,
+      entry: {
+        user_id: info.user_id,
+      },
     },
   };
 };

@@ -3,7 +3,7 @@ import { Map } from 'immutable';
 import { handleUserInfo } from './userInfo';
 
 export default function (state = Map(), action) {
-  // console.log('reducing user state:', state.toJS());
+  console.log('reducing user state:', state.toJS());
 
   switch (action.type) {
     case 'REQUEST_USER_INFO':
@@ -22,9 +22,7 @@ export default function (state = Map(), action) {
 };
 
 function setDriver(state, { entry }) {
-  // console.warn("Jonathan - WARNING: setting user id to 5 for socket testing purposes.");
   let updates = {
-    // id: 5,
     isDriver: entry,
     isRider: false,
   };

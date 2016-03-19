@@ -15,7 +15,7 @@ match, user, messages, confirmLocation, onWaitingClick, }) {
       isConfirmed && isWaitingForMatch ?
         <h3 onClick={onWaitingClick}>Waiting for a match</h3> :
       isConfirmed && isMatched ?
-          <Chat match={match}  id={user.id} messages={messages}/> :
+          <Chat match={match}  id={user.user_id} messages={messages}/> :
         <h3>Uh oh. How did this happen?</h3>
     }
     </div>
@@ -29,7 +29,7 @@ const mapStateToProps = function (state) {
 // jscs:disable
 const mapDispatchToProps = function (dispatch) {
   let pair = {
-    id: 12,
+    user_id: 12,
     avatar: 'http://www.funcage.com/blog/wp-content/uploads/2013/'
      + '11/Cute-Animals-Saying-Hi-To-You-001.jpg',
     fullName: 'Lazy Harp Seal',

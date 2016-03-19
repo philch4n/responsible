@@ -20,13 +20,6 @@ UserAPI.get('/:id', function (req, res) {
     .catch(sendStatusAndError(res, 500, 'no such user'));
 });
 
-// Create or update a user on initial login.
-//
-// expects: {
-//  OAuthUser: { user object },
-//  verifyBy: OAuthUser property name and users table column name to
-//             use to check if this user exists
-// }
 UserAPI.post('/', function (req, res) {
   var user = req.body;
   User.createUser(user)
@@ -34,14 +27,19 @@ UserAPI.post('/', function (req, res) {
     .catch(sendStatusAndError(res, 500, ('error creating user')));
 });
 
+// Create or update a user on initial login.
+//
+// expects: {
+//  OAuthUser: { user object },
+//  verifyBy: OAuthUser property name and users table column name to
+//             use to check if this user exists
+// }
 UserAPI.post('/tmp', function (req, res) {
   console.log('in user-api', req.body);
   var user = req.body.user;
 
   // verify the users exists by which property of the OAuth object?
   // has to also be a column in the users table.
-  // If names for similar things (ie: picture and avatar) are different,
-  // rename them before sending the fetch.
   var verifyBy = 'OAuthVerify';
 
   // create user if needed, update attributes if not, and return merged user info
