@@ -16,6 +16,8 @@ export default function (state = Map(), action) {
       return setRider(state, action);
     case 'SIGNOUT':
       return signout(state, action);
+    case 'SET_LOCATION':
+      return setLocation(state, action);
   };
 
   return state;
@@ -50,3 +52,10 @@ function signout(state, { entry }) {
 
   return state.merge(updates);
 }
+
+function setLocation(state, { entry }) {
+  let updates = {
+    location: entry,
+  };
+  return state.merge(updates);
+};

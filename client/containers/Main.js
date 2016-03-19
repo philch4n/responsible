@@ -10,7 +10,7 @@ import { RiderItemList } from './RiderItemList';
 import * as userAction from '../actionCreators/user';
 import * as rideActions from '../actionCreators/ride';
 
-function Main({ isDriver, isRider, match, location, directions, onDirectionsResult }) {
+function Main({ isDriver, isRider, riders, match, location, directions }) {
   return (
     <div className="MainApp">
     <button onClick={User.facebook}>Facebook</button>
@@ -20,12 +20,12 @@ function Main({ isDriver, isRider, match, location, directions, onDirectionsResu
       {
         !isDriver && !isRider ?
           <SplashContainer /> :
-          <MapView isRider={isRider} match={match} location={location} directions={directions} onDirectionsResult={onDirectionsResult} />
+          <MapView isRider={isRider} match={match} location={location} directions={directions} />
       }
       {
         isDriver ?
-        <RiderItemList riders={riders} /> :
-        <MapView isRider={isRider} match={match} location={location} directions={directions} onDirectionsResult={onDirectionsResult} />
+          <RiderItemList riders={riders} /> :
+          <div className="empty" />
       }
       {
         isRider ?
@@ -46,6 +46,7 @@ const mapStateToProps = function (state) {
     location: stateJS.user.location,
     match: stateJS.ride.match,
     directions: stateJS.ride.directions,
+    riders: stateJS.ride.riders,
   };
 };
 

@@ -3,39 +3,19 @@ import { GoogleMapLoader, GoogleMap, Marker, DirectionsRenderer } from 'react-go
 import { connect } from 'react-redux';
 
 const DirectionsService = new google.maps.DirectionsService();
-    DirectionsService.route({
-    origin: {lat:41.8507300, lng:-87.6512600},
-    destination: {lat:41.8525800, lng:-87.6514100},
-      travelMode: google.maps.TravelMode.DRIVING,
-    }, (result, status) => {
-      onDirectionsResult(result);
-      console.log('these are results', result)
-      console.log('these are status', status)
-      }
-    )
-
-
-//  return (
-//    <div className='map'>
-//       <GoogleMapLoader
-//       containerElement={ <div style={{ height: '70%' }} /> }
-//       googleMapElement={ <GoogleMap defaultZoom={14} defaultCenter={ location } >
-//       {directions ? <DirectionsRenderer directions={directions} /> : null}
-//       </GoogleMap> }
-//       />
-//     </div>
-//  );
-// };
-
-
-
-
-
+DirectionsService.route({
+  origin: { lat:41.8507300, lng:-87.6512600 },
+  destination: { lat:41.8525800, lng:-87.6514100 },
+  travelMode: google.maps.TravelMode.DRIVING,
+}, (result, status) => {
+  console.log('these are results', result);
+  console.log('these are status', status);
+}
+);
 
 
 function Map({ match, location, onMapView, directions }) {
   return match ?
-
   (
     <div className='map'>
       <GoogleMapLoader

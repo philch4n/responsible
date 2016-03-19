@@ -62,3 +62,7 @@ export function setRider(isRider) {
 export function signout(info) {
   return { type: 'SIGNOUT', entry: info };
 }
+
+export function setLocation(location) {
+  return { type: 'SET_LOCATION', entry: location, };
+}
