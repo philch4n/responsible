@@ -3,7 +3,7 @@ import { Map } from 'immutable';
 import { handleUserInfo } from './userInfo';
 
 export default function (state = Map(), action) {
-  // console.log('reducing user state:', state.toJS());
+  console.log('reducing user state:', state.toJS());
 
   switch (action.type) {
     case 'REQUEST_USER_INFO':

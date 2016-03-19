@@ -37,8 +37,8 @@ const mapDispatchToProps = function (dispatch) {
               };
 
               var toSend = {
+                // verifyBy: 'OAuthVerify',
                 user: user,
-                verifyBy: 'OAuthVerify',
               };
 
               dispatch(userAction.fetchUserInfo(toSend));

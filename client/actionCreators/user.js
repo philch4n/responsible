@@ -1,7 +1,12 @@
 import fetch from 'isomorphic-fetch';
 import { headers, json, checkStatus } from '../lib/fetchHelpers';
 
-// expects props to be: { first_name, last_name, avatar, username, verifyBy }
+/*
+  expects props to be: {
+    user: { first_name, last_name, avatar, username },
+    // verifyBy: column name of db to validate
+  }
+*/
 export function fetchUserInfo(props) {
   console.log('in userActionCreator', props);
   return (dispatch) => {
