@@ -26,10 +26,10 @@ function Main({
 
   return (
     <div className="MainApp">
+      <TopNavBarContainer />
     <button onClick={User.facebook}>Facebook</button>
     <GithubButton />
     <button onClick={User.google}>Google</button>
-      <TopNavBarContainer />
       {
         !isDriver && !isRider ?
           <SplashContainer /> :

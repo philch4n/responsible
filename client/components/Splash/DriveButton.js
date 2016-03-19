@@ -6,7 +6,13 @@ export function DriveButton({
 }) {
   return (
     <div className='DriveDiv' onClick={onDriveClick}>
-      <button className='DriveButton btn u-full-width' type='button'>Drive!</button>
+			<section className="hero is-medium is-success is-bold">
+				<div className ='hero-content 1'>
+					<h1 className='title'>
+					Drive
+					</h1>
+				</div>
+      </section>
     </div>
   );
-}
+};
