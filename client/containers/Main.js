@@ -5,11 +5,11 @@ import { BottomNavBarContainer } from './BottomNavBar';
 import { SplashContainer } from './Splash';
 import { MapView } from '../components/MapView';
 import { GithubButton } from '../models/Github';
-import { RiderListContainer } from './RiderItemList';
+import { RiderItemList } from './RiderItemList';
 
 import * as userAction from '../actionCreators/user';
 
-function Main({ isDriver, isRider }) {
+function Main({ isDriver, isRider, riders }) {
   return (
     <div className="MainApp">
     <button onClick={User.facebook}>Facebook</button>
@@ -22,13 +22,13 @@ function Main({ isDriver, isRider }) {
           <MapView />
       }
       {
-        isRider ?
-        <BottomNavBarContainer /> :
+        isDriver ?
+        <RiderItemList riders={riders} /> :
         <div className="empty" />
       }
       {
-        isDriver ?
-        <RiderListContainer /> :
+        isRider ?
+        <BottomNavBarContainer /> :
         <div className="empty" />
       }
     </div>
@@ -37,11 +37,12 @@ function Main({ isDriver, isRider }) {
 
 const mapStateToProps = function (state) {
   // console.log('main container mapStateToProps state:', state.toJS());
-
+  let riders = state.toJS().ride.riders;
   let userState = state.toJS().user;
   return {
     isRider: userState.isRider,
     isDriver: userState.isDriver,
+    riders: riders,
   };
 };
 
