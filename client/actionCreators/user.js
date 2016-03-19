@@ -36,7 +36,7 @@ function receiveUserInfo(info) {
       event: 'join',
       entry: {
         user_id: info.user_id,
-      }
+      },
     },
   };
 };

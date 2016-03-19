@@ -20,13 +20,6 @@ UserAPI.get('/:id', function (req, res) {
     .catch(sendStatusAndError(res, 500, 'no such user'));
 });
 
-// Create or update a user on initial login.
-//
-// expects: {
-//  OAuthUser: { user object },
-//  verifyBy: OAuthUser property name and users table column name to
-//             use to check if this user exists
-// }
 UserAPI.post('/', function (req, res) {
   var user = req.body;
   User.createUser(user)
@@ -34,6 +27,13 @@ UserAPI.post('/', function (req, res) {
     .catch(sendStatusAndError(res, 500, ('error creating user')));
 });
 
+// Create or update a user on initial login.
+//
+// expects: {
+//  OAuthUser: { user object },
+//  verifyBy: OAuthUser property name and users table column name to
+//             use to check if this user exists
+// }
 UserAPI.post('/tmp', function (req, res) {
   console.log('in user-api', req.body);
   var user = req.body.user;
