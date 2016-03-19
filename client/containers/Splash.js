@@ -6,9 +6,12 @@ import * as userAction from '../actionCreators/user';
 import * as driverAction from '../actionCreators/drive';
 
 function Splash(props) {
+
+  let onDriveClick = props.onDriveClick.bind(props.user_id, props.location);
+
   return (
     <div className='splash'>
-      <DriveButton onDriveClick={props.onDriveClick(props.user_id, props.location)}/>
+      <DriveButton onDriveClick={onDriveClick}/>
       <RideButton {...props} />
     </div>
   );
