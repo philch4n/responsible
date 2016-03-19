@@ -10,9 +10,9 @@ import * as rideAction from '../actionCreators/ride';
 
 function TopNavBar({ onCancel, ...props }) {
 
-  let cancelClick = onCancel.bind(null, null, props.user.id, props.ride.id);
+  let cancelClick = onCancel.bind(null, null, props.user.user_id, props.ride.id);
   if (props.ride.match === null) {
-    cancelClick = onCancel.bind(null, props.user.id, null);
+    cancelClick = onCancel.bind(null, props.user.user_id, null);
   }
 
   return (
