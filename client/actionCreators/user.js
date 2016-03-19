@@ -19,12 +19,7 @@ export function fetchUserInfo(props) {
     })
       .then(checkStatus)
       .then(json)
-      .then(function (info) {
-        console.log('top of user action creator', info);
-        dispatch(receiveUserInfo(info));
-      })
-
-      // .then((info) => dispatch(receiveUserInfo(info)))
+      .then((info) => dispatch(receiveUserInfo(info)))
       .catch((error) => dispatch(requestUserInfoError(error)));
   };
 };
@@ -39,7 +34,6 @@ function requestUserInfo() {
   and a data load of meta.entry
 */
 function receiveUserInfo(info) {
-  console.log('in action user', info);
   return {
     type: 'RECEIVE_USER_INFO',
     entry: info,

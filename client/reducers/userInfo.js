@@ -20,19 +20,24 @@ function requestUserInfo(state) {
 }
 
 function receiveUserInfo(state, { entry }) {
+  console.log('in userInfo!', entry, 'need to pull out differently!');
   let newState;
   let userUpdates = {
-    user_id: entry.user_id,
+    user_id: entry.user.user_id,
     isFetchinguserInfo: false,
+    friends: entry.friends,
   };
 
   let profileUpdates = {
-    avatar: entry.avatar,
-    fullName: entry.first_name + ' ' + entry.last_name,
+    avatar: entry.user.avatar,
+    fullName: entry.user.first_name + ' ' + entry.user.last_name,
   };
 
+  // newState = state.mergeIn(['friends'], entry.friends);
   newState = state.mergeIn(['profile'], profileUpdates);
   newState = newState.merge(userUpdates);
+  console.log('old state', state.toJS());
+  console.log('new state?', newState.toJS());
 
   return newState;
 }
