@@ -39,14 +39,6 @@ const mapStateToProps = function (state) {
   };
 };
 
-const mapDispatchToProps = function (dispatch) {
-  return {
-    onGithubClick() {
-      dispatch(userAction.fetchUserInfo({ username: 'panda' }));
-    },
-  };
-};
-
 export const MainContainer = connect(
   mapStateToProps
 )(Main);

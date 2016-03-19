@@ -13,6 +13,7 @@ export function fetchUserInfo(props) {
       },
       body: JSON.stringify(props),
     })
+    .then((response) => response.json())
       .then((info) => dispatch(receiveUserInfo(info)))
       .catch((error) => dispatch(requestUserInfoError(error)));
   };
