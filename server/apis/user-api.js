@@ -59,7 +59,7 @@ UserAPI.post('/tmp', function (req, res) {
 UserAPI.post('/friends', function (request, response) {
   console.log('posting to user/friends', request.body);
 
-  Friends.findAndAddFriend(req.body.user_id, searchString)
+  Friends.findAndAddFriend(request.body.user_id, request.body.searchString)
     .then(sendStatus(response, 200))
     .catch(sendStatusAndError(response, 500, 'Server error creating friendship'));
 });

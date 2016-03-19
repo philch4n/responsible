@@ -1,6 +1,7 @@
 'use strict';
-require('model-helpers');
+require('./model-helpers');
 const db      = require('../../lib/db.js');
+const User = require(__models + '/user');
 const Ride = require(__models + '/rides');
 const R = require('ramda');
 
@@ -8,8 +9,11 @@ const Friends = {};
 module.exports = Friends;
 
 // jscs: disable
-Friends.createFriendship = function (foreign_friend1, foreign_friend2) {
-  return db('friends').insert({ foreign_friend1, foreign_friend2 }, ['friendship_id'])
+Friends.createFriendship = function (user_id1, user_id2) {
+  return db('friends').insert({
+    foreign_friend1: user_id1,
+    foreign_friend2: user_id2
+  }, ['friendship_id'])
     .then(R.first);
 };
 // jscs: enable
@@ -18,7 +22,7 @@ Friends.createFriendship = function (foreign_friend1, foreign_friend2) {
 Friends.getFriendIds = function (user_id) {
   return db('friends').select('*')
     .where({ foreign_friend1: user_id }).orWhere({ foreign_friend2: user_id })
-    .catch(reportError('error retrieving friends by userId'))
+    .catch(reportError('error retrieving friends by userId' + user_id))
     .then(function (friendRows) {
       return friendRows.map(function (friendRow) {
         return friendRow.foreign_friend1 === user_id ?
@@ -28,23 +32,14 @@ Friends.getFriendIds = function (user_id) {
     });
 };
 
-Friends.findFriend = function(searchString) {
-  return db('users').select('user_id')
-    .where({ username: searchString })
-    .orWhere({ 'first_name': searchString })
-    .orWhere({ 'last_name': searchString })
-    // .orWhere({ 'fullname': searchString })
-    .catch(reportError())
-}
-
-Friends.findAndAddFriend = function(user_id, searchString) {
-  return db('users').select('*')
-    .where({ username: searchString })
-    .orWhere({ 'first_name': searchString })
-    .orWhere({ 'last_name': searchString })
-    // .orWhere({ 'fullname': searchString })
-    .then(function())
-}
+Friends.findAndAddFriend = function (user_id, searchString) {
+  return User.findUserIdByName(searchString)
+    .then(function (user) {
+      console.log('found user', user.user_id, 'by name', searchString);
+      console.log('befriending:', user_id, user.user_id);
+      return Friends.createFriendship(user_id, user.user_id);
+    });
+};
 
 // Takes in user_id, returns intersection array of available drivers and friends
 Friends.getFriendDrivers = function (userId) {
