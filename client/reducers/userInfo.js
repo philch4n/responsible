@@ -20,12 +20,21 @@ function requestUserInfo(state) {
 }
 
 function receiveUserInfo(state, { entry }) {
-  let updates = {
-    ...entry,
-    isFetchingUserInfo: false,
+  let newState;
+  let userUpdates = {
+    user_id: entry.user_id,
+    isFetchinguserInfo: false,
   };
 
-  return state.merge(updates);
+  let profileUpdates = {
+    avatar: entry.avatar,
+    fullName: entry.first_name + ' ' + entry.last_name,
+  };
+
+  newState = state.mergeIn(['profile'], profileUpdates);
+  newState = newState.merge(userUpdates);
+
+  return newState;
 }
 
 function requestUserInfoError(state, { entry }) {

@@ -28,17 +28,20 @@ const mapDispatchToProps = function (dispatch) {
           githubToken.me()
             .done(function (me) {
               console.log('found myself, finally:', me);
-
               user = {
                 username: me.alias,
                 first_name: me.name.split(' ')[0],
                 last_name: me.name.split(' ')[1],
                 avatar: me.avatar,
-                verifyBy: me.id,
-                token: githubToken.access_token,
+                OAuthVerify: me.id,
               };
 
-              dispatch(userAction.fetchUserInfo(user));
+              var toSend = {
+                user: user,
+                verifyBy: 'OAuthVerify',
+              };
+
+              dispatch(userAction.fetchUserInfo(toSend));
             });
         })
         .fail(function (err) {
