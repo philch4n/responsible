@@ -3,6 +3,7 @@ var UserAPI = require('express').Router();
 
 var Ride = require(__models + '/rides');
 var User = require(__models + '/user');
+var Friends = require(__models + '/friends');
 module.exports = UserAPI;
 
 //Get all users
@@ -60,7 +61,7 @@ UserAPI.post('/friends', function (request, response) {
   console.log('posting to user/friends', request.body);
 
   Friends.findAndAddFriend(request.body.user_id, request.body.searchString)
-    .then(sendStatus(response, 200))
+    .then(sendStatusAndData(response, 201))
     .catch(sendStatusAndError(response, 500, 'Server error creating friendship'));
 });
 

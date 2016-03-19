@@ -8,7 +8,6 @@ import { headers, json, checkStatus } from '../lib/fetchHelpers';
   }
 */
 export function fetchUserInfo(props) {
-  console.log('in userActionCreator', props);
   return (dispatch) => {
     dispatch(requestUserInfo());
 
@@ -27,6 +26,25 @@ export function fetchUserInfo(props) {
 function requestUserInfo() {
   return { type: 'REQUEST_USER_INFO' };
 }
+
+export function addFriend(props) {
+  console.log('in user action creator for friends', props);
+  return (dispatch) => {
+    dispatch(requestUserInfo());
+
+    fetch('/user/friends', {
+      method: 'POST',
+      headers: headers,
+      body: JSON.stringify(props),
+    })
+      .then(checkStatus)
+      .then(json)
+      .then(function (info) {
+        console.log('info!', info);
+      })
+      .catch((error) => dispatch(requestUserInfoError(error)));
+  };
+};
 
 /*
   The meta property here is picked up by a piece of middleware to emit

@@ -13,7 +13,7 @@ Friends.createFriendship = function (user_id1, user_id2) {
   return db('friends').insert({
     foreign_friend1: user_id1,
     foreign_friend2: user_id2
-  }, ['friendship_id'])
+  }, ['foreign_friend2'])
     .then(R.first);
 };
 // jscs: enable
@@ -37,7 +37,14 @@ Friends.findAndAddFriend = function (user_id, searchString) {
     .then(function (user) {
       console.log('found user', user.user_id, 'by name', searchString);
       console.log('befriending:', user_id, user.user_id);
+
       return Friends.createFriendship(user_id, user.user_id);
+    })
+    .then(function (friendID) {
+      return User.findUserById(friendID[0].foreign_friend2);
+    })
+    .then(function (friend) {
+      return friend;
     });
 };
 
