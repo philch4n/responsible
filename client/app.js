@@ -40,6 +40,7 @@ ReactDOM.render(
 );
 
 import * as userActions from './actionCreators/user';
+import * as rideActions from './actionCreators/ride';
 
 geoWatch();
 setInterval(geoWatch, 6000);
@@ -50,6 +51,7 @@ function geoWatch() {
     navigator.geolocation.getCurrentPosition(function (data) {
       location.lat = data.coords.latitude;
       location.lng = data.coords.longitude;
+
       // console.log('Rider Time Summoned:', new Date(data.timestamp));
       // console.log('locationLat', location.lat);
       // console.log('locationLng', location.lng);
@@ -57,3 +59,27 @@ function geoWatch() {
     });
   };
 }
+
+const DirectionsService = new google.maps.DirectionsService();
+DirectionsService.route({
+    origin: { lat: 30.2705365, lng: -97.7362387 },
+    destination: { lat: 30.273835, lng: -97.760507 },
+    travelMode: google.maps.TravelMode.DRIVING,
+  },
+  function (result, status) {
+    /*
+        Redux needs
+
+
+
+
+
+    */
+
+    // rideActions.setDirections(result) //=> { type, entry }
+
+    store.dispatch(rideActions.setDirections(result));
+    console.log('these are results', result);
+    console.log('these are status', status);
+  }
+);
