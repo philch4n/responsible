@@ -150,6 +150,13 @@ RideAPI.post('/drivers', function (req, res) {
     .catch(sendStatusAndError(res, 500, 'error creating driver'));
 });
 
+RideAPI.delete('/drivers/:id', function (req, res) {
+  var id = req.params.id;
+  Ride.deleteDriver(id)
+    .then(sendStatusAndData(res, 201))
+    .catch(sendStatusAndError(res, 500, 'error deleting driver'));
+});
+
 /*
 * Sockets
 */
