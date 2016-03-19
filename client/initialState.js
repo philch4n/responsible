@@ -52,7 +52,23 @@ export default {
   ride: {
     id: null,
     match: null,
-    riders: [], // Array of this driver's friends who are looking for a ride.
+    riders: [
+      {
+        rider_id: 1,
+        foreign_rider: 12,
+        location: { lat: 30.2705365, lng: -97.7362387 },
+      },
+      {
+        rider_id: 2,
+        foreign_rider: 11,
+        location: { lat: 28.2705389, lng: -91.7234780 },
+      },
+      {
+        rider_id: 3,
+        foreign_rider: 8,
+        location:   { lat: 31.2717271, lng: -95.8567385 },
+      },
+    ], // Array of this driver's friends who are looking for a ride.
     messages: [
       { id: 1, time: '12:30', text: 'Where are you?', },
       { id: 7, time: '12:42', text: 'On my way. Where you at?', },
