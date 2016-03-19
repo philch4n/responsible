@@ -1,5 +1,5 @@
 require('../../public/styles/skeleton.css');
-require('../../public/styles/normalize.css');
+// require('../../public/styles/normalize.css');
 
 export function ConfirmLocationButton({
   confirmLocation,
@@ -7,8 +7,7 @@ export function ConfirmLocationButton({
   return (
     <div className='ConfirmLocation' onClick={confirmLocation}>
       <button
-        className='ConfirmLocationButton btn u-full-width'
-        type='button'>
+        className='ConfirmLocationButton' type='button'>
         Confirm Ride!
       </button>
     </div>
