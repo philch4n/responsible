@@ -7,12 +7,12 @@ export function createDriver(userId, location) {
     dispatch(addDriverSent());
 
     fetch('/rides/drivers', {
-          method: 'POST',
-          headers: headers,
-          body: JSON.stringify({ userId, location }),
-        })
-          .then(checkStatus)
-          .catch((error) => dispatch(requestDriverError(error)));
+      method: 'POST',
+      headers: headers,
+      body: JSON.stringify({ userId, location }),
+    })
+      .then(checkStatus)
+      .catch((error) => dispatch(addDriveError(error)));
   };
 };
 
