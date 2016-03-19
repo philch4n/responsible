@@ -30,6 +30,11 @@ User.deleteUser = function (userId) {
     .then(user => console.log('DELETING user:', user));
 };
 
+User.findFriends = function (userId) {
+  return db.from('users').innerJoin('friends', 'friends.foreign_friends2',
+    'users.user_id').whereRaw('AND users.user_id =', userId);
+};
+
 /**
  *  attrs is (all of the time?) an OAuth user object.
  *  We look in the DB for some unique property of this object
@@ -47,7 +52,13 @@ User.createOrUpdateUser = function (verifyBy, attrs) {
           email: attrs.email,
           avatar: attrs.avatar,
         };
-        return User.updateUser(foundEntry.user_id, userPropsToUpdateWithOAuth);
+        return User.updateUser(foundEntry.user_id, userPropsToUpdateWithOAuth)
+          .then(function (user) {
+            return User.findFriends(user.id)
+            .then(function (data) {
+              console.log('is there data?', data);
+            });
+          });
       } else {
         return User.createUser(attrs);
       }
@@ -69,8 +80,8 @@ User.updateUser = function (userId, attrs) {
   return db('users')
     .where({ user_id: userId })
     .update(attrs, ['user_id', 'username', 'email', 'avatar'])
-      .then(first)
-      .catch(reportError('error updating user by id:' + userId));
+    .then(first)
+    .catch(reportError('error updating user by id:' + userId));
 };
 
 //
