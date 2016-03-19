@@ -48,6 +48,22 @@ UserAPI.post('/tmp', function (req, res) {
     .catch(sendStatusAndError(res, 500, ('error creating user')));
 });
 
+/*
+  Creates a 'friendship' between two user_ids
+
+  expects request body:
+    { user_id, searchString }
+
+  responds with status code 200 on success
+*/
+UserAPI.post('/friends', function (request, response) {
+  console.log('posting to user/friends', request.body);
+
+  Friends.findAndAddFriend(req.body.user_id, searchString)
+    .then(sendStatus(response, 200))
+    .catch(sendStatusAndError(response, 500, 'Server error creating friendship'));
+});
+
 UserAPI.put('/:id', function (req, res) {
   var id = req.params.id;
   var attrs = req.params;

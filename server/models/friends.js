@@ -1,5 +1,5 @@
 'use strict';
-require('../server-helpers');
+require('model-helpers');
 const db      = require('../../lib/db.js');
 const Ride = require(__models + '/rides');
 const R = require('ramda');
@@ -15,18 +15,36 @@ Friends.createFriendship = function (foreign_friend1, foreign_friend2) {
 // jscs: enable
 
 //Returns an array of friend ids
-Friends.getFriendIds = function (userId) {
+Friends.getFriendIds = function (user_id) {
   return db('friends').select('*')
-    .where({ foreign_friend1: userId }).orWhere({ foreign_friend2: userId })
+    .where({ foreign_friend1: user_id }).orWhere({ foreign_friend2: user_id })
     .catch(reportError('error retrieving friends by userId'))
     .then(function (friendRows) {
       return friendRows.map(function (friendRow) {
-        return friendRow.foreign_friend1 === userId ?
+        return friendRow.foreign_friend1 === user_id ?
           friendRow.foreign_friend2 :
           friendRow.foreign_friend1;
       });
     });
 };
+
+Friends.findFriend = function(searchString) {
+  return db('users').select('user_id')
+    .where({ username: searchString })
+    .orWhere({ 'first_name': searchString })
+    .orWhere({ 'last_name': searchString })
+    // .orWhere({ 'fullname': searchString })
+    .catch(reportError())
+}
+
+Friends.findAndAddFriend = function(user_id, searchString) {
+  return db('users').select('*')
+    .where({ username: searchString })
+    .orWhere({ 'first_name': searchString })
+    .orWhere({ 'last_name': searchString })
+    // .orWhere({ 'fullname': searchString })
+    .then(function())
+}
 
 // Takes in user_id, returns intersection array of available drivers and friends
 Friends.getFriendDrivers = function (userId) {
