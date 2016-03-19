@@ -14,7 +14,9 @@ const User = module.exports;
 function Github({ onGithubClick = nullFn, }) {
   return (
     <div className='GitHubButton' onClick={onGithubClick}>
-      <button className='GithubButton btn'>Github</button>
+      <a className='button'>
+      <i className='fa fa-github'></i>&nbsp;GitHub
+      </a>
     </div>
   );
 }

@@ -5,8 +5,7 @@ export function ConfirmLocationButton({
 }) {
   return (
     <div className='ConfirmLocation' onClick={confirmLocation}>
-      <button
-        className='ConfirmLocationButton' type='button'>
+      <button className='ConfirmLocationButton' type='button'>
         Confirm Ride!
       </button>
     </div>
