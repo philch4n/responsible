@@ -63,7 +63,7 @@ RideAPI.delete('/', function (req, res) {
 
   if (rideExists) {
     Ride.deleteRide(req.body.rideId)
-      .then(senStatus(res, 200))
+      .then(sendStatus(res, 200))
       .catch(sendStatusAndError(res, 500));
 
     // emit to only the appropriate other party
