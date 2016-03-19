@@ -102,6 +102,8 @@ RideAPI.post('/riders', function (req, res) {
     location: req.body.location,
   };
 
+  console.log('*** POST /rides/riders:', req.body)
+
   Ride.createRider(riderToInsert)
     .then(function (newRider) {
       // location = newRider[0].location;
