@@ -19,7 +19,6 @@ User.findUserBy = function (byWhat, isWhat) {
 };
 
 User.findUserById = function (userId) {
-  // console.log('finding user by id:', userId);
   return User.findUserBy('user_id', userId);
 };
 

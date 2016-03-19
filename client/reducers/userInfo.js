@@ -6,6 +6,8 @@ export function handleUserInfo(state, action) {
       return receiveUserInfo(state, action);
     case 'REQUEST_USER_INFO_ERROR':
       return requestUserInfoError(state, action);
+    case 'RECEIVE_FRIEND_INFO':
+      return receiveFriendInfo(state, action);
   }
 
   return state;
@@ -20,11 +22,10 @@ function requestUserInfo(state) {
 }
 
 function receiveUserInfo(state, { entry }) {
-  console.log('in userInfo!', entry, 'need to pull out differently!');
   let newState;
   let userUpdates = {
     user_id: entry.user.user_id,
-    isFetchinguserInfo: false,
+    isFetchingUserInfo: false,
     friends: entry.friends,
   };
 
@@ -36,15 +37,32 @@ function receiveUserInfo(state, { entry }) {
   // newState = state.mergeIn(['friends'], entry.friends);
   newState = state.mergeIn(['profile'], profileUpdates);
   newState = newState.merge(userUpdates);
-  console.log('old state', state.toJS());
-  console.log('new state?', newState.toJS());
 
   return newState;
 }
 
 function requestUserInfoError(state, { entry }) {
+  console.log('in request user info error reducer');
   let updates = {
     requestUserError: entry,
+  };
+
+  return state.merge(updates);
+}
+
+function receiveFriendInfo(state, { entry }) {
+  let old = state.toJS().friends;
+  let fullName = entry.first_name + ' ' + entry.last_name;
+  let newFriend = {
+    avatar: entry.avatar,
+    fullName: fullName,
+    id: entry.user_id,
+  };
+  old.push(newFriend);
+
+  let updates = {
+    isFetchingUserInfo: false,
+    friends: old,
   };
 
   return state.merge(updates);

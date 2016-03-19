@@ -1,12 +1,13 @@
 import { connect } from 'react-redux';
 import { curry } from 'ramda';
 
+import * as userAction from '../actionCreators/user';
+
 import { FriendItemList } from '../components/TopNavBar/Friends/FriendItemList';
 
 function nullFn(e) { console.log('you clicked me ' + e.target.className); };
 
 function List({ friends, addFriend, user_id }) {
-  console.log('friends', friends, FriendItemList, user_id);
   return (
     <div className="friendList">
       <FriendItemList friends={friends}/>
@@ -27,12 +28,11 @@ const mapDispatchToProps = function (dispatch) {
     addFriend: curry(function (user_id, e) {
       e.preventDefault();
       let friendObject = {
-        userID: user_id,
-        text: e.target.firstChild.value,
+        user_id: user_id,
+        searchString: e.target.firstChild.value,
       };
       e.target.firstChild.value = '';
-
-      // dispatch(userAction.addFriend(friendObject));
+      dispatch(userAction.addFriend(friendObject));
     }),
   };
 };
