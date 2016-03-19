@@ -32,9 +32,20 @@ export default function(state = Map(), action) {
     case 'REQUEST_MESSAGES_ERROR':
     case 'ADD_MESSAGE':
       return handleMessages(state, action);
+    case 'SET_DIRECTIONS':
+      return setDirections(state, action);
 
     // HANDLE USER LOGGING OUT!
   };
 
   return state;
+}
+
+function setDirections(state, action) {
+  console.log('setting directions to:', action.entry);
+  let updates = {
+    directions: action.entry,
+  };
+
+  return state.merge(updates);
 }

@@ -13,8 +13,8 @@ import * as userAction from '../actionCreators/user';
 import * as rideActions from '../actionCreators/ride';
 
 function Main({
-  user: { isLoggedIn, profile, isDriver, isRider, },
-  ride: { riders, match, location, directions, },
+  user: { isLoggedIn, location, profile, isDriver, isRider, },
+  ride: { riders, match, directions, },
   redirectToProfile,
 }) {
 

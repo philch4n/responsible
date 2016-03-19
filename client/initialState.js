@@ -54,6 +54,7 @@ export default {
   ride: {
     id: null,
     match: null,
+    directions: null,
     riders: [
       {
         rider_id: 1,
