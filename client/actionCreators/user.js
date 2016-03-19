@@ -28,7 +28,6 @@ function requestUserInfo() {
 }
 
 export function addFriend(props) {
-  console.log('in user action creator for friends', props);
   return (dispatch) => {
     dispatch(requestUserInfo());
 
@@ -39,9 +38,7 @@ export function addFriend(props) {
     })
       .then(checkStatus)
       .then(json)
-      .then(function (info) {
-        console.log('info!', info);
-      })
+      .then((info) => dispatch(receiveFriendInfo(info)))
       .catch((error) => dispatch(requestUserInfoError(error)));
   };
 };
@@ -67,6 +64,10 @@ function receiveUserInfo(info) {
 function requestUserInfoError(error) {
   console.error('uh oh, error requesting user info:', error);
   return { type: 'REQUEST_USER_INFO_ERROR', entry: error };
+}
+
+function receiveFriendInfo(info) {
+  return { type: 'RECEIVE_FRIEND_INFO', entry: info };
 }
 
 export function setDriver(isDriver) {

@@ -32,9 +32,6 @@ const mapDispatchToProps = function (dispatch) {
         searchString: e.target.firstChild.value,
       };
       e.target.firstChild.value = '';
-
-      console.log('friendObject', friendObject);
-
       dispatch(userAction.addFriend(friendObject));
     }),
   };

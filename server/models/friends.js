@@ -14,7 +14,10 @@ Friends.createFriendship = function (user_id1, user_id2) {
     foreign_friend1: user_id1,
     foreign_friend2: user_id2
   }, ['foreign_friend2'])
-    .then(R.first);
+  .then((user) => user[0]);
+
+    //KK: I don't know what this R.first is doing
+    // .then(R.first);
 };
 // jscs: enable
 
@@ -35,16 +38,20 @@ Friends.getFriendIds = function (user_id) {
 Friends.findAndAddFriend = function (user_id, searchString) {
   return User.findUserIdByName(searchString)
     .then(function (user) {
+      // if user is undefined, jump out!
+      if (!user) throw new Error('Did not find user by searchstring: ' + searchString);
+
       console.log('found user', user.user_id, 'by name', searchString);
       console.log('befriending:', user_id, user.user_id);
 
       return Friends.createFriendship(user_id, user.user_id);
     })
     .then(function (friendID) {
-      return User.findUserById(friendID[0].foreign_friend2);
+      return User.findUserById(friendID.foreign_friend2);
     })
-    .then(function (friend) {
-      return friend;
+    .catch(function (error) {
+      console.error(error.message);
+      return null;
     });
 };
 
