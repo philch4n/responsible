@@ -16,8 +16,8 @@ export function configureListeners(socket) {
     dispatch(chatActions.addMessage(data));
   });
 
-  socket.on('new_rider', function (data) {
-    console.log('received a new rider!', data);
+  socket.on('add_rider', function (data) {
+    console.log('received a new friend rider!', data);
     dispatch(rideActions.addRider(data));
   });
 

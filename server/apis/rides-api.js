@@ -112,9 +112,9 @@ RideAPI.post('/riders', function (req, res) {
       rider.location = _location;
       return Friends.getFriendDrivers(rider.foreign_rider);
     })
-    .then(function (arrayOfFriendDrivers) {
-      // console.log('this is the io object', io)
-      io.sockets.emit('new_rider', rider);
+    .then(function (friendDrivers) {
+      console.log('friends of userId', req.body.userId, ':', friendDrivers);
+      io.emitTo(friendDrivers, 'new_rider', rider);
       return rider;
     })
     .catch(sendStatusAndError(res, 500, 'error emiting new rider'))

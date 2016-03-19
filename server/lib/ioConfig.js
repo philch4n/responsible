@@ -26,5 +26,11 @@ IO.init = function (server) {
     });
   });
 
+  IO.io.emitTo = function (roomArray, event, payload) {
+    roomArray.map(function (roomId) {
+      IO.io.to(roomId).emit(event, payload);
+    });
+  };
+
   return IO.io;
 };
