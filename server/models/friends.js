@@ -61,8 +61,6 @@ Friends.getFriendRiders = function (userId) {
       riders = rideArray;
     })
     .then(() => R.intersection(friends, riders))
-    .catch(function (err) {
-      console.log('error', err);
-    });
+    .catch(reportError("Error finding a user's available friend riders"));
 };
 
