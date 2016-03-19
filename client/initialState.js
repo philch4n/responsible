@@ -55,7 +55,6 @@ export default {
     id: null,
     match: null,
     directions: null,
-    pointsToMark: [coord1, coord2, ...],
     riders: [
       {
         rider_id: 1,
