@@ -1,7 +1,5 @@
 import fetch from 'isomorphic-fetch';
 
-import { socket } from '../lib/socketSetup';
-
 export function fetchMessages(rideId) {
   return (dispatch) => {
     dispatch(requestMessages());

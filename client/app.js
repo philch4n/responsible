@@ -14,7 +14,7 @@ import { SettingsContainer } from './containers/Settings';
 import { MainContainer } from './containers/Main';
 import { FriendList } from './containers/Friends';
 
-import { socket } from './lib/socketSetup';
+import { socket } from './lib/socketConfig';
 import { configureListeners } from './lib/socketListeners';
 
 configureListeners(socket);

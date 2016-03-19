@@ -12,7 +12,8 @@ IO.init = function (server) {
     // Put each client in a room specified by their user_id.
     // emitted when a user receives their information after logging in with OAuth.
     socket.on('join', function (data) {
-      if (!data.user_id) console.error('joining invalid room:', data);
+      if (!data.entry.user_id)
+        console.error('joining invalid room:', data.entry.user_id);
 
       console.log('server adding socket to room:', data.entry.user_id);
       socket.join(data.entry.user_id);
