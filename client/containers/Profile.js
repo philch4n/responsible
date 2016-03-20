@@ -6,25 +6,28 @@ import { UserImage } from '../components/UserImage';
 import { ProfileItemList } from '../components/Profile/ProfileItemList';
 import * as userAction from '../actionCreators/user';
 
-function Profile({ friends, profile, onFriendClick }) {
-
-  let profileItems = [
-    { title: 'Name', desc: profile.fullName },
-    { title: 'Home Address', desc: profile.address },
-  ];
+function Profile({ friends, profile, onFriendClick, onAddressEdit }) {
+  // let profileItems = [
+  //   { title: 'Name', desc: profile.fullName },
+  //   { title: 'Home Address', desc: profile.address },
+  // ];
+  // <ProfileItemList  profileItems={profileItems} />
 
   return (
     <div className="ProfileContainer">
       <UserImage {...profile} imageType="portrait" />
-      <ProfileItemList  profileItems={profileItems} />
 
       <div className="profileName">
         Name
         <span className="profileItem">{profile.fullName}</span>
       </div>
+
       <div className="homeAddress">
         Home Address
-        <input className="profileItem" style={addressReadOnly}>{profile.address}</input>
+        <input className="profileItem"
+          type="test"
+          placeholder={profile.address}
+          onClick={onAddressEdit} />
       </div>
     </div>
   );
@@ -33,6 +36,16 @@ function Profile({ friends, profile, onFriendClick }) {
 const mapStateToProps = function (state) {
   // console.log('profile state to props:', state.toJS());
   return state.get('user').toJS();
+};
+
+const mapDispatchToProps = function (dispatch) {
+  return {
+    onAddressEdit(e) {
+      e.preventDefault();
+      console.log('changing address to:', e.target.value);
+      dispatch(userAction.changeAddress(e.target.value));
+    },
+  };
 };
 
 export const ProfileContainer = connect(

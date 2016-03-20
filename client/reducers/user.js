@@ -1,6 +1,7 @@
 import { Map } from 'immutable';
 
 import { handleUserInfo } from './userInfo';
+import { handleAddress } from './userAddress';
 
 export default function (state = Map(), action) {
   // console.log('reducing user state:', state.toJS());
@@ -11,6 +12,10 @@ export default function (state = Map(), action) {
     case 'RECEIVE_FRIEND_INFO':
     case 'REQUEST_USER_INFO_ERROR':
       return handleUserInfo(state, action);
+    case 'CHANGING_ADDRESS':
+    case 'CHANGE_ADDRESS':
+    case 'CHANGE_ADDRESS_ERROR':
+      return handleAddress(state, action);
     case 'SET_DRIVER':
       return setDriver(state, action);
     case 'SET_RIDER':
@@ -58,5 +63,6 @@ function setLocation(state, { entry }) {
   let updates = {
     location: entry,
   };
+
   return state.merge(updates);
 };

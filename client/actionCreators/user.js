@@ -85,3 +85,22 @@ export function signout(info) {
 export function setLocation(location) {
   return { type: 'SET_LOCATION', entry: location, };
 }
+
+export function changeAddress(newAddress) {
+  return (dispatch) => {
+    dispatch(changingAddress())
+  }
+  return { type: 'CHANGE_ADDRESS', entry: newAddress };
+}
+
+function changingAddress () {
+  return { type: 'CHANGING_ADDRESS' };
+}
+
+function changeAddressSuccess (newAddress) {
+  return { type: 'CHANGE_ADDRESS', entry: newAddress };
+}
+
+function changeAddressError (error) {
+  return { type: 'CHANGE_ADDRESS_ERROR', entry: error };
+}
