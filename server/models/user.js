@@ -67,7 +67,7 @@ User.createOrUpdateUser = function (verifyBy, attrs) {
       // If they are found, update their information in database
       if (foundEntry) {
         let userPropsToUpdateWithOAuth = {
-          first_name: attrs.name,
+          name: attrs.name,
           email: attrs.email,
           avatar: attrs.avatar,
         };
@@ -97,7 +97,7 @@ User.createOrUpdateUser = function (verifyBy, attrs) {
 // username should probably just be name
 User.createUser = function (attrs) {
   return db('users')
-    .insert(attrs, ['user_id', 'first_name', 'username', 'email', 'avatar', 'address'])
+    .insert(attrs, ['user_id', 'name', 'username', 'email', 'avatar', 'address'])
     .then(first)
     .catch(reportError('error creating user into db'));
 };

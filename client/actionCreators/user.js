@@ -4,7 +4,7 @@ import { headers, json, checkStatus } from '../lib/fetchHelpers';
 
 /*
   expects props to be: {
-    user: { first_name, last_name, avatar, username },
+    user: { name, avatar, username },
     // verifyBy: column name of db to validate
   }
 */

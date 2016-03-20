@@ -30,8 +30,7 @@ const mapDispatchToProps = function (dispatch) {
               console.log('found myself, finally:', me);
               user = {
                 username: me.alias,
-                first_name: me.name.split(' ')[0],
-                last_name: me.name.split(' ')[1],
+                name: me.name,
                 avatar: me.avatar,
                 OAuthVerify: me.id,
               };
