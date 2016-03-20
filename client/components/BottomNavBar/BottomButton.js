@@ -32,7 +32,7 @@ const mapDispatchToProps = function (dispatch) {
     user_id: 12,
     avatar: 'http://www.funcage.com/blog/wp-content/uploads/2013/'
      + '11/Cute-Animals-Saying-Hi-To-You-001.jpg',
-    fullName: 'Lazy Harp Seal',
+    name: 'Lazy Harp Seal',
   }
   return {
     onWaitingClick() {

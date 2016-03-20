@@ -34,7 +34,7 @@ function receiveUserInfo(state, { entry }) {
 
   let profileUpdates = {
     avatar: entry.user.avatar,
-    fullName: entry.user.first_name + ' ' + entry.user.last_name,
+    name: entry.user.name,
     address: entry.user.address,
   };
 
@@ -55,10 +55,9 @@ function requestUserInfoError(state, { entry }) {
 
 function receiveFriendInfo(state, { entry }) {
   let old = state.toJS().friends;
-  let fullName = entry.first_name + ' ' + entry.last_name;
   let newFriend = {
     avatar: entry.avatar,
-    fullName: fullName,
+    name: entry.name,
     id: entry.user_id,
   };
   old.push(newFriend);
