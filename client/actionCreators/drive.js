@@ -4,6 +4,7 @@ import { headers, json, checkStatus } from '../lib/fetchHelpers';
 // adds driver to database
 export function createDriver(userId, location) {
   return (dispatch) => {
+    console.log('HERE IS STUFF IN THE ACTION CREATOR', userId, location);
     dispatch(addDriverSent());
 
     fetch('/rides/drivers', {
