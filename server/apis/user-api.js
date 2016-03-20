@@ -36,7 +36,6 @@ UserAPI.post('/', function (req, res) {
 //             use to check if this user exists
 // }
 UserAPI.post('/tmp', function (req, res) {
-  console.log('in user-api', req.body);
   var user = req.body.user;
 
   // verify the users exists by which property of the OAuth object?
@@ -58,18 +57,15 @@ UserAPI.post('/tmp', function (req, res) {
   responds with status code 200 on success
 */
 UserAPI.post('/friends', function (request, response) {
-  console.log('posting to user/friends', request.body);
-
   Friends.findAndAddFriend(request.body.user_id, request.body.searchString)
     .then(sendStatusAndData(response, 201))
     .catch(sendStatusAndError(response, 500, 'Server error creating friendship'));
 });
 
-UserAPI.put('/:id', function (req, res) {
-  var id = req.params.id;
-  var attrs = req.params;
-  console.log('updating user', id, ' with:', attrs);
-  User.updateUser(id, attrs)
+UserAPI.put('/', function (req, res) {
+  // Do not pass req.body to update user because user_id could be overwritten!
+  var updates = { address: req.body.address };
+  User.updateUser(req.body.user_id, updates)
     .then(sendStatusAndData(res, 200))
     .catch(sendStatusAndError(res, 500, 'Server error updating user'));
 });

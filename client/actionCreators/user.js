@@ -43,19 +43,24 @@ export function addFriend(props) {
   };
 };
 
-
 // Asks the server to update our user_id's address.
 export function changeAddress(user_id, newAddress) {
   return (dispatch) => {
-    dispatch(changingAddress())
 
-    
-    
+    // to keep hold of information in case we want to revert it on error,
+    // pass it in to these initiating async calls.
+    dispatch(changingAddress());
+
+    fetch('user/', {
+      method: 'PUT',
+      headers: headers,
+      body: JSON.stringify({ user_id, address: newAddress }),
+    })
+      .then(checkStatus)
+      .then(() => dispatch(changeAddressSuccess(newAddress)))
+      .catch((error) => dispatch(changeAddressError(error)));
   };
-
-  return { type: 'CHANGE_ADDRESS', entry: newAddress };
 }
-
 
 /*
   The meta property here is picked up by a piece of middleware to emit
@@ -100,14 +105,14 @@ export function setLocation(location) {
   return { type: 'SET_LOCATION', entry: location, };
 }
 
-function changingAddress () {
+function changingAddress() {
   return { type: 'CHANGING_ADDRESS' };
 }
 
-function changeAddressSuccess (newAddress) {
+function changeAddressSuccess(newAddress) {
   return { type: 'CHANGE_ADDRESS', entry: newAddress };
 }
 
-function changeAddressError (error) {
+function changeAddressError(error) {
   return { type: 'CHANGE_ADDRESS_ERROR', entry: error };
 }

@@ -13,6 +13,7 @@ export default {
     isRider: false,
     isFetchingUserState: false,
     isChangingAddress: false,
+    changeAddressError: false,
     friends: [
       {
         id: 2,

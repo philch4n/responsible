@@ -28,10 +28,10 @@ function changingAddress(state) {
   return state.merge(updates);
 }
 
-function changeAddressError(state, aciton) {
+function changeAddressError(state, { entry }) {
   let updates = {
     isChangingAddress: false,
-    changeAddressError: error,
+    changeAddressError: entry,
   };
 
   return state.merge(updates);
