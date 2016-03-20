@@ -6,8 +6,8 @@ import * as userAction from '../actionCreators/user';
 import * as driverAction from '../actionCreators/drive';
 
 function Splash(props) {
-
-  let onDriveClick = props.onDriveClick.bind(props.user_id, props.location);
+  console.log('THESE ARE HEADY PROPS', props);
+  let onDriveClick = props.onDriveClick.bind(null, props.user.user_id, props.user.location);
 
   return (
     <div className='splash'>
@@ -20,9 +20,9 @@ function Splash(props) {
 // jscs:disable
 const mapDispatchToProps = function(dispatch) {
   return {
-    onDriveClick(userId, location) {
+    onDriveClick(user_id, location) {
       dispatch(userAction.setDriver(true));
-      dispatch(driverAction.createDriver(userId, location))
+      dispatch(driverAction.createDriver(user_id, location))
     },
     onRideButtonClick() {
       dispatch(userAction.setRider(true));
@@ -31,8 +31,12 @@ const mapDispatchToProps = function(dispatch) {
 };
 // jscs:enable
 
+const mapStateToProps = function (state) {
+  return state.toJS();
+};
+
 export const SplashContainer = connect(
-  null,
+  mapStateToProps,
   mapDispatchToProps
 )(Splash);
 
