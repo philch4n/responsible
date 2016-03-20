@@ -392,7 +392,7 @@ form {
   border-radius: 50%;
   text-align: center;
 }
-.friendList, .ProfileInfoItem {
+.friendList, .ProfileItem {
   text-align: center;
 }
 .userIcon, .icon {
