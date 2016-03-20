@@ -6,9 +6,7 @@ export default {
     profile: {
       avatar: 'https://i.ytimg.com/vi/1v6M41Divso/maxresdefault.jpg',
       fullName: 'Kim Panda',
-      address: 'back handle lane',
-      city: 'Austin',
-      state: 'Virginia',
+      address: 'back handle lane Austin, VA',
       zip: '56352',
     },
     isDriver: false,
