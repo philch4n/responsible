@@ -7,8 +7,9 @@ export function ProfileItem({
 }) {
   return (
     <div className="ProfileItem" onClick={ onProfileItemClick }>
-      <span className="ProfileItemTitle">{ itemTitle }</span>
-      <span className="ProfileItemDesc">{ itemDesc }</span>
+      <span className="ProfileItemTitle">{ title }</span>
+      <span className="ProfileItemDesc">{ desc }</span>
+      <input className="homeAddressInput" placeholder={desc} />
     </div>
   );
 };

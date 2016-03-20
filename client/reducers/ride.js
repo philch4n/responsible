@@ -42,7 +42,6 @@ export default function(state = Map(), action) {
 }
 
 function setDirections(state, action) {
-  console.log('setting directions to:', action.entry);
   let updates = {
     directions: action.entry,
   };

@@ -3,7 +3,7 @@ import { connect } from 'react-redux';
 
 import { FriendItemList } from '../components/TopNavBar/Friends/FriendItemList';
 import { UserImage } from '../components/UserImage';
-import { ProfileItemList } from '../components/TopNavBar/Profile/ProfileInfoItemList';
+import { ProfileItemList } from '../components/Profile/ProfileItemList';
 import * as userAction from '../actionCreators/user';
 
 function Profile({ friends, profile, onFriendClick }) {
@@ -17,6 +17,15 @@ function Profile({ friends, profile, onFriendClick }) {
     <div className="ProfileContainer">
       <UserImage {...profile} imageType="portrait" />
       <ProfileItemList  profileItems={profileItems} />
+
+      <div className="profileName">
+        Name
+        <span className="profileItem">{profile.fullName}</span>
+      </div>
+      <div className="homeAddress">
+        Home Address
+        <input className="profileItem" style={addressReadOnly}>{profile.address}</input>
+      </div>
     </div>
   );
 }

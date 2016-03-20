@@ -1,11 +1,14 @@
-import { ProfileItem } from './ProfileInfoItem';
+import { ProfileItem } from './ProfileItem';
 
 export function ProfileItemList({ profileItems = [] }) {
   return (
     <div className="ProfileItemList">
         {
           profileItems.map(function (profileItem) {
-            return <ProfileInfoItem {...profileItem} />;
+            return <ProfileItem
+              key={profileItem.title}
+              {...profileItem}
+            />;
           })
         }
     </div>
