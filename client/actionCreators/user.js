@@ -43,6 +43,20 @@ export function addFriend(props) {
   };
 };
 
+
+// Asks the server to update our user_id's address.
+export function changeAddress(user_id, newAddress) {
+  return (dispatch) => {
+    dispatch(changingAddress())
+
+    
+    
+  };
+
+  return { type: 'CHANGE_ADDRESS', entry: newAddress };
+}
+
+
 /*
   The meta property here is picked up by a piece of middleware to emit
   socket events. It emits to the server an event with the name: meta.event
@@ -84,13 +98,6 @@ export function signout(info) {
 
 export function setLocation(location) {
   return { type: 'SET_LOCATION', entry: location, };
-}
-
-export function changeAddress(newAddress) {
-  return (dispatch) => {
-    dispatch(changingAddress())
-  }
-  return { type: 'CHANGE_ADDRESS', entry: newAddress };
 }
 
 function changingAddress () {
