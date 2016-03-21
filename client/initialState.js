@@ -2,7 +2,7 @@ export default {
   user: {
     user_id: 1,
     isLoggedIn: false,
-    location: { lat: 30.2705365, lng: -97.7362387 },
+    location: null,
     profile: {
       avatar: 'https://i.ytimg.com/vi/1v6M41Divso/maxresdefault.jpg',
       name: 'Kim Panda',
