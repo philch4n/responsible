@@ -77,10 +77,13 @@ function geoWatch() {
       destination: destination,
       travelMode: google.maps.TravelMode.DRIVING,
     }, function (result, status) {
-        store.dispatch(rideActions.setDirections(result));
-      }
-    );
-  });
+          store.dispatch(rideActions.setDirections(result));
+        }
+      );
+    });
+
+    store.dispatch(userActions.setLocation(location));
+  };
 }
 
 function haveMoved(curLocation, nextLocation, tol) {
