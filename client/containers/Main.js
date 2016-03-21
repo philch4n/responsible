@@ -59,9 +59,10 @@ const mapDispatchToProps = function (dispatch) {
     onDirectionsResult(result) {
       // dispatch(rideActions.setDirections(result));
     },
+
     redirectToProfile() {
       dispatch(push('/profile'));
-    }
+    },
   };
 };
 

@@ -41,8 +41,7 @@ User.github = function (props) {
       console.log('this is me!', me, 'this is github', github);
       var user = {
         username: me.alias,
-        first_name: me.name.split(' ')[0],
-        last_name: me.name.split(' ')[1],
+        name: me.name,
         avatar: me.avatar,
       };
       var verifyBy = me.id;
