@@ -79,6 +79,8 @@ export default {
       { id: 7, time: '12:50', text: 'Be there in ten.', },
     ],
     isWaitingForMatch: false,
+    isAddingDriver: false,
+    isRemovingDriver: false,
     isMatched: false,
     isConfirmed: false,
     isCancelling: false,
@@ -87,6 +89,7 @@ export default {
     acceptRideError: null,
     rideRequestError: null,
     messagesFetchError: null,
+    driverAddError: null,
   },
   routing: {
     locationBeforeTransitions: null,
