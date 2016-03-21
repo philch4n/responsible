@@ -11,8 +11,7 @@ module.exports = Seed;
 Seed.user1 = {
   username: 'Cheenus',
   password: 'abc123',
-  first_name: 'Don',
-  last_name: 'Cheen',
+  name: 'don cheenus',
   address: '700 Priced Dr Austin, Texas',
   zipcode: 123456,
   phone_number: 1,
@@ -24,8 +23,7 @@ Seed.user1 = {
 Seed.user2 = {
   username: 'GregB',
   password: '123abc',
-  first_name: 'Greg',
-  last_name: 'Brady',
+  name: 'greg brady',
   address: '700 Bunch Dr Bonobo, Africa',
   zipcode: 654321,
   phone_number: 2,
@@ -37,8 +35,7 @@ Seed.user2 = {
 Seed.user3 = {
   username: 'CharlieBrizzown',
   password: 'cheesePlease',
-  first_name: 'Charlie',
-  last_name: 'Brizz',
+  name: 'charlie brizz',
   address: '700 Brizz Rd Norman Okalhoma',
   zipcode: 73036,
   phone_number: '405-441-9910',
@@ -50,8 +47,7 @@ Seed.user3 = {
 Seed.user4 = {
   username: 'GumpDump(69)[420]weed',
   password: 'jennyFoundWaysToExpandHerMind',
-  first_name: 'Forest',
-  last_name: 'Gump',
+  name: 'forest gump',
   address: '103 Gump Dr Greenbow Alabama',
   zipcode: 654321,
   phone_number: '710-420-6969',
