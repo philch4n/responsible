@@ -9,11 +9,14 @@ function Map({ match, location, directions }) {
   (
     <div className='map'>
       <GoogleMapLoader
-        ref={(map) => console.log('map data1', map)}
         containerElement={ <div style={{ height: '70%' }} /> }
         googleMapElement={
           <GoogleMap defaultZoom={14} defaultCenter={ location } >
-            { directions ? <DirectionsRenderer directions={ directions } /> : null }
+            {
+              directions ?
+                <DirectionsRenderer directions={ directions } /> :
+                null
+            }
           </GoogleMap>
         }
       />
@@ -23,7 +26,6 @@ function Map({ match, location, directions }) {
   (
     <div className='map'>
       <GoogleMapLoader
-      ref={(map) => console.log('map data1', map)}
       containerElement={ <div style={{ height: '70%' }} /> }
       googleMapElement={ <GoogleMap defaultZoom={14} defaultCenter={ location } >
       </GoogleMap> }

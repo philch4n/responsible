@@ -21,8 +21,7 @@ IO.init = function (server) {
 
     // first listener!
     socket.on('new_message', function (data) {
-      console.log('server new_message listener triggered', data);
-
+      console.log('broadcasting message to:', data.to);
       socket.broadcast.to(data.to).emit('new_message', data.entry);
     });
   });

@@ -83,7 +83,6 @@ function acceptRideError(error) {
 };
 
 function requestRide() {
-  console.log('requesting ride');
   return { type: 'REQUEST_RIDE', };
 };
 

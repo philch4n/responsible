@@ -25,12 +25,9 @@ User.findUserById = function (userId) {
 User.findUserIdByName = function (searchString) {
   return db('users').select('user_id')
     .where({ username: searchString })
-    .orWhere({ first_name: searchString })
-    .orWhere({ last_name: searchString })
+    .orWhere({ name: searchString })
     .then(first)
     .catch(reportError('Error finding user_id by name and searchString:' + searchString));
-
-  // .orWhere({ 'fullname': searchString })
 };
 
 // delete at user by their user_id
@@ -94,8 +91,10 @@ User.createOrUpdateUser = function (verifyBy, attrs) {
     .catch(reportError('ERROR doing something creating/updating user. investigate'));
 };
 
-// username should probably just be name
 User.createUser = function (attrs) {
+  if (attrs.name) attrs.name = attrs.name.toLowerCase();
+  if (attrs.username) attrs.username = attrs.username.toLowerCase();
+
   return db('users')
     .insert(attrs, ['user_id', 'name', 'username', 'email', 'avatar', 'address'])
     .then(first)
@@ -104,6 +103,9 @@ User.createUser = function (attrs) {
 
 // username should probably just be name
 User.updateUser = function (userId, attrs) {
+  if (attrs.name) attrs.name = attrs.name.toLowerCase();
+  if (attrs.username) attrs.username = attrs.username.toLowerCase();
+
   return db('users')
     .where({ user_id: userId })
     .update(attrs, ['user_id', 'username', 'email', 'avatar', 'address'])

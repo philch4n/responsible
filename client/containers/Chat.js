@@ -7,13 +7,13 @@ import { MessageItemList } from '../components/Chat/MessageItemList';
 
 import * as chatAction from '../actionCreators/chat';
 
-export function box({ match, id, messages, addMessage, }) {
+export function box({ ride, user, addMessage }) {
   return (
     <div className='chatbox'>
-      <DriverItem {...match} />
-      <MessageItemList userID={id} messages={messages}/>
+      <DriverItem {...ride.match} />
+      <MessageItemList userID={user.user_id} messages={ride.messages}/>
       <div className='textSubmit'>
-        <form onSubmit={addMessage(id)}>
+        <form onSubmit={addMessage(user.user_id, ride.match.user_id)}>
           <input className="messageText ten columns" defaultValue='' id="message"></input>
           <input className="messageSubmit button" type="submit" />
         </form>
@@ -23,23 +23,23 @@ export function box({ match, id, messages, addMessage, }) {
 }
 
 const mapStateToProps = function (state) {
-  return state.get('ride').toJS();
+  return state.toJS();
 };
 
 // jscs:disable
 const mapDispatchToProps = function (dispatch) {
   return {
-    addMessage: curry(function (id, e) {
+    addMessage: curry(function (user_id, partner_id, e) {
       e.preventDefault();
       let timeStamp = new Date();
       let currentTime = timeStamp.getHours() + ':' + timeStamp.getMinutes();
       let messageObject = {
-        userID: id,
+        userID: user_id,
         time: currentTime,
         text: e.target.firstChild.value,
       };
       e.target.firstChild.value = '';
-      dispatch(chatAction.submitMessage(55, messageObject));
+      dispatch(chatAction.submitMessage(partner_id, messageObject));
     }),
   };
 };

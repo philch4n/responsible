@@ -102,7 +102,7 @@ RideAPI.post('/riders', function (req, res) {
     location: req.body.location,
   };
 
-  console.log('*** POST /rides/riders:', req.body)
+  console.log('*** POST /rides/riders:', req.body);
 
   Ride.createRider(riderToInsert)
     .then(function (newRider) {
@@ -112,11 +112,10 @@ RideAPI.post('/riders', function (req, res) {
     .then(function (user) {
       rider = user;
       rider.location = _location;
-      return Friends.getFriendDrivers(rider.foreign_rider);
+      return Friends.getFriendDrivers(rider.user_id);
     })
     .then(function (friendDrivers) {
-      console.log('friends of userId', req.body.userId, ':', friendDrivers);
-      io.emitTo(friendDrivers, 'new_rider', rider);
+      io.emitTo(friendDrivers, 'add_rider', rider);
       return rider;
     })
     .catch(sendStatusAndError(res, 500, 'error emiting new rider'))

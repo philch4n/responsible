@@ -12,7 +12,10 @@ function BottomNavBar({ user, ride, confirmLocation }) {
   return (
     <div className="BottomNavBarContainer row">
       <BottomButton {...ride} {...user}
-        confirmLocation={confirmLocation.bind(null, user.user_id, user.location)} />
+        confirmLocation={
+          confirmLocation.bind(null, user.user_id, user.location)
+        }
+      />
     </div>
   );
 }
