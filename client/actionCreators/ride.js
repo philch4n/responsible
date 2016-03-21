@@ -5,9 +5,9 @@ import { headers, json, checkStatus } from '../lib/fetchHelpers';
  *  Initializes a ride request. Alerts the server and waits
  *  to receive its upcoming ride Id.
 **/
-export function fetchRide(userId, location) {
+export function fetchRide(userId, friends, location) {
   return (dispatch) => {
-    dispatch(requestRide());
+    dispatch(requestRide(friends));
 
     fetch('/rides/riders', {
       method: 'POST',
@@ -83,7 +83,8 @@ function acceptRideError(error) {
 };
 
 function requestRide(friendList) {
-  console.log('requesting ride');
+  let friendIds = friendList.map( (friend) => friend.user_id) );
+
   return {
     type: 'REQUEST_RIDE',
     meta: {
