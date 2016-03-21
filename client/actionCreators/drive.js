@@ -13,6 +13,7 @@ export function createDriver(userId, location) {
     })
       .then(checkStatus)
       .then(json)
+      .then(function (riders) {console.log('RIDERZZZ', riders); return riders;})
       .then((riders) => dispatch(addDriverSuccess(riders)))
       .catch((error) => dispatch(addDriveError(error)));
   };

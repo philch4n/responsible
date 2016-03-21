@@ -83,7 +83,15 @@ Friends.getFriendRiders = function (userId) {
     .then(function (rideArray) {
       riders = rideArray;
     })
-    .then(() => R.intersection(friends, riders))
-    .catch(reportError('Error getting riders who are friends of ' + userId));
+    .then(() => Friends.intersection(friends, riders))
+    .catch(function (err) {
+      console.log('error', err);
+    });
 };
 
+Friends.intersection = function (friends, riders) {
+  let RiderIds = riders.map((rider) => rider.user_id);
+  let friendRiderIds = R.intersection(friends, RiderIds);
+
+  return riders.filter((rider) => (friendRiderIds.indexOf(rider.user_id) !== -1));
+};
