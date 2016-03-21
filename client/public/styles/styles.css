@@ -1,0 +1,21 @@
+.map {
+  text-align: center;
+  padding: .1%;
+  height: 95vh;
+}
+
+div.DriveDiv {
+	margin: 50px;
+}
+
+div.RideDiv{
+	margin: 50px;
+}
+
+div.AuthButtons {
+;
+}
+
+.SplashMap {
+	position: absolute;
+}

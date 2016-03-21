@@ -1,16 +1,17 @@
-require('../../public/styles/skeleton.css');
-require('../../public/styles/normalize.css');
+require('../../public/styles/styles.css');
 
 export function ConfirmLocationButton({
   confirmLocation,
 }) {
   return (
     <div className='ConfirmLocation' onClick={confirmLocation}>
-      <button
-        className='ConfirmLocationButton btn u-full-width'
-        type='button'>
-        Confirm Ride!
-      </button>
+			<section className='hero is-medium is-success'>
+				<div className='hero-content3'>
+					<h2 className='title'>
+					Confirm Ride!
+					</h2>
+				</div>
+      </section>
     </div>
   );
 }

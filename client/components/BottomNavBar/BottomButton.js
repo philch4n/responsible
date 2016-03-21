@@ -13,7 +13,15 @@ match, user, messages, confirmLocation, onWaitingClick, }) {
       !isWaitingForMatch && !isConfirmed ?
         <ConfirmLocationButton confirmLocation={confirmLocation} /> :
       isConfirmed && isWaitingForMatch ?
-        <h3 onClick={onWaitingClick}>Waiting for a match</h3> :
+        <div className='WaitingClick' onClick={onWaitingClick}>
+          <section className='hero is-medium is-success'>
+            <div className='hero-content4'>
+              <a className='button is-success is-loading'>
+              Waiting for a match
+              </a>
+            </div>
+          </section>
+        </div> :
       isConfirmed && isMatched ?
           <Chat match={match}  id={user.user_id} messages={messages}/> :
         <h3>Uh oh. How did this happen?</h3>
