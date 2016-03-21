@@ -82,9 +82,15 @@ function acceptRideError(error) {
   return { type: 'ACCEPT_RIDE_ERROR', entry: error };
 };
 
-function requestRide() {
+function requestRide(friendList) {
   console.log('requesting ride');
-  return { type: 'REQUEST_RIDE', };
+  return {
+    type: 'REQUEST_RIDE',
+    meta: {
+      event: 'add_rider',
+      to: friendIds,
+    },
+  };
 };
 
 // I don't think this will happen anymore because we do not initialize a ride
