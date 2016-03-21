@@ -20,6 +20,7 @@ export function fetchUserInfo(props) {
       .then(checkStatus)
       .then(json)
       .then((info) => dispatch(receiveUserInfo(info)))
+      .then(() => dispatch(push('/')))
       .catch((error) => dispatch(requestUserInfoError(error)));
   };
 };
