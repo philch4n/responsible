@@ -1,6 +1,6 @@
 import { List } from 'immuatable';
 
-export function handleDrivers(state = List(), action) {
+export function handleDriver(state = List(), action) {
   console.log('~~reducing Drivers:', state.toJS());
 
   switch (action.type) {
@@ -10,25 +10,38 @@ export function handleDrivers(state = List(), action) {
       return removeDriver(state, action);
   }
 
+  // Handle all these cases:
+  //   case 'ADD_DRIVER_SENT':
+  // case 'ADD_DRIVER':
+  // case 'ADD_DRIVER_ERROR':
+  //   return handleDriver(state, action);
+  // case 'REMOVE_DRIVER_SENT':
+  // case 'REMOVE_DRIVER':
+  // case 'REMOVE_DRIVER_ERROR':
+  //   return handleDriver(state, action);
+
   return state;
 };
 
 function addDriver(state, action) {
-  console.log('adding driver');
-  let nextState = null;
+  //Not gonna work...
+  // console.log('adding driver');
+  // let nextState = null;
 
-  if (Array.isArray(action.entry))
-    nextState = state.push(...action.entry);
-  else
-    nextState = state.push(action.entry);
+  // if (Array.isArray(action.entry))
+  //   nextState = state.push(...action.entry);
+  // else
+  //   nextState = state.push(action.entry);
 
-  console.log('next drivers state: ', nextState.toJS());
-  return nextState;
+  // console.log('next drivers state: ', nextState.toJS());
+  // return nextState;
 };
 
 function removeDriver(state, action) {
-  let oldDrivers = state.toJS();
-  let newDrivers = oldRiders.filter((driver) => driver.userId !== action.entry);
+  //Figure this out!
+  // let oldDrivers = state.toJS();
+  // let newDrivers = oldRiders.filter((driver) => driver.userId !== action.entry);
 
-  return newDrivers;
+  // return newDrivers;
 };
+

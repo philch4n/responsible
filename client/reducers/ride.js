@@ -5,6 +5,7 @@ import { handleConfirm } from './confirmRide';
 import { handleRideFetch } from './fetchRide';
 import { handleMessages } from './rideMessages';
 import { handleRiders } from './riders';
+import { handleDriver } from './driver'
 
 // The state passed to this reducer is state.ride
 export default function(state = Map(), action) {
@@ -34,6 +35,14 @@ export default function(state = Map(), action) {
       return handleMessages(state, action);
     case 'SET_DIRECTIONS':
       return setDirections(state, action);
+    case 'ADD_DRIVER_SENT':
+    case 'ADD_DRIVER':
+    case 'ADD_DRIVER_ERROR':
+      return handleDriver(state, action);
+    case 'REMOVE_DRIVER_SENT':
+    case 'REMOVE_DRIVER':
+    case 'REMOVE_DRIVER_ERROR':
+      return handleDriver(state, action);
 
     // HANDLE USER LOGGING OUT!
   };
