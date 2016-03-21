@@ -23,7 +23,7 @@ function Profile({ user_id, friends, profile, onFriendClick, onAddressEdit }) {
         <span className="profileItem">{profile.fullName}</span>
       </div>
 
-      <div className="homeAddress">
+      <div className="profileAddress">
         Home Address
         {
           profile.address ?
