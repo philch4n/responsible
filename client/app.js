@@ -55,10 +55,6 @@ function geoWatch() {
     navigator.geolocation.getCurrentPosition(function (data) {
       location.lat = data.coords.latitude;
       location.lng = data.coords.longitude;
-
-      // console.log('Rider Time Summoned:', new Date(data.timestamp));
-      // console.log('locationLat', location.lat);
-      // console.log('locationLng', location.lng);
       store.dispatch(userActions.setLocation(location));
     });
   };
