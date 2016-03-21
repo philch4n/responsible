@@ -35,5 +35,6 @@ export function configureListeners(socket) {
     dispatch(rideActions.removeRider(data.riderId));
   });
 
+  // dev only: so that we can used the not-logged-in initial state user
   socket.emit('join', { entry: { user_id: 1 } });
 };
