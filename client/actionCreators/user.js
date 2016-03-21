@@ -1,4 +1,5 @@
 import fetch from 'isomorphic-fetch';
+import { push } from 'react-router-redux';
 import { headers, json, checkStatus } from '../lib/fetchHelpers';
 
 /*
@@ -43,6 +44,28 @@ export function addFriend(props) {
   };
 };
 
+// Asks the server to update our user_id's address.
+export function changeAddress(user_id, newAddress) {
+  return (dispatch) => {
+
+    // to keep hold of information in case we want to revert it on error,
+    // pass it in to these initiating async calls.
+    dispatch(changingAddress());
+
+    fetch('user/', {
+      method: 'PUT',
+      headers: headers,
+      body: JSON.stringify({ user_id, address: newAddress }),
+    })
+      .then(checkStatus)
+      .then(() => {
+        dispatch(push('/'));
+        dispatch(changeAddressSuccess(newAddress));
+      })
+      .catch((error) => dispatch(changeAddressError(error)));
+  };
+}
+
 /*
   The meta property here is picked up by a piece of middleware to emit
   socket events. It emits to the server an event with the name: meta.event
@@ -84,4 +107,16 @@ export function signout(info) {
 
 export function setLocation(location) {
   return { type: 'SET_LOCATION', entry: location, };
+}
+
+function changingAddress() {
+  return { type: 'CHANGING_ADDRESS' };
+}
+
+function changeAddressSuccess(newAddress) {
+  return { type: 'CHANGE_ADDRESS', entry: newAddress };
+}
+
+function changeAddressError(error) {
+  return { type: 'CHANGE_ADDRESS_ERROR', entry: error };
 }

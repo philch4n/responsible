@@ -2,7 +2,7 @@ import React from 'react';
 import { connect } from 'react-redux';
 import { push } from 'react-router-redux';
 
-import { ProfileButton } from '../components/TopNavBar/Profile/ProfileButton';
+import { ProfileButton } from '../components/Profile/ProfileButton';
 import { FriendButton } from '../components/TopNavBar/Friends/FriendButton';
 import { SignoutButton } from '../components/SignoutButton';
 
@@ -29,7 +29,6 @@ const mapDispatchToProps = function (dispatch) {
     onProfileButtonClick() {
       dispatch(push('/profile'));
     },
-
     onFriendButtonClick() {
       dispatch(push('/friends'));
     },
