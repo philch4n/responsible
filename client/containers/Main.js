@@ -1,7 +1,5 @@
 import { connect } from 'react-redux';
 
-import { push } from 'react-router-redux';
-
 import { TopNavBarContainer } from './TopNavBar';
 import { BottomNavBarContainer } from './BottomNavBar';
 import { SplashContainer } from './Splash';
@@ -12,15 +10,9 @@ import { RiderItemList } from './RiderItemList';
 import * as userAction from '../actionCreators/user';
 import * as rideActions from '../actionCreators/ride';
 
-var OAuth = require('../lib/oauth.min.js').OAuth;
-var OAuthUser = require('../lib/oauth.min.js').User;
-
 function Main({
   user: { isLoggedIn, location, profile, isDriver, isRider, },
   ride: { riders, match, directions, },
-  redirectToProfile,
-  redirectToLogin,
-  logoutClick,
 }) {
   return (
     <div className="MainApp">
@@ -34,7 +26,6 @@ function Main({
         <i className='fa fa-google'>
         </i>&nbsp;Google</a>
       </div>
-    <button onClick={logoutClick} />
       {
         !isDriver && !isRider ?
           <SplashContainer /> :
@@ -65,18 +56,6 @@ const mapDispatchToProps = function (dispatch) {
       // dispatch(rideActions.setDirections(result));
     },
 
-    logoutClick() {
-      OAuth.clearCache();
-      dispatch(push('/login'));
-    },
-
-    redirectToProfile() {
-      dispatch(push('/profile'));
-    },
-
-    redirectToLogin() {
-      dispatch(push('/login'));
-    },
   };
 };
 
