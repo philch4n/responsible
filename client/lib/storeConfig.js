@@ -8,6 +8,7 @@ import { fromJS } from 'immutable';
 import { combineReducers } from 'redux-immutable';
 
 import { socket, socketActionMiddleware } from './socketConfig';
+import { authMiddleware } from './authConfig';
 
 import routeReducer from '../reducers/route';
 import userReducer from '../reducers/user';
@@ -27,6 +28,7 @@ export const store = createStore(
   reducersWithRouter,
   fromJS(InitialState),
   applyMiddleware(
+    authMiddleware,
     historyMiddleware,
     socketActionMiddleware(socket),
     thunkMiddleware
