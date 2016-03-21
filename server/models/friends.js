@@ -67,9 +67,7 @@ Friends.getFriendDrivers = function (userId) {
       drivers = driveArray;
     })
     .then(() => R.intersection(friends, drivers))
-    .catch(function (err) {
-      console.log('error', err);
-    });
+    .catch(reportError('Error getting drivers who are a friend of ' + userId));
 };
 
 // Takes in user_id, returns intersection array of available friend riders
@@ -86,8 +84,6 @@ Friends.getFriendRiders = function (userId) {
       riders = rideArray;
     })
     .then(() => R.intersection(friends, riders))
-    .catch(function (err) {
-      console.log('error', err);
-    });
+    .catch(reportError('Error getting riders who are friends of ' + userId));
 };
 
