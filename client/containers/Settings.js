@@ -6,6 +6,9 @@ import { ProfileButton } from '../components/Profile/ProfileButton';
 import { FriendButton } from '../components/TopNavBar/Friends/FriendButton';
 import { SignoutButton } from '../components/SignoutButton';
 
+var OAuth = require('../lib/oauth.min.js').OAuth;
+var OAuthUser = require('../lib/oauth.min.js').User;
+
 import * as userAction from '../actionCreators/user';
 
 function nullFn(e) { console.log('you clicked me ' + e.target.className); };
@@ -29,6 +32,7 @@ const mapDispatchToProps = function (dispatch) {
     onProfileButtonClick() {
       dispatch(push('/profile'));
     },
+
     onFriendButtonClick() {
       dispatch(push('/friends'));
     },
