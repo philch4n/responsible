@@ -25,10 +25,16 @@ function Profile({ user_id, friends, profile, onFriendClick, onAddressEdit }) {
 
       <div className="homeAddress">
         Home Address
-        <input className="profileItem"
-          type="test"
-          placeholder={profile.address}
-          onClick={onAddressEdit(user_id)} />
+        {
+          profile.address ?
+            <span className="profileAddress">{profile.address}</span>
+            :
+            <form onSubmit={onAddressEdit(user_id)}>
+              <input className="profileItem"
+                type="text"
+                placeholder={profile.address} />
+            </form>
+        }
       </div>
     </div>
   );
@@ -42,9 +48,8 @@ const mapStateToProps = function (state) {
 const mapDispatchToProps = function (dispatch) {
   return {
     onAddressEdit: curry((user_id, e) => {
-      let newAddress = e.target.firstChild.value;
       e.preventDefault();
-      console.log('changing address to:', newAddress);
+      let newAddress = e.target.firstChild.value;
       dispatch(userAction.changeAddress(user_id, newAddress));
     }),
   };
