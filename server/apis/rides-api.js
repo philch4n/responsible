@@ -145,9 +145,17 @@ RideAPI.get('/drivers/:id', function (req, res) {
 // Post Driver
 RideAPI.post('/drivers', function (req, res) {
   var attrs = req.body;
+  console.log('THESE ARE ATTRS!', attrs);
   Ride.createDriver(attrs)
     .then(sendStatusAndData(res, 201))
     .catch(sendStatusAndError(res, 500, 'error creating driver'));
+});
+
+RideAPI.delete('/drivers/:id', function (req, res) {
+  var id = req.params.id;
+  Ride.deleteDriver(id)
+    .then(sendStatusAndData(res, 201))
+    .catch(sendStatusAndError(res, 500, 'error deleting driver'));
 });
 
 /*
