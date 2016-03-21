@@ -28,11 +28,11 @@ function Main({
     <div className="MainApp">
       <TopNavBarContainer />
       <div className='AuthButtons'>
-    <a className='button is-1' onClick={User.facebook}>
+    <a className='button' onClick={User.facebook}>
         <i className='fa fa-facebook-official'>
       </i>&nbsp;Facebook</a>
     <GithubButton />
-    <a className='button is-3' onClick={User.google}>
+    <a className='button' onClick={User.google}>
         <i className='fa fa-google'>
         </i>&nbsp;Google</a>
       </div>
