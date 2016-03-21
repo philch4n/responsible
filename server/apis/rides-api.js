@@ -102,8 +102,6 @@ RideAPI.post('/riders', function (req, res) {
     location: req.body.location,
   };
 
-  console.log('*** POST /rides/riders:', req.body);
-
   Ride.createRider(riderToInsert)
     .then(function (newRider) {
       // location = newRider[0].location;
@@ -144,14 +142,15 @@ RideAPI.get('/drivers/:id', function (req, res) {
 // Post Driver
 RideAPI.post('/drivers', function (req, res) {
   var attrs = req.body;
-  console.log('THESE ARE ATTRS!', attrs);
   Ride.createDriver(attrs)
+    .then((driver) => Friends.getFriendRiders(driver.foreign_driver))
     .then(sendStatusAndData(res, 201))
     .catch(sendStatusAndError(res, 500, 'error creating driver'));
 });
 
-RideAPI.delete('/drivers/:id', function (req, res) {
-  var id = req.params.id;
+RideAPI.delete('/drivers', function (req, res) {
+  var id = req.body;
+  console.log('Delete Driver req.body', id);
   Ride.deleteDriver(id)
     .then(sendStatusAndData(res, 201))
     .catch(sendStatusAndError(res, 500, 'error deleting driver'));
