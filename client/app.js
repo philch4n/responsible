@@ -45,7 +45,8 @@ import * as userActions from './actionCreators/user';
 import * as rideActions from './actionCreators/ride';
 
 geoWatch();
-setInterval(geoWatch, 6000);
+
+// setInterval(geoWatch, 6000);
 
 const location = {};
 function geoWatch() {
