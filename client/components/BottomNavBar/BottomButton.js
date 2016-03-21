@@ -37,7 +37,7 @@ const mapStateToProps = function (state) {
 // jscs:disable
 const mapDispatchToProps = function (dispatch) {
   let pair = {
-    user_id: 5,
+    user_id: 6,
     avatar: 'http://www.funcage.com/blog/wp-content/uploads/2013/'
      + '11/Cute-Animals-Saying-Hi-To-You-001.jpg',
     name: 'Lazy Harp Seal',
