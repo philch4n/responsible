@@ -1,5 +1,5 @@
 import React from 'react';
-import { GoogleMapLoader, GoogleMap, Marker, DirectionsRenderer } from 'react-google-maps';
+import { GoogleMapLoader, GoogleMap, DirectionsRenderer } from 'react-google-maps';
 import { connect } from 'react-redux';
 
 // overlayMapTypes
