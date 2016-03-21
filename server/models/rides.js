@@ -91,12 +91,15 @@ Ride.getDriverById = function (userId) {
     .then(first);
 };
 
-// Create a new driver
+/* Create a new driver
+Attrs are userId and location. Location is stringified to put in DB
+Location will probably need parsing upon retrieval
+*/
 Ride.createDriver = function (attrs) {
   foreign_driver = attrs.userId;
   location = JSON.stringify(attrs.location);
-  console.log('~~~~CHECK OUT THESE HEADY ATTRS!', attrs);
-  return db('drivers').insert({ foreign_driver, location }, ['driver_id', 'foreign_driver', 'location'])
+  return db('drivers')
+    .insert({ foreign_driver, location }, ['driver_id', 'foreign_driver', 'location'])
     .catch(reportError('error creating driver in db'));
 };
 
