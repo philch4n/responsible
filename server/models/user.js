@@ -25,12 +25,9 @@ User.findUserById = function (userId) {
 User.findUserIdByName = function (searchString) {
   return db('users').select('user_id')
     .where({ username: searchString })
-    .orWhere({ first_name: searchString })
-    .orWhere({ last_name: searchString })
+    .orWhere({ name: searchString })
     .then(first)
     .catch(reportError('Error finding user_id by name and searchString:' + searchString));
-
-  // .orWhere({ 'fullname': searchString })
 };
 
 // delete at user by their user_id

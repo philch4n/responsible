@@ -57,7 +57,8 @@ UserAPI.post('/tmp', function (req, res) {
   responds with status code 200 on success
 */
 UserAPI.post('/friends', function (request, response) {
-  Friends.findAndAddFriend(request.body.user_id, request.body.searchString)
+  var searchString = request.body.searchString.trim().toLowerCase();
+  Friends.findAndAddFriend(request.body.user_id, searchString)
     .then(sendStatusAndData(response, 201))
     .catch(sendStatusAndError(response, 500, 'Server error creating friendship'));
 });
