@@ -5,7 +5,7 @@ import { handleConfirm } from './confirmRide';
 import { handleRideFetch } from './fetchRide';
 import { handleMessages } from './rideMessages';
 import { handleRiders } from './riders';
-import { handleDriver } from './driver'
+import { handleDriver } from './drivers';
 
 // The state passed to this reducer is state.ride
 export default function(state = Map(), action) {

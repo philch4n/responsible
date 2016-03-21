@@ -6,7 +6,6 @@ import * as userAction from '../actionCreators/user';
 import * as driverAction from '../actionCreators/drive';
 
 function Splash(props) {
-  console.log('THESE ARE HEADY PROPS', props);
   let onDriveClick = props.onDriveClick.bind(null, props.user.user_id, props.user.location);
 
   return (
