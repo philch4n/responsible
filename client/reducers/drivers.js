@@ -1,6 +1,6 @@
-import { List } from 'immuatable';
+import { Map } from 'immuatable';
 
-export function handleDriver(state = List(), action) {
+export function handleDriver(state = Map(), action) {
   console.log('~~reducing Drivers:', state.toJS());
 
   switch (action.type) {
