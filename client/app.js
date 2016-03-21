@@ -49,6 +49,7 @@ geoWatch();
 setInterval(geoWatch, 6000);
 
 const location = {};
+
 function geoWatch() {
   if (navigator.geolocation) {
     navigator.geolocation.getCurrentPosition(function (data) {
