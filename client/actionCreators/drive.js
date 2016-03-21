@@ -4,7 +4,6 @@ import { headers, json, checkStatus } from '../lib/fetchHelpers';
 // adds driver to database
 export function createDriver(userId, location) {
   return (dispatch) => {
-    console.log('HERE IS STUFF IN THE ACTION CREATOR', userId, location);
     dispatch(addDriverSent());
 
     fetch('/rides/drivers', {
@@ -13,6 +12,8 @@ export function createDriver(userId, location) {
       body: JSON.stringify({ userId, location }),
     })
       .then(checkStatus)
+      .then(json)
+      .then((riders) => dispatch(addDriverSuccess(riders)))
       .catch((error) => dispatch(addDriveError(error)));
   };
 };
@@ -36,8 +37,8 @@ export function addDriverSent(driver) {
   return { type: 'ADD_DRIVER_SENT', entry: driver, };
 };
 
-export function addDriverSuccess() {
-  return { type: 'ADD_DRIVER' };
+export function addDriverSuccess(riders) {
+  return { type: 'ADD_DRIVER', entry: riders };
 };
 
 export function addDriveError(error) {
