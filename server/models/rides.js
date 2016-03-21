@@ -105,6 +105,7 @@ Ride.createDriver = function (attrs) {
   location = JSON.stringify(attrs.location);
   return db('drivers')
     .insert({ foreign_driver, location }, ['driver_id', 'foreign_driver', 'location'])
+    .then(first)
     .catch(reportError('error creating driver in db'));
 };
 
