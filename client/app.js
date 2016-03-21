@@ -13,6 +13,7 @@ import { ProfileContainer } from './containers/Profile';
 import { SettingsContainer } from './containers/Settings';
 import { MainContainer } from './containers/Main';
 import { FriendList } from './containers/Friends';
+import { LoginContainer } from './containers/Login';
 
 import { socket } from './lib/socketConfig';
 import { configureListeners } from './lib/socketListeners';
@@ -22,6 +23,7 @@ configureListeners(socket);
 const routes = <Route component={Root}>
   <Route path="/" component={MainContainer} />
   <Route path="/profile" component={ProfileContainer} />
+  <Route path="/login" component={LoginContainer} />
   <Route path="/settings" component={SettingsContainer} />
   <Route path="/friends" component={FriendList} />
 </Route>;
@@ -43,6 +45,7 @@ import * as userActions from './actionCreators/user';
 import * as rideActions from './actionCreators/ride';
 
 geoWatch();
+
 setInterval(geoWatch, 6000);
 
 const location = {};
