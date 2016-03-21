@@ -8,5 +8,7 @@ export const authMiddleware = store => next => action => {
   let result = next(action);
   console.log('after result github', github);
   console.log('next state', store.getState().toJS());
-  return result;
+  return next(action);
+
+  // return result;
 };

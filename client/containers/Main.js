@@ -16,13 +16,16 @@ function Main({
   user: { isLoggedIn, location, profile, isDriver, isRider, },
   ride: { riders, match, directions, },
   redirectToProfile,
+  redirectToLogin,
 }) {
 
   if (isLoggedIn && !profile.address) {
     redirectToProfile();
   }
 
-  //if !loggedIn redirectToLogin
+  if (!isLoggedIn) {
+    redirectToLogin();
+  }
 
   return (
     <div className="MainApp">
@@ -68,6 +71,10 @@ const mapDispatchToProps = function (dispatch) {
 
     redirectToProfile() {
       dispatch(push('/profile'));
+    },
+
+    redirectToLogin() {
+      dispatch(push('/login'));
     },
   };
 };
