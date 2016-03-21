@@ -45,7 +45,12 @@ Ride.getRiders = function () {
   return db.select('*').from('riders')
     .catch(reportError('error getting all riders'))
     .then(function (riders) {
-      return riders.map(rider => rider.foreign_rider);
+      return riders.map(function (rider) {
+        return {
+          user_id: rider.foreign_rider,
+          location: rider.location,
+        };
+      });
     });
 };
 
