@@ -52,7 +52,7 @@ export default {
     ],
   },
   ride: {
-    id: null,
+    ride_id: null,
     match: null,
     directions: null,
     riders: [
