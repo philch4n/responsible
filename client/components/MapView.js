@@ -12,7 +12,11 @@ function Map({ match, location, directions }) {
         containerElement={ <div style={{ height: '70%' }} /> }
         googleMapElement={
           <GoogleMap defaultZoom={14} defaultCenter={ location } >
-            { directions ? <DirectionsRenderer directions={ directions } /> : null }
+            {
+              directions ?
+                <DirectionsRenderer directions={ directions } /> :
+                null
+            }
           </GoogleMap>
         }
       />
