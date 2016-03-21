@@ -93,7 +93,10 @@ Ride.getDriverById = function (userId) {
 
 // Create a new driver
 Ride.createDriver = function (attrs) {
-  return db('drivers').insert(attrs, ['driver_id', 'foreign_driver', 'location'])
+  foreign_driver = attrs.userId;
+  location = JSON.stringify(attrs.location);
+  console.log('~~~~CHECK OUT THESE HEADY ATTRS!', attrs);
+  return db('drivers').insert({ foreign_driver, location }, ['driver_id', 'foreign_driver', 'location'])
     .catch(reportError('error creating driver in db'));
 };
 
