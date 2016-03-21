@@ -5,7 +5,7 @@ export function ConfirmLocationButton({
 }) {
   return (
     <div className='ConfirmLocation' onClick={confirmLocation}>
-			<section className='hero is-medium is-success'>
+			<section className='hero is-success'>
 				<div className='hero-content3'>
 					<h2 className='title'>
 					Confirm Ride!

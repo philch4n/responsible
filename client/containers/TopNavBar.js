@@ -19,16 +19,26 @@ function TopNavBar({ onCancel, ...props }) {
 
   return (
     <div className='TopNavBarContainer'>
-      <header className='header'>
-        <div className='header-left'>
+      <nav className='navbar'>
+        <div className='navbar-left'>
+          <div className='navbar-item'>
             <SettingIcon {...props}/>
+          </div>
         </div>
-      <Logo />
-      <TopNavBarRightButton
-        {...props}
-        onCancel={cancelClick}
-      />
-      </header>
+        <div className='navbar-item'>
+          <Logo />
+        </div>
+        <div className='navbar-right'>
+          <p className='navbar-item is-text-centered'>
+            <i className='fa fa-car'>
+              <TopNavBarRightButton
+                {...props}
+                onCancel={cancelClick}
+              />
+            </i>
+          </p>
+        </div>
+      </nav>
     </div>
   );
 }

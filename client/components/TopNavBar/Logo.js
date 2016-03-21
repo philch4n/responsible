@@ -9,4 +9,4 @@ export function Logo({
       <h1 className='LogoButton title is-1'>Responsiblé</h1>
     </div>
   );
-}
+};
