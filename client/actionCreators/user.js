@@ -1,4 +1,5 @@
 import fetch from 'isomorphic-fetch';
+import { push } from 'react-router-redux';
 import { headers, json, checkStatus } from '../lib/fetchHelpers';
 
 /*
@@ -57,7 +58,10 @@ export function changeAddress(user_id, newAddress) {
       body: JSON.stringify({ user_id, address: newAddress }),
     })
       .then(checkStatus)
-      .then(() => dispatch(changeAddressSuccess(newAddress)))
+      .then(() => {
+        dispatch(push('/'));
+        dispatch(changeAddressSuccess(newAddress));
+      })
       .catch((error) => dispatch(changeAddressError(error)));
   };
 }
