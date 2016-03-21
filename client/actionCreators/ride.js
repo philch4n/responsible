@@ -5,9 +5,9 @@ import { headers, json, checkStatus } from '../lib/fetchHelpers';
  *  Initializes a ride request. Alerts the server and waits
  *  to receive its upcoming ride Id.
 **/
-export function fetchRide(userId, friends, location) {
+export function fetchRide(userId, location) {
   return (dispatch) => {
-    dispatch(requestRide(friends));
+    dispatch(requestRide());
 
     fetch('/rides/riders', {
       method: 'POST',
@@ -82,16 +82,8 @@ function acceptRideError(error) {
   return { type: 'ACCEPT_RIDE_ERROR', entry: error };
 };
 
-function requestRide(friendList) {
-  let friendIds = friendList.map( (friend) => friend.user_id) );
-
-  return {
-    type: 'REQUEST_RIDE',
-    meta: {
-      event: 'add_rider',
-      to: friendIds,
-    },
-  };
+function requestRide() {
+  return { type: 'REQUEST_RIDE', };
 };
 
 // I don't think this will happen anymore because we do not initialize a ride

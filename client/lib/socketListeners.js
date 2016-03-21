@@ -34,4 +34,6 @@ export function configureListeners(socket) {
     console.log('received socket event to remove rider:', data);
     dispatch(rideActions.removeRider(data.riderId));
   });
+
+  socket.emit('join', { entry: { user_id: 1 } });
 };

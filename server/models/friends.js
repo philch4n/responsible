@@ -16,8 +16,8 @@ Friends.createFriendship = function (user_id1, user_id2) {
   }, ['foreign_friend2'])
   .then((user) => user[0]);
 
-    //KK: I don't know what this R.first is doing
-    // .then(R.first);
+  //KK: I don't know what this R.first is doing
+  // .then(R.first);
 };
 // jscs: enable
 
@@ -39,10 +39,8 @@ Friends.findAndAddFriend = function (user_id, searchString) {
   return User.findUserIdByName(searchString)
     .then(function (user) {
       // if user is undefined, jump out!
-      if (!user) throw new Error('Did not find user by searchstring: ' + searchString);
-
-      console.log('found user', user.user_id, 'by name', searchString);
-      console.log('befriending:', user_id, user.user_id);
+      if (!user)
+        throw new Error('Did not find user by searchstring: ' + searchString);
 
       return Friends.createFriendship(user_id, user.user_id);
     })

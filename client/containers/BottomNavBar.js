@@ -13,7 +13,7 @@ function BottomNavBar({ user, ride, confirmLocation }) {
     <div className="BottomNavBarContainer row">
       <BottomButton {...ride} {...user}
         confirmLocation={
-          confirmLocation.bind(null, user.user_id, user.friends, user.location)
+          confirmLocation.bind(null, user.user_id, user.location)
         }
       />
     </div>
@@ -27,8 +27,8 @@ const mapStateToProps = function (state) {
 // jscs:disable
 const mapDispatchToProps = function (dispatch) {
   return {
-    confirmLocation(userId, friends, location) {
-      dispatch(rideAction.fetchRide(userId, friends, location))
+    confirmLocation(userId, location) {
+      dispatch(rideAction.fetchRide(userId, location))
     },
   };
 };
