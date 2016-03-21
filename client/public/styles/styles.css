@@ -4,6 +4,10 @@
   height: 95vh;
 }
 
+nav.navbar {
+	background-color: white;
+}
+
 div.DriveDiv {
 	margin: 50px;
 }
@@ -12,10 +16,11 @@ div.RideDiv{
 	margin: 50px;
 }
 
-div.AuthButtons {
-;
-}
 
 .SplashMap {
 	position: absolute;
 }
+/*
+h2 {
+	margin: 50px;
+}*/
