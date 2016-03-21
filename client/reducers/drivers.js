@@ -1,4 +1,4 @@
-import { Map } from 'immuatable';
+import { Map } from 'immutable';
 
 export function handleDriver(state = Map(), action) {
   console.log('~~reducing Drivers:', state.toJS());
