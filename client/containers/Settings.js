@@ -29,6 +29,7 @@ const mapDispatchToProps = function (dispatch) {
     onProfileButtonClick() {
       dispatch(push('/profile'));
     },
+
     onFriendButtonClick() {
       dispatch(push('/friends'));
     },
