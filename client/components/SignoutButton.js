@@ -7,8 +7,14 @@ function nullFn(e) { console.log('you clicked me ' + e.target.className); };
 
 function Button({ onSignoutButtonClick }) {
   return (
-    <div className='SignoutButton two columns' onClick={onSignoutButtonClick}>
-      <button className='SignoutButton btn u-full-width' type='button'>Signout!</button>
+    <div className='SignoutButton' onClick={onSignoutButtonClick}>
+      <section className='hero is-primary is-outlined'>
+        <div className='hero-content 5'>
+          <h3 className='SignoutButton'>
+          Signout!
+          </h3>
+        </div>
+      </section>
     </div>
   );
 }

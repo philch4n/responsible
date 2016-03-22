@@ -12,10 +12,21 @@ div.DriveDiv {
 	margin: 50px;
 }
 
-div.RideDiv{
+div.RideDiv {
 	margin: 50px;
 }
 
+div.ProfileButtonDiv {
+	margin: 50px;
+}
+
+div.FriendButton {
+	margin: 50px;
+}
+
+div.SignoutButton {
+	margin: 50px;
+}
 
 .SplashMap {
 	position: absolute;

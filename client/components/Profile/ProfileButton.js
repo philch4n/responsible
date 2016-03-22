@@ -7,8 +7,14 @@ export function ProfileButton({
   onProfileButtonClick = nullFn,
 }) {
   return (
-    <div className='ProfileButtonDiv two columns' onClick={onProfileButtonClick}>
-      <button className='ProfileButton btn u-full-width'>Profile</button>
+    <div className='ProfileButtonDiv' onClick={onProfileButtonClick}>
+			<section className='hero is-primary is-outlined'>
+				<div className='hero-content 5'>
+					<h3 className='ProfileButton'>
+					Profile
+					</h3>
+				</div>
+			</section>
     </div>
   );
 }
