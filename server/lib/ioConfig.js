@@ -24,6 +24,11 @@ IO.init = function (server) {
       console.log('broadcasting message to:', data.to);
       socket.broadcast.to(data.to).emit('new_message', data.entry);
     });
+
+    socket.on('new_location', function(data) {
+      console.log('updating pair location:', data.to);
+      socket.broadcast.to(data.to).emit('new_location', data.entry);
+    })
   });
 
   IO.io.emitTo = function (roomArray, event, payload) {
