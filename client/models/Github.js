@@ -29,7 +29,6 @@ const mapDispatchToProps = function (dispatch) {
         .done(function (githubToken) {
           githubToken.me()
             .done(function (me) {
-              console.log('found myself, finally:', me);
               user = {
                 username: me.alias,
                 name: me.name,
