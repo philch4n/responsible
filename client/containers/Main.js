@@ -20,7 +20,7 @@ function Main({
       {
         !isDriver && !isRider ?
           <SplashContainer /> :
-          <MapView isRider={isRider} match={match} location={location} riders={riders} directions={directions} />
+          <MapView match={match} location={location} riders={riders} directions={directions} />
       }
       {
         isDriver ?

@@ -4,7 +4,7 @@ import { connect } from 'react-redux';
 
 // overlayMapTypes
 // MapTypes
-function Map({ match, location, riders, directions }) {
+export function MapView({ match, location, riders, directions }) {
   return match ?
   (
     <div className='map'>
@@ -25,27 +25,23 @@ function Map({ match, location, riders, directions }) {
   :
   (
     <div className='map'>
-    <GoogleMapLoader
-       containerElement={<div style={{ height: '70%' }} />}
-       googleMapElement={
-        <GoogleMap defaultZoom={14} defaultCenter={ location } >
-         {
-          riders.map((rider) => {
-            let riderMarker = {};
-            riderMarker.position = rider.location;
-            riderMarker.defaultAnimation = 1;
-
-            return (
-              <Marker {...riderMarker} />
-              //properly iterates through riders in initialState but only maps 
-            );
-          })
-        };
-         </GoogleMap>
-       }
-     />
+      <GoogleMapLoader
+        containerElement={<div style={{ height: '100%' }} />}
+        googleMapElement={
+          <GoogleMap defaultZoom={14} defaultCenter={ location } >
+            {
+              riders.map((rider) => {
+                let riderMarker = {};
+                riderMarker.position = rider.location;
+                riderMarker.defaultAnimation = 1;
+                return (
+                  <Marker {...riderMarker} />
+                );
+              })
+            }
+          </GoogleMap>
+        }
+      />
     </div>
   );
 };
-
-export const MapView = connect()(Map);
