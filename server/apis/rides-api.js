@@ -20,28 +20,12 @@ module.exports = RideAPI;
 * Rides routes
 */
 
-//Get all rides
-RideAPI.get('/', function (req, res) {
-  // io.sockets.emit('receive_message', { id: 9, text: 'gassy', time: '22:50' });
-
-  Ride.getRides()
-    .then(sendStatusAndData(res, 200))
-    .catch(sendStatusAndError(res, 500, ('error getting rides')));
-});
-
 //Posting
 RideAPI.post('/', function (req, res) {
   var ride = req.body;
   Ride.createRide(ride)
     .then(sendStatusAndData(res, 201))
     .catch(sendStatusAndError(res, 500, ('error creating user')));
-});
-
-RideAPI.get('/:id', function (req, res) {
-  var id = req.params.id;
-  Ride.getRideById(id)
-    .then(sendStatusAndData(res, 200))
-    .catch(sendStatusAndError(res, 500));
 });
 
 /*
@@ -67,19 +51,13 @@ RideAPI.delete('/', function (req, res) {
     Ride.deleteRide(ride_id)
 
       // user_id is the cancelling user's partner's user_id
-      .then(() => {
-        console.log('cancel_ride sent to:', user_id);
-        io.to(user_id).emit('cancel_ride', null);
-      })
+      .then(() => io.to(user_id).emit('cancel_ride', null))
       .then(sendStatus(res, 200))
       .catch(sendStatusAndError(res, 500));
   } else {
     Ride.deleteRider(user_id)
       .then(Friends.getFriendDrivers.bind(null, user_id))
-      .then((drivingFriends) => {
-        console.log('remove_rider sent to:', drivingFriends);
-        io.emitTo(drivingFriends, 'remove_rider', user_id);
-      })
+      .then((drivingFriends) => io.emitTo(drivingFriends, 'remove_rider', user_id))
       .then(sendStatus(res, 200))
       .catch(sendStatusAndError(res, 500));
   }
