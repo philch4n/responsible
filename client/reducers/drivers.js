@@ -69,6 +69,9 @@ function removeDriverSent(state, action) {
 };
 
 function removeDriverError(state, action) {
-  driverAddError: action.entry;
+  let updates = {
+    driverAddError: action.entry,
+  };
+  return state.merge(updates);
 };
 

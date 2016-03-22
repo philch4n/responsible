@@ -91,7 +91,6 @@ RideAPI.post('/riders', function (req, res) {
     .then(function (user) {
       rider = user;
       rider.location = _location;
-      console.log('THIS IS IN CREATE RIDER', rider);
       return Friends.getFriendDrivers(rider.user_id);
     })
     .then(function (friendDrivers) {

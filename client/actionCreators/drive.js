@@ -21,11 +21,12 @@ export function createDriver(userId, location) {
   };
 };
 
-export function deleteDriver({ driverId }) {
+export function deleteDriver(driverId) {
   return (dispatch) => {
+    console.log('THIS IS DRIVER ID ', driverId)
     dispatch(removeDriverSent());
 
-    fetch('/rides/drivers/' + driverId, {
+    fetch('/rides/drivers', {
       method: 'DELETE',
       headers: headers,
       body: JSON.stringify({ driverId }),

@@ -66,7 +66,7 @@ const mapDispatchToProps = function (dispatch) {
       dispatch(rideAction.cancelRide({ user_id, ride_id }))
     },
     onEndDriver(user_id) {
-      dispatch(driveAction.deleteDriver({ user_id }))
+      dispatch(driveAction.deleteDriver(user_id))
     }
   };
 };
