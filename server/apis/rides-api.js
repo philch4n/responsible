@@ -3,11 +3,16 @@ var RideAPI = require('express').Router();
 
 var io = require('../lib/ioConfig').io;
 if (process.env.NODE_ENV === 'test') {
+  // jscs: disable
+  // might as well disable any other code style checking, too, this is hacky enough
   var MockedSocketIO = {};
   MockedSocketIO.sockets = [];
-  MockedSocketIO.sockets.emit = function () {};
+  MockedSocketIO.to = function () {};
+  MockedSocketIO.emitTo = function () {};
+  MockedSocketIO.to.emit = function () {};
 
   io = MockedSocketIO;
+  // jscs: enable
 }
 
 var Ride = require(__models + '/rides');
@@ -81,7 +86,6 @@ RideAPI.post('/riders', function (req, res) {
 
   Ride.createRider(riderToInsert)
     .then(function (newRider) {
-      // location = newRider[0].location;
       return User.findUserById(newRider[0].foreign_rider);
     })
     .then(function (user) {
