@@ -17,15 +17,6 @@ function Main({
   return (
     <div className="MainApp">
       <TopNavBarContainer />
-      <div className='AuthButtons'>
-    <a className='button' onClick={User.facebook}>
-        <i className='fa fa-facebook-official'>
-      </i>&nbsp;Facebook</a>
-    <GithubButton />
-    <a className='button' onClick={User.google}>
-        <i className='fa fa-google'>
-        </i>&nbsp;Google</a>
-      </div>
       {
         !isDriver && !isRider ?
           <SplashContainer /> :
