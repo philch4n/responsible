@@ -115,8 +115,7 @@ RideAPI.post('/drivers', function (req, res) {
 });
 
 RideAPI.delete('/drivers', function (req, res) {
-  var id = req.body;
-  console.log('Delete Driver req.body', id);
+  var id = req.body.user_id;
   Ride.deleteDriver(id)
     .then(sendStatusAndData(res, 201))
     .catch(sendStatusAndError(res, 500, 'error deleting driver'));

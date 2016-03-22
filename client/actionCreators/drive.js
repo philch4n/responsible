@@ -29,7 +29,7 @@ export function deleteDriver(driverId) {
     fetch('/rides/drivers', {
       method: 'DELETE',
       headers: headers,
-      body: JSON.stringify({ driverId }),
+      body: JSON.stringify({ user_id: driverId }),
     })
       .then(checkStatus)
       .then(() => dispatch(removeDriverSuccess()))
