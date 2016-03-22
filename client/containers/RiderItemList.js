@@ -9,12 +9,11 @@ import * as rideActions from '../actionCreators/ride';
 function nullFn(e) { console.log('you clicked me ' + e.target.className); };
 
 export function List({ riders, user, onRiderClick, }) {
-  var availRiders = [];
+  var _riders = [];
   riders.forEach(function (rider) {
     user.friends.forEach(function (friend) {
-      console.log('should be iterating through', rider, friend);
-      if (rider.user_id === friend.user_id) {
-        availRiders.push(friend);
+      if (friend.user_id === rider.user_id) {
+        _riders.push(friend);
       }
     });
   });
@@ -23,10 +22,10 @@ export function List({ riders, user, onRiderClick, }) {
     <div className="riderList">
     <h1>Friends Waiting for Rides!</h1>
       {
-        availRiders.map(function (rider) {
+        _riders.map(function (rider) {
           return <RiderItem
             key={rider.user_id}
-            ride_driver={rider.ride_driver}
+            ride_driver={user.user_id}
             onRiderItemClick={onRiderClick}
             {...rider}
           />;

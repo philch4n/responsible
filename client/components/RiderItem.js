@@ -14,8 +14,8 @@ export function RiderItem(props) {
   // );
   return (
     <div className="riderItem">
-      <div key={user_id} className="rider_id" onClick=
-        {onRiderItemClick.bind(null, ride_driver, user_id)}>{user_id}</div>
+      <div key={props.user_id} className="rider_id" onClick=
+        {props.onRiderItemClick.bind(null, props.ride_driver, props.user_id)}>{props.user_id}</div>
     </div>
   );
 };
