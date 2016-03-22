@@ -13,9 +13,10 @@ export function RiderItem(props) {
   //   </div>
   // );
   return (
-    <div className="riderItem">
-      <div key={props.user_id} className="rider_id" onClick=
-        {props.onRiderItemClick.bind(null, props.ride_driver, props.user_id)}>{props.user_id}</div>
+    <div key={props.user_id} className="riderItem" onClick=
+      {props.onRiderItemClick.bind(null, props.ride_driver, props.user_id)}>
+      <UserImage imageType="icon" avatar={props.avatar} />
+      <div className="riderName">{props.name}</div>
     </div>
   );
 };
