@@ -9,11 +9,20 @@ import * as rideActions from '../actionCreators/ride';
 function nullFn(e) { console.log('you clicked me ' + e.target.className); };
 
 export function List({ riders, user, onRiderClick, }) {
+  var _riders = [];
+  riders.forEach(function (rider) {
+    user.friends.forEach(function (friend) {
+      if (friend.user_id === rider.user_id) {
+        _riders.push(friend);
+      }
+    });
+  });
+
   return (
     <div className="riderList">
     <h1>Friends Waiting for Rides!</h1>
       {
-        riders.map(function (rider) {
+        _riders.map(function (rider) {
           return <RiderItem
             key={rider.user_id}
             ride_driver={user.user_id}
