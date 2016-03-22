@@ -52,7 +52,7 @@ export default {
     ],
   },
   ride: {
-    ride_id: null,
+    ride_id: 3,
     match: null,
     directions: null,
     riders: [
@@ -64,12 +64,12 @@ export default {
       {
         rider_id: 2,
         foreign_rider: 11,
-        location: { lat: 28.2705389, lng: -91.7234780 },
+        location: { lat: 30.267701, lng: -97.736303 },
       },
       {
         rider_id: 3,
         foreign_rider: 8,
-        location:   { lat: 31.2717271, lng: -95.8567385 },
+        location:   { lat: 30.271188, lng: -97.7469099 },
       },
     ], // Array of this driver's friends who are looking for a ride.
     messages: [
