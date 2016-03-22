@@ -4,8 +4,14 @@ export function FriendButton({
   onFriendButtonClick = nullFn,
 }) {
   return (
-    <div className='FriendButton two columns' onClick={onFriendButtonClick}>
-      <button className='FriendButton btn u-full-width'>Friends</button>
+    <div className='FriendButton' onClick={onFriendButtonClick}>
+			<section className='hero is-primary is-outlined'>
+				<div className='hero-content 5'>
+					<h3 className='FriendButton'>
+					Friends
+					</h3>
+				</div>
+      </section>
     </div>
   );
 }
