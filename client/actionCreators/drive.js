@@ -13,7 +13,7 @@ export function createDriver(userId, location) {
     })
       .then(checkStatus)
       .then(json)
-      .then((riders) => dispatch(addDriverSuccess(riders));
+      .then((riders) => dispatch(addDriverSuccess(riders)))
       .catch((error) => dispatch(addDriveError(error)));
   };
 };
