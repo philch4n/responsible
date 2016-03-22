@@ -83,7 +83,7 @@ Friends.getFriendRiders = function (userId) {
     .then(function (rideArray) {
       riders = rideArray;
     })
-    .then(function () { console.log(R.intersection(friends, riders)); })
+    .then(() => Friends.intersection(friends, riders))
     .catch(function (err) {
       console.log('error', err);
     });
