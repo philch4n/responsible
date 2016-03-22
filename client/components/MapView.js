@@ -5,23 +5,13 @@ import { connect } from 'react-redux';
 // overlayMapTypes
 // MapTypes
 function Map({ match, location, riders, directions }) {
-  const state = {
-   markers: [{
-     position: {
-       lat: 30.2705365,
-       lng: -97.7362387,
-     },
-     defaultAnimation: 1,
-   },
-   ],
- };
   console.log('these are directions', directions);
   return match ?
   (
     <div className='map'>
       <GoogleMapLoader
         ref={(map) => console.log('MATCH!', map)}
-        containerElement={ <div style={{ height: '70%' }} /> }
+        containerElement={ <div style={ { height: '70%' } } /> }
         googleMapElement={
           <GoogleMap defaultZoom={14} defaultCenter={ location } >
             {
