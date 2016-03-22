@@ -28,8 +28,9 @@ div.SignoutButton {
 	margin: 50px;
 }
 
-.SplashMap {
-	position: absolute;
+h1.column.is-half.is-offset-quarter {
+	font-size: 35px;
+	text-align: center;
 }
 
 h2 {
