@@ -1,6 +1,8 @@
 import { UserImage } from './UserImage';
 
-export function RiderItem({ user_id, location, onRiderItemClick, ride_driver, }) {
+export function RiderItem(props) {
+  console.log('here we are!', props);
+
   /* Commented this out to avoid lat/long errors */
 
   // return (

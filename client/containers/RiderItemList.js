@@ -9,14 +9,24 @@ import * as rideActions from '../actionCreators/ride';
 function nullFn(e) { console.log('you clicked me ' + e.target.className); };
 
 export function List({ riders, user, onRiderClick, }) {
+  var availRiders = [];
+  riders.forEach(function (rider) {
+    user.friends.forEach(function (friend) {
+      console.log('should be iterating through', rider, friend);
+      if (rider.user_id === friend.user_id) {
+        availRiders.push(friend);
+      }
+    });
+  });
+
   return (
     <div className="riderList">
     <h1>Friends Waiting for Rides!</h1>
       {
-        riders.map(function (rider) {
+        availRiders.map(function (rider) {
           return <RiderItem
             key={rider.user_id}
-            ride_driver={user.user_id}
+            ride_driver={rider.ride_driver}
             onRiderItemClick={onRiderClick}
             {...rider}
           />;
