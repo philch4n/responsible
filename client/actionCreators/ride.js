@@ -62,14 +62,14 @@ export function acceptRide(riderId, location) {
     })
       .then(checkStatus)
       .then(json)
-      .then((body) => dispatch(confirmRide(body)))
+      .then((body) => dispatch(acceptRideSuccess(body)))
       .catch((error) => dispatch(acceptRideError(error)));
   };
 };
 
 // confirm ride receives a rideId, the partner's object, and the partner's location
-export function confirmRide(body) {
-  return { type: 'CONFIRM_RIDE', entry: body, };
+export function acceptRideSuccess(body) {
+  return { type: 'ACCEPT_RIDE_SUCCESS', entry: body, };
 };
 
 function acceptRideSent() {

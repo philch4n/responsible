@@ -17,7 +17,7 @@ export default function(state = Map(), action) {
     case 'RECEIVE_RIDE':
     case 'REQUEST_RIDE_ERROR':
       return handleRideFetch(state, action);
-    case 'CONFIRM_RIDE':
+    case 'ACCEPT_RIDE_SUCCESS':
     case 'ACCEPT_RIDE_SENT':
     case 'ACCEPT_RIDE_ERROR':
       return handleConfirm(state, action);
