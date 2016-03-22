@@ -48,5 +48,5 @@ export function configureListeners(socket) {
   });
 
   // dev only: so that we can use the not-logged-in initial state user
-  socket.emit('join', { entry: { user_id: 1 } });
+  // socket.emit('join', { entry: { user_id: 1 } });
 };
