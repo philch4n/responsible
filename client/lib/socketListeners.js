@@ -35,6 +35,8 @@ export function configureListeners(socket) {
     dispatch(rideActions.removeRider(data.user_id));
   });
 
+  // received on a partner emitting an updated location
+  // data: { entry: { lat, lng } }
   socket.on('new_location', function (data) {
     console.log('received new location from partner', data);
     dispatch(rideActions.setMatchLocation(data.entry));
