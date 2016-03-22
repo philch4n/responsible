@@ -48,7 +48,7 @@ Ride.getRiders = function () {
       return riders.map(function (rider) {
         return {
           user_id: rider.foreign_rider,
-          location: rider.location,
+          location: JSON.parse(rider.location),
         };
       });
     });
