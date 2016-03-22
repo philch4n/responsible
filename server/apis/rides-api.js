@@ -25,11 +25,27 @@ module.exports = RideAPI;
 * Rides routes
 */
 
-//Posting
+// Pairs a user from the riders and drivers table
+//  - Informs the rider of a match and the driver's location
+//  - Driver already knows the rider's location.
+//
+// expects req.body: { ride_driver, ride_rider, location }
+// responds to driver: { user_id (of rider), location}
+// emits to rider: { user_id (of driver), location (of driver)}
 RideAPI.post('/', function (req, res) {
-  var attrs = req.body;
-  Ride.createRide(attrs)
-    .then(sendStatusAndData(res, 201))
+  var ride = {
+    ride_driver: req.body.ride_driver,
+    ride_rider: req.body.ride_rider,
+  };
+
+  var infoForRider = {
+    user_id: req.body.ride_driver,
+    location: req.body.location,
+  };
+
+  Ride.createRide(ride)
+    .then(() => io.to(req.body.ride_rider).emit('confirm_driver', infoForRider))
+    .then(sendStatus(res, 201))
     .catch(sendStatusAndError(res, 500, ('error creating user')));
 });
 

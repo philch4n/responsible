@@ -45,7 +45,7 @@ export function configureListeners(socket) {
   socket.on('confirm_driver', function (data) {
     console.log("We've found a driver!", data);
     dispatch(rideActions.matchRider(data));
-  })
+  });
 
   // dev only: so that we can use the not-logged-in initial state user
   socket.emit('join', { entry: { user_id: 1 } });
