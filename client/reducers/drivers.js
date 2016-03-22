@@ -48,18 +48,6 @@ function addDriverError(state, action) {
   return state.merge(updates);
 };
 
-function matchRider(state, action) {
-  let updates = {
-    isWaitingForMatch: false,
-    isAddingDriver: false,
-  };
-  let newRide = {
-    ride_id: // from db,
-    match: // passed in,
-    directions: // not sure,
-  }
-};
-
 function removeDriver(state, action) {
   let updates = {
     isWaitingForMatch: false,
