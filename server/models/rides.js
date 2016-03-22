@@ -110,9 +110,10 @@ Ride.createDriver = function (attrs) {
 
 // Deletes driver
 Ride.deleteDriver = function (id) {
-  return db('drivers').where({ driver_id: id }).del()
+  return db('drivers').where({ foreign_driver: id }).del()
     .catch(reportError('error deleting driver by id'));
 };
+
 
 /*
 * THESE ARE OTHER MODELS
