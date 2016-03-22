@@ -6,6 +6,7 @@ import { handleRideFetch } from './fetchRide';
 import { handleMessages } from './rideMessages';
 import { handleRiders } from './riders';
 import { handleDriver } from './drivers';
+import { handleRideRouting } from './rideRouting';
 
 // The state passed to this reducer is state.ride
 export default function(state = Map(), action) {
@@ -33,8 +34,9 @@ export default function(state = Map(), action) {
     case 'REQUEST_MESSAGES_ERROR':
     case 'ADD_MESSAGE':
       return handleMessages(state, action);
+    case 'SET_MATCH_LOCATION':
     case 'SET_DIRECTIONS':
-      return setDirections(state, action);
+      return handleRideRouting(state, action);
     case 'ADD_DRIVER_SENT':
     case 'ADD_DRIVER':
     case 'ADD_DRIVER_ERROR':
@@ -49,12 +51,4 @@ export default function(state = Map(), action) {
   };
 
   return state;
-}
-
-function setDirections(state, action) {
-  let updates = {
-    directions: action.entry,
-  };
-
-  return state.merge(updates);
-}
+};
