@@ -27,8 +27,8 @@ module.exports = RideAPI;
 
 //Posting
 RideAPI.post('/', function (req, res) {
-  var ride = req.body;
-  Ride.createRide(ride)
+  var attrs = req.body;
+  Ride.createRide(attrs)
     .then(sendStatusAndData(res, 201))
     .catch(sendStatusAndError(res, 500, ('error creating user')));
 });
