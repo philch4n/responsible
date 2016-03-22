@@ -2,10 +2,10 @@
 function nullFn(e) { console.log('you clicked me ' + e.target.className); };
 
 export function EndDrivingButton({
-  endDriving = nullFn,
+  onEndDriver = nullFn,
 }) {
   return (
-    <div className='endDrivingButton' onClick={endDriving}>
+    <div className='endDrivingButton' onClick={onEndDriver}>
       <a className='endDrivingButton button is-danger is-large'>Stop Driving</a>
     </div>
   );

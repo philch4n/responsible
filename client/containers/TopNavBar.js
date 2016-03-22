@@ -7,8 +7,11 @@ import { TopNavBarRightButton } from '../components/TopNavBar/RightButton';
 
 import * as userAction from '../actionCreators/user';
 import * as rideAction from '../actionCreators/ride';
+import * as driveAction from '../actionCreators/drive';
 
-function TopNavBar({ onCancel, ...props }) {
+function TopNavBar({ onCancel, onEndDriver, ...props }) {
+  let endDriver = onEndDriver.bind(null, props.user.user_id);
+
   let cancelClick;
   if (props.ride.match)
     cancelClick = onCancel.bind(null, props.ride.match.user_id, props.ride.ride_id);
@@ -32,6 +35,7 @@ function TopNavBar({ onCancel, ...props }) {
               <TopNavBarRightButton
                 {...props}
                 onCancel={cancelClick}
+                onEndDriver={endDriver}
               />
             </i>
           </div>
@@ -61,6 +65,9 @@ const mapDispatchToProps = function (dispatch) {
       console.log('dispatching cancel:', user_id, ride_id);
       dispatch(rideAction.cancelRide({ user_id, ride_id }))
     },
+    onEndDriver(user_id) {
+      dispatch(driveAction.deleteDriver({ user_id }))
+    }
   };
 };
 // jscs:enable
