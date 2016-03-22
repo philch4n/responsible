@@ -44,33 +44,29 @@ ReactDOM.render(
 import * as userActions from './actionCreators/user';
 import * as rideActions from './actionCreators/ride';
 
-geoWatch();
-
-setInterval(geoWatch, 6000);
-
-const location = {};
 const DirectionsService = new google.maps.DirectionsService();
 
+geoWatch();
+setInterval(geoWatch, 6000);
 function geoWatch() {
   if (navigator.geolocation) {
     navigator.geolocation.getCurrentPosition(function (data) {
-      location.lat = data.coords.latitude;
-      location.lng = data.coords.longitude;
-      store.dispatch(userActions.setLocation(location));
+      let user = store.getState().get('user').toJS();
+      let nextLocation = {
+        lat: data.coords.latitude,
+        lng: data.coords.longitude,
+      };
 
+      if (user.location && !haveMoved(user.location, nextLocation, 2e-7)) {
+        return;
+      }
+
+      store.dispatch(userActions.setLocation(nextLocation));
       DirectionsService.route({
-        origin: location,
+        origin: nextLocation,
         destination: { lat: 30.273835, lng: -97.760507 },
         travelMode: google.maps.TravelMode.DRIVING,
-      },
-        function (result, status) {
-          /*
-            Redux uses dispatch to pass actions that look like { type, entry }
-            to a reducer to change our application state.
-          */
-
-          // rideActions.setDirections(result) //=> { type, entry }
-
+      }, function (result, status) {
           store.dispatch(rideActions.setDirections(result));
         }
       );
@@ -78,3 +74,10 @@ function geoWatch() {
   };
 }
 
+function haveMoved(curLocation, nextLocation, tol) {
+  if (Math.abs(curLocation.lat - nextLocation.lat) > tol ||
+      Math.abs(curLocation.lng - nextLocation.lng) > tol)
+    return true;
+  else
+    return false;
+}
