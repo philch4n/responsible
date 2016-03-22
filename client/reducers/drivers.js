@@ -77,3 +77,7 @@ function removeDriverError(state, action) {
   return state.merge(updates);
 };
 
+function matchRider(state, action) {
+  let updates = {
+  }
+}

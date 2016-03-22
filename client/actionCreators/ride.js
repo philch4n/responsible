@@ -134,6 +134,6 @@ export function setDirections(directions) {
   return { type: 'SET_DIRECTIONS', entry: directions };
 }
 
-export function matchRider(rider) {
-  return { type: 'MATCH_RIDER', entry: rider };
+export function matchRider(driver) {
+  return { type: 'MATCH_RIDER', entry: driver };
 }
