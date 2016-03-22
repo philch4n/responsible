@@ -31,16 +31,15 @@ export function fetchRide(userId, location) {
   When a rider has been matched, submit their rideId to
   remove it from the rides table.
 */
-export function cancelRide({ userId, rideId }) {
-
-  console.log('canceling ride with object:', userId, rideId);
+export function cancelRide({ user_id, ride_id }) {
+  console.log('canceling ride with object:', user_id, ride_id);
   return (dispatch) => {
     dispatch(cancelRideSent());
 
     fetch('/rides', {
       method: 'DELETE',
       headers: headers,
-      body: JSON.stringify({ userId, rideId }),
+      body: JSON.stringify({ user_id, ride_id }),
     })
       .then(checkStatus)
       .then(() => dispatch(cancelRideSuccess()))
@@ -101,7 +100,7 @@ export function receiveRide(userObj) {
   return { type: 'RECEIVE_RIDE', entry: userObj, };
 };
 
-function cancelRideSuccess() {
+export function cancelRideSuccess() {
   return { type: 'CANCEL_RIDE' };
 };
 
