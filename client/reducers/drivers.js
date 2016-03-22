@@ -6,42 +6,65 @@ export function handleDriver(state = Map(), action) {
   switch (action.type) {
     case 'ADD_DRIVER':
       return addDriver(state, action);
+    case 'ADD_DRIVER_SENT':
+      return addDriverSent(state, action);
+    case 'ADD_DRIVER_ERROR':
+      return addDriverError(state, action);
     case 'REMOVE_DRIVER':
       return removeDriver(state, action);
-  }
-
-  // Handle all these cases:
-  //   case 'ADD_DRIVER_SENT':
-  // case 'ADD_DRIVER':
-  // case 'ADD_DRIVER_ERROR':
-  //   return handleDriver(state, action);
-  // case 'REMOVE_DRIVER_SENT':
-  // case 'REMOVE_DRIVER':
-  // case 'REMOVE_DRIVER_ERROR':
-  //   return handleDriver(state, action);
-
+    case 'REMOVE_DRIVER_SENT':
+      return removeDriverSent(state, action);
+    case 'REMOVE_DRIVER_ERROR':
+      return removeDriverError(state, action);
+  };
   return state;
 };
 
 function addDriver(state, action) {
-  //Not gonna work...
-  // console.log('adding driver');
-  // let nextState = null;
+  let updates = {
+    isWaitingForMatch: true,
+    riders: action.entry,
+  };
+  return state.merge(updates);
+};
 
-  // if (Array.isArray(action.entry))
-  //   nextState = state.push(...action.entry);
-  // else
-  //   nextState = state.push(action.entry);
+function addDriverSent(state, action) {
+  let updates = {
+    isAddingDriver: true,
+  };
+  return state.merge(updates);
+};
 
-  // console.log('next drivers state: ', nextState.toJS());
-  // return nextState;
+function addDriverError(state, action) {
+  let updates = {
+    isWaitingForMatch: false,
+    isAddingDriver: false,
+    driverAddError: action.entry,
+  };
+  return state.merge(updates);
 };
 
 function removeDriver(state, action) {
-  //Figure this out!
-  // let oldDrivers = state.toJS();
-  // let newDrivers = oldRiders.filter((driver) => driver.userId !== action.entry);
+  let updates = {
+    isWaitingForMatch: false,
+    isAddingDriver: false,
+    isConfirmed: false,
+    isMatched: false,
+    match: null,
+    driverAddError: null,
+  };
+  return state.merge(updates);
+};
 
-  // return newDrivers;
+function removeDriverSent(state, action) {
+  let updates = {
+    isRemovingDriver: true,
+    isCancelling: true,
+  };
+  return state.merge(updates);
+};
+
+function removeDriverError(state, action) {
+  driverAddError: action.entry;
 };
 
