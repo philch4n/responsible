@@ -106,8 +106,22 @@ export function signout(info) {
   return { type: 'SIGNOUT', entry: info };
 }
 
-export function setLocation(location) {
-  return { type: 'SET_LOCATION', entry: location, };
+export function setLocation(location, match) {
+  let action = {
+    type: 'SET_LOCATION',
+    entry: location,
+  };
+
+  // if we have a partner, emit a message.
+  if (match) {
+    action = Object.assign(action, {
+      event: 'new_location',
+      to: match,
+      entry: location,
+    });
+  }
+
+  return action;
 }
 
 function changingAddress() {

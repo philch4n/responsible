@@ -13,7 +13,10 @@ export function createDriver(userId, location) {
     })
       .then(checkStatus)
       .then(json)
-      .then((riders) => dispatch(addDriverSuccess(riders)))
+      .then((riders) => {
+        console.log('retrieved riders from server:', riders);
+        dispatch(addDriverSuccess(riders));
+      })
       .catch((error) => dispatch(addDriveError(error)));
   };
 };
@@ -29,12 +32,12 @@ export function deleteDriver({ driverId }) {
     })
       .then(checkStatus)
       .then(() => dispatch(removeDriverSuccess()))
-      .catch((error) => dispatch(deleteDriverError(error)));
+      .catch((error) => dispatch(removeDriverError(error)));
   };
 };
 
-export function addDriverSent(driver) {
-  return { type: 'ADD_DRIVER_SENT', entry: driver, };
+export function addDriverSent() {
+  return { type: 'ADD_DRIVER_SENT', };
 };
 
 export function addDriverSuccess(riders) {
@@ -46,15 +49,15 @@ export function addDriveError(error) {
   return { type: 'ADD_DRIVER_ERROR', entry: error, };
 };
 
-export function removeDriverSent(driverId) {
-  return { type: 'REMOVE_DRIVER_SENT', entry: driverId };
+export function removeDriverSent() {
+  return { type: 'REMOVE_DRIVER_SENT', };
 };
 
 export function removeDriverSuccess() {
   return { type: 'REMOVE_DRIVER' };
 };
 
-export function deleteDriverError(error) {
+export function removeDriverError(error) {
   console.log('Error deleting driver!');
   return { type: 'REMOVE_DRIVER_ERROR', entry: error };
 };

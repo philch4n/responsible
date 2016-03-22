@@ -15,8 +15,6 @@ function TopNavBar({ onCancel, ...props }) {
   else
     cancelClick = onCancel.bind(null, props.user.user_id, null);
 
-  console.log('~_~_~', props.user.user_id, props.ride.match, props.ride.ride_id);
-
   return (
     <div className='TopNavBarContainer'>
       <nav className='navbar'>
