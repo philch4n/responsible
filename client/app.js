@@ -57,7 +57,8 @@ function geoWatch() {
         lng: data.coords.longitude,
       };
 
-      if (user.location && !haveMoved(user.location, nextLocation, 2e-7)) {
+      //!!! Removed for testing of socket new_location events!
+      if (false && user.location && !haveMoved(user.location, nextLocation, 2e-7)) {
         return;
       }
 
