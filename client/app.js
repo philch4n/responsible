@@ -72,8 +72,6 @@ function geoWatch() {
           // rideActions.setDirections(result) //=> { type, entry }
 
           store.dispatch(rideActions.setDirections(result));
-          console.log('these are results', result);
-          console.log('these are status', status);
         }
       );
     });
