@@ -51,14 +51,14 @@ export function cancelRide({ user_id, ride_id }) {
  *  As a driver, accepts a ride by the rider's Id and passes our current
  *  location to the server.
 **/
-export function acceptRide(riderId, location) {
+export function acceptRide(ride_driver, ride_rider) {
   return function (dispatch) {
     dispatch(acceptRideSent());
 
     fetch('/rides', {
       method: 'POST',
       headers: headers,
-      body: JSON.stringify({ riderId, location }),
+      body: JSON.stringify({ ride_driver, ride_rider }),
     })
       .then(checkStatus)
       .then(json)
