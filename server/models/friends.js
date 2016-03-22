@@ -35,14 +35,38 @@ Friends.getFriendIds = function (user_id) {
     });
 };
 
+/*
+  Checks for a friendship between users.
+*/
+Friends.usersAreFriends = function (user_id, partner_id) {
+  return db('friends')
+    .where(function () {
+      this.where({ foreign_friend1: user_id })
+        .andWhere({ foreign_friend2: partner_id });
+    }).orWhere(function () {
+      this.where({ foreign_friend1: partner_id })
+        .andWhere({ foreign_friend2: user_id });
+    })
+    .then(first)
+    .return(function (friendship) {
+      return !!friendship;
+    });
+};
+
 Friends.findAndAddFriend = function (user_id, searchString) {
   return User.findUserIdByName(searchString)
-    .then(function (user) {
+    .then(function (partner) {
       // if user is undefined, jump out!
-      if (!user)
+      if (!partner)
         throw new Error('Did not find user by searchstring: ' + searchString);
 
-      return Friends.createFriendship(user_id, user.user_id);
+      return Friends.usersAreFriends(user_id, partner.user_id)
+        .then(function (alreadyFriends) {
+          if (!alreadyFriends)
+            return Friends.createFriendship(friends.user_id, friends.partner_id);
+          else
+            throw new Error('Users are already friends!');
+        });
     })
     .then(function (friendID) {
       return User.findUserById(friendID.foreign_friend2);
