@@ -10,6 +10,8 @@ export function handleDriver(state = Map(), action) {
       return addDriverSent(state, action);
     case 'ADD_DRIVER_ERROR':
       return addDriverError(state, action);
+    case 'MATCH_RIDER':
+      return matchRider(state, action);
     case 'REMOVE_DRIVER':
       return removeDriver(state, action);
     case 'REMOVE_DRIVER_SENT':
