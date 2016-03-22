@@ -29,14 +29,14 @@ function TopNavBar({ onCancel, ...props }) {
           <Logo />
         </div>
         <div className='navbar-right'>
-          <p className='navbar-item is-text-centered'>
+          <div className='navbar-item is-text-centered'>
             <i className='fa fa-car'>
               <TopNavBarRightButton
                 {...props}
                 onCancel={cancelClick}
               />
             </i>
-          </p>
+          </div>
         </div>
       </nav>
     </div>
