@@ -49,6 +49,7 @@ geoWatch();
 setInterval(geoWatch, 6000);
 
 const location = {};
+const DirectionsService = new google.maps.DirectionsService();
 
 function geoWatch() {
   if (navigator.geolocation) {
@@ -56,26 +57,26 @@ function geoWatch() {
       location.lat = data.coords.latitude;
       location.lng = data.coords.longitude;
       store.dispatch(userActions.setLocation(location));
+
+      DirectionsService.route({
+        origin: location,
+        destination: { lat: 30.273835, lng: -97.760507 },
+        travelMode: google.maps.TravelMode.DRIVING,
+      },
+        function (result, status) {
+          /*
+            Redux uses dispatch to pass actions that look like { type, entry }
+            to a reducer to change our application state.
+          */
+
+          // rideActions.setDirections(result) //=> { type, entry }
+
+          store.dispatch(rideActions.setDirections(result));
+          console.log('these are results', result);
+          console.log('these are status', status);
+        }
+      );
     });
   };
 }
 
-const DirectionsService = new google.maps.DirectionsService();
-DirectionsService.route({
-    origin: { lat: 30.2705365, lng: -97.7362387 },
-    destination: { lat: 30.273835, lng: -97.760507 },
-    travelMode: google.maps.TravelMode.DRIVING,
-  },
-  function (result, status) {
-    /*
-      Redux uses dispatch to pass actions that look like { type, entry }
-      to a reducer to change our application state.
-    */
-
-    // rideActions.setDirections(result) //=> { type, entry }
-
-    store.dispatch(rideActions.setDirections(result));
-    console.log('these are results', result);
-    console.log('these are status', status);
-  }
-);
