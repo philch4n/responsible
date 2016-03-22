@@ -4,18 +4,35 @@
   height: 95vh;
 }
 
+nav.navbar {
+	background-color: white;
+}
+
 div.DriveDiv {
 	margin: 50px;
 }
 
-div.RideDiv{
+div.RideDiv {
 	margin: 50px;
 }
 
-div.AuthButtons {
-;
+div.ProfileButtonDiv {
+	margin: 50px;
 }
 
-.SplashMap {
-	position: absolute;
+div.FriendButton {
+	margin: 50px;
+}
+
+div.SignoutButton {
+	margin: 50px;
+}
+
+h1.column.is-half.is-offset-quarter {
+	font-size: 35px;
+	text-align: center;
+}
+
+h2 {
+	margin: 50px;
 }

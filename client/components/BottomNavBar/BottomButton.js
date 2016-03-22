@@ -14,11 +14,11 @@ match, user, messages, confirmLocation, onWaitingClick, }) {
         <ConfirmLocationButton confirmLocation={confirmLocation} /> :
       isConfirmed && isWaitingForMatch ?
         <div className='WaitingClick' onClick={onWaitingClick}>
-          <section className='hero is-medium is-success'>
+          <section className='hero is-success'>
             <div className='hero-content4'>
-              <a className='button is-success is-loading'>
+              <h2 className='button is-success is-loading'>
               Waiting for a match
-              </a>
+              </h2>
             </div>
           </section>
         </div> :

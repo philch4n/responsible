@@ -10,7 +10,7 @@ import * as rideAction from '../actionCreators/ride';
 pulling out the objects we need in each container (like: props.ride). Not sure... */
 function BottomNavBar({ user, ride, confirmLocation }) {
   return (
-    <div className="BottomNavBarContainer row">
+    <div className="BottomNavBarContainer">
       <BottomButton {...ride} {...user}
         confirmLocation={
           confirmLocation.bind(null, user.user_id, user.location)
