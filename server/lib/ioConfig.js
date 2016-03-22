@@ -29,7 +29,7 @@ IO.init = function (server) {
       data: { to (partner to share with), entry: { lat, lng }}
     */
     socket.on('new_location', function (data) {
-      console.log('updating pair location:', data.to);
+      console.log('updating pair location:', data);
       socket.broadcast.to(data.to).emit('new_location', data.entry);
     });
   });
