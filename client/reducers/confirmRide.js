@@ -1,7 +1,7 @@
 export function handleConfirm(state, action) {
   switch (action.type) {
-    case 'CONFIRM_RIDE':
-      return confirmRide(state, action);
+    case 'ACCEPT_RIDE_SUCCESS':
+      return acceptRideSuccess(state, action);
     case 'ACCEPT_RIDE_SENT':
       return acceptRideSent(state, action);
     case 'ACCEPT_RIDE_ERROR':
@@ -11,12 +11,12 @@ export function handleConfirm(state, action) {
   return state;
 }
 
-function confirmRide(state, action) {
+function acceptRideSuccess(state, action) {
   console.log('***confirmRide Reducer *** ride confirmed:', action.entry);
 
   let updates = {
     isMatched: true,
-    match: action.entry.match, // rider/driver/match?
+    match: action.entry,
   };
 
   return state.merge(updates);

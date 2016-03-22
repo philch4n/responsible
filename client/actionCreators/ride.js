@@ -51,25 +51,25 @@ export function cancelRide({ user_id, ride_id }) {
  *  As a driver, accepts a ride by the rider's Id and passes our current
  *  location to the server.
 **/
-export function acceptRide(riderId, location) {
+export function acceptRide(ride_driver, ride_rider) {
   return function (dispatch) {
     dispatch(acceptRideSent());
 
     fetch('/rides', {
       method: 'POST',
       headers: headers,
-      body: JSON.stringify({ riderId, location }),
+      body: JSON.stringify({ ride_driver, ride_rider }),
     })
       .then(checkStatus)
       .then(json)
-      .then((body) => dispatch(confirmRide(body)))
+      .then((body) => dispatch(acceptRideSuccess(body)))
       .catch((error) => dispatch(acceptRideError(error)));
   };
 };
 
 // confirm ride receives a rideId, the partner's object, and the partner's location
-export function confirmRide(body) {
-  return { type: 'CONFIRM_RIDE', entry: body, };
+export function acceptRideSuccess(body) {
+  return { type: 'ACCEPT_RIDE_SUCCESS', entry: body, };
 };
 
 function acceptRideSent() {
