@@ -60,7 +60,6 @@ export default {
         user_id: 1,
         location: { lat: 30.2687464, lng: -97.741185 },
       },
-      {
         user_id: 2,
         location: { lat: 30.267701, lng: -97.736303 },
       },
