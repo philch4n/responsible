@@ -70,10 +70,10 @@ Ride.createRider = function (attrs) {
 /*
   Delete a rider row by the foreign_rider userId that it represents
 */
-Ride.deleteRider = function (userId) {
-  return db('riders').where({ foreign_rider: userId }).del()
+Ride.deleteRider = function (user_id) {
+  return db('riders').where({ foreign_rider: user_id }).del()
     .catch(reportError('error deleting rider by id'))
-    .then(rider => console.log('deleted rider with id ' + userId));
+    .then(rider => console.log('deleted rider with id ' + user_id));
 };
 
 /*

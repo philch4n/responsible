@@ -6,21 +6,6 @@ var User = require(__models + '/user');
 var Friends = require(__models + '/friends');
 module.exports = UserAPI;
 
-//Get all users
-UserAPI.get('/', function (req, res) {
-  User.getUsers()
-    .then(sendStatusAndData(res, 200))
-    .catch(sendStatusAndError(res, 500, 'Server error getting users'));
-});
-
-//Get User by ID
-UserAPI.get('/:id', function (req, res) {
-  var id = req.params.id;
-  User.findUserById(id)
-    .then(sendStatusAndData(res, 200))
-    .catch(sendStatusAndError(res, 500, 'no such user'));
-});
-
 UserAPI.post('/', function (req, res) {
   var user = req.body;
   User.createUser(user)
@@ -28,13 +13,15 @@ UserAPI.post('/', function (req, res) {
     .catch(sendStatusAndError(res, 500, ('error creating user')));
 });
 
-// Create or update a user on initial login.
-//
-// expects: {
-//  OAuthUser: { user object },
-//  verifyBy: OAuthUser property name and users table column name to
-//             use to check if this user exists
-// }
+/*
+  Create or update a user on initial login.
+
+  expects: {
+   OAuthUser: { user object },
+   verifyBy: OAuthUser property name and users table column name to
+              use to check if this user exists
+  }
+*/
 UserAPI.post('/tmp', function (req, res) {
   var user = req.body.user;
 
@@ -58,7 +45,9 @@ UserAPI.post('/tmp', function (req, res) {
 */
 UserAPI.post('/friends', function (request, response) {
   var searchString = request.body.searchString.trim().toLowerCase();
-  Friends.findAndAddFriend(request.body.user_id, searchString)
+  var user_id = request.body.user_id;
+
+  Friends.findAndAddFriend(user_id, searchString)
     .then(sendStatusAndData(response, 201))
     .catch(sendStatusAndError(response, 500, 'Server error creating friendship'));
 });
@@ -70,11 +59,3 @@ UserAPI.put('/', function (req, res) {
     .then(sendStatusAndData(res, 200))
     .catch(sendStatusAndError(res, 500, 'Server error updating user'));
 });
-
-UserAPI.delete('/:id', function (req, res) {
-  var id = req.params.id;
-  User.deleteUser(id)
-    .then(sendStatusAndData(res, 200))
-    .catch(sendStatusAndError(res, 500));
-});
-
