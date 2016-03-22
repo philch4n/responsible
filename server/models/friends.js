@@ -47,9 +47,8 @@ Friends.usersAreFriends = function (user_id, partner_id) {
       this.where({ foreign_friend1: partner_id })
         .andWhere({ foreign_friend2: user_id });
     })
-    .then(first)
-    .return(function (friendship) {
-      return !!friendship;
+    .then(function (friendship) {
+      return !!friendship[0];
     });
 };
 
@@ -62,18 +61,16 @@ Friends.findAndAddFriend = function (user_id, searchString) {
 
       return Friends.usersAreFriends(user_id, partner.user_id)
         .then(function (alreadyFriends) {
-          if (!alreadyFriends)
-            return Friends.createFriendship(friends.user_id, friends.partner_id);
-          else
-            throw new Error('Users are already friends!');
+          if (alreadyFriends) throw new Error('Users are already friends!');
+          else return Friends.createFriendship(user_id, partner.user_id);
         });
     })
     .then(function (friendID) {
       return User.findUserById(friendID.foreign_friend2);
     })
     .catch(function (error) {
-      console.error(error.message);
-      return null;
+      console.log('error adding friends:', error.message);
+      return {};
     });
 };
 
