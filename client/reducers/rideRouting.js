@@ -1,5 +1,5 @@
 
-export function handleRouting(state, action) {
+export function handleRideRouting(state, action) {
   switch (action.type) {
     case 'SET_MATCH_LOCATION':
       return setMatchLocation(state, action);

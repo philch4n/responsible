@@ -5,6 +5,10 @@ import { connect } from 'react-redux';
 // overlayMapTypes
 // MapTypes
 export function MapView({ match, location, riders, directions }) {
+  console.log('typeof directions:', typeof directions);
+  console.log('typeof location:', typeof location);
+  console.log('riders:', riders);
+  console.log('typeof rider[0].location', typeof riders[0].location);
   return match ?
   (
     <div className='map'>
@@ -34,9 +38,11 @@ export function MapView({ match, location, riders, directions }) {
             let riderMarker = {};
             riderMarker.position = rider.location;
             riderMarker.showInfo = ('Rider_') + rider.user_id.toString();
+
             return (
-              <Marker position={riderMarker.position}
-              defaultAnimation={1}>
+              <Marker
+                position={riderMarker.position}
+                defaultAnimation={1}>
                 <InfoWindow content={riderMarker.showInfo}/>
               </Marker>
 
