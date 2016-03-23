@@ -21,14 +21,14 @@ export function createDriver(userId, location) {
   };
 };
 
-export function deleteDriver({ driverId }) {
+export function deleteDriver(driverId) {
   return (dispatch) => {
     dispatch(removeDriverSent());
 
-    fetch('/rides/drivers/' + driverId, {
+    fetch('/rides/drivers', {
       method: 'DELETE',
       headers: headers,
-      body: JSON.stringify({ driverId }),
+      body: JSON.stringify({ user_id: driverId }),
     })
       .then(checkStatus)
       .then(() => dispatch(removeDriverSuccess()))
@@ -58,7 +58,7 @@ export function removeDriverSuccess() {
 };
 
 export function removeDriverError(error) {
-  console.log('Error deleting driver!');
+  console.log('Error deleting driver!', error);
   return { type: 'REMOVE_DRIVER_ERROR', entry: error };
 };
 

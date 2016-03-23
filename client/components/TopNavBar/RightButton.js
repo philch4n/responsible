@@ -1,4 +1,5 @@
 import { CancelRideButton } from './CancelRideButton';
+import { EndDrivingButton } from './EndDrivingButton';
 
 // export function TopNavBarRightButton({ isRider, isDriver, isMatched,
 //   isWaitingForMatch, onProfileButtonClick, onCancelRideButtonClick, }) {
@@ -7,7 +8,7 @@ export function TopNavBarRightButton({
   ride: { isMatched, isWaitingForMatch },
   ...onClicks,
 }) {
-  if (isDriver || isRider) {
+  if (isRider || (isDriver && isMatched)) {
     return (
     <div className="topNavBarRightButton">
       {
@@ -17,9 +18,17 @@ export function TopNavBarRightButton({
       }
     </div>
     );
+  } else if (isDriver && !isMatched) {
+    return (
+    <div className="topNavBarRightButton">
+      {
+          <EndDrivingButton {...onClicks} />
+      }
+    </div>
+    );
   } else {
     return (
       <div />
-    );
+      );
   }
 }

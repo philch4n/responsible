@@ -17,7 +17,7 @@ Ride.getRides = function () {
 
 // Create A ride
 Ride.createRide = function (attrs) {
-  return db('rides').insert(attrs, ['ride_id', 'ride_driver', 'ride_rider'])
+  return db('rides').insert(attrs, ['ride_driver', 'ride_rider'])
     .catch(reportError('error creating ride in db'))
     .then(function (ride) {
       return Ride.deleteRiderAndDriver(attrs.ride_rider, attrs.ride_driver)
@@ -72,8 +72,7 @@ Ride.createRider = function (attrs) {
 */
 Ride.deleteRider = function (user_id) {
   return db('riders').where({ foreign_rider: user_id }).del()
-    .catch(reportError('error deleting rider by id'))
-    .then(rider => console.log('deleted rider with id ' + user_id));
+    .catch(reportError('error deleting rider by id'));
 };
 
 /*
@@ -111,10 +110,10 @@ Ride.createDriver = function (attrs) {
 
 // Deletes driver
 Ride.deleteDriver = function (id) {
-  return db('drivers').where({ driver_id: id }).del()
-    .catch(reportError('error deleting driver by id'))
-    .then(driver => console.log('deleted driver with id ' + id));
+  return db('drivers').where({ foreign_driver: id }).del()
+    .catch(reportError('error deleting driver by id'));
 };
+
 
 /*
 * THESE ARE OTHER MODELS

@@ -1,7 +1,7 @@
 import { Map } from 'immutable';
 
 export function handleDriver(state = Map(), action) {
-  console.log('~~reducing Drivers:', state.toJS());
+  // console.log('~~reducing Drivers:', state.toJS());
 
   switch (action.type) {
     case 'ADD_DRIVER':
@@ -50,6 +50,7 @@ function addDriverError(state, action) {
 
 function removeDriver(state, action) {
   let updates = {
+    isDriver: false,
     isWaitingForMatch: false,
     isAddingDriver: false,
     isConfirmed: false,
@@ -57,18 +58,22 @@ function removeDriver(state, action) {
     match: null,
     driverAddError: null,
   };
+
+  // console.log('~_~_~STATE_~_~_~', state.merge(updates).toJS());
   return state.merge(updates);
 };
 
 function removeDriverSent(state, action) {
   let updates = {
     isRemovingDriver: true,
-    isCancelling: true,
   };
   return state.merge(updates);
 };
 
 function removeDriverError(state, action) {
-  driverAddError: action.entry;
+  let updates = {
+    driverAddError: action.entry,
+  };
+  return state.merge(updates);
 };
 
