@@ -18,7 +18,7 @@ function Main({
 }) {
   return (
     <div className="MainApp">
-      <PickUpButton/> 
+      <PickUpButton/>
       <CompleteRideButton/>
       <TopNavBarContainer />
       {
