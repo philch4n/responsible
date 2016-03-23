@@ -8,9 +8,14 @@ import { MessageItemList } from '../components/Chat/MessageItemList';
 import * as chatAction from '../actionCreators/chat';
 
 export function box({ ride, user, addMessage }) {
+
+  let friendPartner = user.friends.filter(function (friend) {
+    return ride.match.user_id === friend.user_id;
+  });
+
   return (
     <div className='chatbox'>
-      <DriverItem {...ride.match} />
+      <DriverItem {...ride.match} avatar={friendPartner.avatar} />
       <MessageItemList userID={user.user_id} messages={ride.messages}/>
       <div className='textSubmit'>
         <form onSubmit={addMessage(user.user_id, ride.match.user_id)}>
