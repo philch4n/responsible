@@ -36,6 +36,7 @@ export default function(state = Map(), action) {
       return handleMessages(state, action);
     case 'SET_MATCH_LOCATION':
     case 'SET_DIRECTIONS':
+    case 'PICKED_UP':
       return handleRideRouting(state, action);
     case 'ADD_DRIVER_SENT':
     case 'ADD_DRIVER':

@@ -6,7 +6,6 @@ import { SplashContainer } from './Splash';
 import { MapView } from '../components/MapView';
 import { GithubButton } from '../models/Github';
 import { RiderItemList } from './RiderItemList';
-import { PickUpButton } from '../components/TopNavBar/PickUpButton';
 import { CompleteRideButton } from '../components/TopNavBar/CompleteRideButton';
 
 import * as userAction from '../actionCreators/user';
@@ -18,7 +17,6 @@ function Main({
 }) {
   return (
     <div className="MainApp">
-      <PickUpButton/>
       <CompleteRideButton/>
       <TopNavBarContainer />
       {
