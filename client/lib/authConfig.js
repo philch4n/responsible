@@ -5,7 +5,7 @@ import * as userAction from '../actionCreators/user';
 
 export const authMiddleware = store => next => action => {
   var github = OAuth.create('github');
-  console.log('CHECK ACTION', action);
+  console.log('this is your action', action);
   if (!github.access_token) {
     if ((action.payload && action.payload.args && action.payload.args[0] === '/login') ||
       (action.payload && action.payload.pathname === '/login')) {
@@ -14,6 +14,15 @@ export const authMiddleware = store => next => action => {
       store.dispatch(push('/login'));
     }
   } else {
-    next(action);
+    if ((action.type !== 'RECEIVE_USER_INFO' && action.type !== 'REQUEST_USER_INFO')
+      && !store.getState().toJS().user.profile
+      && typeof action !== 'function') {
+
+      store.dispatch(userAction.readProfile());
+
+      next(action);
+    } else {
+      next(action);
+    }
   }
 };

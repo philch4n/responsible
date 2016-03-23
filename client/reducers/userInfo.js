@@ -39,13 +39,13 @@ function receiveUserInfo(state, { entry }) {
   };
 
   let toSet = {
-    user_id: entry.user.user_id,
-    isLoggedIn: true,
-    isFetchinguserInfo: false,
     friends: entry.friends,
-    avatar: entry.user.avatar,
-    name: entry.user.name,
-    address: entry.user.address,
+    user: {
+      user_id: entry.user.user_id,
+      avatar: entry.user.avatar,
+      name: entry.user.name,
+      address: entry.user.address,
+    },
   };
 
   localStorage.setItem('user', JSON.stringify(toSet));

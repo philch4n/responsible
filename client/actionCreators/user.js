@@ -67,12 +67,10 @@ export function changeAddress(user_id, newAddress) {
   };
 }
 
+// Gets user information from local storage to re-populate state
 export function readProfile() {
-  let profile = localStorage.getItem('profile');
-  let user = localStorage.getItem('user');
-  console.log('CHECK PROPERTIES', profile, user);
-
-  // dispatch(receiveUserInfo(user));
+  let user = JSON.parse(localStorage.getItem('user'));
+  return receiveUserInfo(user);
 }
 
 /*
