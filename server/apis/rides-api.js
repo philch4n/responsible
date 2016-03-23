@@ -65,7 +65,6 @@ RideAPI.post('/', function (req, res) {
   depending on whether it is a ride in progress of just a request for one.
 */
 RideAPI.delete('/', function (req, res) {
-  console.log('removing ride(r) by id:', req.body);
   var user_id = req.body.user_id;
   var ride_id = req.body.ride_id;
 
@@ -73,6 +72,7 @@ RideAPI.delete('/', function (req, res) {
   if (ride_id) rideExists = true;
 
   if (rideExists) {
+    console.log('removing ride with id:', req.body);
     Ride.deleteRide(ride_id)
 
       // user_id is the cancelling user's partner's user_id
@@ -80,6 +80,7 @@ RideAPI.delete('/', function (req, res) {
       .then(sendStatus(res, 200))
       .catch(sendStatusAndError(res, 500));
   } else {
+    console.log('removing rider by id:', req.body);
     Ride.deleteRider(user_id)
       .then(Friends.getFriendDrivers.bind(null, user_id))
       .then((drivingFriends) => io.emitTo(drivingFriends, 'remove_rider', user_id))

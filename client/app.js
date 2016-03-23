@@ -63,9 +63,13 @@ function geoWatch() {
       }
 
       store.dispatch(userActions.setLocation(nextLocation));
+
+      let ride = store.getState().get('ride').toJS();
+      let destination = ride.match.location;
+      console.log('finding directions to:', destination);
       DirectionsService.route({
         origin: nextLocation,
-        destination: { lat: 30.273835, lng: -97.760507 },
+        destination: destination,
         travelMode: google.maps.TravelMode.DRIVING,
       }, function (result, status) {
           store.dispatch(rideActions.setDirections(result));
