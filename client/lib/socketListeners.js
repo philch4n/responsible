@@ -38,14 +38,12 @@ export function configureListeners(socket) {
   // received on a partner emitting an updated location
   // data: { entry: { lat, lng } }
   socket.on('new_location', function (data) {
-    console.log('received new location from partner', data);
+    // console.log('received new location from partner', data);
     dispatch(rideActions.setMatchLocation(data.entry));
   });
 
   // expects data: { match: { user_id, location }}
   socket.on('confirm_driver', function (data) {
-
-    // {user_id: 5, location: Object, ride_id: 20}
     console.log("We've found a driver!", data);
     dispatch(rideActions.matchRider(data));
   });

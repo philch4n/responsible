@@ -53,6 +53,7 @@ function geoWatch() {
 
   navigator.geolocation.getCurrentPosition(function (data) {
     let user = store.getState().get('user').toJS();
+    let ride = store.getState().get('ride').toJS();
     let nextLocation = {
       lat: data.coords.latitude,
       lng: data.coords.longitude,
@@ -62,11 +63,13 @@ function geoWatch() {
     if (false && user.location && !haveMoved(user.location, nextLocation, 2e-7)) {
       return;
     } else {
-      store.dispatch(userActions.setLocation(nextLocation));
+      if (!ride.match)
+        store.dispatch(userActions.setLocation(nextLocation));
+      else
+        store.dispatch(userActions.setLocation(nextLocation, ride.match));
     }
 
-    let ride = store.getState().get('ride').toJS();
-    if (!ride.match && !ride.match.location) return;
+    if (!ride.match) return;
     let destination = ride.match.location;
 
     DirectionsService.route({
