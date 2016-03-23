@@ -11,12 +11,14 @@ export function handleConfirm(state, action) {
   return state;
 }
 
-function acceptRideSuccess(state, action) {
-  console.log('***confirmRide Reducer *** ride confirmed:', action.entry);
+// entry: { ride_id, match: { user_id, location }}
+function acceptRideSuccess(state, { entry }) {
+  console.log('***confirmRide Reducer *** ride confirmed:', entry);
 
   let updates = {
     isMatched: true,
-    match: action.entry,
+    ride_id: entry.ride_id,
+    match: entry.match,
   };
 
   return state.merge(updates);
