@@ -41,9 +41,8 @@ const mapStateToProps = function (state) {
 
 const mapDispatchToProps = function (dispatch) {
   return {
-    // user_id (driver's id), rider: { user_id, location }
     onRiderClick: function (user, rider) {
-      let filteredUserProps = {
+      let filteredDriverProps = {
         user_id: user.user_id,
         location: user.location,
       };
@@ -53,7 +52,7 @@ const mapDispatchToProps = function (dispatch) {
         location: rider.location,
       };
 
-      dispatch(rideAction.acceptRide(filteredUserProps, filteredProps));
+      dispatch(rideAction.acceptRide(filteredDriverProps, filteredRiderProps));
     },
   };
 };

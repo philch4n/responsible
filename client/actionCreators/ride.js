@@ -53,14 +53,14 @@ export function cancelRide({ user_id, ride_id }) {
  *
  *  Sends: { rider_driver: { user_id, location }, ride_rider: integer }
 **/
-export function acceptRide(ride_driver, rider) {
+export function acceptRide(ride_driver, ride_rider) {
   return function (dispatch) {
     dispatch(acceptRideSent());
 
     fetch('/rides', {
       method: 'POST',
       headers: headers,
-      body: JSON.stringify({ ride_driver, ride_rider: rider.user_id }),
+      body: JSON.stringify({ ride_driver, ride_rider: ride_rider.user_id }),
     })
       .then(checkStatus)
       .then(json)
@@ -68,7 +68,7 @@ export function acceptRide(ride_driver, rider) {
         console.log('received response after accepting ride:', body);
         let result = {
           ride_id: body.ride_id,
-          match: rider,
+          match: ride_rider,
         };
         dispatch(acceptRideSuccess(result));
       })

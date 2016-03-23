@@ -38,7 +38,11 @@ RideAPI.post('/', function (req, res) {
     ride_rider: req.body.ride_rider,
   };
 
-  var infoForRider = req.body.ride_driver;
+  console.log('request body:', req.body);
+
+  var infoForRider = {
+    match: req.body.ride_driver,
+  };
 
   Ride.createRide(ride)
     .then(function (_ride) {

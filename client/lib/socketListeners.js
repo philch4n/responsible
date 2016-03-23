@@ -44,6 +44,8 @@ export function configureListeners(socket) {
 
   // expects data: { match: { user_id, location }}
   socket.on('confirm_driver', function (data) {
+
+    // {user_id: 5, location: Object, ride_id: 20}
     console.log("We've found a driver!", data);
     dispatch(rideActions.matchRider(data));
   });
