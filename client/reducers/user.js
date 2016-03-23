@@ -24,6 +24,8 @@ export default function (state = Map(), action) {
       return signout(state, action);
     case 'SET_LOCATION':
       return setLocation(state, action);
+    case 'REMOVE_DRIVER':
+      return removeRiderAndDriver(state, action);
   };
 
   return state;
@@ -41,6 +43,15 @@ function setDriver(state, { entry }) {
 function setRider(state, { entry }) {
   let updates = {
     isRider: entry,
+    isDriver: false,
+  };
+
+  return state.merge(updates);
+}
+
+function removeRiderAndDriver(state, { entry }) {
+  let updates = {
+    isRider: false,
     isDriver: false,
   };
 
