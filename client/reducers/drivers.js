@@ -58,6 +58,7 @@ function removeDriver(state, action) {
     match: null,
     driverAddError: null,
   };
+
   // console.log('~_~_~STATE_~_~_~', state.merge(updates).toJS());
   return state.merge(updates);
 };

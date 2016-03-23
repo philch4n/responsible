@@ -8,21 +8,13 @@ export function TopNavBarRightButton({
   ride: { isMatched, isWaitingForMatch },
   ...onClicks,
 }) {
-  if (isRider) {
+  if (isRider || (isDriver && isMatched)) {
     return (
     <div className="topNavBarRightButton">
       {
         isMatched || isWaitingForMatch ?
           <CancelRideButton {...onClicks} /> :
           <div />
-      }
-    </div>
-    );
-  } else if ((isDriver && isMatched) || (isRider && isMatched)) {
-    return (
-    <div className="topNavBarRightButton">
-      {
-          <CancelRideButton {...onClicks} />
       }
     </div>
     );
