@@ -49,34 +49,35 @@ const DirectionsService = new google.maps.DirectionsService();
 geoWatch();
 setInterval(geoWatch, 6000);
 function geoWatch() {
-  if (navigator.geolocation) {
-    navigator.geolocation.getCurrentPosition(function (data) {
-      let user = store.getState().get('user').toJS();
-      let nextLocation = {
-        lat: data.coords.latitude,
-        lng: data.coords.longitude,
-      };
+  if (!navigator.geolocation) return;
 
-      //!!! Removed for testing of socket new_location events!
-      if (false && user.location && !haveMoved(user.location, nextLocation, 2e-7)) {
-        return;
-      }
+  navigator.geolocation.getCurrentPosition(function (data) {
+    let user = store.getState().get('user').toJS();
+    let nextLocation = {
+      lat: data.coords.latitude,
+      lng: data.coords.longitude,
+    };
 
+    //!!! Removed for testing of socket new_location events!
+    if (false && user.location && !haveMoved(user.location, nextLocation, 2e-7)) {
+      return;
+    } else {
       store.dispatch(userActions.setLocation(nextLocation));
+    }
 
-      let ride = store.getState().get('ride').toJS();
-      let destination = ride.match.location;
-      console.log('finding directions to:', destination);
-      DirectionsService.route({
-        origin: nextLocation,
-        destination: destination,
-        travelMode: google.maps.TravelMode.DRIVING,
-      }, function (result, status) {
-          store.dispatch(rideActions.setDirections(result));
-        }
-      );
-    });
-  };
+    let ride = store.getState().get('ride').toJS();
+    if (!ride.match && !ride.match.location) return;
+    let destination = ride.match.location;
+
+    DirectionsService.route({
+      origin: nextLocation,
+      destination: destination,
+      travelMode: google.maps.TravelMode.DRIVING,
+    }, function (result, status) {
+        store.dispatch(rideActions.setDirections(result));
+      }
+    );
+  });
 }
 
 function haveMoved(curLocation, nextLocation, tol) {
