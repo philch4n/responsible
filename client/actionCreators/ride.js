@@ -63,6 +63,7 @@ export function acceptRide(ride_driver, rider) {
       .then(checkStatus)
       .then(json)
       .then(function (body) {
+        console.log('received response after accepting ride:', body);
         let result = {
           ride_id: body.ride_id,
           match: rider,

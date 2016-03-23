@@ -45,10 +45,12 @@ RideAPI.post('/', function (req, res) {
 
   // NEED TO DO: ALSO SEND RIDE_ID to rider and driver.
   Ride.createRide(ride)
-    .then(function (ride) {
-      var rideId = { ride_id: ride.ride_id };
-      infoForRider.ride_id = ride.ride_id;
+    .then(function (_ride) {
+      var rideId = { ride_id: _ride.ride_id };
+      infoForRider.ride_id = _ride.ride_id;
 
+      console.log('created ride:', _ride);
+      console.log('responding with:', rideId);
       sendStatusAndData(res, 201, rideId);
     })
     .catch(sendStatusAndError(res, 500, ('error creating user')))

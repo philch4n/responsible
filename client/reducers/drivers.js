@@ -23,13 +23,11 @@ export function handleDriver(state = Map(), action) {
 };
 
 function addDriver(state, action) {
-  console.log('attempting to set riders:', action.entry);
   let updates = {
     isWaitingForMatch: true,
     riders: action.entry,
   };
 
-  console.log('THIS IS STATE AT ADD DRIVER', state.merge(updates).toJS());
   return state.merge(updates);
 };
 
