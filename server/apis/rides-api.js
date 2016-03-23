@@ -108,13 +108,18 @@ RideAPI.post('/riders', function (req, res) {
     location: req.body.location,
   };
 
+  console.log('server-side rider location:', req.body);
+
   Ride.createRider(riderToInsert)
     .then(function (newRider) {
       return User.findUserById(newRider[0].foreign_rider);
     })
     .then(function (user) {
-      rider = user;
-      rider.location = _location;
+      rider = {
+        user_id: user.user_id,
+        location: _location,
+      };
+
       return Friends.getFriendDrivers(rider.user_id);
     })
     .then(function (friendDrivers) {
