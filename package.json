@@ -4,7 +4,6 @@
   "description": "A safe driving app for friends",
   "main": "index.js",
   "scripts": {
-    "start": "npm run dev-server",
     "test": "node lib/schema.js",
     "test-server": "./node_modules/.bin/mocha test/server --recursive --require test/test-helper.js",
     "test-client": "./node_modules/.bin/mocha test/client --compilers js:babel-core/register --colors --recursive --require test/test-helper.js",
