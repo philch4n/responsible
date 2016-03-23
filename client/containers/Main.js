@@ -8,6 +8,8 @@ import { GithubButton } from '../models/Github';
 import { RiderItemList } from './RiderItemList';
 import { CompleteRideButton } from '../components/TopNavBar/CompleteRideButton';
 
+import { End } from '../components/end';
+
 import * as userAction from '../actionCreators/user';
 import * as rideActions from '../actionCreators/ride';
 
@@ -34,6 +36,7 @@ function Main({
         <BottomNavBarContainer /> :
         <div className="empty" />
       }
+      <End />
     </div>
   );
 };
