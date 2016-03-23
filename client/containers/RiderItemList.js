@@ -26,7 +26,7 @@ export function List({ ride, user, onRiderClick, }) {
         _riders.map(function (friendRider) {
           return (<RiderItem
             key={friendRider.user_id}
-            onRiderItemClick={onRiderClick.bind(null, user.user_id, friendRider)}
+            onRiderItemClick={onRiderClick.bind(null, user, friendRider)}
             {...friendRider}
           />);
         })
@@ -42,13 +42,18 @@ const mapStateToProps = function (state) {
 const mapDispatchToProps = function (dispatch) {
   return {
     // user_id (driver's id), rider: { user_id, location }
-    onRiderClick: function (user_id, rider) {
-      let filteredProps = {
+    onRiderClick: function (user, rider) {
+      let filteredUserProps = {
+        user_id: user.user_id,
+        location: user.location,
+      };
+
+      let filteredRiderProps = {
         user_id: rider.user_id,
         location: rider.location,
       };
 
-      dispatch(rideAction.acceptRide(user_id, filteredProps));
+      dispatch(rideAction.acceptRide(filteredUserProps, filteredProps));
     },
   };
 };
