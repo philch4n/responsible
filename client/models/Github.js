@@ -33,7 +33,7 @@ const mapDispatchToProps = function (dispatch) {
                 username: me.alias,
                 name: me.name,
                 avatar: me.avatar,
-                OAuthVerify: githubToken.access_token,
+                OAuthVerify: me.id,
               };
 
               var toSend = {
