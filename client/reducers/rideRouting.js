@@ -5,6 +5,8 @@ export function handleRideRouting(state, action) {
       return setMatchLocation(state, action);
     case 'SET_DIRECTIONS':
       return setDirections(state, action);
+    case 'PICKED_UP':
+      return setPickedUp(state, action);
   }
 
   return state;
@@ -21,6 +23,14 @@ function setMatchLocation(state, { entry }) {
 function setDirections(state, { entry }) {
   let updates = {
     directions: entry,
+  };
+
+  return state.merge(updates);
+}
+
+function setPickedUp(state) {
+  let updates = {
+    isPickedUp: true,
   };
 
   return state.merge(updates);

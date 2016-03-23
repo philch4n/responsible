@@ -47,6 +47,13 @@ export function cancelRide({ user_id, ride_id }) {
   };
 }
 
+export function pickUp() {
+  console.log('PICKED UP RIDER!');
+  return {
+    type: 'PICKED_UP',
+  };
+}
+
 /**
  *  As a driver, accepts a ride by the rider's Id and passes our current
  *  location to the server.

@@ -70,6 +70,7 @@ export default {
     isCancelling: false,
     isAccepting: false,
     isFetchingMessages: false,
+    isPickedUp: false,
     acceptRideError: null,
     rideRequestError: null,
     messagesFetchError: null,
