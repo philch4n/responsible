@@ -49,32 +49,38 @@ const DirectionsService = new google.maps.DirectionsService();
 geoWatch();
 setInterval(geoWatch, 6000);
 function geoWatch() {
-  if (navigator.geolocation) {
-    navigator.geolocation.getCurrentPosition(function (data) {
-      let user = store.getState().get('user').toJS();
-      let nextLocation = {
-        lat: data.coords.latitude,
-        lng: data.coords.longitude,
-      };
+  if (!navigator.geolocation) return;
 
-      //!!! Removed for testing of socket new_location events!
-      if (false && user.location && !haveMoved(user.location, nextLocation, 2e-7)) {
-        return;
+  navigator.geolocation.getCurrentPosition(function (data) {
+    let user = store.getState().get('user').toJS();
+    let ride = store.getState().get('ride').toJS();
+    let nextLocation = {
+      lat: data.coords.latitude,
+      lng: data.coords.longitude,
+    };
+
+    //!!! Removed for testing of socket new_location events!
+    if (false && user.location && !haveMoved(user.location, nextLocation, 2e-7)) {
+      return;
+    } else {
+      if (!ride.match)
+        store.dispatch(userActions.setLocation(nextLocation));
+      else
+        store.dispatch(userActions.setLocation(nextLocation, ride.match));
+    }
+
+    if (!ride.match) return;
+    let destination = ride.match.location;
+
+    DirectionsService.route({
+      origin: nextLocation,
+      destination: destination,
+      travelMode: google.maps.TravelMode.DRIVING,
+    }, function (result, status) {
+        store.dispatch(rideActions.setDirections(result));
       }
-
-      store.dispatch(userActions.setLocation(nextLocation));
-      DirectionsService.route({
-        origin: nextLocation,
-        destination: { lat: 30.273835, lng: -97.760507 },
-        travelMode: google.maps.TravelMode.DRIVING,
-      }, function (result, status) {
-          store.dispatch(rideActions.setDirections(result));
-        }
-      );
-    });
-
-    store.dispatch(userActions.setLocation(location));
-  };
+    );
+  });
 }
 
 function haveMoved(curLocation, nextLocation, tol) {
