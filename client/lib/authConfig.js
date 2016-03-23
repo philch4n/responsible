@@ -1,6 +1,7 @@
 var OAuth = require('../lib/oauth.min.js').OAuth;
 var OAuthUser = require('../lib/oauth.min.js').User;
 import { push } from 'react-router-redux';
+import * as userAction from '../actionCreators/user';
 
 export const authMiddleware = store => next => action => {
   var github = OAuth.create('github');
@@ -12,6 +13,15 @@ export const authMiddleware = store => next => action => {
       store.dispatch(push('/login'));
     }
   } else {
-    next(action);
+    if ((action.type !== 'RECEIVE_USER_INFO' && action.type !== 'REQUEST_USER_INFO')
+      && !store.getState().toJS().user.profile
+      && typeof action !== 'function') {
+
+      store.dispatch(userAction.readProfile());
+
+      next(action);
+    } else {
+      next(action);
+    }
   }
 };

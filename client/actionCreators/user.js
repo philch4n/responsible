@@ -67,6 +67,12 @@ export function changeAddress(user_id, newAddress) {
   };
 }
 
+// Gets user information from local storage to re-populate state
+export function readProfile() {
+  let user = JSON.parse(localStorage.getItem('user'));
+  return receiveUserInfo(user);
+}
+
 /*
   The meta property here is picked up by a piece of middleware to emit
   socket events. It emits to the server an event with the name: meta.event

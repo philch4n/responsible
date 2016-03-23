@@ -3,12 +3,13 @@ export default {
     user_id: 1,
     isLoggedIn: false,
     location: null,
-    profile: {
-      avatar: 'https://i.ytimg.com/vi/1v6M41Divso/maxresdefault.jpg',
-      name: 'Kim Panda',
-      address: 'back handle lane Austin, VA',
-      zip: '56352',
-    },
+
+    // profile: {
+    //   avatar: 'https://i.ytimg.com/vi/1v6M41Divso/maxresdefault.jpg',
+    //   name: 'Kim Panda',
+    //   address: 'back handle lane Austin, VA',
+    //   zip: '56352',
+    // },
     isDriver: false,
     isRider: false,
     isFetchingUserState: false,

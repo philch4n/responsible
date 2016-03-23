@@ -28,6 +28,7 @@ const mapDispatchToProps = function (dispatch) {
   return {
     onSignoutButtonClick() {
       OAuth.clearCache();
+      localStorage.clear();
       dispatch(push('/login'));
       dispatch(userAction.signout(false));
     },
