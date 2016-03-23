@@ -12,7 +12,7 @@ import * as rideActions from '../actionCreators/ride';
 
 function Main({
   user: { isLoggedIn, location, profile, isDriver, isRider, },
-  ride: { riders, match, directions, },
+  ride: { riders, isMatched, match, directions, },
 }) {
   return (
     <div className="MainApp">
@@ -23,12 +23,12 @@ function Main({
           <MapView match={match} location={location} riders={riders} directions={directions} />
       }
       {
-        isDriver ?
+        isDriver && !match ?
           <RiderItemList /> :
           <div className="empty" />
       }
       {
-        isRider ?
+        isRider || (isDriver && isMatched) ?
         <BottomNavBarContainer /> :
         <div className="empty" />
       }

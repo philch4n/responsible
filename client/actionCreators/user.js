@@ -106,19 +106,20 @@ export function signout(info) {
   return { type: 'SIGNOUT', entry: info };
 }
 
+// expects location: { lat, lng }, match: { user_id }
 export function setLocation(location, match) {
   let action = {
     type: 'SET_LOCATION',
     entry: location,
   };
 
-  // if we have a partner, emit a message.
+  // emit a message if we have a partner
   if (match) {
-    action = Object.assign(action, {
+    action.meta = {
       event: 'new_location',
-      to: match,
+      to: match.user_id,
       entry: location,
-    });
+    };
   }
 
   return action;

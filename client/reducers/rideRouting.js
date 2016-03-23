@@ -10,17 +10,17 @@ export function handleRideRouting(state, action) {
   return state;
 };
 
-function setMatchLocation(state, action) {
+function setMatchLocation(state, { entry }) {
   let updates = {
-    location: action.entry,
+    location: entry,
   };
 
   return state.mergeIn(['match'], updates);
 }
 
-function setDirections(state, action) {
+function setDirections(state, { entry }) {
   let updates = {
-    directions: action.entry,
+    directions: entry,
   };
 
   return state.merge(updates);
