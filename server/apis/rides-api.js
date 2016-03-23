@@ -38,8 +38,6 @@ RideAPI.post('/', function (req, res) {
     ride_rider: req.body.ride_rider,
   };
 
-  console.log('request body:', req.body);
-
   var infoForRider = {
     match: req.body.ride_driver,
   };
@@ -49,8 +47,6 @@ RideAPI.post('/', function (req, res) {
       var rideId = { ride_id: _ride.ride_id };
       infoForRider.ride_id = _ride.ride_id;
 
-      console.log('created ride:', _ride);
-      console.log('responding with:', rideId);
       sendStatusAndData(res, 201, rideId);
     })
     .catch(sendStatusAndError(res, 500, ('error creating user')))
