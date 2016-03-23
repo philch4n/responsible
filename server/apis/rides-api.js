@@ -25,12 +25,32 @@ module.exports = RideAPI;
 * Rides routes
 */
 
-//Posting
+// Pairs a user from the riders and drivers table
+//  - Informs the rider of a match and the driver's location
+//  - Driver already knows the rider's location.
+//
+// expects req.body: { ride_driver { user_id, location }, ride_rider: integer }
+// responds to driver: { ride_id, match: { user_id (of rider), location (of rider)}
+// emits to rider: { ride_id, match: { user_id (of driver), location (of driver)}
 RideAPI.post('/', function (req, res) {
-  var attrs = req.body;
-  Ride.createRide(attrs)
-    .then(sendStatusAndData(res, 201))
-    .catch(sendStatusAndError(res, 500, ('error creating user')));
+  var ride = {
+    ride_driver: req.body.ride_driver.user_id,
+    ride_rider: req.body.ride_rider,
+  };
+
+  var infoForRider = {
+    match: req.body.ride_driver,
+  };
+
+  Ride.createRide(ride)
+    .then(function (_ride) {
+      var rideId = { ride_id: _ride.ride_id };
+      infoForRider.ride_id = _ride.ride_id;
+
+      sendStatusAndData(res, 201, rideId);
+    })
+    .catch(sendStatusAndError(res, 500, ('error creating user')))
+    .then(() => io.to(req.body.ride_rider).emit('confirm_driver', infoForRider));
 });
 
 /*
@@ -89,8 +109,11 @@ RideAPI.post('/riders', function (req, res) {
       return User.findUserById(newRider[0].foreign_rider);
     })
     .then(function (user) {
-      rider = user;
-      rider.location = _location;
+      rider = {
+        user_id: user.user_id,
+        location: _location,
+      };
+
       return Friends.getFriendDrivers(rider.user_id);
     })
     .then(function (friendDrivers) {

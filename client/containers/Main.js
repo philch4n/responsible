@@ -24,7 +24,7 @@ function Main({
       }
       {
         isDriver ?
-          <RiderItemList riders={riders} /> :
+          <RiderItemList /> :
           <div className="empty" />
       }
       {

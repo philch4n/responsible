@@ -3,17 +3,21 @@ import { curry } from 'ramda';
 
 import * as rideAction from '../actionCreators/ride';
 
-import{ RiderItem } from '../components/RiderItem';
+import { RiderItem } from '../components/RiderItem';
 import * as rideActions from '../actionCreators/ride';
 
 function nullFn(e) { console.log('you clicked me ' + e.target.className); };
 
-export function List({ riders, user, onRiderClick, }) {
-  var _riders = [];
-  riders.forEach(function (rider) {
+export function List({ ride, user, onRiderClick, }) {
+  let _riders = [];
+
+  ride.riders.forEach(function (rider) {
     user.friends.forEach(function (friend) {
       if (friend.user_id === rider.user_id) {
-        _riders.push(friend);
+        let newRider = friend;
+        newRider.location = rider.location;
+
+        _riders.push(newRider);
       }
     });
   });
@@ -22,13 +26,12 @@ export function List({ riders, user, onRiderClick, }) {
     <div className="riderList">
     <h1>Friends Waiting for Rides!</h1>
       {
-        _riders.map(function (rider) {
-          return <RiderItem
-            key={rider.user_id}
-            ride_driver={user.user_id}
-            onRiderItemClick={onRiderClick}
-            {...rider}
-          />;
+        _riders.map(function (friendRider) {
+          return (<RiderItem
+            key={friendRider.user_id}
+            onRiderItemClick={onRiderClick.bind(null, user, friendRider)}
+            {...friendRider}
+          />);
         })
       }
     </div>
@@ -36,15 +39,24 @@ export function List({ riders, user, onRiderClick, }) {
 };
 
 const mapStateToProps = function (state) {
-  // console.log('main container mapStateToProps state:', state.toJS());
   return state.toJS();
 };
 
-const mapDispatchToProps = function (dispatch, user) {
+const mapDispatchToProps = function (dispatch) {
   return {
-    onRiderClick: curry(function (ride_driver, user_id) {
-      dispatch(rideAction.acceptRide(ride_driver, user_id));
-    }),
+    onRiderClick: function (user, rider) {
+      let filteredDriverProps = {
+        user_id: user.user_id,
+        location: user.location,
+      };
+
+      let filteredRiderProps = {
+        user_id: rider.user_id,
+        location: rider.location,
+      };
+
+      dispatch(rideAction.acceptRide(filteredDriverProps, filteredRiderProps));
+    },
   };
 };
 

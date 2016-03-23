@@ -42,6 +42,14 @@ export function configureListeners(socket) {
     dispatch(rideActions.setMatchLocation(data.entry));
   });
 
+  // expects data: { match: { user_id, location }}
+  socket.on('confirm_driver', function (data) {
+
+    // {user_id: 5, location: Object, ride_id: 20}
+    console.log("We've found a driver!", data);
+    dispatch(rideActions.matchRider(data));
+  });
+
   // dev only: so that we can use the not-logged-in initial state user
-  socket.emit('join', { entry: { user_id: 1 } });
+  // socket.emit('join', { entry: { user_id: 1 } });
 };

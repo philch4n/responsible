@@ -28,7 +28,6 @@ function addDriver(state, action) {
     riders: action.entry,
   };
 
-  // console.log('THIS IS STATE AT ADD DRIVER', state.merge(updates).toJS());
   return state.merge(updates);
 };
 
@@ -77,3 +76,10 @@ function removeDriverError(state, action) {
   return state.merge(updates);
 };
 
+function matchRider(state, action) {
+  console.log('Reducing a new, matched, state!:', action);
+  let updates = {
+  };
+
+  return state.merge(updates);
+}

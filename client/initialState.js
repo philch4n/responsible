@@ -55,20 +55,7 @@ export default {
     ride_id: 3,
     match: null,
     directions: null,
-    riders: [
-      {
-        user_id: 1,
-        location: { lat: 30.2687464, lng: -97.741185 },
-      },
-      {
-        user_id: 2,
-        location: { lat: 30.267701, lng: -97.736303 },
-      },
-      {
-        user_id: 3,
-        location:   { lat: 30.271188, lng: -97.7469099 },
-      },
-    ], // Array of this driver's friends who are looking for a ride.
+    riders: [],
     messages: [
       { id: 5, time: '12:30', text: 'Where are you?', },
       { id: 7, time: '12:42', text: 'On my way. Where you at?', },

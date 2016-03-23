@@ -41,12 +41,35 @@ User.findFriends = function (userId) {
   // db.distinct('username').from('users').joinRaw('INNER JOIN trip_users
   // ON id_user = users.id AND id_trip = ?', [tripId]).select();
 
-  return db.from('users').innerJoin('friends', 'friends.foreign_friend2',
-  'users.user_id').whereRaw('friends.foreign_friend1 = ?', [userId]);
+  var friends_part1 = [];
+  var friends_part2 = [];
+  var friends = [];
 
-  // return db('*').from('users').joinRaw('INNER JOIN friends ON ' +
-  //   'friends.foreign_friend2 = users.user_id AND
-  // friends.foreign_friend1 = ?', [userId]).select();
+  return db('friends').select('foreign_friend2')
+    .where({ foreign_friend1: userId })
+    .then(function (fp1) {
+      friends_part1 = fp1;
+      return db('friends').select('foreign_friend1')
+        .where({ foreign_friend2: userId });
+    })
+    .then(function (fp2) {
+      friends_part2 = fp2;
+    })
+    .then(function () {
+      friends = friends_part1.concat(friends_part2);
+
+      friends = friends.map(function (friend) {
+        return friend.foreign_friend1 ?
+          friend.foreign_friend1 :
+          friend.foreign_friend2;
+      });
+
+      return friends;
+    })
+    .then(function (friends) {
+      return db('users').select('*')
+        .whereIn('user_id', friends);
+    });
 };
 
 /**
