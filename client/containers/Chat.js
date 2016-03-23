@@ -7,18 +7,18 @@ import { MessageItemList } from '../components/Chat/MessageItemList';
 
 import * as chatAction from '../actionCreators/chat';
 
-export function box({ ride, user, addMessage }) {
+export function box({ match, friends, messages, addMessage }) {
 
-  let friendPartner = user.friends.filter(function (friend) {
-    return ride.match.user_id === friend.user_id;
+  let friendPartner = friends.filter(function (friend) {
+    return match.user_id === friend.user_id;
   });
 
   return (
     <div className='chatbox'>
-      <DriverItem {...ride.match} avatar={friendPartner.avatar} />
-      <MessageItemList userID={user.user_id} messages={ride.messages}/>
+      <DriverItem {...match} avatar={friendPartner.avatar} />
+      <MessageItemList user_id={user.user_id} messages={messages}/>
       <div className='textSubmit'>
-        <form onSubmit={addMessage(user.user_id, ride.match.user_id)}>
+        <form onSubmit={addMessage(user.user_id, match.user_id)}>
           <input className="messageText ten columns" defaultValue='' id="message"></input>
           <input className="messageSubmit button" type="submit" />
         </form>
@@ -26,10 +26,6 @@ export function box({ ride, user, addMessage }) {
     </div>
   );
 }
-
-const mapStateToProps = function (state) {
-  return state.toJS();
-};
 
 // jscs:disable
 const mapDispatchToProps = function (dispatch) {
@@ -39,10 +35,11 @@ const mapDispatchToProps = function (dispatch) {
       let timeStamp = new Date();
       let currentTime = timeStamp.getHours() + ':' + timeStamp.getMinutes();
       let messageObject = {
-        userID: user_id,
+        user_id: user_id,
         time: currentTime,
         text: e.target.firstChild.value,
       };
+
       e.target.firstChild.value = '';
       dispatch(chatAction.submitMessage(partner_id, messageObject));
     }),
@@ -51,6 +48,6 @@ const mapDispatchToProps = function (dispatch) {
 // jscs:enable
 
 export const Chat = connect(
-  mapStateToProps,
+  null,
   mapDispatchToProps
 )(box);

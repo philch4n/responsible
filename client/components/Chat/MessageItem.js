@@ -1,8 +1,8 @@
-export function MessageItem({ userID, id, text, time, }) {
+export function MessageItem({ user_id, id, text, time, }) {
   return (
     <div className="MessageInfoItem clear">
     {
-      id === userID ?
+      client_id === user_id ?
         <div className="outgoing">{ time } { text }</div>
       :
         <div className="incoming">{ time } { text }</div>
