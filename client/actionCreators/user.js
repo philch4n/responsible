@@ -113,7 +113,7 @@ export function setLocation(location, match) {
     entry: location,
   };
 
-  // if we have a partner, emit a message.
+  // emit a message if we have a partner
   if (match) {
     action.meta = {
       event: 'new_location',
@@ -121,8 +121,6 @@ export function setLocation(location, match) {
       entry: location,
     };
   }
-
-  console.log('set location action:', action);
 
   return action;
 }
