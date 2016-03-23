@@ -1,8 +1,6 @@
 require('../../public/styles/styles.css');
 
-export function ConfirmLocationButton({
-  confirmLocation,
-}) {
+export function ConfirmLocationButton({ confirmLocation }) {
   return (
     <div className='ConfirmLocation' onClick={confirmLocation}>
 			<section className='hero is-success'>
