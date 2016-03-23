@@ -43,6 +43,7 @@ RideAPI.post('/', function (req, res) {
     location: req.body.location,
   };
 
+  // NEED TO DO: ALSO SEND RIDE_ID to rider and driver.
   Ride.createRide(ride)
     .then(() => io.to(req.body.ride_rider).emit('confirm_driver', infoForRider))
     .then(sendStatus(res, 201))
