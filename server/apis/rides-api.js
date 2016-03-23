@@ -30,8 +30,8 @@ module.exports = RideAPI;
 //  - Driver already knows the rider's location.
 //
 // expects req.body: { ride_driver, ride_rider, location }
-// responds to driver: { user_id (of rider), location}
-// emits to rider: { user_id (of driver), location (of driver)}
+// responds to driver: { ride_id, user_id (of rider), location}
+// emits to rider: { ride_id, user_id (of driver), location (of driver)}
 RideAPI.post('/', function (req, res) {
   var ride = {
     ride_driver: req.body.ride_driver,
@@ -45,9 +45,14 @@ RideAPI.post('/', function (req, res) {
 
   // NEED TO DO: ALSO SEND RIDE_ID to rider and driver.
   Ride.createRide(ride)
+    .then(function(ride) {
+      var rideId = { ride_id: ride.ride_id };
+      infoForRider.ride_id = ride.ride_id;
+
+      sendStatusAndData(res, 201, rideId);
+    })
+    .catch(sendStatusAndError(res, 500, ('error creating user')))
     .then(() => io.to(req.body.ride_rider).emit('confirm_driver', infoForRider))
-    .then(sendStatus(res, 201))
-    .catch(sendStatusAndError(res, 500, ('error creating user')));
 });
 
 /*

@@ -17,7 +17,7 @@ Ride.getRides = function () {
 
 // Create A ride
 Ride.createRide = function (attrs) {
-  return db('rides').insert(attrs, ['ride_driver', 'ride_rider'])
+  return db('rides').insert(attrs, ['ride_id', 'ride_driver', 'ride_rider'])
     .catch(reportError('error creating ride in db'))
     .then(function (ride) {
       return Ride.deleteRiderAndDriver(attrs.ride_rider, attrs.ride_driver)
