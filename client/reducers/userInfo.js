@@ -38,12 +38,17 @@ function receiveUserInfo(state, { entry }) {
     address: entry.user.address,
   };
 
-  let user = {
-    name: entry.user.name,
+  let toSet = {
+    user_id: entry.user.user_id,
+    isLoggedIn: true,
+    isFetchinguserInfo: false,
+    friends: entry.friends,
     avatar: entry.user.avatar,
+    name: entry.user.name,
+    address: entry.user.address,
   };
 
-  localStorage.setItem('user', JSON.stringify(user));
+  localStorage.setItem('user', JSON.stringify(toSet));
 
   newState = state.mergeIn(['profile'], profileUpdates);
   newState = newState.merge(userUpdates);

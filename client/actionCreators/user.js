@@ -67,6 +67,14 @@ export function changeAddress(user_id, newAddress) {
   };
 }
 
+export function readProfile() {
+  let profile = localStorage.getItem('profile');
+  let user = localStorage.getItem('user');
+  console.log('CHECK PROPERTIES', profile, user);
+
+  // dispatch(receiveUserInfo(user));
+}
+
 /*
   The meta property here is picked up by a piece of middleware to emit
   socket events. It emits to the server an event with the name: meta.event
