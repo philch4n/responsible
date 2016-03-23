@@ -22,7 +22,7 @@ match, user, messages, confirmLocation, onWaitingClick, }) {
             </div>
           </section>
         </div> :
-      isConfirmed && isMatched ?
+      isMatched ?
           <Chat match={match}  id={user.user_id} messages={messages}/> :
         <h3>Uh oh. How did this happen?</h3>
     }

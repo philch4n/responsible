@@ -14,7 +14,10 @@ export function List({ ride, user, onRiderClick, }) {
   ride.riders.forEach(function (rider) {
     user.friends.forEach(function (friend) {
       if (friend.user_id === rider.user_id) {
-        _riders.push(friend);
+        let newRider = friend;
+        newRider.location = rider.location;
+
+        _riders.push(newRider);
       }
     });
   });

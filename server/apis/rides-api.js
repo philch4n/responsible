@@ -108,8 +108,6 @@ RideAPI.post('/riders', function (req, res) {
     location: req.body.location,
   };
 
-  console.log('server-side rider location:', req.body);
-
   Ride.createRider(riderToInsert)
     .then(function (newRider) {
       return User.findUserById(newRider[0].foreign_rider);
