@@ -69,6 +69,7 @@ export default {
     isConfirmed: false,
     isCancelling: false,
     isAccepting: false,
+    isComplete: false,
     isFetchingMessages: false,
     isPickedUp: false,
     acceptRideError: null,

@@ -54,6 +54,13 @@ export function pickUp() {
   };
 }
 
+export function completeRide() {
+  console.log('RIDE COMPLETE!');
+  return {
+    type: 'COMPLETE_RIDE',
+  };
+}
+
 /**
  *  As a driver, accepts a ride by the rider's Id and passes our current
  *  location to the server.
