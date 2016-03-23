@@ -50,6 +50,8 @@ export function cancelRide({ user_id, ride_id }) {
 /**
  *  As a driver, accepts a ride by the rider's Id and passes our current
  *  location to the server.
+ *
+ *  Sends: { rider_driver: { user_id, location }, ride_rider: integer }
 **/
 export function acceptRide(ride_driver, rider) {
   return function (dispatch) {

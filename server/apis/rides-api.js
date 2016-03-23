@@ -29,21 +29,17 @@ module.exports = RideAPI;
 //  - Informs the rider of a match and the driver's location
 //  - Driver already knows the rider's location.
 //
-// expects req.body: { ride_driver, ride_rider, location }
-// responds to driver: { ride_id, user_id (of rider), location}
-// emits to rider: { ride_id, user_id (of driver), location (of driver)}
+// expects req.body: { ride_driver { user_id, location }, ride_rider: integer }
+// responds to driver: { ride_id, match: { user_id (of rider), location (of rider)}
+// emits to rider: { ride_id, match: { user_id (of driver), location (of driver)}
 RideAPI.post('/', function (req, res) {
   var ride = {
-    ride_driver: req.body.ride_driver,
+    ride_driver: req.body.ride_driver.user_id,
     ride_rider: req.body.ride_rider,
   };
 
-  var infoForRider = {
-    user_id: req.body.ride_driver,
-    location: req.body.location,
-  };
+  var infoForRider = req.body.ride_driver;
 
-  // NEED TO DO: ALSO SEND RIDE_ID to rider and driver.
   Ride.createRide(ride)
     .then(function (_ride) {
       var rideId = { ride_id: _ride.ride_id };
