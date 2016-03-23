@@ -23,7 +23,7 @@ function Main({
           <MapView match={match} location={location} riders={riders} directions={directions} />
       }
       {
-        isDriver ?
+        isDriver && !match ?
           <RiderItemList /> :
           <div className="empty" />
       }
