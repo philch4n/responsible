@@ -22,20 +22,32 @@ function Profile({ user_id, friends, profile, onFriendClick, onAddressEdit }) {
 
       <div className="profileName">
         Name
-        <span className="profileItem">{profile.name}</span>
+        <span className="profileItem"> {profile.name}</span>
       </div>
 
       <div className="profileAddress">
         Home Address
         {
           profile.address ?
-            <span className="profileAddress">{profile.address}</span>
+            <span className="profileAddress"> {profile.address}</span>
             :
-            <form onSubmit={onAddressEdit(user_id)}>
-              <input className="profileItem"
-                type="text"
-                placeholder={profile.address} />
-            </form>
+            <p className="control" onSubmit={onAddressEdit(user_id)}>
+              <label className="label">Street Address</label>
+              <input className="input" type="text" placeholder="123 Main Street" />
+              <label className="label">City</label>
+              <input className="input" type="text" placeholder="Austin" />
+              <label className="label">State</label>
+              <input className="input" type="text" placeholder="TX" />
+              <label className="label">Zipcode</label>
+              <input className="input" type="text" placeholder="78745" />
+              <button className="button is-primary">Submit</button>
+            </p>
+
+            // <form onSubmit={onAddressEdit(user_id)}>
+            //   <input className="profileItem"
+            //     type="text"
+            //     placeholder={profile.address} />
+            // </form>
         }
       </div>
     </div>
@@ -52,7 +64,9 @@ const mapDispatchToProps = function (dispatch) {
     onAddressEdit: curry((user_id, e) => {
       e.preventDefault();
       let newAddress = e.target.firstChild.value;
-      dispatch(userAction.changeAddress(user_id, newAddress));
+      console.log('this is an address', newAddress);
+
+      // dispatch(userAction.changeAddress(user_id, newAddress));
     }),
   };
 };
