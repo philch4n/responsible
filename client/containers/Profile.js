@@ -2,6 +2,7 @@ import React from 'react';
 import { connect } from 'react-redux';
 import { curry } from 'ramda';
 
+import { TopNavBarContainer } from './TopNavBar';
 import { FriendItemList } from '../components/TopNavBar/Friends/FriendItemList';
 import { UserImage } from '../components/UserImage';
 import { ProfileItemList } from '../components/Profile/ProfileItemList';
@@ -16,6 +17,7 @@ function Profile({ user_id, friends, profile, onFriendClick, onAddressEdit }) {
 
   return (
     <div className="ProfileContainer">
+      <TopNavBarContainer />
       <UserImage {...profile} imageType="portrait" />
 
       <div className="profileName">
