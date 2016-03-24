@@ -71,7 +71,11 @@ function geoWatch() {
 
     if (!ride.match) return;
     let destination = ride.match.location;
-    if (ride.isPickedUp) destination = ride.match.destination;
+    if (ride.isPickedUp) {
+      let friendRider = user.friends.find((friend) => friend.user_id === ride.match.user_id);
+      destination = friendRider.address;
+    }
+
     if (ride.isCompleted) destination = user.profile.address;
 
     console.log('routing to:', destination);
