@@ -28,7 +28,8 @@ export default function(state = Map(), action) {
       return handleCancel(state, action);
     case 'REMOVE_RIDER':
     case 'ADD_RIDER':
-      return state.mergeIn(['riders'], handleRiders(state.get('riders'), action));
+      let newRiders = handleRiders(state.get('riders'), action);
+      return state.merge({ riders: newRiders.toJS() });
     case 'REQUEST_MESSAGES':
     case 'RECEIVE_MESSAGES':
     case 'REQUEST_MESSAGES_ERROR':
