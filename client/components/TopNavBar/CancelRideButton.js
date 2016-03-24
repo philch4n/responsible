@@ -8,8 +8,8 @@ export function CancelRideButton({
 }) {
   return (
     <div className='CancelRideButton' onClick={onCancel}>
-      <ButtonToolbar className="driveButton">
-              <Button bsStyle="primary" bsSize="small" block>Cancel</Button>
+      <ButtonToolbar className="rightButton">
+              <Button bsStyle="primary" block>Cancel</Button>
       </ButtonToolbar>
     </div>
   );

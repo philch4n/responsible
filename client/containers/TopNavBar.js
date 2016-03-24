@@ -21,14 +21,14 @@ function TopNavBar({ onCancel, onEndDriver, onPickUp, onComplete, onHomeClick, .
     cancelClick = onCancel.bind(null, props.user.user_id, null);
 
 return (
-  <Navbar inverse>
+  <Navbar>
     <Navbar.Header>
       <Navbar.Brand>
         <a href="#">Responsiblé</a>
       </Navbar.Brand>
       <Navbar.Toggle />
     </Navbar.Header>
-      <Nav pullRight>
+      <Nav pullRight className="rightButton">
         <TopNavBarRightButton
           {...props}
           onCancel={cancelClick}

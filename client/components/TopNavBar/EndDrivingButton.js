@@ -8,8 +8,8 @@ export function EndDrivingButton({
 }) {
   return (
     <div className='endDrivingButton' onClick={onEndDriver}>
-      <ButtonToolbar className="driveButton">
-              <Button bsStyle="primary" bsSize="small" block>End Driving</Button>
+      <ButtonToolbar className="rightButton">
+              <Button bsStyle="primary" block>End Driving</Button>
       </ButtonToolbar>
     </div>
   );
