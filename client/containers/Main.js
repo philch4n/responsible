@@ -7,7 +7,7 @@ import { MapView } from '../components/MapView';
 import { GithubButton } from '../models/Github';
 import { RiderItemList } from './RiderItemList';
 
-import { End } from '../components/end';
+import { End } from '../components/End';
 
 import * as userAction from '../actionCreators/user';
 import * as rideActions from '../actionCreators/ride';
