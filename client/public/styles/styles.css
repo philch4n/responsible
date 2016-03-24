@@ -1,12 +1,10 @@
-.map {
-  text-align: center;
+.mapDiv {
   padding: .1%;
-  height: 95vh;
+  height: 75vh;
 }
 
-.largeButton {
-  color: pink;
-  background-color: pink;
+.googleMap {
+  width: 100%;
 }
 
 .driveButton {
@@ -39,7 +37,6 @@
 }
 
 .duiFacts {
-  position: absolute;
   text-align: center;
   float: center;
   margin-left: auto;

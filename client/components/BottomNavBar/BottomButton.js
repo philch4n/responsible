@@ -13,7 +13,6 @@ export function BottomButton({ isWaitingForMatch, isConfirmed, isMatched,
     {
       !isWaitingForMatch && !isConfirmed ?
         <ConfirmLocationButton confirmLocation={confirmLocation} /> :
-
       isConfirmed && isWaitingForMatch ?
         <div className='WaitingClick'>
           <section>
