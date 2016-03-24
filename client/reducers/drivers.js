@@ -80,6 +80,7 @@ function matchRider(state, { entry }) {
   let updates = {
     isWaitingForMatch: false,
     isMatched: true,
+    isCompleted: false,
     match: entry.match,
     ride_id: entry.ride_id,
   };

@@ -40,7 +40,13 @@ function setPickedUp(state) {
 
 function setCompleteRide(state) {
   let updates = {
+    ride_id: null,
     isCompleted: true,
+    isPickedUp: false,
+    isMatched: false,
+    match: null,
+    messages: [],
+    directions: null,
   };
 
   return state.merge(updates);

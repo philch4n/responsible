@@ -77,8 +77,6 @@ function geoWatch() {
       else destination = friendRider.address;
     }
 
-    if (ride.isCompleted) destination = user.profile.address;
-
     console.log('routing to:', destination);
     DirectionsService.route({
       origin: nextLocation,
