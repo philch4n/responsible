@@ -1,4 +1,4 @@
-export function MessageItem({ user_id, id, text, time, }) {
+export function MessageItem({ client_id, user_id, id, text, time, }) {
   return (
     <div className="MessageInfoItem clear">
     {

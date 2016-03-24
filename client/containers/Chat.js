@@ -7,18 +7,19 @@ import { MessageItemList } from '../components/Chat/MessageItemList';
 
 import * as chatAction from '../actionCreators/chat';
 
-export function box({ match, friends, messages, addMessage }) {
+export function box({ user_id, match, friends, messages, addMessage }) {
 
   let friendPartner = friends.filter(function (friend) {
     return match.user_id === friend.user_id;
-  });
+  })[0];
+  console.log('friend were giving a ride to:', friendPartner);
 
   return (
     <div className='chatbox'>
       <DriverItem {...match} avatar={friendPartner.avatar} />
-      <MessageItemList user_id={user.user_id} messages={messages}/>
+      <MessageItemList user_id={user_id} messages={messages}/>
       <div className='textSubmit'>
-        <form onSubmit={addMessage(user.user_id, match.user_id)}>
+        <form onSubmit={addMessage(user_id, match.user_id)}>
           <input className="messageText ten columns" defaultValue='' id="message"></input>
           <input className="messageSubmit button" type="submit" />
         </form>

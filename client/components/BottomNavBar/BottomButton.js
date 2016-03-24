@@ -6,7 +6,7 @@ import { Chat } from '../../containers/Chat';
 import * as rideAction from '../../actionCreators/ride';
 
 export function BottomButton({ isWaitingForMatch, isConfirmed, isMatched,
-  match, messages, friends, confirmLocation, }) {
+  match, messages, user_id, friends, confirmLocation, }) {
 
   return (
     <div className="BottomNavBarRightButton">
@@ -26,7 +26,7 @@ export function BottomButton({ isWaitingForMatch, isConfirmed, isMatched,
           </div> :
 
           isMatched ?
-              <Chat match={match} friends={friends} messages={messages}/> :
+              <Chat user_id={user_id} match={match} friends={friends} messages={messages}/> :
             <h3>Uh oh. How did this happen?</h3>
     }
     </div>
