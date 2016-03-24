@@ -55,3 +55,6 @@ export function MapView({ isRider, isDriver, match, location, riders, directions
     </div>
   );
 };
+
+//get map to show current location ... this is stored in user.location
+// user.location
