@@ -1,4 +1,5 @@
 import { GithubButton } from '../models/Github';
+import { GoogleButton } from '../models/Google';
 
 function nullFn(e) { console.log('you clicked me ' + e.target.className); };
 
@@ -8,8 +9,7 @@ export function LoginContainer({ facebook=nullFn, google=nullFn, }) {
       <a className='button' onClick={facebook}>
         <i className='fa fa-facebook-official'/>&nbsp;Facebook</a>
       <GithubButton />
-      <a className='button' onClick={google}>
-        <i className='fa fa-google'/>&nbsp;Google</a>
+      <GoogleButton />
       </div>
   );
 }

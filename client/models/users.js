@@ -34,25 +34,25 @@ var currentUser = null;
 // //Github complete data list
 // //ID    alias    avatar    bio    company    email   location
 
-User.github = function (props) {
-  OAuth.popup('github', { cache: true }).done(function (githubToken) {
-    console.log('woo', githubToken);
-    githubToken.me().done(function (me) {
-      console.log('this is me!', me, 'this is github', github);
-      var user = {
-        username: me.alias,
-        name: me.name,
-        avatar: me.avatar,
-      };
-      var verifyBy = me.id;
+// User.github = function (props) {
+//   OAuth.popup('github', { cache: true }).done(function (githubToken) {
+//     console.log('woo', githubToken);
+//     githubToken.me().done(function (me) {
+//       console.log('this is me!', me, 'this is github', github);
+//       var user = {
+//         username: me.alias,
+//         name: me.name,
+//         avatar: me.avatar,
+//       };
+//       var verifyBy = me.id;
 
-      // dispatch userAction :( )
-      return user;
-    });
-  }).fail(function (err) {
-    console.log('error', err);
-  });
-};
+//       // dispatch userAction :( )
+//       return user;
+//     });
+//   }).fail(function (err) {
+//     console.log('error', err);
+//   });
+// };
 
 // User.github = function () {
 //   OAuth.popup('github').done(function (data) {
