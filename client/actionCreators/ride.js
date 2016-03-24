@@ -48,13 +48,16 @@ export function cancelRide({ user_id, ride_id }) {
 }
 
 export function pickUp(partner_id) {
-  return {
-    type: 'PICKED_UP',
+  return Object.assign(pickedUp(), {
     meta: {
+      event: 'picked_up',
       to: partner_id,
-      event: 'PICKED_UP',
     },
-  };
+  });
+}
+
+export function pickedUp() {
+  return { type: 'PICKED_UP' };
 }
 
 export function completeRide() {
