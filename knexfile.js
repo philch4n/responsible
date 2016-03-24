@@ -53,6 +53,8 @@ C. Creating Migrations
     Before running tests, make sure to enter 'creatdb test'
 */
 
+console.log('process env database url', process.env.DATABASE_URL);
+
 module.exports = {
   development: {
     client: 'postgresql',
@@ -85,6 +87,6 @@ module.exports = {
   },
   production: {
     client: 'postgresql',
-    connection: process.env.DATABASE_URL,
+    connection: "postgres://khzzzzjhhmakwi:PHYZqa0jDLVjCjtdfHOeZICieu@ec2-54-225-215-233.compute-1.amazonaws.com:5432/da4lh65i3s46rc",
   },
 };
