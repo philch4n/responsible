@@ -71,7 +71,7 @@ function receiveFriendInfo(state, { entry }) {
   let newFriend = {
     avatar: entry.avatar,
     name: entry.name,
-    id: entry.user_id,
+    user_id: entry.user_id,
   };
   old.push(newFriend);
   user.friends.push(newFriend);
