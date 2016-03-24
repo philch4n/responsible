@@ -6,7 +6,6 @@ import { SplashContainer } from './Splash';
 import { MapView } from '../components/MapView';
 import { GithubButton } from '../models/Github';
 import { RiderItemList } from './RiderItemList';
-import { CompleteRideButton } from '../components/TopNavBar/CompleteRideButton';
 
 import { End } from '../components/end';
 
@@ -19,7 +18,6 @@ function Main({
 }) {
   return (
     <div className="MainApp">
-      <CompleteRideButton/>
       <TopNavBarContainer />
       {
         !isDriver && !isRider ?
