@@ -4,6 +4,7 @@
   "description": "A safe driving app for friends",
   "main": "index.js",
   "scripts": {
+    "start": "node lib/schema.js && WEBPACK=dev-server webpack && node server/index.js",
     "test": "node lib/schema.js",
     "test-server": "./node_modules/.bin/mocha test/server --recursive --require test/test-helper.js",
     "test-client": "./node_modules/.bin/mocha test/client --compilers js:babel-core/register --colors --recursive --require test/test-helper.js",
@@ -45,9 +46,8 @@
     "sqlite3": "^3.1.1",
     "supertest": "^1.2.0",
     "supertest-as-promised": "^3.0.0",
-    "whatwg-fetch": "^0.11.0"
-  },
-  "devDependencies": {
+    "whatwg-fetch": "^0.11.0",
+    "webpack": "^1.12.14",
     "babel-core": "^6.6.5",
     "babel-loader": "^6.2.4",
     "babel-plugin-transform-object-rest-spread": "^6.6.5",
@@ -55,12 +55,14 @@
     "babel-preset-react": "^6.5.0",
     "css-loader": "^0.23.1",
     "expose-loader": "^0.7.1",
+    "react-hot-loader": "^1.3.0",
+    "style-loader": "^0.13.0"
+  },
+  "devDependencies": {
+    
     "grunt": "^0.4.5",
     "grunt-jscs": "^2.8.0",
     "mocha": "^2.4.5",
-    "react-hot-loader": "^1.3.0",
-    "style-loader": "^0.13.0",
-    "webpack": "^1.12.14",
     "webpack-dev-server": "^1.14.1"
   },
   "babel": {
@@ -81,5 +83,8 @@
   },
   "directories": {
     "test": "test"
+  },
+  "engines": {
+    "node": "4.3.0"
   }
 }
