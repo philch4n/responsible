@@ -44,7 +44,11 @@ export function configureListeners(socket) {
   // expects data: { match: { user_id, location }}
   socket.on('confirm_driver', function (data) {
     console.log("We've found a driver!", data);
-    dispatch(rideActions.matchRider(data));
+
+    let user = store.getState().get('user').toJS();
+    let friends = user.friends;
+    let user_id = user.user_id;
+    dispatch(rideActions.matchRider(user_id, friends, data));
   });
 
   socket.on('picked_up', function () {
