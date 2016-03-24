@@ -6,8 +6,8 @@ export function DriveButton({
 }) {
   return (
     <div className='DriveDiv' onClick={onDriveClick}>
-			<section className="hero is-medium is-warning is-bold">
-				<div className ='hero-content 1'>
+			<section>
+				<div>
 					<h1 className='title'>
 					Drive
 					</h1>

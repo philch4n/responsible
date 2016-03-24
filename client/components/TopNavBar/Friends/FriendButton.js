@@ -5,8 +5,8 @@ export function FriendButton({
 }) {
   return (
     <div className='FriendButton' onClick={onFriendButtonClick}>
-			<section className='hero is-primary is-outlined'>
-				<div className='hero-content 5'>
+			<section>
+				<div>
 					<h3 className='FriendButton'>
 					Friends
 					</h3>

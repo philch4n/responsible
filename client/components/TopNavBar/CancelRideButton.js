@@ -6,7 +6,7 @@ export function CancelRideButton({
 }) {
   return (
     <div className='CancelRideButton' onClick={onCancel}>
-      <a className='CancelRideButton button is-danger is-large'>Cancel</a>
+      <a className='CancelRideButton'>Cancel</a>
     </div>
   );
 }

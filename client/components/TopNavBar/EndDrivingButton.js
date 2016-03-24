@@ -6,7 +6,7 @@ export function EndDrivingButton({
 }) {
   return (
     <div className='endDrivingButton' onClick={onEndDriver}>
-      <a className='endDrivingButton button is-danger is-large'>Stop Driving</a>
+      <a className='endDrivingButton'>Stop Driving</a>
     </div>
   );
 }
