@@ -41,8 +41,7 @@ IO.init = function (server) {
     });
 
     socket.on('remove_rider', function (data) {
-      console.log('server telling drivers to remove riders:', data);
-      IO.io.emitTo(data.to, 'remove_rider', user_id);
+      IO.io.emitTo(data.to, 'remove_rider', data.entry);
     });
 
   });
