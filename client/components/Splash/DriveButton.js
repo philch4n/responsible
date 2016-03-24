@@ -10,7 +10,7 @@ export function DriveButton({
     <div className="well" onClick={onDriveClick}>
 			<section>
 				<div>
-          <ButtonToolbar>
+          <ButtonToolbar className="driveButton">
               <Button bsStyle="primary" bsSize="large" block>Drive</Button>
           </ButtonToolbar>
 				</div>
