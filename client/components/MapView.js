@@ -4,7 +4,8 @@ import { connect } from 'react-redux';
 
 // overlayMapTypes
 // MapTypes
-export function MapView({ match, location, riders, directions }) {
+export function MapView({ isRider, isDriver, match, location, riders, directions }) {
+
   return match ?
   (
     <div className='map'>
@@ -29,6 +30,10 @@ export function MapView({ match, location, riders, directions }) {
        containerElement={<div style={{ height: '70%' }} />}
        googleMapElement={
         <GoogleMap defaultZoom={14} defaultCenter={ location } >
+          <Marker
+            position={ location }
+            defaultAnimation={2}>
+          </Marker>
          {
           riders.map((rider) => {
             let riderMarker = {};
