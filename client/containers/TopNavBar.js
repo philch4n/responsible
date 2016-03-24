@@ -24,48 +24,24 @@ return (
   <Navbar>
     <Navbar.Header>
       <Navbar.Brand>
-        <a href="#">Responsiblé</a>
+        <a href="#" bsClass="navHeader" >Fleet</a>
       </Navbar.Brand>
-      <Navbar.Toggle />
     </Navbar.Header>
-      <Nav pullRight className="rightButton">
-        <TopNavBarRightButton
-          {...props}
-          onCancel={cancelClick}
-          onEndDriver={endDriver}
-          onPickUp={onPickUp}
-          onComplete={onComplete}
+    <Nav>
+      <NavItem eventKey={1} href="#"><SettingIcon {...props}/></NavItem>
+    </Nav>
+    <Nav pullRight>
+      <NavItem eventKey={1} href="#"> <TopNavBarRightButton
+        {...props}
+        onCancel={cancelClick}
+        onEndDriver={endDriver}
+        onPickUp={onPickUp}
+        onComplete={onComplete}
         />
-      </Nav>
+      </NavItem>
+    </Nav>
   </Navbar>
-);
-  // return (
-  //   <div className='TopNavBarContainer'>
-  //     <nav className='navbar'>
-  //       <div className='navbar-left'>
-  //         <div className='navbar-item'>
-  //           <SettingIcon {...props}/>
-  //         </div>
-  //       </div>
-  //       <div className='navbar-item'>
-  //         <Logo />
-  //       </div>
-  //       <div className='navbar-right'>
-  //         <div className='CarIcon'>
-  //           <i className='fa fa-car'>
-  //             <TopNavBarRightButton
-  //               {...props}
-  //               onCancel={cancelClick}
-  //               onEndDriver={endDriver}
-  //               onPickUp={onPickUp}
-  //               onComplete={onComplete}
-  //             />
-  //           </i>
-  //         </div>
-  //       </div>
-  //     </nav>
-  //   </div>
-  // );
+  );
 }
 
 const mapStateToProps = function (state) {
