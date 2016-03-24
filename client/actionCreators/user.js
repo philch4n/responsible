@@ -25,8 +25,12 @@ export function fetchUserInfo(props) {
       })
       .then(function () {
         var user = JSON.parse(localStorage.getItem('user'));
-        (!user.user.address) ? dispatch(push('/profile'))
-        : dispatch(push('/'));
+        if (!user.user.address) {
+          dispatch(changingAddress);
+          dispatch(push('/profile'));
+        } else {
+          dispatch(push('/'));
+        }
       })
       .catch((error) => dispatch(requestUserInfoError(error)));
   };
@@ -67,6 +71,9 @@ export function changeAddress(user_id, newAddress) {
     })
       .then(checkStatus)
       .then(() => {
+        var user = JSON.parse(localStorage.getItem('user'));
+        user.user.address = newAddress;
+        dispatch(receiveUserInfo(user));
         dispatch(push('/'));
         dispatch(changeAddressSuccess(newAddress));
       })
@@ -138,7 +145,7 @@ export function setLocation(location, match) {
   return action;
 }
 
-function changingAddress() {
+export function changingAddress() {
   return { type: 'CHANGING_ADDRESS' };
 }
 
