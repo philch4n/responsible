@@ -1,4 +1,3 @@
-
 export function handleRideRouting(state, action) {
   switch (action.type) {
     case 'SET_MATCH_LOCATION':
