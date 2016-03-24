@@ -4,7 +4,6 @@ import { push } from 'react-router-redux';
 import { SettingIcon } from '../components/TopNavBar/Settings/SettingIcon';
 import { Logo } from '../components/TopNavBar/Logo';
 import { TopNavBarRightButton } from '../components/TopNavBar/RightButton';
-import { HomeButton } from '../components/TopNavBar/HomeButton';
 
 import * as userAction from '../actionCreators/user';
 import * as rideAction from '../actionCreators/ride';
@@ -25,11 +24,6 @@ function TopNavBar({ onCancel, onEndDriver, onPickUp, onComplete, onHomeClick, .
         <div className='navbar-left'>
           <div className='navbar-item'>
             <SettingIcon {...props}/>
-          </div>
-        </div>
-        <div className='navbar-left'>
-          <div className='navbar-item'>
-            <HomeButton onHomeClick={onHomeClick} />
           </div>
         </div>
         <div className='navbar-item'>
