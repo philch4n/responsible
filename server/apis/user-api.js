@@ -23,7 +23,6 @@ UserAPI.post('/', function (req, res) {
   }
 */
 UserAPI.post('/tmp', function (req, res) {
-  console.log('in user api', req.body);
   var user = req.body.user;
 
   // verify the users exists by which property of the OAuth object?
