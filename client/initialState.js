@@ -56,12 +56,7 @@ export default {
     ride_id: 3,
     match: null,
     directions: null,
-    riders: [
-      {
-        user_id: 2,
-        location: { lat: 30.2705365, lng: -97.7362387 },
-      },
-      ],
+    riders: [],
     messages: [
       { id: 5, time: '12:30', text: 'Where are you?', },
       { id: 7, time: '12:42', text: 'On my way. Where you at?', },
