@@ -22,7 +22,7 @@ routes.get('/', function (req, res) {
 
 routes.get('/app-bundle.js', function (req, res) {
   console.log('fetching app-bundle.js');
-  res.sendFile(__dirname + 'dist/app-bundle.js');
+  res.sendFile(__dirname + '../../dist/app-bundle.js');
 });
 
 //Example test route for test
