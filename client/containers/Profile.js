@@ -25,15 +25,16 @@ function Profile({ user_id, friends, profile, onFriendClick, onAddressEdit,
         {
           isChangingAddress || !profile.address ?
           <form onSubmit={onAddressEdit(user_id)}>
-            <input className="addressForm" defaultValue={profile.address} id="address"></input>
+            <input className="addressForm is-primary" defaultValue={profile.address}
+              id="address"></input>
             <br />
-            <input className="addressSubmit button" type="submit" />
+            <input className="addressSubmit button is-primary" type="submit" />
           </form>
           :
           <div>
             <span className="profileAddress"> {profile.address}</span>
             <br />
-            <button className="editAddress" onClick={editAddress}>Edit Address</button>
+            <button className="editAddress is-primary" onClick={editAddress}>Edit Address</button>
           </div>
         }
       </div>
