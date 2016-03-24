@@ -143,8 +143,16 @@ export function setDirections(directions) {
   return { type: 'SET_DIRECTIONS', entry: directions };
 }
 
-export function matchRider(driver) {
-  return { type: 'MATCH_RIDER', entry: driver };
+export function matchRider(user_id, friends, driver) {
+  return {
+    type: 'MATCH_RIDER',
+    entry: driver,
+    meta: {
+      to: friends,
+      event: 'remove_rider',
+      entry: user_id,
+    },
+  };
 }
 
 export function pickUp(partner_id) {
