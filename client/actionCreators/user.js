@@ -23,8 +23,9 @@ export function fetchUserInfo(props) {
         dispatch(receiveUserInfo(info));
         return info;
       })
-      .then(function (user) {
-        (!user.profile) ? dispatch(push('/profile'))
+      .then(function () {
+        var user = JSON.parse(localStorage.getItem('user'));
+        (!user.user.address) ? dispatch(push('/profile'))
         : dispatch(push('/'));
       })
       .catch((error) => dispatch(requestUserInfoError(error)));
