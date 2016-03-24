@@ -13,9 +13,10 @@ function TopNavBar({ onCancel, onEndDriver, onPickUp, onComplete, onHomeClick, .
   let endDriver = onEndDriver.bind(null, props.user.user_id);
 
   let cancelClick;
-  if (props.ride.match)
+  if (props.ride.match) {
     cancelClick = onCancel.bind(null, props.ride.match.user_id, props.ride.ride_id);
-  else
+    onPickUp = onPickUp.bind(null, props.ride.match.user_id);
+  } else
     cancelClick = onCancel.bind(null, props.user.user_id, null);
 
   return (
@@ -70,8 +71,8 @@ const mapDispatchToProps = function (dispatch) {
     onEndDriver(user_id) {
       dispatch(driveAction.deleteDriver(user_id))
     },
-    onPickUp() {
-      dispatch(rideAction.pickUp())
+    onPickUp(partner_id) {
+      dispatch(rideAction.pickUp(partner_id))
     },
     onComplete() {
       dispatch(rideAction.completeRide())

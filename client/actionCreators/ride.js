@@ -47,8 +47,14 @@ export function cancelRide({ user_id, ride_id }) {
   };
 }
 
-export function pickUp() {
-  return { type: 'PICKED_UP', };
+export function pickUp(partner_id) {
+  return {
+    type: 'PICKED_UP',
+    meta: {
+      to: partner_id,
+      event: 'PICKED_UP',
+    },
+  };
 }
 
 export function completeRide() {
