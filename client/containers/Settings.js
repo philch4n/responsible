@@ -2,6 +2,7 @@ import React from 'react';
 import { connect } from 'react-redux';
 import { push } from 'react-router-redux';
 
+import { TopNavBarContainer } from './TopNavBar';
 import { ProfileButton } from '../components/Profile/ProfileButton';
 import { FriendButton } from '../components/TopNavBar/Friends/FriendButton';
 import { SignoutButton } from '../components/SignoutButton';
@@ -13,6 +14,7 @@ function nullFn(e) { console.log('you clicked me ' + e.target.className); };
 function Settings({ onProfileButtonClick, onFriendButtonClick, onSignoutButtonClick, }) {
   return (
     <div>
+      <TopNavBarContainer />
       <ProfileButton onProfileButtonClick={onProfileButtonClick}/>
       <FriendButton onFriendButtonClick={onFriendButtonClick}/>
       <SignoutButton onSignoutButtonClick={onSignoutButtonClick}/>

@@ -3,6 +3,7 @@ import { curry } from 'ramda';
 
 import * as userAction from '../actionCreators/user';
 
+import { TopNavBarContainer } from './TopNavBar';
 import { FriendItemList } from '../components/TopNavBar/Friends/FriendItemList';
 
 function nullFn(e) { console.log('you clicked me ' + e.target.className); };
@@ -10,6 +11,7 @@ function nullFn(e) { console.log('you clicked me ' + e.target.className); };
 function List({ friends, addFriend, user_id }) {
   return (
     <div className="friendList">
+      <TopNavBarContainer />
       <FriendItemList friends={friends}/>
       <form onSubmit={addFriend(user_id)}>
         <input className="friendText ten columns" defaultValue='' id="message"></input>

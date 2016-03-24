@@ -12,6 +12,8 @@ export function TopNavBarRightButton({
   return (
     <div className="topNavBarRightButton">
     {
+      !isDriver && !isRider ?
+      <div /> :
       isRider ?
         <CancelRideButton {...onClicks} /> :
         isDriver && !isMatched ?
@@ -23,3 +25,4 @@ export function TopNavBarRightButton({
     </div>
   );
 }
+

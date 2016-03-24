@@ -9,7 +9,7 @@ import * as userAction from '../actionCreators/user';
 import * as rideAction from '../actionCreators/ride';
 import * as driveAction from '../actionCreators/drive';
 
-function TopNavBar({ onCancel, onEndDriver, onPickUp, onComplete, ...props }) {
+function TopNavBar({ onCancel, onEndDriver, onPickUp, onComplete, onHomeClick, ...props }) {
   let endDriver = onEndDriver.bind(null, props.user.user_id);
 
   let cancelClick;
@@ -75,6 +75,9 @@ const mapDispatchToProps = function (dispatch) {
     },
     onComplete() {
       dispatch(rideAction.completeRide())
+    },
+    onHomeClick() {
+      dispatch(push('/'));
     }
   };
 };
