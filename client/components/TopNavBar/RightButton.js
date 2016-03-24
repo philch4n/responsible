@@ -3,50 +3,23 @@ import { EndDrivingButton } from './EndDrivingButton';
 import { PickUpButton } from './PickUpButton';
 import { CompleteRideButton } from './CompleteRideButton';
 
-// export function TopNavBarRightButton({ isRider, isDriver, isMatched,
-//   isWaitingForMatch, onProfileButtonClick, onCancelRideButtonClick, }) {
 export function TopNavBarRightButton({
   user: { isRider, isDriver },
   ride: { isMatched, isWaitingForMatch, isPickedUp, isComplete },
   ...onClicks,
 }) {
-  if (isRider || (isDriver && isMatched)) {
-    return (
+
+  return (
     <div className="topNavBarRightButton">
-      {
-        isMatched || isWaitingForMatch ?
-          <CancelRideButton {...onClicks} /> :
-          <div />
-      }
-    </div>
-    );
-  } else if (isDriver && !isMatched) {
-    return (
-    <div className="topNavBarRightButton">
-      {
-          <EndDrivingButton {...onClicks} />
-      }
-    </div>
-    );
-  } else if (!isPickedUp) {
-    return (
-      <div className="topNavBarRightButton">
-      {
+    {
+      isRider ?
+        <CancelRideButton {...onClicks} /> :
+        isDriver && !isMatched ?
+          <EndDrivingButton {...onClicks} /> :
           !isPickedUp ?
             <PickUpButton {...onClicks} /> :
-            <span>We've been picked up</span>
-      }
-      </div>
-      );
-  } else {
-    return (
-      <div className="topNavBarRightButton">
-      {
-          !isComplete ?
-            <CompleteRideButton {...onClicks} /> :
-            <span>Ride Complete!</span>
-      }
-      </div>
-      );
-  }
+            <CompleteRideButton {...onClicks} />
+    }
+    </div>
+  );
 }

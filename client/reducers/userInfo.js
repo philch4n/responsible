@@ -28,7 +28,7 @@ function receiveUserInfo(state, { entry }) {
   let userUpdates = {
     user_id: entry.user.user_id,
     isLoggedIn: true,
-    isFetchinguserInfo: false,
+    isFetchingUserInfo: false,
     friends: entry.friends,
   };
 
