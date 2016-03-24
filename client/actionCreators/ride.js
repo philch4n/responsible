@@ -47,24 +47,6 @@ export function cancelRide({ user_id, ride_id }) {
   };
 }
 
-export function pickUp(partner_id) {
-  return Object.assign(pickedUp(), {
-    meta: {
-      event: 'picked_up',
-      to: partner_id,
-    },
-  });
-}
-
-export function pickedUp() {
-  return { type: 'PICKED_UP' };
-}
-
-export function completeRide() {
-  return {
-    type: 'COMPLETE_RIDE',
-  };
-}
 
 /**
  *  As a driver, accepts a ride by the rider's Id and passes our current
@@ -163,4 +145,33 @@ export function setDirections(directions) {
 
 export function matchRider(driver) {
   return { type: 'MATCH_RIDER', entry: driver };
+}
+
+export function pickUp(partner_id) {
+  return Object.assign(pickedUp(), {
+    meta: {
+      event: 'picked_up',
+      to: partner_id,
+    },
+  });
+}
+
+export function pickedUp() {
+  return { type: 'PICKED_UP' };
+}
+
+export function completeRide(partner_id) {
+  return {
+    type: 'COMPLETE_RIDE',
+    meta: {
+      event: 'dropped_off',
+      to: partner_id,
+    },
+  };
+}
+
+export function droppedOff() {
+  return {
+    type: 'DROPPED_OFF',
+  };
 }

@@ -47,9 +47,14 @@ export function configureListeners(socket) {
     dispatch(rideActions.matchRider(data));
   });
 
-  socket.on('picked_up', function() {
+  socket.on('picked_up', function () {
     console.log("We've been picked up!");
     dispatch(rideActions.pickedUp());
+  });
+
+  socket.on('dropped_off', function () {
+    console.log("We've been dropped off!");
+    dispatch(rideActions.droppedOff());
   });
 
   // dev only: so that we can use the not-logged-in initial state user

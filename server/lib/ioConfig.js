@@ -35,6 +35,10 @@ IO.init = function (server) {
     socket.on('picked_up', function (data) {
       socket.broadcast.to(data.to).emit('picked_up', {});
     });
+
+    socket.on('dropped_off', function(data) {
+      socket.broadcast.to(data.to).emit('dropped_off', {});
+    })
   });
 
   IO.io.emitTo = function (roomArray, event, payload) {

@@ -40,7 +40,7 @@ function setPickedUp(state) {
 
 function setCompleteRide(state) {
   let updates = {
-    isComplete: true,
+    isCompleted: true,
   };
 
   return state.merge(updates);
