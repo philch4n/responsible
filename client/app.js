@@ -73,7 +73,8 @@ function geoWatch() {
     let destination = ride.match.location;
     if (ride.isPickedUp) {
       let friendRider = user.friends.find((friend) => friend.user_id === ride.match.user_id);
-      destination = friendRider.address;
+      if (user.isRider) destination = user.profile.address;
+      else destination = friendRider.address;
     }
 
     if (ride.isCompleted) destination = user.profile.address;
