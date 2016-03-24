@@ -19,8 +19,14 @@ export function fetchUserInfo(props) {
     })
       .then(checkStatus)
       .then(json)
-      .then((info) => dispatch(receiveUserInfo(info)))
-      .then(() => dispatch(push('/')))
+      .then(function (info) {
+        dispatch(receiveUserInfo(info));
+        return info;
+      })
+      .then(function (user) {
+        (!user.profile) ? dispatch(push('/profile'))
+        : dispatch(push('/'));
+      })
       .catch((error) => dispatch(requestUserInfoError(error)));
   };
 };
