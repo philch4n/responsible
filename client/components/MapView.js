@@ -56,3 +56,8 @@ export function MapView({ isRider, isDriver, match, location, riders, directions
   );
 };
 
+<<<<<<< 6590a19511f25125873a89ca7f2f8037871a5b0d
+=======
+//get map to show current location ... this is stored in user.location
+// user.location
+>>>>>>> (fix) merge conflicts
