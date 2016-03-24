@@ -55,7 +55,6 @@ export function pickUp() {
 }
 
 export function completeRide() {
-  console.log('RIDE COMPLETE!');
   return {
     type: 'COMPLETE_RIDE',
   };
