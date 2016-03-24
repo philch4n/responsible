@@ -67,7 +67,7 @@ User.findFriends = function (userId) {
       return friends;
     })
     .then(function (friends) {
-      return db('users').select('*')
+      return db('users').select('user_id', 'name', 'avatar')
         .whereIn('user_id', friends);
     });
 };
