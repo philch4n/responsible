@@ -8,31 +8,7 @@ nav.navbar {
 	background-color: white;
 }
 
-div.DriveDiv {
-	margin: 50px;
-}
-
-div.RideDiv {
-	margin: 50px;
-}
-
-div.ProfileButtonDiv {
-	margin: 50px;
-}
-
-div.FriendButton {
-	margin: 50px;
-}
-
-div.SignoutButton {
-	margin: 50px;
-}
-
-h1.column.is-half.is-offset-quarter {
-	font-size: 35px;
-	text-align: center;
-}
-
-h2 {
-	margin: 50px;
+.largeButton {
+  color: pink;
+  background-color: pink;
 }

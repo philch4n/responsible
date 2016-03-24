@@ -1,3 +1,6 @@
+import { Button, ButtonToolbar } from 'react-bootstrap';
+
+const wellStyles = {maxWidth: 400, margin: '0 auto 10px'};
 /* This function will dispatch an action to change to Driver mode */
 function nullFn(e) { console.log('you clicked me ' + e.target.className); };
 
@@ -5,12 +8,12 @@ export function DriveButton({
   onDriveClick = nullFn,
 }) {
   return (
-    <div className='DriveDiv' onClick={onDriveClick}>
+    <div className="well" style={wellStyles} onClick={onDriveClick}>
 			<section>
 				<div>
-					<h1 className='title'>
-					Drive
-					</h1>
+          <ButtonToolbar>
+              <Button bsStyle="primary" bsSize="large" block>Drive</Button>
+          </ButtonToolbar>
 				</div>
       </section>
     </div>
