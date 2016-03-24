@@ -4,7 +4,7 @@
   "description": "A safe driving app for friends",
   "main": "index.js",
   "scripts": {
-    "prestart": "node lib/schema.js",
+    "prestart": "postgres -D db/",
     "start": "node server/index.js",
     "test": "node lib/schema.js",
     "test-server": "./node_modules/.bin/mocha test/server --recursive --require test/test-helper.js",
