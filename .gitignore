@@ -5,7 +5,7 @@ node_modules/
 npm-debug.log
 
 ## ignore webpack-built files
-#dist/app-bundle.js
+## dist/app-bundle.js
 
 ## ignore db files
 db/
