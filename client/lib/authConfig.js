@@ -5,7 +5,8 @@ import * as userAction from '../actionCreators/user';
 
 export const authMiddleware = store => next => action => {
   var github = OAuth.create('github');
-  if (!github.access_token) {
+  var google = OAuth.create('google');
+  if (!github.access_token && !google.access_token) {
     if ((action.payload && action.payload.args && action.payload.args[0] === '/login') ||
       (action.payload && action.payload.pathname === '/login')) {
       next(action);
