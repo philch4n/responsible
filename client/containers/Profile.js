@@ -23,7 +23,7 @@ function Profile({ user_id, friends, profile, onFriendClick, onAddressEdit,
       <div className="profileAddress">
         Home Address
         {
-          isChangingAddress ?
+          isChangingAddress || !profile.address ?
           <form onSubmit={onAddressEdit(user_id)}>
             <input className="addressForm" defaultValue={profile.address} id="address"></input>
             <br />
