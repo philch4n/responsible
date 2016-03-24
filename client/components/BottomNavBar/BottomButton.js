@@ -19,14 +19,14 @@ export function BottomButton({ isWaitingForMatch, isConfirmed, isMatched,
             <section className='hero is-success'>
               <div className='hero-content4'>
                 <h2 className='button is-success is-loading'>
-                Waiting for a match
+                  Waiting for a match
                 </h2>
               </div>
             </section>
           </div> :
 
           isMatched ?
-              <Chat user_id={user_id} match={match} friends={friends} messages={messages}/> :
+            <Chat user_id={user_id} match={match} friends={friends} messages={messages}/> :
             <h3>Uh oh. How did this happen?</h3>
     }
     </div>

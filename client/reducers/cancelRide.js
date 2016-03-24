@@ -16,8 +16,11 @@ function cancelRide(state, action) {
     isConfirmed: false,
     isMatched: false,
     isWaitingForMatch: false,
+    isCancelling: false,
     match: null,
   };
+
+  console.log('cancel ride next state:', state.merge(updates).toJS());
 
   return state.merge(updates);
 }

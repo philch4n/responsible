@@ -14,11 +14,11 @@ export function TopNavBarRightButton({
     {
       isRider ?
         <CancelRideButton {...onClicks} /> :
-          isDriver && !isMatched ?
-            <EndDrivingButton {...onClicks} /> :
-              !isPickedUp ?
-                <PickUpButton {...onClicks} /> :
-                <CompleteRideButton {...onClicks} />
+        isDriver && !isMatched ?
+          <EndDrivingButton {...onClicks} /> :
+          !isPickedUp ?
+            <PickUpButton {...onClicks} /> :
+            <CompleteRideButton {...onClicks} />
     }
     </div>
   );

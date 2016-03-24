@@ -24,6 +24,7 @@ export default function (state = Map(), action) {
       return signout(state, action);
     case 'SET_LOCATION':
       return setLocation(state, action);
+    case 'CANCEL_RIDE':
     case 'REMOVE_DRIVER':
       return removeRiderAndDriver(state, action);
   };

@@ -48,10 +48,7 @@ export function cancelRide({ user_id, ride_id }) {
 }
 
 export function pickUp() {
-  console.log('PICKED UP RIDER!');
-  return {
-    type: 'PICKED_UP',
-  };
+  return { type: 'PICKED_UP', };
 }
 
 export function completeRide() {
