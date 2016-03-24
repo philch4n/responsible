@@ -35,18 +35,22 @@ export function MapView({ isRider, isDriver, match, location, riders, directions
             defaultAnimation={2}>
           </Marker>
          {
-          riders.map((rider) => {
-            let riderMarker = {};
-            riderMarker.position = rider.location;
-            riderMarker.showInfo = 'Rider_' + rider.user_id;
-            return (
-              <Marker
-                position={riderMarker.position}
-                defaultAnimation={1}>
-                <InfoWindow content={riderMarker.showInfo}/>
-              </Marker>
-            );
-          })
+          isRider ?
+            riders.map((rider) => {
+              let riderMarker = {};
+              riderMarker.position = rider.location;
+              riderMarker.showInfo = 'Rider_' + rider.user_id;
+
+              return (
+                <Marker
+                  position={riderMarker.position}
+                  defaultAnimation={1}>
+                  <InfoWindow content={riderMarker.showInfo}/>
+                </Marker>
+              );
+            })
+            :
+            <div />
         };
          </GoogleMap>
        }
