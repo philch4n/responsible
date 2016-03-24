@@ -1,7 +1,11 @@
+import { Button, ButtonToolbar } from 'react-bootstrap';
+
 export function CompleteRideButton({ onComplete }) {
   return (
     <div className='completeRideButton' onClick={onComplete}>
-      <a className='completeRideButton button is-danger is-large'>Ride Completed</a>
+      <ButtonToolbar className="driveButton">
+              <Button bsStyle="primary" bsSize="small" block>Ride Complete</Button>
+      </ButtonToolbar>
     </div>
   );
 }

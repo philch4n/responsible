@@ -1,3 +1,5 @@
+import { Button, ButtonToolbar } from 'react-bootstrap';
+
 // This function will dispatch action to change to Settings View
 function nullFn(e) { console.log('you clicked me ' + e.target.className); };
 
@@ -6,7 +8,9 @@ export function EndDrivingButton({
 }) {
   return (
     <div className='endDrivingButton' onClick={onEndDriver}>
-      <a className='endDrivingButton'>Stop Driving</a>
+      <ButtonToolbar className="driveButton">
+              <Button bsStyle="primary" bsSize="small" block>End Driving</Button>
+      </ButtonToolbar>
     </div>
   );
 }
