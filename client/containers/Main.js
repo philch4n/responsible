@@ -26,6 +26,8 @@ function Main({
             location={location}
             riders={riders}
             directions={directions}
+            isDriver={isDriver}
+            isRider={isRider}
           />
       }
       {
