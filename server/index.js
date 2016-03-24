@@ -16,11 +16,13 @@ routes.use(express.static(assetFolder));
 
 var appBundle = Path.resolve(__dirname, '../dist');
 routes.get('/', function (req, res) {
+  console.log('fetching index.html');
   res.sendFile(appBundle + '/index.html');
 });
 
 routes.get('/app-bundle.js', function (req, res) {
-  res.sendFile(appBundle + '/app-bundle.js');
+  console.log('fetching app-bundle.js');
+  res.sendFile('dist/app-bundle.js');
 });
 
 //Example test route for test
