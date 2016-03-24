@@ -71,7 +71,10 @@ function geoWatch() {
 
     if (!ride.match) return;
     let destination = ride.match.location;
+    if (ride.isPickedUp) destination = ride.match.destination;
+    if (ride.isCompleted) destination = user.profile.address;
 
+    console.log('routing to:', destination);
     DirectionsService.route({
       origin: nextLocation,
       destination: destination,
