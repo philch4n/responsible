@@ -12,3 +12,9 @@ nav.navbar {
   color: pink;
   background-color: pink;
 }
+
+.well {
+  max-width: 400;
+  margin: '0 auto 10px';
+}
+
