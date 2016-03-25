@@ -22,27 +22,27 @@ function TopNavBar({ onCancel, onEndDriver, onPickUp, onComplete, onHomeClick, .
   } else
     cancelClick = onCancel.bind(null, props.user.user_id, null);
 
-return (
-  <Navbar>
-    <Navbar.Header>
-      <Navbar.Brand>
-        <a href="#" bsClass="navHeader" >Fleet</a>
-      </Navbar.Brand>
-    </Navbar.Header>
-    <Nav>
-      <NavItem eventKey={1} href="#"><SettingIcon {...props}/></NavItem>
-    </Nav>
-    <Nav pullRight>
-      <NavItem eventKey={1} href="#"> <TopNavBarRightButton
-        {...props}
-        onCancel={cancelClick}
-        onEndDriver={endDriver}
-        onPickUp={onPickUp}
-        onComplete={onComplete}
-        />
-      </NavItem>
-    </Nav>
-  </Navbar>
+  return (
+    <Navbar>
+      <Navbar.Header>
+        <Navbar.Brand>
+          <a href="#" bsClass="navHeader" >Fleet</a>
+        </Navbar.Brand>
+      </Navbar.Header>
+      <Nav>
+        <NavItem eventKey={1} href="#"><SettingIcon {...props}/></NavItem>
+      </Nav>
+      <Nav pullRight>
+        <NavItem eventKey={1} href="#"> <TopNavBarRightButton
+          {...props}
+          onCancel={cancelClick}
+          onEndDriver={endDriver}
+          onPickUp={onPickUp}
+          onComplete={onComplete}
+          />
+        </NavItem>
+      </Nav>
+    </Navbar>
   );
 }
 
