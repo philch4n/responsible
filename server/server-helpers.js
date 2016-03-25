@@ -9,7 +9,7 @@ global.reportError = R.curry(function (description, error) {
   if (error instanceof Error) throw error;
 });
 
-global.sendStatus = R.curry(function (response, status) {
+global.sendStatus = R.curry(function (response, status, _) {
   response.sendStatus(status);
 });
 

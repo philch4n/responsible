@@ -20,8 +20,6 @@ function cancelRide(state, action) {
     match: null,
   };
 
-  console.log('cancel ride next state:', state.merge(updates).toJS());
-
   return state.merge(updates);
 }
 

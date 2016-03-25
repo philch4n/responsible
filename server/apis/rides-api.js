@@ -99,16 +99,16 @@ RideAPI.post('/riders', function (req, res) {
   var attrs = req.body;
   var rider = null;
   var _location = req.body.location;
+  var responded = false;
 
   var riderToInsert = {
     foreign_rider: req.body.userId,
     location: req.body.location,
   };
 
-  Ride.createRider(riderToInsert)
-    .then(function (newRider) {
-      return User.findUserById(newRider[0].foreign_rider);
-    })
+  Ride.getRiderById(req.body.userId)
+    .then((rider) => rider ? rider : Ride.createRider(riderToInsert))
+    .then((newRider) => User.findUserById(newRider.foreign_rider))
     .then(function (user) {
       rider = {
         user_id: user.user_id,
@@ -121,8 +121,8 @@ RideAPI.post('/riders', function (req, res) {
       io.emitTo(friendDrivers, 'add_rider', rider);
       return rider;
     })
-    .catch(sendStatusAndError(res, 500, 'error emiting new rider'))
-    .then(sendStatus(res, 202));
+    .then(sendStatus(res, 202))
+    .catch(sendStatusAndError(res, 500, 'error emiting new rider'));
 });
 
 /*
@@ -132,7 +132,10 @@ RideAPI.post('/riders', function (req, res) {
 // Post Driver
 RideAPI.post('/drivers', function (req, res) {
   var attrs = req.body;
-  Ride.createDriver(attrs)
+  var responded = false;
+
+  Ride.getDriverById(req.body.userId)
+    .then((driver) => driver ? driver : Ride.createDriver(attrs))
     .then((driver) => Friends.getFriendRiders(driver.foreign_driver))
     .then(sendStatusAndData(res, 201))
     .catch(sendStatusAndError(res, 500, 'error creating driver'));

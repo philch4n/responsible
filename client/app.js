@@ -60,8 +60,8 @@ function geoWatch() {
     };
 
     //!!! Removed for testing of socket new_location events!
-    if (false && user.location && !haveMoved(user.location, nextLocation, 2e-7)) {
-      return;
+    if (false && user.location && !haveMoved(user.location, nextLocation, 2e-8)) {
+      // do nothing
     } else {
       if (!ride.match)
         store.dispatch(userActions.setLocation(nextLocation));
@@ -73,10 +73,12 @@ function geoWatch() {
     let destination = ride.match.location;
     if (ride.isPickedUp) {
       let friendRider = user.friends.find((friend) => friend.user_id === ride.match.user_id);
+
       if (user.isRider) destination = user.profile.address;
       else destination = friendRider.address;
     }
 
+    // console.log('routing to:', destination);
     DirectionsService.route({
       origin: nextLocation,
       destination: destination,
@@ -95,3 +97,9 @@ function haveMoved(curLocation, nextLocation, tol) {
   else
     return false;
 }
+
+/*
+  I (Jonathan) found this for running actions when the tab is closed.
+  We would also need to do this on refresh
+*/
+window.onbeforeunload = function() { /* do things here */ };

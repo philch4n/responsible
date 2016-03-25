@@ -4,11 +4,11 @@ export const headers = {
 };
 
 export function json(response) {
-  return response.json()
+  return response.json();
 }
 
 export function checkStatus(response) {
-  if (response.status >= 200 && response.status < 300) {
+  if (response.status === 418 || (response.status >= 200 && response.status < 300)) {
     return response;
   } else {
     var error = new Error(response.statusText);

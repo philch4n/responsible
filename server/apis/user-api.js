@@ -51,6 +51,7 @@ UserAPI.post('/friends', function (request, response) {
 
   Friends.findAndAddFriend(user_id, searchString)
     .then((friend) => {
+      // Just start the async call, we don't have to continue the chain.
       User.findUserById(user_id)
         .then((requestingUser) => io.to(friend.user_id).emit('new_friend', requestingUser));
 

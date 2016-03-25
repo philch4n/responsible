@@ -1,11 +1,17 @@
 import React from 'react';
-import { GoogleMapLoader, GoogleMap, Marker, DirectionsRenderer, InfoWindow } from 'react-google-maps';
+import {
+  GoogleMapLoader,
+  GoogleMap,
+  Marker,
+  DirectionsRenderer,
+  InfoWindow
+} from 'react-google-maps';
 import { connect } from 'react-redux';
 
 // overlayMapTypes
 // MapTypes
 export function MapView({ isRider, isDriver, match, location,
-  friends, riders, directions }) {
+  friends, riders, directions, }) {
 
   let mapOptions = {
     disableDefaultUI: true,
