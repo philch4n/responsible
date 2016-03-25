@@ -24,8 +24,8 @@ User.findUserById = function (userId) {
 
 User.findUserIdByName = function (searchString) {
   return db('users').select('user_id')
-    .where({ username: searchString })
-    .orWhere({ name: searchString })
+    .whereRaw('username ILIKE ?', searchString)
+    .orWhereRaw('name ILIKE ?', searchString)
     .then(first)
     .catch(reportError('Error finding user_id by name and searchString:' + searchString));
 };
