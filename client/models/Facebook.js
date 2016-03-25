@@ -30,7 +30,7 @@ const mapDispatchToProps = function (dispatch) {
           facebookToken.me()
             .done(function (me) {
               user = {
-                username: me.alias,
+                // username: me.alias,
                 name: me.name,
                 avatar: me.avatar,
                 OAuthVerify: me.id,
