@@ -1,6 +1,6 @@
 export function handleRideFetch(state, action) {
 
-  console.log('fetchRide state:', state.toJS());
+  // console.log('fetchRide state:', state.toJS());
   switch (action.type) {
     case 'REQUEST_RIDE':
       return requestRide(state, action);
