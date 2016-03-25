@@ -1,7 +1,6 @@
 import { connect } from 'react-redux';
 import { push } from 'react-router-redux';
-import { Nav, Navbar, NavDropdown, NavItem, MenuItem } from 'react-bootstrap'
-
+import { Nav, Navbar, NavDropdown, NavItem, MenuItem } from 'react-bootstrap';
 
 import { SettingIcon } from '../components/TopNavBar/Settings/SettingIcon';
 import { Logo } from '../components/TopNavBar/Logo';
@@ -22,27 +21,27 @@ function TopNavBar({ onCancel, onEndDriver, onPickUp, onComplete, onHomeClick, .
   } else
     cancelClick = onCancel.bind(null, props.user.user_id, null);
 
-return (
-  <Navbar>
-    <Navbar.Header>
-      <Navbar.Brand>
-        <a href="#" bsClass="navHeader" >Fleet</a>
-      </Navbar.Brand>
-    </Navbar.Header>
-    <Nav>
-      <NavItem eventKey={1} href="#"><SettingIcon {...props}/></NavItem>
-    </Nav>
-    <Nav pullRight>
-      <NavItem eventKey={1} href="#"> <TopNavBarRightButton
-        {...props}
-        onCancel={cancelClick}
-        onEndDriver={endDriver}
-        onPickUp={onPickUp}
-        onComplete={onComplete}
-        />
-      </NavItem>
-    </Nav>
-  </Navbar>
+  return (
+    <Navbar>
+      <Navbar.Header>
+        <Navbar.Brand>
+          <a href="#" bsClass="navHeader" >Fleet</a>
+        </Navbar.Brand>
+      </Navbar.Header>
+      <Nav>
+        <NavItem eventKey={1} href="#"><SettingIcon {...props}/></NavItem>
+      </Nav>
+      <Nav pullRight>
+        <NavItem eventKey={1} href="#"> <TopNavBarRightButton
+          {...props}
+          onCancel={cancelClick}
+          onEndDriver={endDriver}
+          onPickUp={onPickUp}
+          onComplete={onComplete}
+          />
+        </NavItem>
+      </Nav>
+    </Navbar>
   );
 }
 
