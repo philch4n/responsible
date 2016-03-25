@@ -13,7 +13,7 @@ function nullFn(e) { console.log('you clicked me ' + e.target.className); };
 
 function Settings({ onProfileButtonClick, onFriendButtonClick, onSignoutButtonClick, }) {
   return (
-    <div>
+    <div className="settingsDiv">
       <TopNavBarContainer />
       <ProfileButton onProfileButtonClick={onProfileButtonClick}/>
       <FriendButton onFriendButtonClick={onFriendButtonClick}/>

@@ -1,18 +1,19 @@
 import { connect } from 'react-redux';
 import { push } from 'react-router-redux';
+import { Button, ButtonToolbar } from 'react-bootstrap';
 
 import * as userAction from '../actionCreators/user';
 
 function nullFn(e) { console.log('you clicked me ' + e.target.className); };
 
-function Button({ onSignoutButtonClick }) {
+function SignOutButton({ onSignoutButtonClick }) {
   return (
-    <div className='SignoutButton' onClick={onSignoutButtonClick}>
+    <div className="settingsDiv" onClick={onSignoutButtonClick}>
       <section>
         <div>
-          <h3 className='SignoutButton'>
-          Signout!
-          </h3>
+          <ButtonToolbar className="settingsButton">
+           <Button bsStyle="primary" block>Sign Out</Button>
+          </ButtonToolbar>`
         </div>
       </section>
     </div>
@@ -38,4 +39,4 @@ const mapDispatchToProps = function (dispatch) {
 export const SignoutButton = connect(
   mapStateToProps,
   mapDispatchToProps
-)(Button);
+)(SignOutButton);
