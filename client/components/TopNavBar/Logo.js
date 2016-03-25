@@ -5,8 +5,8 @@ export function Logo({
   onLogoButtonClick = nullFn,
 }) {
   return (
-			<div className='columns is-mobile'>
-				<h1 className='column is-half is-offset-quarter'>Responsiblé</h1>
+			<div>
+				<h1>Responsiblé</h1>
       </div>
   );
 };

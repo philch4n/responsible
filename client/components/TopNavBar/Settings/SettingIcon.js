@@ -6,7 +6,7 @@ export function SettingIcon({
 }) {
   return (
     <div className='SettingIcon' onClick={onSettingsButtonClick}>
-      <i className='fa fa-bars button is-large is-outlined'></i>
+      <i className='fa fa-bars settingsButton'></i>
     </div>
   );
 }

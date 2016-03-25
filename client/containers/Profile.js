@@ -16,12 +16,12 @@ function Profile({ user_id, friends, profile, onFriendClick, onAddressEdit,
       <UserImage {...profile} imageType="portrait" />
 
       <div className="profileName">
-        Name
-        <span className="profileItem"> {profile.name}</span>
+        <h1>Name: </h1>
+        <span className="profileItem">{profile.name}</span>
       </div>
 
       <div className="profileAddress">
-        Home Address
+        <h1>Home Address:</h1>
         {
           isChangingAddress || !profile.address ?
           <form onSubmit={onAddressEdit(user_id)}>

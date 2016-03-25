@@ -8,8 +8,8 @@ function nullFn(e) { console.log('you clicked me ' + e.target.className); };
 function Button({ onSignoutButtonClick }) {
   return (
     <div className='SignoutButton' onClick={onSignoutButtonClick}>
-      <section className='hero is-primary is-outlined'>
-        <div className='hero-content 5'>
+      <section>
+        <div>
           <h3 className='SignoutButton'>
           Signout!
           </h3>

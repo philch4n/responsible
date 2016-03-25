@@ -1,3 +1,5 @@
+import { Button, ButtonToolbar } from 'react-bootstrap';
+
 /* This function will dispatch an action to change to Driver mode */
 function nullFn(e) { console.log('you clicked me ' + e.target.className); };
 
@@ -5,12 +7,12 @@ export function DriveButton({
   onDriveClick = nullFn,
 }) {
   return (
-    <div className='DriveDiv' onClick={onDriveClick}>
-			<section className="hero is-medium is-warning is-bold">
-				<div className ='hero-content 1'>
-					<h1 className='title'>
-					Drive
-					</h1>
+    <div className="well" onClick={onDriveClick}>
+			<section>
+				<div>
+          <ButtonToolbar className="driveButton">
+              <Button bsStyle="primary" bsSize="large" block>Drive</Button>
+          </ButtonToolbar>
 				</div>
       </section>
     </div>

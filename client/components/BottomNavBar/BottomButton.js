@@ -13,21 +13,19 @@ export function BottomButton({ isWaitingForMatch, isConfirmed, isMatched,
     {
       !isWaitingForMatch && !isConfirmed ?
         <ConfirmLocationButton confirmLocation={confirmLocation} /> :
-
-        isConfirmed && isWaitingForMatch ?
-          <div className='WaitingForMatch'>
-            <section className='hero is-success'>
-              <div className='hero-content4'>
-                <h2 className='button is-success is-loading'>
-                  Waiting for a match
-                </h2>
-              </div>
-            </section>
-          </div> :
-
-          isMatched ?
-            <Chat user_id={user_id} match={match} friends={friends} messages={messages}/> :
-            <h3>Uh oh. How did this happen?</h3>
+      isConfirmed && isWaitingForMatch ?
+        <div className='WaitingClick'>
+          <section>
+            <div>
+              <h2>
+              Waiting for a match
+              </h2>
+            </div>
+          </section>
+        </div> :
+      isMatched ?
+          <Chat match={match}  id={user.user_id} messages={messages}/> :
+        <h3>Uh oh. How did this happen?</h3>
     }
     </div>
   );

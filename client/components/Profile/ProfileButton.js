@@ -8,9 +8,9 @@ export function ProfileButton({
 }) {
   return (
     <div className='ProfileButtonDiv' onClick={onProfileButtonClick}>
-			<section className='hero is-primary is-outlined'>
-				<div className='hero-content 5'>
-					<h3 className='ProfileButton'>
+			<section>
+				<div>
+					<h3>
 					Profile
 					</h3>
 				</div>
