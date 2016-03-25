@@ -1,8 +1,9 @@
 import { List, fromJS } from 'immutable';
+import { uniqBy, prop } from 'ramda';
 
 export function handleRiders(state = List(), action) {
 
-  console.log('reducing riders:', state.toJS());
+  // console.log('reducing riders:', state.toJS());
   switch (action.type) {
     case 'ADD_RIDER':
       return addRider(state, action);
@@ -14,20 +15,20 @@ export function handleRiders(state = List(), action) {
 }
 
 // adds a rider or array of riders to the state riders list.
-function addRider(state, action) {
-  let nextState = null;
+function addRider(_state, { entry }) {
+  let state = _state.toJS();
 
-  if (Array.isArray(action.entry))
-    nextState = state.push(...action.entry);
-  else
-    nextState = state.push(action.entry);
+  if (!Array.isArray(entry)) entry = [entry];
 
-  return nextState;
+  state.push(...entry);
+  let nextState = uniqBy(prop('user_id'), state);
+
+  return fromJS(nextState);
 };
 
-function removeRider(state, action) {
+function removeRider(state, { entry }) {
   let oldRiders = state.toJS();
-  let newRiders = oldRiders.filter((rider) => rider.user_id !== action.entry);
+  let newRiders = oldRiders.filter((rider) => rider.user_id !== entry);
 
   return fromJS(newRiders);
 }
