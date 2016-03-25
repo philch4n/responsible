@@ -99,15 +99,24 @@ RideAPI.post('/riders', function (req, res) {
   var attrs = req.body;
   var rider = null;
   var _location = req.body.location;
+  var responded = false;
 
   var riderToInsert = {
     foreign_rider: req.body.userId,
     location: req.body.location,
   };
 
-  Ride.createRider(riderToInsert)
+  Ride.getRiderById(req.body.userId)
+    .then(function (rider) {
+      if (rider) {
+        sendStatusAndError(res, 418, 'Client is already riding',
+          new Error('Client is already riding'));
+        responded = true;
+      } else
+        return Ride.createRider(riderToInsert);
+    })
     .then(function (newRider) {
-      return User.findUserById(newRider[0].foreign_rider);
+      return User.findUserById(newRider.foreign_rider);
     })
     .then(function (user) {
       rider = {
@@ -121,8 +130,11 @@ RideAPI.post('/riders', function (req, res) {
       io.emitTo(friendDrivers, 'add_rider', rider);
       return rider;
     })
-    .catch(sendStatusAndError(res, 500, 'error emiting new rider'))
-    .then(sendStatus(res, 202));
+    .then(sendStatus(res, 202))
+    .catch(function (error) {
+      if (!responded)
+        sendStatusAndError(res, 500, 'error emiting new rider', error);
+    });
 });
 
 /*

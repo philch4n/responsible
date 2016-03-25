@@ -95,3 +95,9 @@ function haveMoved(curLocation, nextLocation, tol) {
   else
     return false;
 }
+
+/*
+  I (Jonathan) found this for running actions when the tab is closed.
+  We would also need to do this on refresh
+*/
+window.onbeforeunload = function() { /* do things here */ };
