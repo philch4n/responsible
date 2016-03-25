@@ -15,7 +15,7 @@ export function BottomButton({ isWaitingForMatch, isConfirmed, isMatched,
         <ConfirmLocationButton confirmLocation={confirmLocation} /> :
 
       isConfirmed && isWaitingForMatch ?
-        <div className='WaitingClick' onClick={onWaitingClick}>
+        <div className='WaitingClick'>
           <section>
             <div>
               <h2>
