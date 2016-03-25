@@ -110,7 +110,7 @@ function requestUserInfoError(error) {
   return { type: 'REQUEST_USER_INFO_ERROR', entry: error };
 }
 
-function receiveFriendInfo(info) {
+export function receiveFriendInfo(info) {
   return { type: 'RECEIVE_FRIEND_INFO', entry: info };
 }
 

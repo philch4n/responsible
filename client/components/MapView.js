@@ -2,11 +2,14 @@ import React from 'react';
 import { GoogleMapLoader, GoogleMap, Marker, DirectionsRenderer, InfoWindow } from 'react-google-maps';
 import { connect } from 'react-redux';
 
-let mapOptions = {
-  disableDefaultUI: true,
-};
+// overlayMapTypes
+// MapTypes
+export function MapView({ isRider, isDriver, match, location,
+  friends, riders, directions }) {
 
-export function MapView({ isRider, isDriver, match, location, riders, directions }) {
+  let mapOptions = {
+    disableDefaultUI: true,
+  };
 
   return match ?
   (
@@ -38,27 +41,29 @@ export function MapView({ isRider, isDriver, match, location, riders, directions
         defaultZoom={14} defaultCenter={ location } >
           <Marker
             position={ location }
-            defaultAnimation={2}>
-          </Marker>
-         {
-          isRider ?
-            riders.map((rider) => {
-              let riderMarker = {};
-              riderMarker.position = rider.location;
-              riderMarker.showInfo = 'Rider_' + rider.user_id;
+            icon={ { path: google.maps.SymbolPath.CIRCLE, scale: 4 } }
+          />
+          {
+            isDriver ?
+              riders.map((rider) => {
+                let friendRider = friends.find((friend) => friend.user_id === rider.user_id);
+                let riderMarker = {
+                  position: rider.location,
+                  showInfo: friendRider.name,
+                };
 
-              return (
-                <Marker
-                  position={riderMarker.position}
-                  defaultAnimation={1}>
-                  <InfoWindow content={riderMarker.showInfo}/>
-                </Marker>
-              );
-            })
-            :
-            <div />
-        };
-         </GoogleMap>
+                return (
+                  <Marker
+                    position={ riderMarker.position }
+                    defaultAnimation={2}>
+                    <InfoWindow content={riderMarker.showInfo}/>
+                  </Marker>
+                );
+              })
+              :
+              <div />
+          };
+        </GoogleMap>
        }
      />
     </div>
