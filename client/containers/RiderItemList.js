@@ -1,6 +1,6 @@
 import { connect } from 'react-redux';
 import { curry } from 'ramda';
-import { Grid, Row, Col, Thumbnail } from 'react-bootstrap'
+import { Grid, Row} from 'react-bootstrap'
 
 import * as rideAction from '../actionCreators/ride';
 

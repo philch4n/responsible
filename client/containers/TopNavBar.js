@@ -22,7 +22,7 @@ function TopNavBar({ onCancel, onEndDriver, onPickUp, onComplete, onHomeClick, .
     cancelClick = onCancel.bind(null, props.user.user_id, null);
 
   return (
-    <Navbar>
+    <Navbar className="nav">
       <Navbar.Header className="mainHeader">
         <Navbar.Brand className="mainTitle">
           <a href="/" onClick={onHomeClick} bsClass="navHeader" >Fleet</a>
