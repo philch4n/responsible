@@ -22,9 +22,16 @@ export function BottomButton({ isWaitingForMatch, isConfirmed, isMatched,
               </h2>
             </div>
           </section>
-        </div> :
+        </div>
+        :
       isMatched ?
-          <Chat match={match}  id={user.user_id} messages={messages}/> :
+        <Chat
+          user_id={user_id}
+          match={match}
+          friends={friends}
+          messages={messages}
+        />
+        :
         <h3>Uh oh. How did this happen?</h3>
     }
     </div>

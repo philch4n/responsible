@@ -67,12 +67,16 @@ function requestUserInfoError(state, { entry }) {
 function receiveFriendInfo(state, { entry }) {
   let old = state.toJS().friends;
   let user = JSON.parse(localStorage.getItem('user'));
+
+  console.log('received a new user:', entry);
   let newFriend = {
     avatar: entry.avatar,
     name: entry.name,
     user_id: entry.user_id,
+    address: entry.address,
   };
   old.push(newFriend);
+  console.log('new friends list:', old);
   user.friends.push(newFriend);
 
   localStorage.setItem('user', JSON.stringify(user));
