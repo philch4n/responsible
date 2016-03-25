@@ -10,7 +10,7 @@ import { FriendItemList } from '../components/TopNavBar/Friends/FriendItemList';
 function nullFn(e) { console.log('you clicked me ' + e.target.className); };
 
 function List({ friends, addFriend, user_id, requestUserError, resetError }) {
-  if (requestUserError) {setTimeout(function () {resetError();}, 2000);}
+  if (requestUserError) {setTimeout(function () {resetError();}, 5000);}
 
   return (
     <div className="friendList">
