@@ -39,7 +39,6 @@ export function MapView({ isRider, isDriver, match, location, riders, directions
             let riderMarker = {};
             riderMarker.position = rider.location;
             riderMarker.showInfo = 'Rider_' + rider.user_id;
-
             return (
               <Marker
                 position={riderMarker.position}
