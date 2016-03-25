@@ -11,6 +11,8 @@ function nullFn(e) { console.log('you clicked me ' + e.target.className); };
 export function List({ ride, user, onRiderClick, }) {
   let _riders = [];
 
+  console.log('driver state ride:', ride);
+
   ride.riders.forEach(function (rider) {
     user.friends.forEach(function (friend) {
       if (friend.user_id === rider.user_id) {
