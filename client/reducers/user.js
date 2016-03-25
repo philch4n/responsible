@@ -27,6 +27,8 @@ export default function (state = Map(), action) {
     case 'CANCEL_RIDE':
     case 'REMOVE_DRIVER':
       return removeRiderAndDriver(state, action);
+    case 'DROPPED_OFF':
+      return droppedOff(state, action);
   };
 
   return state;
@@ -63,7 +65,7 @@ function signout(state, { entry }) {
   let updates = {
     isDriver: false,
     isRider: false,
-    id: null,
+    user_id: null,
     profile: null,
     friends: [],
   };
@@ -78,3 +80,12 @@ function setLocation(state, { entry }) {
 
   return state.merge(updates);
 };
+
+function droppedOff(state, action) {
+  let updates = {
+    isDriver: false,
+    isRider: false,
+  };
+
+  return state.merge(updates);
+}
