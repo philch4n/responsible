@@ -46,6 +46,8 @@ import * as rideActions from './actionCreators/ride';
 
 const DirectionsService = new google.maps.DirectionsService();
 
+window.geoWatch = geoWatch;
+
 geoWatch();
 setInterval(geoWatch, 6000);
 function geoWatch() {
