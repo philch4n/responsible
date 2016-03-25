@@ -42,10 +42,9 @@ export function MapView({ isRider, isDriver, match, location,
           <Marker
             position={ location }
             icon={ { path: google.maps.SymbolPath.CIRCLE, scale: 4 } }
-            defaultAnimation={2}>
-          </Marker>
+          />
           {
-            isRider ?
+            isDriver ?
               riders.map((rider) => {
                 let friendRider = friends.find((friend) => friend.user_id === rider.user_id);
                 let riderMarker = {
@@ -56,7 +55,7 @@ export function MapView({ isRider, isDriver, match, location,
                 return (
                   <Marker
                     position={ riderMarker.position }
-                    defaultAnimation={1}>
+                    defaultAnimation={2}>
                     <InfoWindow content={riderMarker.showInfo}/>
                   </Marker>
                 );
