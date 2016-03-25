@@ -24,8 +24,8 @@ User.findUserById = function (userId) {
 
 User.findUserIdByName = function (searchString) {
   return db('users').select('user_id')
-    .where({ username: searchString })
-    .orWhere({ name: searchString })
+    .whereRaw('username ILIKE ?', searchString)
+    .orWhereRaw('name ILIKE ?', searchString)
     .then(first)
     .catch(reportError('Error finding user_id by name and searchString:' + searchString));
 };
@@ -114,9 +114,15 @@ User.createOrUpdateUser = function (verifyBy, attrs) {
     .catch(reportError('ERROR doing something creating/updating user. investigate'));
 };
 
+function LetterCapitalize(str) {
+  return str.split(' ').map(function (word, i) {
+    return word[0].toUpperCase() + word.substr(1);
+  }).join(' ');
+}
+
 User.createUser = function (attrs) {
-  if (attrs.name) attrs.name = attrs.name.toLowerCase();
-  if (attrs.username) attrs.username = attrs.username.toLowerCase();
+  if (attrs.name) attrs.name = LetterCapitalize(attrs.name);
+  if (attrs.username) attrs.username = LetterCapitalize(attrs.username);
 
   return db('users')
     .insert(attrs, ['user_id', 'name', 'username', 'email', 'avatar', 'address'])
@@ -126,8 +132,8 @@ User.createUser = function (attrs) {
 
 // username should probably just be name
 User.updateUser = function (userId, attrs) {
-  if (attrs.name) attrs.name = attrs.name.toLowerCase();
-  if (attrs.username) attrs.username = attrs.username.toLowerCase();
+  if (attrs.name) attrs.name = LetterCapitalize(attrs.name);
+  if (attrs.username) attrs.username = LetterCapitalize(attrs.username);
 
   return db('users')
     .where({ user_id: userId })
