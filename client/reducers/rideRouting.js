@@ -1,4 +1,3 @@
-
 export function handleRideRouting(state, action) {
   switch (action.type) {
     case 'SET_MATCH_LOCATION':
@@ -7,6 +6,8 @@ export function handleRideRouting(state, action) {
       return setDirections(state, action);
     case 'PICKED_UP':
       return setPickedUp(state, action);
+    case 'DROPPED_OFF':
+      return setDroppedOff(state, action);
     case 'COMPLETE_RIDE':
       return setCompleteRide(state, action);
   }
@@ -40,7 +41,27 @@ function setPickedUp(state) {
 
 function setCompleteRide(state) {
   let updates = {
-    isComplete: true,
+    ride_id: null,
+    isCompleted: true,
+    isPickedUp: false,
+    isMatched: false,
+    match: null,
+    messages: [],
+    directions: null,
+  };
+
+  return state.merge(updates);
+}
+
+function setDroppedOff(state) {
+  let updates = {
+    ride_id: null,
+    isCompleted: true,
+    isPickedUp: false,
+    isMatched: false,
+    match: null,
+    messages: [],
+    directions: null,
   };
 
   return state.merge(updates);

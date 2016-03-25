@@ -1,8 +1,10 @@
 import { store } from './storeConfig';
-const dispatch = store.dispatch;
+import { prop } from 'ramda';
 
 import * as chatActions from '../actionCreators/chat';
 import * as rideActions from '../actionCreators/ride';
+
+const dispatch = store.dispatch;
 
 /**
  *  Handle socket configuration and messaging.
@@ -32,7 +34,7 @@ export function configureListeners(socket) {
   // Event listened to by drivers - alerts them when a user no longer needs a ride.
   socket.on('remove_rider', function (data) {
     console.log('received socket event to remove rider:', data);
-    dispatch(rideActions.removeRider(data.user_id));
+    dispatch(rideActions.removeRider(data));
   });
 
   // received on a partner emitting an updated location
@@ -44,7 +46,21 @@ export function configureListeners(socket) {
   // expects data: { match: { user_id, location }}
   socket.on('confirm_driver', function (data) {
     console.log("We've found a driver!", data);
-    dispatch(rideActions.matchRider(data));
+
+    let user = store.getState().get('user').toJS();
+    let friendIds = user.friends.map(prop('user_id'));
+    let user_id = user.user_id;
+    dispatch(rideActions.matchRider(user_id, friendIds, data));
+  });
+
+  socket.on('picked_up', function () {
+    console.log("We've been picked up!");
+    dispatch(rideActions.pickedUp());
+  });
+
+  socket.on('dropped_off', function () {
+    console.log("We've been dropped off!");
+    dispatch(rideActions.droppedOff());
   });
 
   // dev only: so that we can use the not-logged-in initial state user

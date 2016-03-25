@@ -1,4 +1,4 @@
-import { List } from 'immutable';
+import { List, fromJS } from 'immutable';
 
 export function handleRiders(state = List(), action) {
 
@@ -15,7 +15,6 @@ export function handleRiders(state = List(), action) {
 
 // adds a rider or array of riders to the state riders list.
 function addRider(state, action) {
-  console.log('adding ride. Check state - have not verified this works');
   let nextState = null;
 
   if (Array.isArray(action.entry))
@@ -23,13 +22,12 @@ function addRider(state, action) {
   else
     nextState = state.push(action.entry);
 
-  console.log('next riders state:', nextState.toJS());
   return nextState;
 };
 
 function removeRider(state, action) {
   let oldRiders = state.toJS();
-  let newRiders = oldRiders.filter((rider) => rider.userId !== action.entry);
+  let newRiders = oldRiders.filter((rider) => rider.user_id !== action.entry);
 
-  return newRiders;
+  return fromJS(newRiders);
 }

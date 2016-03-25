@@ -13,8 +13,6 @@ export function handleConfirm(state, action) {
 
 // entry: { ride_id, match: { user_id, location }}
 function acceptRideSuccess(state, { entry }) {
-  console.log('***confirmRide Reducer *** ride confirmed:', entry);
-
   let updates = {
     isMatched: true,
     ride_id: entry.ride_id,

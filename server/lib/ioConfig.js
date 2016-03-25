@@ -22,15 +22,28 @@ IO.init = function (server) {
     // first listener!
     socket.on('new_message', function (data) {
       console.log('broadcasting message to:', data.to);
-      socket.broadcast.to(data.to).emit('new_message', data.entry);
+      socket.to(data.to).emit('new_message', data.entry);
     });
 
     /*
       data: { to (partner to share with), entry: { lat, lng }}
     */
     socket.on('new_location', function (data) {
-      socket.broadcast.to(data.to).emit('new_location', data.entry);
+      socket.to(data.to).emit('new_location', data.entry);
     });
+
+    socket.on('picked_up', function (data) {
+      socket.to(data.to).emit('picked_up', {});
+    });
+
+    socket.on('dropped_off', function (data) {
+      socket.to(data.to).emit('dropped_off', {});
+    });
+
+    socket.on('remove_rider', function (data) {
+      IO.io.emitTo(data.to, 'remove_rider', data.entry);
+    });
+
   });
 
   IO.io.emitTo = function (roomArray, event, payload) {

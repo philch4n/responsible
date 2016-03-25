@@ -9,11 +9,7 @@ import * as chatAction from '../actionCreators/chat';
 
 export function box({ user_id, match, friends, messages, addMessage }) {
 
-  let friendPartner = friends.filter(function (friend) {
-    return match.user_id === friend.user_id;
-  })[0];
-
-  console.log('friend were giving a ride to:', friendPartner);
+  let friendPartner = friends.find((friend) => match.user_id === friend.user_id);
 
   return (
     <div className='chatbox'>
