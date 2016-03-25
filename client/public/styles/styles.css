@@ -1,10 +1,19 @@
-.mapDiv {
+div.map {
   padding: .1%;
-  height: 75vh;
+  height: 95vh;
+  max-height: 500px;
 }
 
 .googleMap {
-  width: 100%;
+  max-height: 500px;
+  max-width: 500px;
+  height: 70%;
+  width: 70%;
+}
+
+.largeButton {
+  color: pink;
+  background-color: pink;
 }
 
 .driveButton {
