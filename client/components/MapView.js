@@ -2,17 +2,21 @@ import React from 'react';
 import { GoogleMapLoader, GoogleMap, Marker, DirectionsRenderer, InfoWindow } from 'react-google-maps';
 import { connect } from 'react-redux';
 
-// overlayMapTypes
-// MapTypes
+let mapOptions = {
+  disableDefaultUI: true,
+};
+
 export function MapView({ isRider, isDriver, match, location, riders, directions }) {
 
   return match ?
   (
     <div className='map'>
       <GoogleMapLoader
-        containerElement={ <div style={ { height: '70%' } } /> }
+        containerElement={ <div style={{ height: '70%' }} /> }
         googleMapElement={
-          <GoogleMap defaultZoom={14} defaultCenter={ location } >
+          <GoogleMap
+          options={ mapOptions }
+          defaultZoom={14} defaultCenter={ location } >
             {
               directions ?
                 <DirectionsRenderer directions={ directions } /> :
@@ -29,7 +33,9 @@ export function MapView({ isRider, isDriver, match, location, riders, directions
     <GoogleMapLoader
        containerElement={<div style={{ height: '70%' }} />}
        googleMapElement={
-        <GoogleMap defaultZoom={14} defaultCenter={ location } >
+        <GoogleMap
+        options={ mapOptions }
+        defaultZoom={14} defaultCenter={ location } >
           <Marker
             position={ location }
             defaultAnimation={2}>
