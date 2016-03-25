@@ -1,6 +1,8 @@
 require('../server-helpers');
 var UserAPI = require('express').Router();
 
+var io = require('../lib/ioConfig').io;
+
 var Ride = require(__models + '/rides');
 var User = require(__models + '/user');
 var Friends = require(__models + '/friends');
@@ -48,6 +50,12 @@ UserAPI.post('/friends', function (request, response) {
   var user_id = request.body.user_id;
 
   Friends.findAndAddFriend(user_id, searchString)
+    .then((friend) => {
+      User.findUserById(user_id)
+        .then((requestingUser) => io.to(friend.user_id).emit('new_friend', requestingUser));
+
+      return friend;
+    })
     .then(sendStatusAndData(response, 201))
     .catch(sendStatusAndError(response, 500, 'Server error creating friendship'));
 });

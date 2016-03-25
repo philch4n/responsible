@@ -3,6 +3,7 @@ import { prop } from 'ramda';
 
 import * as chatActions from '../actionCreators/chat';
 import * as rideActions from '../actionCreators/ride';
+import * as userActions from '../actionCreators/user';
 
 const dispatch = store.dispatch;
 
@@ -21,6 +22,11 @@ export function configureListeners(socket) {
   socket.on('add_rider', function (data) {
     console.log('received a new friend rider!', data);
     dispatch(rideActions.addRider(data));
+  });
+
+  socket.on('new_friend', function (data) {
+    console.log('Someone likes us!', data);
+    dispatch(userActions.receiveFriendInfo(data));
   });
 
   // Note: does not actually remove rider BUT SHOULD
