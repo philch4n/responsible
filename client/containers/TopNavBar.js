@@ -23,8 +23,8 @@ function TopNavBar({ onCancel, onEndDriver, onPickUp, onComplete, onHomeClick, .
 
   return (
     <Navbar>
-      <Navbar.Header>
-        <Navbar.Brand>
+      <Navbar.Header className="mainHeader">
+        <Navbar.Brand className="mainTitle">
           <a href="#" bsClass="navHeader" >Fleet</a>
         </Navbar.Brand>
       </Navbar.Header>

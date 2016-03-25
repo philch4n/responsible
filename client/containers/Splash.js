@@ -4,6 +4,7 @@ import { DriveButton } from '../components/Splash/DriveButton';
 import { RideButton } from '../components/Splash/RideButton';
 import * as userAction from '../actionCreators/user';
 import * as driverAction from '../actionCreators/drive';
+import { End } from '../components/End';
 
 function Splash(props) {
   let onDriveClick = props.onDriveClick.bind(null, props.user.user_id, props.user.location);
@@ -12,6 +13,7 @@ function Splash(props) {
     <div className='splash'>
       <DriveButton onDriveClick={onDriveClick}/>
       <RideButton {...props} />
+      <End />
     </div>
   );
 }

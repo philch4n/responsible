@@ -5,7 +5,7 @@ function nullFn(e) { console.log('you clicked me ' + e.target.className); };
 export function FriendItemList({ friends, onFriendClick=nullFn }) {
   return (
     <div className="friendList">
-    <h1>Your Friends!</h1>
+    <h3>Your Friends!</h3>
       {
         friends.map(function (friend) {
           return <FriendItem
