@@ -87,6 +87,7 @@ module.exports = {
   },
   production: {
     client: 'postgresql',
-    connection: "postgres://khzzzzjhhmakwi:PHYZqa0jDLVjCjtdfHOeZICieu@ec2-54-225-215-233.compute-1.amazonaws.com:5432/da4lh65i3s46rc",
+    connection: 'postgres://khzzzzjhhmakwi:PHYZqa0jDLVjCjtdfHOeZICieu@ec2-54-225-'
+    + '215-233.compute-1.amazonaws.com:5432/da4lh65i3s46rc',
   },
 };
