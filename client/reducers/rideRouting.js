@@ -36,6 +36,7 @@ function setPickedUp(state) {
     isPickedUp: true,
   };
 
+  window.geoWatch();
   return state.merge(updates);
 }
 
