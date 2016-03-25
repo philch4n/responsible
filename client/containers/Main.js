@@ -13,7 +13,7 @@ import * as userAction from '../actionCreators/user';
 import * as rideActions from '../actionCreators/ride';
 
 function Main({
-  user: { isLoggedIn, location, profile, isDriver, isRider, },
+  user: { isLoggedIn, location, profile, isDriver, isRider, friends },
   ride: { riders, isMatched, match, directions, },
 }) {
   return (
@@ -24,6 +24,7 @@ function Main({
           <SplashContainer /> :
           <MapView match={match}
             location={location}
+            friends={friends}
             riders={riders}
             directions={directions}
             isDriver={isDriver}
