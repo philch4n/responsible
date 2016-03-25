@@ -6,6 +6,7 @@ import { TopNavBarContainer } from './TopNavBar';
 import { FriendItemList } from '../components/TopNavBar/Friends/FriendItemList';
 import { UserImage } from '../components/UserImage';
 import { ProfileItemList } from '../components/Profile/ProfileItemList';
+import { Alert } from 'react-bootstrap';
 import * as userAction from '../actionCreators/user';
 
 function Profile({ user_id, friends, profile, onFriendClick, onAddressEdit,
@@ -13,8 +14,14 @@ function Profile({ user_id, friends, profile, onFriendClick, onAddressEdit,
   return (
     <div className="ProfileContainer">
       <TopNavBarContainer />
+      {
+        !profile.address ?
+        <Alert bsStyle="warning"dismissAfter={5000}>
+        <h4>Please add your address</h4>
+        </Alert>
+        : <div />
+      }
       <UserImage {...profile} imageType="portrait" />
-
       <div className="profileName">
         <h1>Name: </h1>
         <span className="profileItem">{profile.name}</span>
