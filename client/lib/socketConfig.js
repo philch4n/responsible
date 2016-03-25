@@ -2,7 +2,12 @@
  *  This is the socket object the client uses to listen to and
  *  emit socket events! Import it whenever you need it
 **/
-export const socket = io.connect('whispering-mountain-79295.herokuapp.com:' + process.env.PORT, {
+
+const connectionString = process.env.NODE_ENV === 'production' ?
+  `whispering-mountain-79295.herokuapp.com:${process.env.PORT}` :
+  'http://localhost:1337';
+
+export const socket = io.connect(connectionString, {
   reconnectionAttempts: 3,
 });
 
