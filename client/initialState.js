@@ -15,6 +15,7 @@ export default {
     isFetchingUserState: false,
     isChangingAddress: false,
     changeAddressError: false,
+    requestUserError: false,
     friends: [
       {
         user_id: 2,

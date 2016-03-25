@@ -70,7 +70,7 @@ Friends.findAndAddFriend = function (user_id, searchString) {
     })
     .catch(function (error) {
       console.log('error adding friends:', error.message);
-      return {};
+      return { error: error.message };
     });
 };
 

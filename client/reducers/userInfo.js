@@ -57,7 +57,6 @@ function receiveUserInfo(state, { entry }) {
 }
 
 function requestUserInfoError(state, { entry }) {
-  console.log('in request user info error reducer');
   let updates = {
     requestUserError: entry,
   };

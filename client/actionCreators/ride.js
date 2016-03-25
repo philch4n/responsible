@@ -100,7 +100,7 @@ function receiveRideId(rideId) {
   return { type: 'RECEIVE_RIDE_ID', entry: rideId, };
 }
 
-function requestRideError(error) {
+export function requestRideError(error) {
   console.error('uh oh, error requesting ride');
   return { type: 'REQUEST_RIDE_ERROR', entry: error, };
 }
