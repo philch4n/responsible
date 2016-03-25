@@ -1,5 +1,6 @@
 import { connect } from 'react-redux';
 import { curry } from 'ramda';
+import { Grid, Row} from 'react-bootstrap'
 
 import * as rideAction from '../actionCreators/ride';
 
@@ -23,17 +24,20 @@ export function List({ ride, user, onRiderClick, }) {
   });
 
   return (
-    <div className="riderList">
-    <h1>Friends Waiting for Rides!</h1>
-      {
-        _riders.map(function (friendRider) {
-          return (<RiderItem
-            key={friendRider.user_id}
-            onRiderItemClick={onRiderClick.bind(null, user, friendRider)}
-            {...friendRider}
-          />);
-        })
-      }
+    <div>
+      <Grid>
+        <Row>
+          {
+            _riders.map(function (friendRider) {
+              return (<RiderItem
+                key={friendRider.user_id}
+                onRiderItemClick={onRiderClick.bind(null, user, friendRider)}
+                {...friendRider}
+              />);
+            })
+          }
+        </Row>
+      </Grid>
     </div>
   );
 };

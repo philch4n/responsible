@@ -13,11 +13,11 @@
 }
 
 /*.nav {
-  background-color: blue;
-}
-*/
+  position: fixed;
+}*/
+
 .navDiv {
-  position: relative;
+  position: fixed;
   top: 0;
   left: 0;
   right: 0;
@@ -30,7 +30,7 @@ div.map {
 }
 
 .googleMap {
-  max-height: 500px;
+  max-height: 400px;
   max-width: 500px;
   height: 70%;
   width: 70%;
@@ -52,7 +52,7 @@ div.map {
 
 .rightButton {
   max-height: 25%;
-  max-width: 100px;
+  max-width: 125px;
 }
 
 .userImage {
@@ -96,7 +96,7 @@ div.map {
   margin-right: auto;
 }
 
-.settingsDiv {
+/*.settingsDiv {
   margin: 10px;
   padding: 5px;
-}
+}*/
