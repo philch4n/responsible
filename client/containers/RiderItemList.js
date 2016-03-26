@@ -24,7 +24,7 @@ export function List({ ride, user, onRiderClick, }) {
   });
 
   return (
-    <div>
+    <div className="riderListDiv">
       <Grid>
         <Row>
           {
