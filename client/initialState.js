@@ -40,8 +40,8 @@ export default {
     isPickedUp: false,
     acceptRideError: null,
     rideRequestError: null,
-    messagesFetchError: null,
-    driverAddError: 'hello',
+    messagesFetchError: 'uh oh',
+    driverAddError: null,
   },
   routing: {
     locationBeforeTransitions: null,

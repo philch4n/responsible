@@ -23,8 +23,8 @@ function receiveMessages(messages) {
   return { type: 'RECEIVE_MESSAGES', entry: messages, };
 };
 
-function requestMessagesError(error) {
-  console.error('uh oh, error requesting ride messages:', error);
+export function requestMessagesError(error) {
+  if (error) console.error('uh oh, error requesting ride messages:', error);
   return { type: 'REQUEST_MESSAGES_ERROR', entry: error, };
 };
 
