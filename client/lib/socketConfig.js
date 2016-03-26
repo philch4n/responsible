@@ -3,9 +3,13 @@
  *  emit socket events! Import it whenever you need it
 **/
 
-const connectionString = process.env.NODE_ENV === 'production' ?
-  `whispering-mountain-79295.herokuapp.com:${process.env.PORT}` :
-  'http://localhost:1337';
+const connectionString = 'whispering-mountain-79295.herokuapp.com';
+
+// `whispering-mountain-79295.herokuapp.com:${process.env.PORT}`
+
+if (process && process.env.NODE_ENV === 'production') {
+  connectionString = 'http://localhost:1337';
+}
 
 console.log('connectionString:', connectionString);
 
