@@ -25,6 +25,9 @@ function TopNavBar({ onCancel, onEndDriver, onPickUp, onComplete, onHomeClick, o
 
   return (
     <Navbar className="nav">
+      <Nav>
+        <NavItem eventKey={1} href="#"><SettingIcon {...props}/></NavItem>
+      </Nav>
       <Navbar.Header className="mainHeader">
         <Navbar.Brand className="mainTitle">
           <a href="/" onClick={onHomeClick} bsClass="navHeader" >Fleet</a>
@@ -39,12 +42,13 @@ function TopNavBar({ onCancel, onEndDriver, onPickUp, onComplete, onHomeClick, o
         </NavDropdown>
        </Nav>
       <Nav pullRight>
-        <NavItem eventKey={1} href="#"> <TopNavBarRightButton
-          {...props}
-          onCancel={cancelClick}
-          onEndDriver={endDriver}
-          onPickUp={onPickUp}
-          onComplete={onComplete}
+        <NavItem eventKey={1} href="#">
+          <TopNavBarRightButton
+            {...props}
+            onCancel={cancelClick}
+            onEndDriver={endDriver}
+            onPickUp={onPickUp}
+            onComplete={onComplete}
           />
         </NavItem>
       </Nav>
