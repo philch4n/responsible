@@ -15,7 +15,7 @@ export default {
     isFetchingUserState: false,
     isChangingAddress: false,
     changeAddressError: false,
-    requestUserError: 'wrong',
+    requestUserError: false,
     friends: [],
   },
   ride: {
@@ -41,7 +41,7 @@ export default {
     acceptRideError: null,
     rideRequestError: null,
     messagesFetchError: null,
-    driverAddError: null,
+    driverAddError: 'hello',
   },
   routing: {
     locationBeforeTransitions: null,

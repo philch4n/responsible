@@ -3,6 +3,7 @@ import { Alert } from 'react-bootstrap';
 
 import * as userAction from '../actionCreators/user';
 import * as rideAction from '../actionCreators/ride';
+import * as driveAction from '../actionCreators/drive';
 
 function message({
   user: { changeAddressError, requestUserError, },
@@ -10,7 +11,7 @@ function message({
   resetAllErrors,
 })
   {
-  if (acceptRideError || changeAddressError || requestUserError) {
+  if (acceptRideError || changeAddressError || requestUserError || driverAddError) {
     setTimeout(function () {resetAllErrors();
   }, 5000);}
 
@@ -34,13 +35,12 @@ const mapDispatchToProps = function(dispatch) {
     resetAllErrors() {
       dispatch(rideAction.acceptRideError(null))
       // ride.acceptRideError(null)
+      dispatch(driveAction.addDriverError(null))
       // ride.driverAddError(null)
       // ride.messagesFetchError(null)
       // ride.rideRequestError(null)
       dispatch(userAction.changeAddressError(false))
-      // user.changeAddressError(false)
       dispatch(userAction.requestUserInfoError(false))
-      // user.requestUserError(false)
     },
   }
 };
