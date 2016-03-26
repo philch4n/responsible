@@ -5,7 +5,10 @@ export function MessageItemList(props) {
     <div className="MessageItemList">
         {
           props.messages.map(function (message) {
-            return <MessageItem {...message} client_id={props.user_id} />;
+            return <MessageItem {...message}
+              key={Math.random()}
+              client_id={props.user_id}
+            />;
           })
         }
     </div>

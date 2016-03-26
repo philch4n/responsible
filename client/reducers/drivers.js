@@ -85,5 +85,7 @@ function matchRider(state, { entry }) {
     ride_id: entry.ride_id,
   };
 
+  
+  window.geoWatch();
   return state.merge(updates);
 }
