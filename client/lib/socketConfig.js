@@ -7,7 +7,7 @@ let connectionString = 'whispering-mountain-79295.herokuapp.com';
 
 // `whispering-mountain-79295.herokuapp.com:${process.env.PORT}`
 
-if (process && process.env.NODE_ENV === 'development') {
+if (window.location.hostname === 'localhost') {
   connectionString = 'http://localhost:1337';
 }
 
