@@ -25,7 +25,7 @@ function message({
         <Alert bsStyle="danger"dismissAfter={2000}>
         <h4>Something went wrong.</h4>
         </Alert>
-        : <h3>All good</h3>
+        : <div />
     }
   </div>
   );
