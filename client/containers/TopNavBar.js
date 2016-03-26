@@ -11,15 +11,17 @@ import * as rideAction from '../actionCreators/ride';
 import * as driveAction from '../actionCreators/drive';
 
 function TopNavBar({ onCancel, onEndDriver, onPickUp, onComplete, onHomeClick, ...props }) {
-  let endDriver = onEndDriver.bind(null, props.user.user_id);
+  let { ride, user } = props;
+
+  let endDriver = onEndDriver.bind(null, user.user_id);
 
   let cancelClick;
-  if (props.ride.match) {
-    cancelClick = onCancel.bind(null, props.ride.match.user_id, props.ride.ride_id);
-    onPickUp = onPickUp.bind(null, props.ride.match.user_id);
-    onComplete = onComplete.bind(null, props.ride.match.user_id);
+  if (ride.match) {
+    cancelClick = onCancel.bind(null, ride.match.user_id, ride.ride_id);
+    onPickUp = onPickUp.bind(null, ride.match.user_id);
+    onComplete = onComplete.bind(null, user.user_id, ride.match.user_id, user.location);
   } else
-    cancelClick = onCancel.bind(null, props.user.user_id, null);
+    cancelClick = onCancel.bind(null, user.user_id, null);
 
   return (
     <Navbar className="nav">
@@ -63,16 +65,17 @@ const mapDispatchToProps = function (dispatch) {
       // component - a better approach might be to augment that here, where we have access
       // to the component's next props through the second parameter of mapDispatchToProps
       console.log('dispatching cancel:', user_id, ride_id);
-      dispatch(rideAction.cancelRide({ user_id, ride_id }))
+      dispatch(rideAction.cancelRide({ user_id, ride_id }));
     },
     onEndDriver(user_id) {
-      dispatch(driveAction.deleteDriver(user_id))
+      dispatch(driveAction.deleteDriver(user_id));
     },
     onPickUp(partner_id) {
-      dispatch(rideAction.pickUp(partner_id))
+      dispatch(rideAction.pickUp(partner_id));
     },
-    onComplete(partner_id) {
-      dispatch(rideAction.completeRide(partner_id))
+    onComplete(user_id, partner_id, user_location) {
+      dispatch(rideAction.completeRide(partner_id));
+      dispatch(driveAction.createDriver(user_id, user_location));
     },
     onHomeClick() {
       dispatch(push('/'));
