@@ -2,7 +2,7 @@ import { connect } from 'react-redux';
 import { push } from 'react-router-redux';
 import { Nav, Navbar, NavDropdown, NavItem, MenuItem } from 'react-bootstrap';
 
-import { SettingIcon } from '../components/TopNavBar/Settings/SettingIcon';
+// import { SettingIcon } from '../components/TopNavBar/Settings/SettingIcon';
 import { Logo } from '../components/TopNavBar/Logo';
 import { TopNavBarRightButton } from '../components/TopNavBar/RightButton';
 
@@ -10,7 +10,8 @@ import * as userAction from '../actionCreators/user';
 import * as rideAction from '../actionCreators/ride';
 import * as driveAction from '../actionCreators/drive';
 
-function TopNavBar({ onCancel, onEndDriver, onPickUp, onComplete, onHomeClick, ...props }) {
+function TopNavBar({ onCancel, onEndDriver, onPickUp, onComplete, onHomeClick, onProfileButtonClick,
+  onFriendButtonClick, onSignoutButtonClick, ...props, }) {
   let { ride, user } = props;
 
   let endDriver = onEndDriver.bind(null, user.user_id);
@@ -31,8 +32,13 @@ function TopNavBar({ onCancel, onEndDriver, onPickUp, onComplete, onHomeClick, .
         </Navbar.Brand>
       </Navbar.Header>
       <Nav>
-        <NavItem eventKey={1} href="#"><SettingIcon {...props}/></NavItem>
-      </Nav>
+        <NavDropdown eventKey={4} title="Settings" id="nav-dropdown">
+          <MenuItem eventKey="4.1" onClick={onProfileButtonClick}>Profile</MenuItem>
+          <MenuItem eventKey="4.2" onClick={onFriendButtonClick}>Friends</MenuItem>
+          <MenuItem divider />
+          <MenuItem eventKey="4.3" onClick={onSignoutButtonClick}>Signout</MenuItem>
+        </NavDropdown>
+       </Nav>
       <Nav pullRight>
         <NavItem eventKey={1} href="#"> <TopNavBarRightButton
           {...props}
@@ -54,9 +60,6 @@ const mapStateToProps = function (state) {
 // jscs:disable
 const mapDispatchToProps = function (dispatch) {
   return {
-    onSettingsButtonClick() {
-      dispatch(push('/settings'))
-    },
     onProfileButtonClick() {
       dispatch(push('/profile'))
     },
@@ -79,7 +82,16 @@ const mapDispatchToProps = function (dispatch) {
     },
     onHomeClick() {
       dispatch(push('/'));
-    }
+    },
+    onFriendButtonClick() {
+      dispatch(push('/friends'));
+    },
+    onSignoutButtonClick() {
+      OAuth.clearCache();
+      localStorage.clear();
+      dispatch(push('/login'));
+      dispatch(userAction.signout(false));
+    },
   };
 };
 // jscs:enable
