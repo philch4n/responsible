@@ -13,7 +13,7 @@ function message({
 })
   {
   if (acceptRideError || changeAddressError || requestUserError || driverAddError ||
-    messagesFetchError) {
+    messagesFetchError || rideRequestError) {
     setTimeout(function () {resetAllErrors();
   }, 5000);}
 
@@ -36,12 +36,9 @@ const mapDispatchToProps = function(dispatch) {
   return {
     resetAllErrors() {
       dispatch(rideAction.acceptRideError(null))
-      // ride.acceptRideError(null)
       dispatch(driveAction.addDriverError(null))
-      // ride.driverAddError(null)
       dispatch(chatAction.requestMessagesError(null))
-      // ride.messagesFetchError(null)
-      // ride.rideRequestError(null)
+      dispatch(rideAction.requestRideError(null))
       dispatch(userAction.changeAddressError(false))
       dispatch(userAction.requestUserInfoError(false))
     },
