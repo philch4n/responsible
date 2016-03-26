@@ -7,6 +7,8 @@ const connectionString = process.env.NODE_ENV === 'production' ?
   `whispering-mountain-79295.herokuapp.com:${process.env.PORT}` :
   'http://localhost:1337';
 
+console.log('connectionString:', connectionString);
+
 export const socket = io.connect(connectionString, {
   reconnectionAttempts: 3,
 });
