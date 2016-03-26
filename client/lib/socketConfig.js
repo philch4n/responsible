@@ -3,7 +3,7 @@
  *  emit socket events! Import it whenever you need it
 **/
 
-const connectionString = 'whispering-mountain-79295.herokuapp.com';
+let connectionString = 'whispering-mountain-79295.herokuapp.com';
 
 // `whispering-mountain-79295.herokuapp.com:${process.env.PORT}`
 
