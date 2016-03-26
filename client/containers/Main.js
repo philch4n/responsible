@@ -6,7 +6,7 @@ import { SplashContainer } from './Splash';
 import { MapView } from '../components/MapView';
 import { GithubButton } from '../models/Github';
 import { RiderItemList } from './RiderItemList';
-
+import { ErrorMessage } from './Error';
 
 import * as userAction from '../actionCreators/user';
 import * as rideActions from '../actionCreators/ride';
@@ -18,6 +18,7 @@ function Main({
   return (
     <div className="MainApp">
       <TopNavBarContainer />
+      <ErrorMessage/>
       {
         !isDriver && !isRider ?
           <SplashContainer /> :

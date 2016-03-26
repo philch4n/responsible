@@ -85,8 +85,8 @@ function acceptRideSent() {
   return { type: 'ACCEPT_RIDE_SENT', };
 }
 
-function acceptRideError(error) {
-  console.error('uh oh, error accepting ride:', error);
+export function acceptRideError(error) {
+  if (error) console.error('uh oh, error accepting ride:', error);
   return { type: 'ACCEPT_RIDE_ERROR', entry: error };
 }
 
@@ -101,7 +101,7 @@ function receiveRideId(rideId) {
 }
 
 export function requestRideError(error) {
-  console.error('uh oh, error requesting ride');
+  if (error) console.error('uh oh, error requesting ride:', error);
   return { type: 'REQUEST_RIDE_ERROR', entry: error, };
 }
 

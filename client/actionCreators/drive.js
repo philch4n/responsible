@@ -44,8 +44,8 @@ export function addDriverSuccess(riders) {
   return { type: 'ADD_DRIVER', entry: riders };
 };
 
-export function addDriveError(error) {
-  console.log('Error adding driver!');
+export function addDriverError(error) {
+  if (error) console.log('Error adding driver:', error);
   return { type: 'ADD_DRIVER_ERROR', entry: error, };
 };
 

@@ -38,7 +38,7 @@ function addDriverSent(state, action) {
   return state.merge(updates);
 };
 
-function addDriverError(state, action) {
+export function addDriverError(state, action) {
   let updates = {
     isWaitingForMatch: false,
     isAddingDriver: false,
@@ -85,7 +85,7 @@ function matchRider(state, { entry }) {
     ride_id: entry.ride_id,
   };
 
-  
+
   window.geoWatch();
   return state.merge(updates);
 }

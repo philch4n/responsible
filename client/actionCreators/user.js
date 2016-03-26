@@ -111,6 +111,7 @@ function receiveUserInfo(info) {
 };
 
 export function requestUserInfoError(error) {
+  if (error) console.error('uh oh, error changing address:', error);
   return { type: 'REQUEST_USER_INFO_ERROR', entry: error };
 }
 
@@ -157,6 +158,7 @@ function changeAddressSuccess(newAddress) {
   return { type: 'CHANGE_ADDRESS', entry: newAddress };
 }
 
-function changeAddressError(error) {
+export function changeAddressError(error) {
+  if (error) console.error('uh oh, error changing address:', error);
   return { type: 'CHANGE_ADDRESS_ERROR', entry: error };
 }
