@@ -2,7 +2,6 @@ import { connect } from 'react-redux';
 import { push } from 'react-router-redux';
 import { Nav, Navbar, NavDropdown, NavItem, MenuItem } from 'react-bootstrap';
 
-// import { SettingIcon } from '../components/TopNavBar/Settings/SettingIcon';
 import { Logo } from '../components/TopNavBar/Logo';
 import { TopNavBarRightButton } from '../components/TopNavBar/RightButton';
 
