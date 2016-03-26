@@ -10,7 +10,7 @@ function message({
   resetAllErrors,
 })
   {
-  if (requestUserError) {setTimeout(function () {resetAllErrors();}, 5000);}
+  if (acceptRideError) {setTimeout(function () {resetAllErrors();}, 5000);}
 
   return (
     <div>
@@ -30,7 +30,7 @@ function message({
 const mapDispatchToProps = function(dispatch) {
   return {
     resetAllErrors() {
-      dispatch(ride.acceptRideError(null))
+      dispatch(rideAction.acceptRideError(null))
       // ride.acceptRideError(null)
       // ride.driverAddError(null)
       // ride.messagesFetchError(null)

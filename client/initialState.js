@@ -38,7 +38,7 @@ export default {
     isAccepting: false,
     isFetchingMessages: false,
     isPickedUp: false,
-    acceptRideError: null,
+    acceptRideError: 'you are wrong',
     rideRequestError: null,
     messagesFetchError: null,
     driverAddError: null,
