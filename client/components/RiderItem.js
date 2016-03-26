@@ -1,5 +1,5 @@
 import { UserImage } from './UserImage';
-import { Grid, Button, Row, Col, Thumbnail } from 'react-bootstrap'
+import { Grid, Button, Row, Col, Thumbnail } from 'react-bootstrap';
 export function RiderItem(props) {
   return (
           <Col xs={6} md={4}>
