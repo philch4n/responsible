@@ -39,13 +39,12 @@ function TopNavBar({ onCancel, onEndDriver, onPickUp, onComplete, onHomeClick, o
         </Navbar.Brand>
       </Navbar.Header>
       <Nav pullRight>
-        <NavItem eventKey={1} href="#">
-          <TopNavBarRightButton
-            {...props}
-            onCancel={cancelClick}
-            onEndDriver={endDriver}
-            onPickUp={onPickUp}
-            onComplete={onComplete}
+        <NavItem eventKey={1} href="#"> <TopNavBarRightButton
+          {...props}
+          onCancel={cancelClick}
+          onEndDriver={endDriver}
+          onPickUp={onPickUp}
+          onComplete={onComplete}
           />
         </NavItem>
       </Nav>
