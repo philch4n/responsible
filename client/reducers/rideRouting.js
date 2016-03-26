@@ -60,6 +60,7 @@ function setDroppedOff(state) {
     isCompleted: true,
     isPickedUp: false,
     isMatched: false,
+    isConfirmed: false,
     match: null,
     messages: [],
     directions: null,

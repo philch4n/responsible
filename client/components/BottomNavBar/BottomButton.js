@@ -11,28 +11,26 @@ export function BottomButton({ isWaitingForMatch, isConfirmed, isMatched,
   return (
     <div className="BottomNavBarRightButton">
     {
-      !isWaitingForMatch && !isConfirmed ?
-        <ConfirmLocationButton confirmLocation={confirmLocation} /> :
-      isConfirmed && isWaitingForMatch ?
-        <div className='WaitingClick'>
-          <section>
-            <div>
-              <h2>
-              Waiting for a match
-              </h2>
+      !isWaitingForMatch && !isConfirmed
+        ? <ConfirmLocationButton confirmLocation={confirmLocation} />
+        : isConfirmed && isWaitingForMatch
+          ? <div className='WaitingClick'>
+              <section>
+                <div>
+                  <h2>
+                  Waiting for a match
+                  </h2>
+                </div>
+              </section>
             </div>
-          </section>
-        </div>
-        :
-      isMatched ?
-        <Chat
-          user_id={user_id}
-          match={match}
-          friends={friends}
-          messages={messages}
-        />
-        :
-        <h3>Uh oh. How did this happen?</h3>
+          : isMatched
+            ? <Chat
+              user_id={user_id}
+              match={match}
+              friends={friends}
+              messages={messages}
+            />
+          : <h3>Uh oh. How did this happen?</h3>
     }
     </div>
   );

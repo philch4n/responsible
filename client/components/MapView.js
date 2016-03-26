@@ -55,14 +55,15 @@ export function MapView({ isRider, isDriver, match, location,
                 let friendRider = friends.find((friend) => friend.user_id === rider.user_id);
                 let riderMarker = {
                   position: rider.location,
-                  showInfo: friendRider.name,
+                  name: friendRider.name,
                 };
 
                 return (
                   <Marker
+                    key={riderMarker.name}
                     position={ riderMarker.position }
                     defaultAnimation={2}>
-                    <InfoWindow content={riderMarker.showInfo}/>
+                    <InfoWindow content={riderMarker.name}/>
                   </Marker>
                 );
               })
