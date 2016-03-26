@@ -43,7 +43,6 @@ function setPickedUp(state) {
 function setCompleteRide(state) {
   let updates = {
     ride_id: null,
-    isCompleted: true,
     isPickedUp: false,
     isMatched: false,
     match: null,
@@ -57,7 +56,6 @@ function setCompleteRide(state) {
 function setDroppedOff(state) {
   let updates = {
     ride_id: null,
-    isCompleted: true,
     isPickedUp: false,
     isMatched: false,
     isConfirmed: false,
