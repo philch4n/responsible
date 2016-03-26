@@ -10,7 +10,9 @@ function message({
   resetAllErrors,
 })
   {
-  if (acceptRideError) {setTimeout(function () {resetAllErrors();}, 5000);}
+  if (acceptRideError || changeAddressError) {
+    setTimeout(function () {resetAllErrors();
+  }, 5000);}
 
   return (
     <div>
@@ -35,6 +37,7 @@ const mapDispatchToProps = function(dispatch) {
       // ride.driverAddError(null)
       // ride.messagesFetchError(null)
       // ride.rideRequestError(null)
+      dispatch(userAction.changeAddressError(false))
       // user.changeAddressError(false)
       // user.requestUserError(false)
     },
