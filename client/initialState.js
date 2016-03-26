@@ -14,8 +14,8 @@ export default {
     isRider: false,
     isFetchingUserState: false,
     isChangingAddress: false,
-    changeAddressError: 'you are terrible',
-    requestUserError: false,
+    changeAddressError: false,
+    requestUserError: 'wrong',
     friends: [],
   },
   ride: {

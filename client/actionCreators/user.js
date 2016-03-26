@@ -111,6 +111,7 @@ function receiveUserInfo(info) {
 };
 
 export function requestUserInfoError(error) {
+  if (error) console.error('uh oh, error changing address:', error);
   return { type: 'REQUEST_USER_INFO_ERROR', entry: error };
 }
 
