@@ -19,6 +19,10 @@ function Profile({ user_id, friends, profile, onFriendClick, onAddressEdit,
         <Alert bsStyle="warning"dismissAfter={5000}>
         <h4>Please add your address</h4>
         </Alert>
+        : changedAddress ?
+        <Alert bsStyle="success"dismissAfter={5000}>
+        <h4>You successfully edited your address.</h4>
+        </Alert>
         : <div />
       }
       <UserImage {...profile} imageType="portrait" />
