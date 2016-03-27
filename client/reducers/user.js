@@ -10,6 +10,7 @@ export default function (state = Map(), action) {
     case 'REQUEST_USER_INFO':
     case 'RECEIVE_USER_INFO':
     case 'RECEIVE_FRIEND_INFO':
+    case 'ADDED_FRIEND':
     case 'REQUEST_USER_INFO_ERROR':
       return handleUserInfo(state, action);
     case 'CHANGING_ADDRESS':
