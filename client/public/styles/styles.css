@@ -1,6 +1,10 @@
 body {
   font-weight: 600;
 }
+
+.alert {
+  margin: 5px;
+}
 /*
 *   ~_~_TOP NAV BAR~_~
 */
@@ -154,7 +158,7 @@ div.map {
 }
 
 .addFriend {
-  margin-bottom: 25px;
+  margin-bottom: 10px;
 }
 
 .form-group {
