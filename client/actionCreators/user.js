@@ -52,8 +52,12 @@ export function addFriend(props) {
       .then(checkStatus)
       .then(json)
       .then(function (data) {
-        data.error ? dispatch(requestUserInfoError(data.error))
-        : dispatch(receiveFriendInfo(data));
+        if (data.err) {
+          dispatch(requestUserInfoError(data.error));
+        } else {
+          dispatch(receiveFriendInfo(data));
+          dispatch(addedFriend(data));
+        }
       });
 
     // .then((info) => dispatch(receiveFriendInfo(info)))
@@ -117,6 +121,10 @@ export function requestUserInfoError(error) {
 
 export function receiveFriendInfo(info) {
   return { type: 'RECEIVE_FRIEND_INFO', entry: info };
+}
+
+export function addedFriend(friend) {
+  return { type: 'ADDED_FRIEND', entry: friend };
 }
 
 export function setDriver(isDriver) {
