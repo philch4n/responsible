@@ -12,16 +12,15 @@ body {
 .mainTitle {
   display: inline-block;
   position: absolute;
-  width: 60px;
   left: 50%;
-  margin: 10px 0 10px -25px;
-  padding: 0 0 20px 0;
+  transform: translate(-50%, 0);
+  margin: 10px 0;
 }
 
 .btn-group, .dropdown{
   display: inline-block;
   float: left;
-  margin: 10px;
+  margin: 10px 0 10px 10px;
 }
 
 .nav {
@@ -31,7 +30,7 @@ body {
 .topNavBarButton, .endDrivingButton, .CancelRideButton, .pickUpButton, .completeRideButton {
   display: inline-block;
   float: right;
-  margin: 10px;
+  margin: 10px 10px 10px 0;
 }
 /*
 *   ~_~_RIDER LIST_~_~
