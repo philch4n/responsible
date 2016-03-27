@@ -1,4 +1,5 @@
 import { connect } from 'react-redux';
+import { Alert } from 'react-bootstrap';
 
 import { TopNavBarContainer } from './TopNavBar';
 import { BottomNavBarContainer } from './BottomNavBar';
@@ -13,12 +14,22 @@ import * as rideActions from '../actionCreators/ride';
 
 function Main({
   user: { isLoggedIn, location, profile, isDriver, isRider, friends },
-  ride: { riders, isMatched, match, directions, },
+  ride: { riders, isMatched, match, directions, matchFlag, },
+  resetMatchFlag,
 }) {
+  if (matchFlag) {setTimeout(function () {resetMatchFlag();}, 6000);}
+
   return (
     <div className="MainApp">
       <TopNavBarContainer />
       <ErrorMessage/>
+      {
+        matchFlag ?
+        <Alert bsStyle="success"dismissAfter={5000}>
+        <h4>You have been matched!</h4>
+        </Alert>
+        : <div />
+      }
       {
         !isDriver && !isRider ?
           <SplashContainer /> :
@@ -54,6 +65,10 @@ const mapDispatchToProps = function (dispatch) {
   return {
     onDirectionsResult(result) {
       // dispatch(rideActions.setDirections(result));
+    },
+
+    resetMatchFlag() {
+      dispatch(rideActions.matchFlag(null));
     },
   };
 };

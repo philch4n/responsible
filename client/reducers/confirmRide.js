@@ -6,6 +6,8 @@ export function handleConfirm(state, action) {
       return acceptRideSent(state, action);
     case 'ACCEPT_RIDE_ERROR':
       return acceptRideError(state, action);
+    case 'MATCH_FLAG':
+      return matchFlag(state, action);
   }
 
   return state;
@@ -36,6 +38,14 @@ function acceptRideError(state, action) {
     // so that we can opt for another accept attempt.
     isAccepting: false,
     acceptRideError: action.entry,
+  };
+
+  return state.merge(updates);
+}
+
+function matchFlag(state, action) {
+  let updates = {
+    matchFlag: action.entry,
   };
 
   return state.merge(updates);

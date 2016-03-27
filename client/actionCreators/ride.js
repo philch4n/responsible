@@ -71,6 +71,7 @@ export function acceptRide(ride_driver, ride_rider) {
           match: ride_rider,
         };
         dispatch(acceptRideSuccess(result));
+        dispatch(matchFlag(result));
       })
       .catch((error) => dispatch(acceptRideError(error)));
   };
@@ -83,6 +84,10 @@ export function acceptRideSuccess(result) {
 
 function acceptRideSent() {
   return { type: 'ACCEPT_RIDE_SENT', };
+}
+
+export function matchFlag(result) {
+  return { type: 'MATCH_FLAG', entry: result };
 }
 
 export function acceptRideError(error) {
