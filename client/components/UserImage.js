@@ -6,8 +6,16 @@ export function UserImage({ avatar, imageType }) {
     {
         <Grid>
           <Row>
-            <Col xs={6} md={4}>
-              <Image className="userImage" src={ avatar } circle />
+            <Col>
+              {
+                imageType === 'portrait' ?
+                  <Image className="imagePortrait" src={ avatar } circle />
+                  : imageType === 'icon' ?
+                    <Image className="imageIcon" src={ avatar } circle />
+                    : imageType === 'riderImage' ?
+                       <Image className="mediumImage" src={ avatar } circle />
+                       : <div>What Rider?!</div>
+              }
             </Col>
           </Row>
         </Grid>

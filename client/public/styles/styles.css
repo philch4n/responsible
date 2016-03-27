@@ -1,20 +1,74 @@
-.mainTitle {
-  font-size: 25px;
-  color: yellow;
-}
+/*
+*   ~_~_RIDER LIST_~_~
+*/
 
+.riderItem {
+  margin-left: auto;
+  margin-right: auto;
+}
 .riderList {
   margin-left: auto;
   margin-right: auto;
 }
 
-.mainHeader {
-  color: yellow;
+.riderListDiv {
+  margin-left: auto;
+  margin-right: auto;
+  max-width: 95%;
+  height: 175px;
+  border: 3px solid black;
+  overflow-x: scroll;
+  padding: 5px;
 }
 
-/*.nav {
-  position: fixed;
-}*/
+.riderItemDiv {
+  margin: 0 auto 0 auto;
+  width: 125px;
+  border: 1px solid black;
+}
+
+.riderItemDesc {
+  text-align: center;
+}
+
+.riderItemButton {
+  margin: auto;
+}
+
+.riderItemImage {
+  margin-left: auto;
+  margin-right: auto;
+}
+
+
+/*
+*   ~_~_IMAGE CLASSES_~_~
+*/
+.avatar {
+  margin-left: auto;
+  margin-right: auto;
+}
+.userImage {
+  max-width: 150px;
+  max-height: 150px;
+}
+
+.imagePortrait {
+  max-width: 150px;
+  max-height: 150px;
+}
+
+.mediumImage {
+  margin-left: auto;
+  margin-right: auto;
+  height: 100px;
+  width: 100px;
+}
+
+
+/*
+*   ~_~_NAVBAR_~_~
+*/
 
 .navDiv {
   position: fixed;
@@ -22,6 +76,24 @@
   left: 0;
   right: 0;
 }
+
+
+.bottomNav {
+  text-align: center;
+}
+
+.BottomNavBarContainer {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 50px;
+  text-align: center;
+}
+
+/*
+*   ~_~_MAP_~_~
+*/
 
 div.map {
   padding: .1%;
@@ -34,6 +106,17 @@ div.map {
   max-width: 500px;
   height: 70%;
   width: 70%;
+}
+
+/*
+*   ~_~_BUTTONS_~_~
+*/
+
+.settingsButton {
+  max-height: 25%;
+  max-width: 100px;
+  margin-left: auto;
+  margin-right: auto;
 }
 
 .driveButton {
@@ -55,11 +138,6 @@ div.map {
   max-width: 125px;
 }
 
-.userImage {
-  max-width: 150px;
-  max-height: 150px;
-}
-
 .duiFacts {
   text-align: center;
   float: center;
@@ -67,36 +145,7 @@ div.map {
   margin-right: auto;
 }
 
-/*.bottomButton {
-  margin-left: auto;
-  margin-right: auto;
-}*/
-
-.bottomNav {
-  text-align: center;
-}
-
-.BottomNavBarContainer {
-  position: fixed;
-  bottom: 0;
-  left: 0;
-  width: 100%;
-  height: 50px;
-  text-align: center;
-}
-
 .settingsDiv {
   margin: auto;
 }
 
-.settingsButton {
-  max-height: 25%;
-  max-width: 100px;
-  margin-left: auto;
-  margin-right: auto;
-}
-
-/*.settingsDiv {
-  margin: 10px;
-  padding: 5px;
-}*/
