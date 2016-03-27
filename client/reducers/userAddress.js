@@ -15,7 +15,6 @@ function changeAddress(state, { entry }) {
   let updates = {
     address: entry,
     isChangingAddress: false,
-    changedAddress: true,
   };
 
   return state.merge(updates);

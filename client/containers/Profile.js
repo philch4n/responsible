@@ -10,7 +10,9 @@ import { Alert } from 'react-bootstrap';
 import * as userAction from '../actionCreators/user';
 
 function Profile({ user_id, friends, profile, onFriendClick, onAddressEdit,
-  isChangingAddress, editAddress, }) {
+  isChangingAddress, editAddress, address, resetAddressFlag, }) {
+  if (address) {setTimeout(function () {resetAddressFlag();}, 6000);}
+
   return (
     <div className="ProfileContainer">
       <TopNavBarContainer />
@@ -19,9 +21,9 @@ function Profile({ user_id, friends, profile, onFriendClick, onAddressEdit,
         <Alert bsStyle="warning"dismissAfter={5000}>
         <h4>Please add your address</h4>
         </Alert>
-        : changedAddress ?
+        : address ?
         <Alert bsStyle="success"dismissAfter={5000}>
-        <h4>You successfully edited your address.</h4>
+        <h4>You successfully added your address: {address}</h4>
         </Alert>
         : <div />
       }
@@ -68,6 +70,10 @@ const mapDispatchToProps = function (dispatch) {
     }),
     editAddress() {
       dispatch(userAction.changingAddress());
+    },
+
+    resetAddressFlag() {
+      dispatch(userAction.changeAddressSuccess(null));
     },
   };
 };

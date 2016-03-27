@@ -83,7 +83,6 @@ export function changeAddress(user_id, newAddress) {
         var user = JSON.parse(localStorage.getItem('user'));
         user.user.address = newAddress;
         dispatch(receiveUserInfo(user));
-        dispatch(push('/'));
         dispatch(changeAddressSuccess(newAddress));
       })
       .catch((error) => dispatch(changeAddressError(error)));
@@ -162,7 +161,7 @@ export function changingAddress() {
   return { type: 'CHANGING_ADDRESS' };
 }
 
-function changeAddressSuccess(newAddress) {
+export function changeAddressSuccess(newAddress) {
   return { type: 'CHANGE_ADDRESS', entry: newAddress };
 }
 
