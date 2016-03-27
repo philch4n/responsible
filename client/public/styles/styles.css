@@ -1,21 +1,26 @@
+body {
+  font-weight: 600;
+}
+
+.alert {
+  margin: 5px;
+}
 /*
 *   ~_~_TOP NAV BAR~_~
 */
 
 .mainTitle {
-  font-size: 25px;
   display: inline-block;
   position: absolute;
-  width: 60px;
   left: 50%;
-  margin: 10px 0 10px -25px;
-  padding: 0 0 20px 0;
+  transform: translate(-50%, 0);
+  margin: 10px 0;
 }
 
 .btn-group, .dropdown{
   display: inline-block;
   float: left;
-  margin: 10px;
+  margin: 10px 0 10px 10px;
 }
 
 .nav {
@@ -25,7 +30,7 @@
 .topNavBarButton, .endDrivingButton, .CancelRideButton, .pickUpButton, .completeRideButton {
   display: inline-block;
   float: right;
-  margin: 10px;
+  margin: 10px 10px 10px 0;
 }
 /*
 *   ~_~_RIDER LIST_~_~
@@ -136,6 +141,33 @@ div.map {
 }
 
 /*
+*   ~_~FRIENDS LIST~_~
+*/
+.friendList {
+  text-align: center;
+}
+
+.friendItem {
+  margin: 25px;
+}
+
+.friendName {
+  margin-top: 10px;
+  font-weight: 500;
+}
+
+.addFriend {
+  margin-bottom: 10px;
+}
+
+.form-group {
+  display: inline-block;
+}
+
+.friendSubmit {
+  margin-left: 5px;
+}
+/*
 *   ~_~_BUTTONS_~_~
 */
 
@@ -176,8 +208,5 @@ div.map {
   margin: auto;
 }
 
-body {
-  font-weight: 600;
-}
 
 /* Jonathan's color: 62949F */

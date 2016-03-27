@@ -1,6 +1,6 @@
 import { connect } from 'react-redux';
 import { push } from 'react-router-redux';
-import { Nav, Navbar, NavDropdown, NavItem, MenuItem, SplitButton } from 'react-bootstrap';
+import { MenuItem, Dropdown, Glyphicon } from 'react-bootstrap';
 
 import { Logo } from '../components/TopNavBar/Logo';
 import { TopNavBarRightButton } from '../components/TopNavBar/RightButton';
@@ -25,13 +25,17 @@ function TopNavBar({ onCancel, onEndDriver, onPickUp, onComplete, onHomeClick, o
 
   return (
     <div className="nav">
-      <SplitButton bsStyle="info" className="settings"
-  title="Settings" key={1} id="settings-nav">
-        <MenuItem eventKey="4.1" onClick={onProfileButtonClick}>Profile</MenuItem>
-        <MenuItem eventKey="4.2" onClick={onFriendButtonClick}>Friends</MenuItem>
-        <MenuItem divider />
-        <MenuItem eventKey="4.3" onClick={onSignoutButtonClick}>Signout</MenuItem>
-      </SplitButton>
+      <Dropdown bsStyle="info" className="settings">
+        <Dropdown.Toggle noCaret>
+          <Glyphicon glyph="align-justify" />
+        </Dropdown.Toggle>
+        <Dropdown.Menu>
+          <MenuItem eventKey="4.1" onClick={onProfileButtonClick}>Profile</MenuItem>
+          <MenuItem eventKey="4.2" onClick={onFriendButtonClick}>Friends</MenuItem>
+          <MenuItem divider />
+          <MenuItem eventKey="4.3" onClick={onSignoutButtonClick}>Signout</MenuItem>
+        </Dropdown.Menu>
+      </Dropdown>
       <h1 className="mainTitle" onClick={onHomeClick}>Fleet</h1>
       <TopNavBarRightButton
         {...props}
