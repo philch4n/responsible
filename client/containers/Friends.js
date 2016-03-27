@@ -1,6 +1,6 @@
 import { connect } from 'react-redux';
 import { curry } from 'ramda';
-import { Alert } from 'react-bootstrap';
+import { Alert, Button } from 'react-bootstrap';
 
 import * as userAction from '../actionCreators/user';
 
@@ -23,9 +23,9 @@ function List({ friends, addFriend, user_id, requestUserError, resetError }) {
         : <div />
       }
       <FriendItemList friends={friends}/>
-      <form onSubmit={addFriend(user_id)}>
+      <form className="addFriend" onSubmit={addFriend(user_id)}>
         <input className="friendText ten columns" defaultValue='' id="message"></input>
-        <input className="friendSubmit button" type="submit" />
+        <Button className="friendSubmit button">Add Friend</Button>
       </form>
     </div>
   );
