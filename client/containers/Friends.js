@@ -1,6 +1,6 @@
 import { connect } from 'react-redux';
 import { curry } from 'ramda';
-import { Alert, Button } from 'react-bootstrap';
+import { Alert, ButtonInput } from 'react-bootstrap';
 
 import * as userAction from '../actionCreators/user';
 
@@ -10,7 +10,7 @@ import { FriendItemList } from '../components/TopNavBar/Friends/FriendItemList';
 function nullFn(e) { console.log('you clicked me ' + e.target.className); };
 
 function List({ friends, addFriend, user_id, requestUserError, resetError }) {
-  if (requestUserError) {setTimeout(function () {resetError();}, 5000);}
+  if (requestUserError) {setTimeout(function () {resetError();}, 6000);}
 
   return (
     <div className="friendList">
@@ -18,14 +18,14 @@ function List({ friends, addFriend, user_id, requestUserError, resetError }) {
       {
         requestUserError ?
         <Alert bsStyle="danger"dismissAfter={2000}>
-        <h4>Error adding friend: {requestUserError}</h4>
+        <h4>Error adding friend. {requestUserError}</h4>
         </Alert>
         : <div />
       }
       <FriendItemList friends={friends}/>
       <form className="addFriend" onSubmit={addFriend(user_id)}>
         <input className="friendText ten columns" defaultValue='' id="message"></input>
-        <Button className="friendSubmit button">Add Friend</Button>
+        <ButtonInput type="submit" className="friendSubmit button" value="Add Friend" />
       </form>
     </div>
   );

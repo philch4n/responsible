@@ -57,11 +57,11 @@ Friends.findAndAddFriend = function (user_id, searchString) {
     .then(function (partner) {
       // if user is undefined, jump out!
       if (!partner)
-        throw new Error('Did not find user by searchstring: ' + searchString);
+        throw new Error('Did not find user: ' + searchString);
 
       return Friends.usersAreFriends(user_id, partner.user_id)
         .then(function (alreadyFriends) {
-          if (alreadyFriends) throw new Error('Users are already friends!');
+          if (alreadyFriends) throw new Error('You already already friends!');
           else return Friends.createFriendship(user_id, partner.user_id);
         });
     })

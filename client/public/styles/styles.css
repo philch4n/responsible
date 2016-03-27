@@ -156,6 +156,14 @@ div.map {
 .addFriend {
   margin-bottom: 25px;
 }
+
+.form-group {
+  display: inline-block;
+}
+
+.friendSubmit {
+  margin-left: 5px;
+}
 /*
 *   ~_~_BUTTONS_~_~
 */
