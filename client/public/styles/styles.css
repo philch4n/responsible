@@ -1,9 +1,11 @@
+body {
+  font-weight: 600;
+}
 /*
 *   ~_~_TOP NAV BAR~_~
 */
 
 .mainTitle {
-  font-size: 25px;
   display: inline-block;
   position: absolute;
   width: 60px;
@@ -136,6 +138,22 @@ div.map {
 }
 
 /*
+*   ~_~FRIENDS LIST~_~
+*/
+.friendList {
+  text-align: center;
+}
+
+.friendItem {
+  margin: 25px;
+}
+
+.friendName {
+  margin-top: 10px;
+  font-weight: 500;
+}
+
+/*
 *   ~_~_BUTTONS_~_~
 */
 
@@ -176,8 +194,5 @@ div.map {
   margin: auto;
 }
 
-body {
-  font-weight: 600;
-}
 
 /* Jonathan's color: 62949F */
