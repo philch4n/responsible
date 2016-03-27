@@ -18,6 +18,7 @@ export default {
     requestUserError: false,
     friends: [],
     addedFriend: null,
+    changedAddress: false,
   },
   ride: {
     ride_id: 3,
