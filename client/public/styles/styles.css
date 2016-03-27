@@ -1,4 +1,33 @@
 /*
+*   ~_~_TOP NAV BAR~_~
+*/
+
+.mainTitle {
+  font-size: 25px;
+  display: inline-block;
+  position: absolute;
+  width: 60px;
+  left: 50%;
+  margin: 10px 0 10px -25px;
+  padding: 0 0 20px 0;
+}
+
+.btn-group, .dropdown{
+  display: inline-block;
+  float: left;
+  margin: 10px;
+}
+
+.nav {
+  position: relative;
+}
+
+.topNavBarButton, .endDrivingButton, .CancelRideButton, .pickUpButton, .completeRideButton {
+  display: inline-block;
+  float: right;
+  margin: 10px;
+
+/*
 *   ~_~_RIDER LIST_~_~
 */
 
@@ -40,7 +69,6 @@
   margin-right: auto;
 }
 
-
 /*
 *   ~_~_IMAGE CLASSES_~_~
 */
@@ -64,7 +92,6 @@
   height: 100px;
   width: 100px;
 }
-
 
 /*
 *   ~_~_NAVBAR_~_~
@@ -127,7 +154,7 @@ div.map {
 
 .well {
   max-width: 400px;
-  margin: '0 auto 8px';
+  margin: 10px auto 8px;
   background-color: #F4F6FE;
   margin-left: auto;
   margin-right: auto;
@@ -149,3 +176,4 @@ div.map {
   margin: auto;
 }
 
+/* Jonathan's color: 62949F */
