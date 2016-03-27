@@ -25,22 +25,19 @@ function TopNavBar({ onCancel, onEndDriver, onPickUp, onComplete, onHomeClick, o
 
   return (
     <Navbar className="nav">
-      <Nav>
-        <NavItem eventKey={1} href="#"><SettingIcon {...props}/></NavItem>
-      </Nav>
       <Navbar.Header className="mainHeader">
+        <Nav>
+          <NavDropdown eventKey={4} title="Settings" id="nav-dropdown">
+            <MenuItem eventKey="4.1" onClick={onProfileButtonClick}>Profile</MenuItem>
+            <MenuItem eventKey="4.2" onClick={onFriendButtonClick}>Friends</MenuItem>
+            <MenuItem divider />
+            <MenuItem eventKey="4.3" onClick={onSignoutButtonClick}>Signout</MenuItem>
+          </NavDropdown>
+         </Nav>
         <Navbar.Brand className="mainTitle">
           <a href="/" onClick={onHomeClick} bsClass="navHeader" >Fleet</a>
         </Navbar.Brand>
       </Navbar.Header>
-      <Nav>
-        <NavDropdown eventKey={4} title="Settings" id="nav-dropdown">
-          <MenuItem eventKey="4.1" onClick={onProfileButtonClick}>Profile</MenuItem>
-          <MenuItem eventKey="4.2" onClick={onFriendButtonClick}>Friends</MenuItem>
-          <MenuItem divider />
-          <MenuItem eventKey="4.3" onClick={onSignoutButtonClick}>Signout</MenuItem>
-        </NavDropdown>
-       </Nav>
       <Nav pullRight>
         <NavItem eventKey={1} href="#">
           <TopNavBarRightButton

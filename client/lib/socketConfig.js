@@ -3,9 +3,12 @@
  *  emit socket events! Import it whenever you need it
 **/
 
-const connectionString = process.env.NODE_ENV === 'production' ?
-  `whispering-mountain-79295.herokuapp.com:${process.env.PORT}` :
-  'http://localhost:1337';
+let connectionString = 'whispering-mountain-79295.herokuapp.com';
+if (window.location.hostname === 'localhost') {
+  connectionString = 'http://localhost:1337';
+}
+
+console.log('connectionString:', connectionString);
 
 export const socket = io.connect(connectionString, {
   reconnectionAttempts: 3,
