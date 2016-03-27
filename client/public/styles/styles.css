@@ -105,8 +105,8 @@ body {
 }
 
 .imagePortrait {
-  max-width: 150px;
-  max-height: 150px;
+  max-width: 300px;
+  max-height: 300px;
 }
 
 .imageIcon {
@@ -119,6 +119,20 @@ body {
   margin-right: auto;
   height: 100px;
   width: 100px;
+}
+
+.profilePortraitContainer {
+  width: 50%;
+  margin: 0px auto;
+  display: inline-block;;
+  float: left;
+  padding-left: 100px;
+  background-color: #F4F6FE;
+}
+
+.profileItem {
+  width:300px;
+  text-align: center;
 }
 
 /*

@@ -27,10 +27,11 @@ function Profile({ user_id, friends, profile, onFriendClick, onAddressEdit,
         </Alert>
         : <div />
       }
-      <UserImage {...profile} imageType="portrait" />
-      <div className="profileName">
-        <h1>Name: </h1>
-        <span className="profileItem">{profile.name}</span>
+      <div className="profilePortraitContainer">
+        <UserImage {...profile} imageType="portrait" />
+        <div className="nameContainer">
+          <h2 className="profileItem">{profile.name}</h2>
+        </div>
       </div>
 
       <div className="profileAddress">
