@@ -52,8 +52,12 @@ export function addFriend(props) {
       .then(checkStatus)
       .then(json)
       .then(function (data) {
-        data.error ? dispatch(requestUserInfoError(data.error))
-        : dispatch(receiveFriendInfo(data));
+        if (data.err) {
+          dispatch(requestUserInfoError(data.error));
+        } else {
+          dispatch(receiveFriendInfo(data));
+          dispatch(addedFriend(data));
+        }
       });
 
     // .then((info) => dispatch(receiveFriendInfo(info)))
@@ -79,7 +83,6 @@ export function changeAddress(user_id, newAddress) {
         var user = JSON.parse(localStorage.getItem('user'));
         user.user.address = newAddress;
         dispatch(receiveUserInfo(user));
-        dispatch(push('/'));
         dispatch(changeAddressSuccess(newAddress));
       })
       .catch((error) => dispatch(changeAddressError(error)));
@@ -119,6 +122,10 @@ export function receiveFriendInfo(info) {
   return { type: 'RECEIVE_FRIEND_INFO', entry: info };
 }
 
+export function addedFriend(friend) {
+  return { type: 'ADDED_FRIEND', entry: friend };
+}
+
 export function setDriver(isDriver) {
   return { type: 'SET_DRIVER', entry: isDriver };
 }
@@ -154,7 +161,7 @@ export function changingAddress() {
   return { type: 'CHANGING_ADDRESS' };
 }
 
-function changeAddressSuccess(newAddress) {
+export function changeAddressSuccess(newAddress) {
   return { type: 'CHANGE_ADDRESS', entry: newAddress };
 }
 

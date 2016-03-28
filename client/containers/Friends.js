@@ -9,8 +9,8 @@ import { FriendItemList } from '../components/TopNavBar/Friends/FriendItemList';
 
 function nullFn(e) { console.log('you clicked me ' + e.target.className); };
 
-function List({ friends, addFriend, user_id, requestUserError, resetError }) {
-  if (requestUserError) {setTimeout(function () {resetError();}, 6000);}
+function List({ friends, addFriend, user_id, requestUserError, reset, addedFriend, }) {
+  if (requestUserError || addedFriend) {setTimeout(function () {reset();}, 6000);}
 
   return (
     <div className="friendList">
@@ -19,6 +19,10 @@ function List({ friends, addFriend, user_id, requestUserError, resetError }) {
         requestUserError ?
         <Alert bsStyle="danger"dismissAfter={2000}>
         <h4>Error adding friend. {requestUserError}</h4>
+        </Alert>
+        : addedFriend ?
+        <Alert bsStyle="success"dismissAfter={2000}>
+        <h4>Added friend: {addedFriend.name}</h4>
         </Alert>
         : <div />
       }
@@ -47,8 +51,9 @@ const mapDispatchToProps = function (dispatch) {
       dispatch(userAction.addFriend(friendObject));
     }),
 
-    resetError() {
+    reset() {
       dispatch(userAction.requestUserInfoError(false));
+      dispatch(userAction.addedFriend(null));
     },
   };
 };

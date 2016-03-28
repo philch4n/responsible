@@ -8,6 +8,8 @@ export function handleUserInfo(state, action) {
       return requestUserInfoError(state, action);
     case 'RECEIVE_FRIEND_INFO':
       return receiveFriendInfo(state, action);
+    case 'ADDED_FRIEND':
+      return addedFriend(state, action);
   }
 
   return state;
@@ -54,6 +56,14 @@ function receiveUserInfo(state, { entry }) {
   newState = newState.merge(userUpdates);
 
   return newState;
+}
+
+function addedFriend(state, { entry }) {
+  let updates = {
+    addedFriend: entry,
+  };
+
+  return state.merge(updates);
 }
 
 function requestUserInfoError(state, { entry }) {

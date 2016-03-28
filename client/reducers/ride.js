@@ -21,6 +21,7 @@ export default function(state = Map(), action) {
     case 'ACCEPT_RIDE_SUCCESS':
     case 'ACCEPT_RIDE_SENT':
     case 'ACCEPT_RIDE_ERROR':
+    case 'MATCH_FLAG':
       return handleConfirm(state, action);
     case 'CANCEL_RIDE':
     case 'CANCEL_RIDE_SENT':

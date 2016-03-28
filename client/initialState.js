@@ -17,10 +17,12 @@ export default {
     changeAddressError: false,
     requestUserError: false,
     friends: [],
+    addedFriend: null,
   },
   ride: {
     ride_id: 3,
     match: null,
+    matchFlag: false,
     directions: null,
     riders: [],
     messages: [

@@ -4,7 +4,6 @@ import {FriendItem} from './FriendItem';
 function nullFn(e) { console.log('you clicked me ' + e.target.className); };
 
 export function FriendItemList({ friends, onFriendClick=nullFn }) {
-  console.log('friends', friends);
   return (
     <div className="friendList">
     {
