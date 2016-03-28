@@ -25,7 +25,7 @@ function TopNavBar({ onCancel, onEndDriver, onPickUp, onComplete, onHomeClick, o
 
   return (
     <div className="nav">
-      <Dropdown bsStyle="info" className="settings">
+      <Dropdown bsStyle="info" className="settings" id="nav bar">
         <Dropdown.Toggle noCaret>
           <Glyphicon glyph="align-justify" />
         </Dropdown.Toggle>
