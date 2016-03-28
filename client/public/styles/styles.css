@@ -198,6 +198,7 @@ div.map {
 }
 
 .duiFacts {
+  max-width: 85%;
   text-align: center;
   float: center;
   margin-left: auto;
