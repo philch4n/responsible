@@ -71,7 +71,6 @@ export function acceptRide(ride_driver, ride_rider) {
           match: ride_rider,
         };
         dispatch(acceptRideSuccess(result));
-        dispatch(matchFlag(result));
       })
       .catch((error) => dispatch(acceptRideError(error)));
   };
@@ -86,8 +85,14 @@ function acceptRideSent() {
   return { type: 'ACCEPT_RIDE_SENT', };
 }
 
-export function matchFlag(result) {
-  return { type: 'MATCH_FLAG', entry: result };
+export function matchFlag(match, friends) {
+  if (friends) {
+    let friendRider = friends.find((friend) => friend.user_id === match.user_id);
+    let userName = friendRider.name;
+    return { type: 'MATCH_FLAG', entry: userName };
+  } else {
+    return { type: 'MATCH_FLAG', entry: match };
+  }
 }
 
 export function acceptRideError(error) {

@@ -15,9 +15,9 @@ import * as rideActions from '../actionCreators/ride';
 function Main({
   user: { isLoggedIn, location, profile, isDriver, isRider, friends },
   ride: { riders, isMatched, match, directions, matchFlag, },
-  resetMatchFlag,
+  resetMatchFlag, setMatchFlag,
 }) {
-  if (matchFlag) {setTimeout(function () {resetMatchFlag();}, 6000);}
+  if (matchFlag) setTimeout(function () {resetMatchFlag();}, 6000);
 
   return (
     <div className="MainApp">
@@ -26,7 +26,7 @@ function Main({
       {
         matchFlag ?
         <Alert bsStyle="success"dismissAfter={5000}>
-        <h4>You have been matched!</h4>
+        <h4>You have been matched</h4>
         </Alert>
         : <div />
       }
@@ -65,6 +65,10 @@ const mapDispatchToProps = function (dispatch) {
   return {
     onDirectionsResult(result) {
       // dispatch(rideActions.setDirections(result));
+    },
+
+    setMatchFlag(match, friends) {
+      dispatch(rideActions.matchFlag(match, friends));
     },
 
     resetMatchFlag() {
