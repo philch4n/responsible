@@ -28,14 +28,14 @@ function Profile({ user_id, friends, profile, onFriendClick, onAddressEdit,
         : <div />
       }
       <div className="profilePortraitContainer">
+      <center>
         <UserImage {...profile} imageType="portrait" />
         <div className="nameContainer">
           <h2 className="profileItem">{profile.name}</h2>
         </div>
-      </div>
 
       <div className="profileAddress">
-        <h1>Home Address:</h1>
+        <h3>Home Address:</h3>
         {
           isChangingAddress || !profile.address ?
           <form onSubmit={onAddressEdit(user_id)}>
@@ -51,6 +51,8 @@ function Profile({ user_id, friends, profile, onFriendClick, onAddressEdit,
             <button className="editAddress is-primary" onClick={editAddress}>Edit Address</button>
           </div>
         }
+      </div>
+      </center>
       </div>
     </div>
   );
