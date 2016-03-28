@@ -7,10 +7,12 @@ export function RiderItem(props) {
     <Col xs={3} md={3} className="RiderItem">
       <div className="riderItemDiv">
           <UserImage imageType="riderImage" className="riderItemImage" avatar={ props.avatar } />
+          <div className="riderItemDescDiv">
           <h5 className="riderItemDesc">{props.name}</h5>
           <p>
             <Button bsStyle="primary" bsSize="small" className="riderItemButton" onClick={props.onRiderItemClick}>Pick Up</Button>
           </p>
+          </div>
       </div>
     </Col>
   );
