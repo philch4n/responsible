@@ -1,3 +1,7 @@
+import { Panel } from 'react-bootstrap';
+
+const title = (<h3>Thank You for Saving Lives</h3>);
+
 export function End() {
   // jscs:disable
   var facts = [`On average, a drunk driver will drive 80 times under the influence before their
@@ -33,8 +37,10 @@ export function End() {
   var randomIndex = Math.floor(Math.random() * facts.length);
   return (
       <div className='duiFacts'>
-        <h3>Thank you for saving lives!</h3>
-        {facts[randomIndex]}
+        <Panel header={title}>
+          {facts[randomIndex]}
+        </Panel>
       </div>
   );
 };
+
