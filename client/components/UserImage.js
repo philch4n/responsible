@@ -14,7 +14,7 @@ export function UserImage({ avatar, imageType }) {
                     <Image className="imageIcon" src={ avatar } circle />
                     : imageType === 'riderImage' ?
                        <Image className="mediumImage" src={ avatar } circle />
-                       : <div>What Rider?!</div>
+                       : <div>Missing Image Type</div>
               }
             </Col>
           </Row>
