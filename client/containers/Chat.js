@@ -7,13 +7,17 @@ import { MessageItemList } from '../components/Chat/MessageItemList';
 
 import * as chatAction from '../actionCreators/chat';
 
-export function box({ user_id, match, friends, messages, addMessage }) {
+export function box({ isPickedUp, user_id, match, friends, messages, addMessage, ...other }) {
 
   let friendPartner = friends.find((friend) => match.user_id === friend.user_id);
 
   return (
     <div className='chatbox'>
-      <DriverItem name={friendPartner.name} avatar={friendPartner.avatar} />
+      <DriverItem
+        isPickedUp={isPickedUp}
+        name={friendPartner.name}
+        avatar={friendPartner.avatar}
+      />
       <MessageItemList user_id={user_id} messages={messages}/>
       <div className='textSubmit'>
         <form onSubmit={addMessage(user_id, match.user_id)}>
