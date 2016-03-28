@@ -16,10 +16,13 @@ body {
   left: 50%;
   transform: translate(-50%, 0);
   margin: 10px 0;
-  height: 85%;
+  height: 75%;
   width: 33%;
-  margin-top: 5px;
+  margin-top: 7px;
   margin-bottom: auto;
+}
+.btn-block.btn.btn-lg.btn-primary {
+  height: 150px;
 }
 
 .btn {
