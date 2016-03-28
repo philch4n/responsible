@@ -57,12 +57,10 @@ body {
 
 .riderItemDiv {
   margin: 0 auto 0 auto;
-  text-align: center;
-  width: 125px;
-  border: 1px solid black;
+  width: 100px;
 }
 
-.riderItemDesc {
+.riderItemDescDiv {
   text-align: center;
 }
 
