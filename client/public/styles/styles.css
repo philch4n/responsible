@@ -98,6 +98,7 @@ body {
   margin-left: auto;
   margin-right: auto;
 }
+
 .userImage {
   max-width: 150px;
   max-height: 150px;
@@ -106,6 +107,11 @@ body {
 .imagePortrait {
   max-width: 150px;
   max-height: 150px;
+}
+
+.imageIcon {
+  max-width: 70px;
+  max-height: 70px;
 }
 
 .mediumImage {
@@ -126,14 +132,13 @@ body {
   right: 0;
 }
 
-
 .bottomNav {
   text-align: center;
 }
 
 .BottomNavBarContainer {
   position: fixed;
-  bottom: 0;
+  bottom: 10px;
   left: 0;
   width: 100%;
   height: 50px;
@@ -147,7 +152,7 @@ body {
 div.map {
   padding: .1%;
   height: 95vh;
-  max-height: 400px;
+  max-height: 500px;
 }
 
 .googleMap {
@@ -231,5 +236,115 @@ div.map {
   width: 85%;
 }
 
+.setPickupLocation {
+  height: 60px;
+}
+
+/*
+*   ~_~ Chat and Messages ~_~
+*/
+
+.MessageItemList {
+  overflow-y: auto;
+  height: 120px;
+}
+
+.driverItem {
+  padding-bottom: 10px;
+}
+
+.driverItem .userName {
+  display: inline-block;
+  display: inline-table;
+  vertical-align: middle;
+}
+
+
+.driverItem .imageIcon {
+  display: inline-block;
+}
+
+.chatbox {
+  position: fixed;
+  top: 412px;
+  width: 100%;
+}
+
+.textSubmit .messageSubmit {
+  padding-top: 4px;
+  padding-bottom: 4px;
+}
+
+.incoming {
+  position:relative;
+  padding:5px 10px;
+  color:white; 
+  background:#1A273B;
+  border-radius:25px;
+  float: right;
+    
+  &:before {
+    content:"";
+    position:absolute;
+    z-index:-1;
+    bottom:-2px;
+    right:-7px;
+    height:20px;
+    border-right:20px solid #1A273B;
+    border-bottom-left-radius: 16px 14px;
+    -webkit-transform:translate(0, -2px);
+  }
+
+  &:after {
+    content:"";
+    position:absolute;
+    z-index:1;
+    bottom:-2px;
+    right:-56px;
+    width:26px;
+    height:20px;
+    background:white;
+    border-bottom-left-radius: 10px;
+    -webkit-transform:translate(-30px, -2px);
+  }
+}
+.outgoing {
+  position:relative;
+  padding:px 10px;
+  background:#E5E5EA;
+  border-radius:25px;
+  color: black;
+  float: left;
+    
+  &:before {
+    content:"";
+    position:absolute;
+    z-index:2;
+    bottom:-2px;
+    left:-7px;
+    height:20px;
+    border-left:20px solid #E5E5EA;
+    border-bottom-right-radius: 16px 14px;
+    -webkit-transform:translate(0, -2px);
+  }
+
+  &:after {
+    content:"";
+    position:absolute;
+    z-index:3;
+    bottom:-2px;
+    left:4px;
+    width:26px;
+    height:20px;
+    background:white;
+    border-bottom-right-radius: 10px;
+    -webkit-transform:translate(-30px, -2px);
+  }
+}
+
+.clear {
+  clear: both;
+}
 
 /* Jonathan's color: 62949F */
+/*  who said so!? */

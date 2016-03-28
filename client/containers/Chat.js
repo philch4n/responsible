@@ -2,28 +2,37 @@ import { connect } from 'react-redux';
 import { push } from 'react-router-redux';
 import { curry } from 'ramda';
 
+import { ButtonInput } from 'react-bootstrap';
+
 import { DriverItem } from '../components/DriverItem';
 import { MessageItemList } from '../components/Chat/MessageItemList';
 
 import * as chatAction from '../actionCreators/chat';
 
-export function box({ user_id, match, friends, messages, addMessage }) {
+export function box({ isDriver, isPickedUp, user_id, match, friends, messages, addMessage}) {
 
   let friendPartner = friends.find((friend) => match.user_id === friend.user_id);
 
   return (
     <div className='chatbox'>
-      <DriverItem {...match} avatar={friendPartner.avatar} />
+      <DriverItem
+        isDriver={isDriver}
+        isPickedUp={isPickedUp}
+        name={friendPartner.name}
+        avatar={friendPartner.avatar}
+      />
       <MessageItemList user_id={user_id} messages={messages}/>
       <div className='textSubmit'>
         <form onSubmit={addMessage(user_id, match.user_id)}>
           <input className="messageText ten columns" defaultValue='' id="message"></input>
-          <input className="messageSubmit button" type="submit" />
+          <ButtonInput type="submit" className="messageSubmit button" value="Send" />
         </form>
       </div>
     </div>
   );
 }
+
+
 
 // jscs:disable
 const mapDispatchToProps = function (dispatch) {

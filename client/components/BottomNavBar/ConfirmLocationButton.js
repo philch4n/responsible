@@ -7,7 +7,12 @@ export function ConfirmLocationButton({ confirmLocation }) {
 			<section>
 				<div>
           <ButtonToolbar className="bottomButton">
-                  <Button bsStyle="primary" block>Confirm Ride</Button>
+            <Button
+              bsStyle="primary"
+              block
+              className="setPickupLocation">
+              Set Pickup Location
+            </Button>
           </ButtonToolbar>
         </div>
       </section>
