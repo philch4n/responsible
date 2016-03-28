@@ -196,6 +196,10 @@ div.map {
 }
 
 .duiFacts {
+  margin-top: 100px;
+  margin-right: auto;
+  margin-left: auto;
+  max-width: 75%;
   text-align: center;
   float: center;
   margin-left: auto;
