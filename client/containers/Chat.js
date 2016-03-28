@@ -2,6 +2,8 @@ import { connect } from 'react-redux';
 import { push } from 'react-router-redux';
 import { curry } from 'ramda';
 
+import { ButtonInput } from 'react-bootstrap';
+
 import { DriverItem } from '../components/DriverItem';
 import { MessageItemList } from '../components/Chat/MessageItemList';
 
@@ -22,12 +24,14 @@ export function box({ isPickedUp, user_id, match, friends, messages, addMessage,
       <div className='textSubmit'>
         <form onSubmit={addMessage(user_id, match.user_id)}>
           <input className="messageText ten columns" defaultValue='' id="message"></input>
-          <input className="messageSubmit button" type="submit" />
+          <ButtonInput type="submit" className="messageSubmit button" value="Send" />
         </form>
       </div>
     </div>
   );
 }
+
+
 
 // jscs:disable
 const mapDispatchToProps = function (dispatch) {
