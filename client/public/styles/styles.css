@@ -16,6 +16,10 @@ body {
   left: 50%;
   transform: translate(-50%, 0);
   margin: 10px 0;
+  height: 85%;
+  width: 33%;
+  margin-top: 5px;
+  margin-bottom: auto;
 }
 
 .btn {
@@ -45,6 +49,7 @@ body {
 /*
 *   ~_~_RIDER LIST_~_~
 */
+/*fcf8f8*/
 
 .riderItem {
   margin-left: auto;
@@ -187,16 +192,10 @@ div.map {
   margin-right: auto;
 }
 
-.driveButton {
-  max-width: 375;
-  margin-left: auto;
-  margin-right: auto;
-}
-
 .well {
   max-width: 400px;
   margin: 10px auto 8px;
-  background-color: #F4F6FE;
+  background-color: #838EA1;
   margin-left: auto;
   margin-right: auto;
 }
@@ -207,6 +206,7 @@ div.map {
 }
 
 .duiFacts {
+  background-color: #838EA1;
   margin-top: 100px;
   margin-right: auto;
   margin-left: auto;
@@ -219,6 +219,13 @@ div.map {
 
 .settingsDiv {
   margin: auto;
+}
+
+.splashButton {
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 50px;
+  width: 85%;
 }
 
 
