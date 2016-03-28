@@ -7,10 +7,10 @@ export function RideButton({
   onRideButtonClick = nullFn,
 }) {
   return (
-    <div className='well' onClick={onRideButtonClick}>
+    <div onClick={onRideButtonClick}>
       <section>
 				<div>
-          <ButtonToolbar>
+          <ButtonToolbar className="splashButton">
               <Button bsStyle="primary" bsSize="large" block>Ride</Button>
           </ButtonToolbar>
 				</div>
