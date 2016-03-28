@@ -13,7 +13,7 @@ export function box({ user_id, match, friends, messages, addMessage }) {
 
   return (
     <div className='chatbox'>
-      <DriverItem {...match} avatar={friendPartner.avatar} />
+      <DriverItem name={friendPartner.name} avatar={friendPartner.avatar} />
       <MessageItemList user_id={user_id} messages={messages}/>
       <div className='textSubmit'>
         <form onSubmit={addMessage(user_id, match.user_id)}>
