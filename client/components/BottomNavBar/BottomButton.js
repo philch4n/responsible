@@ -29,6 +29,7 @@ export function BottomButton({ isWaitingForMatch, isConfirmed, isMatched, isPick
           : isMatched && !isPickedUp
             ? <Chat
               user_id={user_id}
+              isDriver={isDriver}
               match={match}
               isPickedUp={isPickedUp}
               friends={friends}

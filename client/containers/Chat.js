@@ -9,13 +9,14 @@ import { MessageItemList } from '../components/Chat/MessageItemList';
 
 import * as chatAction from '../actionCreators/chat';
 
-export function box({ isPickedUp, user_id, match, friends, messages, addMessage, ...other }) {
+export function box({ isDriver, isPickedUp, user_id, match, friends, messages, addMessage}) {
 
   let friendPartner = friends.find((friend) => match.user_id === friend.user_id);
 
   return (
     <div className='chatbox'>
       <DriverItem
+        isDriver={isDriver}
         isPickedUp={isPickedUp}
         name={friendPartner.name}
         avatar={friendPartner.avatar}
