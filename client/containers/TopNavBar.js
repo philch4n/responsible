@@ -36,7 +36,7 @@ function TopNavBar({ onCancel, onEndDriver, onPickUp, onComplete, onHomeClick, o
           <MenuItem eventKey="4.3" onClick={onSignoutButtonClick}>Signout</MenuItem>
         </Dropdown.Menu>
       </Dropdown>
-      <img src="http://s16.postimg.org/i4y8ohkol/Drawing_6.png" className="mainTitle" width="27px" onClick={onHomeClick}/>
+      <img src="http://s9.postimg.org/4619kn9jj/Drawing_7.png" className="mainTitle" width="27px" onClick={onHomeClick}/>
       <TopNavBarRightButton
         {...props}
         onCancel={cancelClick}
