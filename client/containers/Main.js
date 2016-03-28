@@ -17,7 +17,7 @@ function Main({
   ride: { riders, isMatched, match, directions, matchFlag, },
   resetMatchFlag,
 }) {
-  if (matchFlag) {setTimeout(function () {resetMatchFlag();}, 6000);}
+  if (matchFlag) setTimeout(function () {resetMatchFlag();}, 6000);
 
   return (
     <div className="MainApp">
@@ -26,7 +26,8 @@ function Main({
       {
         matchFlag ?
         <Alert bsStyle="success"dismissAfter={5000}>
-        <h4>You have been matched!</h4>
+        <h4>You have been matched with  {friends.find((friend) => friend.user_id ===
+          match.user_id).name} </h4>
         </Alert>
         : <div />
       }

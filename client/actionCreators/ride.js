@@ -86,8 +86,8 @@ function acceptRideSent() {
   return { type: 'ACCEPT_RIDE_SENT', };
 }
 
-export function matchFlag(result) {
-  return { type: 'MATCH_FLAG', entry: result };
+export function matchFlag(match) {
+  return { type: 'MATCH_FLAG', entry: match };
 }
 
 export function acceptRideError(error) {
